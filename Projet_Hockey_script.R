@@ -81,6 +81,13 @@ table(hockey$GroupeGeo)
 
 # SECTION 1 — GRAPHIQUES----
 
+couleurs_geo <- c(
+  "Autres" = "#F8766D",
+  "Canada" = "#7CAE00",
+  "Europe" = "#00BFC4",
+  "USA" = "#C77CFF"
+)
+
 
 
 ## Graphique 1 : Top 15 des pays producteurs de joueurs----
@@ -164,16 +171,18 @@ ggsave(
 ## Graphique 4 : Top 20 des lieux de naissance----
 
 top20_villes <- hockey %>%
-  count(Birthplace, sort = TRUE) %>%
+  count(Birthplace,GroupeGeo, sort = TRUE) %>%
   slice_head(n = 20)
 
-graph_top20_villes <- ggplot(top20_villes, aes(x = reorder(Birthplace, n), y = n)) +
+graph_top20_villes <- ggplot(top20_villes, aes(x = reorder(Birthplace, n), y = n, fill = GroupeGeo)) +
   geom_col() +
   coord_flip() +
+  scale_fill_manual(values = couleurs_geo) +
   labs(
     title = "Top 20 des lieux de naissance des joueurs de la LNH",
     x = "Lieu de naissance",
-    y = "Nombre de joueurs"
+    y = "Nombre de joueurs",
+    fill = "Groupe géographique"
   ) +
   theme_minimal()
 
