@@ -196,10 +196,11 @@ ggsave(
   dpi = 300
 )
 
-## Graphique 5 : Moyenne de points par pays (On garde seulement les pays avec au moins 20 joueurs)----
+## Graphique 5 : Moyenne de points par pays 
+## On garde seulement les pays avec au moins 20 joueurs----
 
 moyenne_pts_pays <- hockey %>%
-  group_by(Country) %>%
+  group_by(Country, GroupeGeo) %>%
   summarise(
     Joueurs = n(),
     MoyennePts = mean(Pts, na.rm = TRUE),
@@ -208,14 +209,19 @@ moyenne_pts_pays <- hockey %>%
   filter(Joueurs >= 20) %>%
   arrange(desc(MoyennePts))
 
-graph_moyenne_pts_pays <- ggplot(moyenne_pts_pays, aes(x = reorder(Country, MoyennePts), y = MoyennePts)) +
+graph_moyenne_pts_pays <- ggplot(
+  moyenne_pts_pays,
+  aes(x = reorder(Country, MoyennePts), y = MoyennePts, fill = GroupeGeo)
+) +
   geom_col() +
   coord_flip() +
+  scale_fill_manual(values = couleurs_geo) +
   labs(
     title = "Nombre moyen de points par joueur selon le pays",
     subtitle = "Pays avec au moins 20 joueurs",
     x = "Pays",
-    y = "Moyenne de points en carrière"
+    y = "Moyenne de points en carrière",
+    fill = "Groupe géographique"
   ) +
   theme_minimal()
 
