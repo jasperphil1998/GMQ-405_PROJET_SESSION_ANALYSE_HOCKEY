@@ -262,16 +262,13 @@ ggsave(
 
 ## Graphique 7 : Relation entre matchs joués et points----
 
-graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
-  geom_point(aes(color = Elite1000), alpha = 0.4) +
-  geom_smooth(aes(linetype = "Droite linéaire"), method = "lm", se = FALSE, color = "black", linewidth = 1) +
-  geom_smooth(aes(linetype = "Courbe lissée"), se = FALSE, color = "firebrick", linewidth = 1) +
+graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts, color = Elite1000)) +
+  geom_point(alpha = 0.5) +
   labs(
     title = "Relation entre les matchs joués et la production offensive",
     x = "Matchs joués",
     y = "Points",
-    color = "Catégorie",
-    linetype = "Type de régression"
+    color = "Catégorie"
   ) +
   theme_minimal()
 
@@ -355,7 +352,9 @@ ggsave(
 )
 
 ## Graphique 10 : pays avec le plus de minutes de pénalité----
+
 library(scales)
+
 # Fond de carte mondial
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
@@ -377,8 +376,8 @@ hockey_graph <- hockey %>%
   )
 
 pim_pays_top <- hockey_graph %>%
-  filter(!is.na(Country), !is.na(PIM)) %>%
-  group_by(Country) %>%
+  filter(!is.na(Country), !is.na(PIM), !is.na(GroupeGeo)) %>%
+  group_by(Country, GroupeGeo) %>%
   summarise(
     NbJoueurs = n(),
     TotalPIM = sum(PIM, na.rm = TRUE),
@@ -390,15 +389,17 @@ pim_pays_top <- hockey_graph %>%
 
 graph_pim_pays <- ggplot(
   pim_pays_top,
-  aes(x = reorder(Country, TotalPIM), y = TotalPIM)
+  aes(x = reorder(Country, TotalPIM), y = TotalPIM, fill = GroupeGeo)
 ) +
-  geom_col(fill = "steelblue") +
+  geom_col() +
   coord_flip() +
+  scale_fill_manual(values = couleurs_geo) +
   labs(
     title = "Pays avec le plus de minutes de pénalité",
     subtitle = "Top 15 des pays selon le total de minutes de pénalité accumulées",
     x = "Pays",
     y = "Minutes de pénalité totales",
+    fill = "Groupe géographique",
     caption = "Source : Hockey DB / NHL player data\nAuteur : Philippe Filion, Xavier Lafrance, Xavier St-Arnaud"
   ) +
   scale_y_continuous(labels = label_number(big.mark = " ", decimal.mark = ",")) +
@@ -502,21 +503,39 @@ monde_hockey$NbJoueurs[is.na(monde_hockey$NbJoueurs)] <- 0
 
 tmap_mode("plot")
 
+# Création d'un point à l'intérieur de chaque pays
+monde_hockey_points <- monde_hockey %>%
+  filter(!is.na(NbJoueurs), NbJoueurs > 0) %>%
+  st_make_valid() %>%
+  st_point_on_surface()
+
+# Classes rondes pour la légende
+classes_joueurs <- c(50, 100, 250, 500, 1000, 2500, 3000)
+
 carte_joueurs_pays <- tm_shape(monde_hockey) +
   tm_polygons(
-    fill = "NbJoueurs",
-    fill.scale = tm_scale_intervals(
-      style = "jenks",
-      n = 7,
-      values = "brewer.blues"
+    fill = "grey95",
+    col = "grey60",
+    lwd = 0.3
+  ) +
+  tm_shape(monde_hockey_points) +
+  tm_symbols(
+    size = "NbJoueurs",
+    fill = "#2C7FB8",
+    col = "grey20",
+    lwd = 0.7,
+    alpha = 0.95,
+    scale = 2.5,
+    size.scale = tm_scale_continuous(
+      breaks = classes_joueurs
     ),
-    col = "grey40",
-    lwd = 0.3,
-    fill.legend = tm_legend(title = "Nombre de joueurs")
+    size.legend = tm_legend(
+      title = "Nombre de joueurs"
+    )
   ) +
   tm_title("Nombre de joueurs de la LNH par pays de naissance") +
   tm_credits(
-    "Source : Hockey DB / NHL player data\nAuteur : Philippe Filion, Xavier Lafrance, Xavuer St-Arnaud",
+    "Source : Hockey DB / NHL player data\nAuteur : Philippe Filion, Xavier Lafrance, Xavier St-Arnaud",
     position = tm_pos_in("left", "bottom"),
     size = 0.7
   )
@@ -525,13 +544,13 @@ carte_joueurs_pays
 
 tmap_save(
   tm = carte_joueurs_pays,
-  filename = "figures/carte_joueurs_pays.png",
+  filename = "figures/carte_joueurs_pays_cercles.png",
   width = 10,
   height = 6,
   dpi = 300
 )
 
-## Carte 2 : Joueurs de 1000 points et plus par pays----
+## Carte 2 : Joueurs de 1000 points et plus par pays avec cercles proportionnels ----
 
 elite_pays_carte <- hockey %>%
   filter(Pts >= 1000) %>%
@@ -548,24 +567,42 @@ elite_pays_carte <- hockey %>%
   summarise(
     NbElite = sum(NbElite),
     .groups = "drop"
-    )
+  )
 
 monde_elite <- monde %>%
   left_join(elite_pays_carte, by = c("name" = "Country_map"))
 
 monde_elite$NbElite[is.na(monde_elite$NbElite)] <- 0
 
+# Création des points au centre des pays
+monde_elite_points <- monde_elite %>%
+  filter(NbElite > 0) %>%
+  st_make_valid() %>%
+  st_point_on_surface()
+
+# Classes rondes pour la légende
+classes_elite <- c(1, 5, 10, 25, 50, 100, 250)
+
 carte_elite_pays <- tm_shape(monde_elite) +
   tm_polygons(
-    fill = "NbElite",
-    fill.scale = tm_scale_intervals(
-      style = "jenks",
-      n = 7,
-      values = "brewer.reds"
+    fill = "grey95",
+    col = "grey60",
+    lwd = 0.3
+  ) +
+  tm_shape(monde_elite_points) +
+  tm_symbols(
+    size = "NbElite",
+    fill = "#CB181D",
+    col = "grey20",
+    lwd = 0.5,
+    alpha = 0.8,
+    scale = 2.5,
+    size.scale = tm_scale_continuous(
+      breaks = classes_elite
     ),
-    col = "grey40",
-    lwd = 0.3,
-    fill.legend = tm_legend(title = "Joueurs 1000+ pts")
+    size.legend = tm_legend(
+      title = "Joueurs 1000+ pts"
+    )
   ) +
   tm_title("Joueurs de 1000 points et plus par pays de naissance") +
   tm_credits(
@@ -578,7 +615,7 @@ carte_elite_pays
 
 tmap_save(
   tm = carte_elite_pays,
-  filename = "figures/carte_elite_pays.png",
+  filename = "figures/carte_elite_pays_cercles.png",
   width = 10,
   height = 6,
   dpi = 300
@@ -594,7 +631,7 @@ lieux_naissance <- hockey %>%
 # Vérification
 View(lieux_naissance)
 
-
+gi
 ## 2. Géocoder les lieux de naissance (incrémental)----
 
 # IMPORTANT : le fichier cache ci-dessous contient DÉJÀ les coordonnées de
