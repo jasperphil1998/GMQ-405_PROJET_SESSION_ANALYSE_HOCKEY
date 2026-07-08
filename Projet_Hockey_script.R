@@ -169,7 +169,7 @@ ggsave(
 )
 
 ## Graphique 4 : Top 20 des lieux de naissance----
-
+#rgg5
 top20_villes <- hockey %>%
   count(Birthplace,GroupeGeo, sort = TRUE) %>%
   slice_head(n = 20)
