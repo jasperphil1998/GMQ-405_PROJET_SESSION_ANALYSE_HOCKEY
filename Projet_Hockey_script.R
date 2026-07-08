@@ -264,6 +264,7 @@ ggsave(
 
 graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts, color = Elite1000)) +
   geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", se = FALSE, aes(group = 1), color = "black") +
   labs(
     title = "Relation entre les matchs joués et la production offensive",
     x = "Matchs joués",
