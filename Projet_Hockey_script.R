@@ -262,14 +262,16 @@ ggsave(
 
 ## Graphique 7 : Relation entre matchs joués et points----
 
-graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts, color = Elite1000)) +
-  geom_point(alpha = 0.5) +
-  geom_smooth(method = "lm", se = FALSE, aes(group = 1), color = "black") +
+graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
+  geom_point(aes(color = Elite1000), alpha = 0.4) +
+  geom_smooth(aes(linetype = "Droite linéaire"), method = "lm", se = FALSE, color = "black", linewidth = 1) +
+  geom_smooth(aes(linetype = "Courbe lissée"), se = FALSE, color = "firebrick", linewidth = 1) +
   labs(
     title = "Relation entre les matchs joués et la production offensive",
     x = "Matchs joués",
     y = "Points",
-    color = "Catégorie"
+    color = "Catégorie",
+    linetype = "Type de régression"
   ) +
   theme_minimal()
 
