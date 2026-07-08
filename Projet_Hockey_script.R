@@ -285,7 +285,7 @@ ggsave(
 ## Graphique 8 : Top 20 villes selon les points totaux----
 
 top20_villes_pts <- hockey %>%
-  group_by(Birthplace) %>%
+  group_by(Birthplace, GroupeGeo) %>%
   summarise(
     Joueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -295,13 +295,18 @@ top20_villes_pts <- hockey %>%
   arrange(desc(TotalPts)) %>%
   slice_head(n = 20)
 
-graph_top20_villes_pts <- ggplot(top20_villes_pts, aes(x = reorder(Birthplace, TotalPts), y = TotalPts)) +
+graph_top20_villes_pts <- ggplot(
+  top20_villes_pts,
+  aes(x = reorder(Birthplace, TotalPts), y = TotalPts, fill = GroupeGeo)
+) +
   geom_col() +
   coord_flip() +
+  scale_fill_manual(values = couleurs_geo) +
   labs(
     title = "Top 20 des lieux de naissance selon les points totaux produits",
     x = "Lieu de naissance",
-    y = "Total des points produits en LNH"
+    y = "Total des points produits en LNH",
+    fill = "Groupe géographique"
   ) +
   theme_minimal()
 
@@ -319,15 +324,20 @@ ggsave(
 
 elite_pays <- hockey %>%
   filter(Pts >= 1000) %>%
-  count(Country, sort = TRUE)
+  count(Country, GroupeGeo, sort = TRUE)
 
-graph_elite_pays <- ggplot(elite_pays, aes(x = reorder(Country, n), y = n)) +
+graph_elite_pays <- ggplot(
+  elite_pays,
+  aes(x = reorder(Country, n), y = n, fill = GroupeGeo)
+) +
   geom_col() +
   coord_flip() +
+  scale_fill_manual(values = couleurs_geo) +
   labs(
     title = "Nombre de joueurs de 1000 points et plus par pays",
     x = "Pays",
-    y = "Nombre de joueurs de 1000 points et plus"
+    y = "Nombre de joueurs de 1000 points et plus",
+    fill = "Groupe géographique"
   ) +
   theme_minimal()
 
