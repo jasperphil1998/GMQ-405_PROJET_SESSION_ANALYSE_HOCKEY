@@ -1,6 +1,5 @@
 {
-  "r.rpath.windows": "C:\\Program Files\\R\\R-4.4.2\\bin\\x64\\R.exe",
-  "r.rterm.windows": "C:\\Program Files\\R\\R-4.4.2\\bin\\x64\\R.exe",
+  "//": "Ne PAS mettre de chemin R absolu ici : il serait versionné et casserait sur les postes ayant une autre version de R. L'extension R détecte R automatiquement (registre Windows). Si le terminal R refuse de démarrer, définir r.rterm.windows / r.rpath.windows dans VOS réglages UTILISATEUR (voir README).",
   "r.bracketedPaste": true,
   "r.sessionWatcher": true,
   "r.alwaysUseActiveTerminal": false,

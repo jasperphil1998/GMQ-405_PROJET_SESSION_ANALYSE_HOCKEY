@@ -145,6 +145,27 @@ Le script n'utilise **aucun chemin absolu** : tout est relatif au dossier du pro
 fonctionne tel quel sur n'importe quel ordinateur une fois le dépôt cloné. Aucune modification
 de `setwd()` n'est nécessaire.
 
+### Dépannage : « The terminal failed to launch » / R introuvable
+
+L'extension R détecte normalement R automatiquement (peu importe la version installée : 4.4,
+4.6, etc.). Si le terminal R refuse de démarrer ou dit qu'un chemin R n'existe pas, indiquez
+à VS Code où se trouve **votre** installation de R, dans vos **réglages UTILISATEUR** (pas ceux
+du projet) :
+
+1. `Ctrl + ,` pour ouvrir les Settings.
+2. Cliquer l'icône `{}` en haut à droite pour ouvrir `settings.json` (User).
+3. Ajouter, en adaptant à votre version de R :
+
+   ```json
+   "r.rterm.windows": "C:\\Program Files\\R\\R-4.6.0\\bin\\x64\\R.exe",
+   "r.rpath.windows":  "C:\\Program Files\\R\\R-4.6.0\\bin\\x64\\R.exe"
+   ```
+
+   > Remplacez `R-4.6.0` par le nom exact de votre dossier dans `C:\Program Files\R\`.
+   > Ces réglages restent **locaux à votre poste** et ne sont pas versionnés.
+
+4. Recharger VS Code (`Ctrl + Shift + P` → *Developer: Reload Window*).
+
 ## Traitements réalisés
 
 ### Nettoyage et préparation
