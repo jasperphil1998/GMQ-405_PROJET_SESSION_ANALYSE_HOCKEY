@@ -14,15 +14,20 @@ library(tidygeocoder)   # Géocodage des villes
 
 # 2. Définition du dossier de travail----
 
-setwd("C:/Users/phili/Downloads/UNIVERSITÉ/GMQ E-2026/GMQ-405/Projet_Hockey")
+# Aucun setwd() codé en dur : le script utilise des chemins relatifs.
+# Dans VS Code, ouvrir le DOSSIER du projet (File > Open Folder) : le
+# terminal R démarre alors à la racine du projet et les chemins ci-dessous
+# fonctionnent tels quels. Au besoin, décommenter la ligne suivante et y
+# mettre le chemin du dossier du projet sur votre ordinateur :
+# setwd("C:/Users/2004x/Desktop/Ecoles/UDS/Session_E2026/Modelisation/Projet_Final/GMQ-405_PROJET_SESSION_ANALYSE_HOCKEY")
 
-# Création d’un dossier pour les figures si nécessaire
+# Création des dossiers de sortie si nécessaire
 dir.create("figures", showWarnings = FALSE)
-dir.create("data/geocodage", showWarnings = FALSE)
+dir.create("data/geocodage", recursive = TRUE, showWarnings = FALSE)
 
 # 3. Importation des données----
 
-hockey <- read_csv("Projet_Hockey/data/GMQ-405_Hockey_Players_complet_lieux_modernes.csv")
+hockey <- read_csv("data/GMQ-405_Hockey_Players_complet_lieux_modernes.csv")
 
 # Vérifications rapides----
 View(hockey)
@@ -562,26 +567,47 @@ lieux_naissance <- hockey %>%
 View(lieux_naissance)
 
 
-## 2. Géocoder les lieux de naissance----
+## 2. Géocoder les lieux de naissance (incrémental)----
 
-lieux_geocodes <- lieux_naissance %>%
-  geocode(
-    address = Birthplace,
-    method = "osm",
-    lat = latitude,
-    long = longitude
-  )
+# IMPORTANT : le fichier cache ci-dessous contient DÉJÀ les coordonnées de
+# tous les lieux de naissance. On ne relance donc PAS un géocodage complet
+# (OSM = 1 requête/seconde ≈ 40 min pour 2300 lieux). On ne géocode que les
+# NOUVEAUX lieux éventuellement absents du cache. Aujourd'hui : 0 -> instantané.
 
-# Sauvegarde du géocodage
-## Créer le dossier si nécessaire
 dir.create("data/geocodage", recursive = TRUE, showWarnings = FALSE)
-write_csv(lieux_geocodes, "data/geocodage/lieux_naissance_geocodes.csv")
+fichier_cache <- "data/geocodage/lieux_naissance_geocodes_lieux_modernes.csv"
 
+if (file.exists(fichier_cache)) {
+  cache_geo <- read_csv(fichier_cache, show_col_types = FALSE)
+} else {
+  cache_geo <- tibble::tibble(
+    Birthplace = character(),
+    latitude   = double(),
+    longitude  = double()
+  )
+}
 
-# 3. Recharger le géocodage sauvegardé
-# À utiliser les prochaines fois pour éviter de refaire le géocodage.
+# Lieux présents dans les données mais pas encore dans le cache
+lieux_a_geocoder <- lieux_naissance %>%
+  filter(!(Birthplace %in% cache_geo$Birthplace))
 
-lieux_geocodes <- read_csv("data/geocodage/lieux_naissance_geocodes_lieux_modernes.csv")
+if (nrow(lieux_a_geocoder) > 0) {
+  message("Géocodage de ", nrow(lieux_a_geocoder), " nouveau(x) lieu(x)...")
+  nouveaux_geo <- lieux_a_geocoder %>%
+    geocode(
+      address = Birthplace,
+      method  = "arcgis",   # rapide, sans limite 1 req/sec, sans clé API
+      lat     = latitude,
+      long    = longitude
+    )
+  cache_geo <- bind_rows(cache_geo, nouveaux_geo)
+  write_csv(cache_geo, fichier_cache)   # met le cache à jour
+} else {
+  message("Aucun nouveau lieu à géocoder : le cache est complet.")
+}
+
+# Jeu de données géocodé prêt pour la suite du script
+lieux_geocodes <- cache_geo
 
 
 # 4. Conversion en objet spatial sf

@@ -1,0 +1,22 @@
+# --- Fichiers de session R (à ne jamais committer) ---
+.Rhistory
+.RData
+.RDataTmp
+.Rapp.history
+.Ruserdata
+
+# --- RStudio ---
+.Rproj.user/
+
+# --- Sorties générées par le script (recréées à l'exécution) ---
+# Le dossier figures/ est régénéré par Projet_Hockey_script.R.
+# On ne le versionne pas pour garder le dépôt léger.
+figures/
+
+# --- Système ---
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Divers ---
+*.tmp

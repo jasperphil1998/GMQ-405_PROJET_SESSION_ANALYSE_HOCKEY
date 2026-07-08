@@ -1,0 +1,2302 @@
+Birthplace,Country,NbJoueurs,latitude,longitude
+"Toronto, ON, Canada",Canada,442,43.6534817,-79.3839347
+"Montreal, QC, Canada",Canada,277,45.5031824,-73.5698065
+"Edmonton, AB, Canada",Canada,208,53.5462055,-113.491241
+"Winnipeg, MB, Canada",Canada,207,49.8955367,-97.1384584
+"Ottawa, ON, Canada",Canada,170,45.4208777,-75.6901106
+"Calgary, AB, Canada",Canada,151,51.0456064,-114.057541
+"Regina, SK, Canada",Canada,104,50.4479733,-104.6158764
+"Saskatoon, SK, Canada",Canada,95,52.131802,-106.660767
+"Moscow, Russia",Russia,80,55.625578,37.6063916
+"Stockholm, Sweden",Sweden,80,59.3251172,18.0710935
+"Sudbury, ON, Canada",Canada,69,46.49272,-80.991211
+"Hamilton, ON, Canada",Canada,65,43.2560802,-79.8728583
+"Kitchener, ON, Canada",Canada,64,43.451291,-80.4927815
+"London, ON, Canada",Canada,63,42.9836747,-81.2496068
+"Kingston, ON, Canada",Canada,59,44.3054151,-76.4283781
+"Vancouver, BC, Canada",Canada,56,49.2608724,-123.113952
+"Quebec, QC, Canada",Canada,55,46.8137431,-71.2084061
+"Windsor, ON, Canada",Canada,52,42.2858536,-82.9780695
+"Thunder Bay, ON, Canada",Canada,45,48.406414,-89.259796
+"Detroit, MI, USA",USA,43,42.3315509,-83.046640300000007
+"Peterborough, ON, Canada",Canada,42,44.3048009,-78.3199496
+"Sault Ste. Marie, ON, Canada",Canada,41,46.5126554,-84.3330301
+"Brandon, MB, Canada",Canada,40,49.8511143,-99.9608924
+"Mississauga, ON, Canada",Canada,37,43.5884727,-79.643658
+"Scarborough, ON, Canada",Canada,37,43.7729744,-79.2576479
+"Minneapolis, MN, USA",USA,36,44.9772995,-93.2654692
+"Boston, MA, USA",USA,34,42.3588336,-71.0578303
+"Fort William, ON, Canada",Canada,34,48.3824086,-89.2456153
+"Helsinki, Finland",Finland,32,60.1666204,24.9435408
+"St. Catharines, ON, Canada",Canada,32,43.1579812,-79.2441003
+"St. Paul, MN, USA",USA,32,44.9497487,-93.0931028
+"Brantford, ON, Canada",Canada,31,43.1408157,-80.2631733
+"Oshawa, ON, Canada",Canada,31,43.8975558,-78.8635324
+"Prague, Czech Republic",Czech Republic,31,50.0874654,14.4212535
+"Sarnia, ON, Canada",Canada,31,42.9743821,-82.403533
+"Tampere, Finland",Finland,30,61.4977988,23.7616335
+"Chelyabinsk, Russia",Russia,29,55.1559312,61.3997019
+"Laval, QC, Canada",Canada,28,45.605589,-73.7345601
+"Chicago, IL, USA",USA,27,41.8755616,-87.6244212
+"Niagara Falls, ON, Canada",Canada,27,43.1065603,-79.0639039
+"Oakville, ON, Canada",Canada,27,43.447436,-79.666672
+"Rouyn-Noranda, QC, Canada",Canada,27,48.2420524,-79.0205378
+"Belleville, ON, Canada",Canada,26,44.2436328,-77.3607597
+"Victoria, BC, Canada",Canada,26,48.4283182,-123.364953
+"Riga, Latvia",Latvia,25,56.9493977,24.1051846
+"Timmins, ON, Canada",Canada,25,48.477473,-81.330414
+"Burnaby, BC, Canada",Canada,24,49.2433804,-122.972545
+"Guelph, ON, Canada",Canada,24,43.5460516,-80.2493276
+"Halifax, NS, Canada",Canada,24,44.648618,-63.5859487
+"Barrie, ON, Canada",Canada,23,44.3893208,-79.6901302
+"North Bay, ON, Canada",Canada,23,46.3092115,-79.4607617
+"Buffalo, NY, USA",USA,22,42.8864163,-78.8781493
+"Moose Jaw, SK, Canada",Canada,22,50.3967209,-105.535666
+"Oulu, Finland",Finland,22,65.0117914,25.4701973
+"Red Deer, AB, Canada",Canada,22,52.2690628,-113.8141464
+"Turku, Finland",Finland,22,60.4515932,22.2669991
+"Cornwall, ON, Canada",Canada,21,45.0469989,-74.7333845
+"Gothenburg, Sweden",Sweden,21,57.7072326,11.9670171
+"Kirkland Lake, ON, Canada",Canada,21,48.154177,-80.031281
+"Charlottetown, PE, Canada",Canada,20,46.2354187,-63.1265388
+"St. Albert, AB, Canada",Canada,20,53.633239,-113.628845
+"Trail, BC, Canada",Canada,20,49.0945296,-117.7097659
+"Brampton, ON, Canada",Canada,19,43.685832,-79.7599366
+"Lethbridge, AB, Canada",Canada,19,49.6945782,-112.8331033
+"Medicine Hat, AB, Canada",Canada,19,50.04303,-110.679016
+"Owen Sound, ON, Canada",Canada,19,44.5678105,-80.9430094
+"Sherbrooke, QC, Canada",Canada,19,45.403271,-71.889038
+"St. Louis, MO, USA",USA,19,38.6254063,-90.190009
+"Trois-Rivieres, QC, Canada",Canada,19,46.3432325,-72.5428485
+"Verdun, QC, Canada",Canada,19,45.459099,-73.5731712
+"Edina, MN, USA",USA,18,44.8897027,-93.3501222
+"Flin Flon, MB, Canada",Canada,18,54.7669031,-101.8425179
+"Port Arthur, ON, Canada",Canada,18,48.4348261,-89.2194423
+"Gavle, Sweden",Sweden,17,60.6750132,17.1467019
+"North Vancouver, BC, Canada",Canada,17,49.3206294,-123.0737925
+"Prince Albert, SK, Canada",Canada,17,53.2020289,-105.7558962
+"Skelleftea, Sweden",Sweden,17,64.7520185,20.959339
+"Stratford, ON, Canada",Canada,17,43.3700899,-80.9818016
+"Burlington, ON, Canada",Canada,16,43.3248924,-79.7966835
+"Espoo, Finland",Finland,16,60.2049651,24.6559808
+"Karlstad, Sweden",Sweden,16,59.3809146,13.5027631
+"Kladno, Czech Republic",Czech Republic,16,49.7673576,15.9729537
+"New Westminster, BC, Canada",Canada,16,49.2067726,-122.9108818
+"Pittsburgh, PA, USA",USA,16,40.4406968,-80.0025666
+"Welland, ON, Canada",Canada,16,42.9922181,-79.2484192
+"Drummondville, QC, Canada",Canada,15,45.8864303,-72.5018764
+"Newmarket, ON, Canada",Canada,15,44.056258,-79.461708
+"Richmond Hill, ON, Canada",Canada,15,43.8801166,-79.4392925
+"Vantaa, Finland",Finland,15,60.2929883,25.0436744
+"Cranbrook, BC, Canada",Canada,14,49.5107477,-115.7672772
+"Duluth, MN, USA",USA,14,46.7838287,-92.1052679
+"Lachine, QC, Canada",Canada,14,45.435114,-73.6837987
+"Madison, WI, USA",USA,14,43.07469,-89.3841663
+"Ornskoldsvik, Sweden",Sweden,14,63.2888613,18.7160209
+"Ostrava, Czech Republic",Czech Republic,14,49.8354045,18.292978
+"Pembroke, ON, Canada",Canada,14,45.8209741,-77.1115433
+"St. Boniface, MB, Canada",Canada,14,49.8854516,-97.1161877
+"Surrey, BC, Canada",Canada,14,49.1913033,-122.849143
+"Denver, CO, USA",USA,13,39.7392364,-104.984862
+"North Battleford, SK, Canada",Canada,13,52.776186,-108.300476
+"Plzen, Czech Republic",Czech Republic,13,49.7477415,13.3775249
+"Sherwood Park, AB, Canada",Canada,13,53.5256963,-113.296631
+"St. John's, NL, Canada",Canada,13,47.5646794,-52.7066964
+"Swift Current, SK, Canada",Canada,13,50.2849138,-107.7984496
+"Anchorage, AK, USA",USA,12,61.2163129,-149.894852
+"Brno, Czech Republic",Czech Republic,12,49.1922443,16.6113382
+"Brockville, ON, Canada",Canada,12,44.6039207,-75.7016829
+"Chatham, ON, Canada",Canada,12,42.4057219,-82.1853837
+"Collingwood, ON, Canada",Canada,12,44.5027226,-80.2172379
+"Longueuil, QC, Canada",Canada,12,45.521906,-73.4644578
+"Moncton, NB, Canada",Canada,12,46.0985679,-64.8004265
+"Most, Czech Republic",Czech Republic,12,50.5032737,13.636112
+"New York, NY, USA",USA,12,40.7127281,-74.0060152
+"Prince George, BC, Canada",Canada,12,53.9128645,-122.7453699
+"Shawinigan, QC, Canada",Canada,12,46.5396581,-72.7518637
+"Sorel, QC, Canada",Canada,12,46.044404,-73.104744
+"Yaroslavl, Russia",Russia,12,57.6263877,39.8933705
+"Hibbing, MN, USA",USA,11,47.427155,-92.937689
+"Kenora, ON, Canada",Canada,11,54.0245941,-89.1618188
+"Kiev, Ukraine",Ukraine,11,50.4500336,30.5241361
+"Lloydminster, SK, Canada",Canada,11,53.2816669,-109.986339
+"Pardubice, Czech Republic",Czech Republic,11,50.0385812,15.7791356
+"Pori, Finland",Finland,11,61.4866126,21.7972071
+"Selkirk, MB, Canada",Canada,11,50.146986,-96.880188
+"Summerside, PE, Canada",Canada,11,46.394259,-63.7892386
+"Abbotsford, BC, Canada",Canada,10,49.0521162,-122.329479
+"Bratislava, Slovakia",Slovakia,10,48.1516988,17.1093063
+"Chicoutimi, QC, Canada",Canada,10,48.4286352,-71.0637121
+"Falun, Sweden",Sweden,10,60.6070068,15.6323059
+"Gatineau, QC, Canada",Canada,10,45.4277659,-75.710976
+"Grand Rapids, MN, USA",USA,10,47.237166,-93.530214
+"Hull, QC, Canada",Canada,10,45.4405842,-75.7326823
+"Kosice, Slovakia",Slovakia,10,48.7172272,21.2496774
+"Melville, SK, Canada",Canada,10,50.9307241,-102.807296
+"Petrolia, ON, Canada",Canada,10,42.882002,-82.149582
+"Syracuse, NY, USA",USA,10,43.0481221,-76.1474244
+"Vasteras, Sweden",Sweden,10,59.6110992,16.5463679
+"Voskresensk, Russia",Russia,10,55.322518,38.6816824
+"Cambridge, ON, Canada",Canada,9,43.3600536,-80.3123023
+"Ceske Budejovice, Czech Republic",Czech Republic,9,48.9747357,14.474285
+"Cleveland, OH, USA",USA,9,41.4996574,-81.6936772
+"Galt, ON, Canada",Canada,9,43.3589869,-80.3152471
+"Jihlava, Czech Republic",Czech Republic,9,49.396064,15.5903065
+"Kamloops, BC, Canada",Canada,9,50.6758269,-120.339415
+"Kuopio, Finland",Finland,9,62.8924628,27.6783603
+"Leksand, Sweden",Sweden,9,60.7329032,14.9968205
+"Livonia, MI, USA",USA,9,42.36837,-83.3527097
+"Markham, ON, Canada",Canada,9,43.8563707,-79.3376825
+"Minsk, Belarus",Belarus,9,53.9024716,27.5618225
+"North York, ON, Canada",Canada,9,43.7543217,-79.4491057
+"Omsk, Russia",Russia,9,54.991375,73.371529
+"Rochester, NY, USA",USA,9,43.157285,-77.615214
+"Sydney, NS, Canada",Canada,9,46.1382112,-60.1941912
+"Trencin, Slovakia",Slovakia,9,48.8922719,18.0387465
+"Ust-Kamenogorsk, Kazakhstan",Kazakhstan,9,49.9484438,82.6274791
+"Vernon, BC, Canada",Canada,9,50.2668671,-119.2718157
+"Viking, AB, Canada",Canada,9,53.0972884,-111.7771466
+"Weyburn, SK, Canada",Canada,9,49.6651238,-103.854034
+"Whitby, ON, Canada",Canada,9,43.87982,-78.9421751
+"Yorkton, SK, Canada",Canada,9,51.212045,-102.461243
+"Ann Arbor, MI, USA",USA,8,42.2813722,-83.7484616
+"Aurora, ON, Canada",Canada,8,43.99973,-79.467545
+"Bloomington, MN, USA",USA,8,44.8322405,-93.3204872
+"Burnsville, MN, USA",USA,8,44.7670567,-93.2773887
+"Coquitlam, BC, Canada",Canada,8,49.2842958,-122.793281
+"Dauphin, MB, Canada",Canada,8,51.1482866,-100.0509099
+"Dearborn, MI, USA",USA,8,42.3222599,-83.1763145
+"Eveleth, MN, USA",USA,8,47.462761,-92.538824
+"Fort Frances, ON, Canada",Canada,8,48.6114425,-93.3967615
+"Jyvaskyla, Finland",Finland,8,62.241672,25.7495806
+"Kelowna, BC, Canada",Canada,8,49.8879177,-119.495902
+"Lindsay, ON, Canada",Canada,8,44.3551266,-78.7369939
+"Orebro, Sweden",Sweden,8,59.2747287,15.2151181
+"Repentigny, QC, Canada",Canada,8,45.7326055,-73.4528307
+"Richmond, BC, Canada",Canada,8,49.163168,-123.137414
+"Rochester, MN, USA",USA,8,44.0234387,-92.4630182
+"Roseau, MN, USA",USA,8,48.7710371,-95.7697882
+"Saint-Hyacinthe, QC, Canada",Canada,8,45.627484,-72.940636
+"South Porcupine, ON, Canada",Canada,8,48.4850936,-81.2087005
+"St. Petersburg, Russia",Russia,8,59.9606739,30.1586551
+"Ufa, Russia",Russia,8,54.7261409,55.947499
+"Umea, Sweden",Sweden,8,63.8256568,20.2630745
+"Victoriaville, QC, Canada",Canada,8,46.0554948,-71.9598586
+"Zurich, Switzerland",Switzerland,8,47.3744489,8.5410422
+"Ajax, ON, Canada",Canada,7,43.8505287,-79.0208814
+"Cambridge, MA, USA",USA,7,42.3656347,-71.1040018
+"Canmore, AB, Canada",Canada,7,51.0866897,-115.3481135
+"Eden Prairie, MN, USA",USA,7,44.8546856,-93.470786
+"Estevan, SK, Canada",Canada,7,49.1428076,-102.991075
+"Hawkesbury, ON, Canada",Canada,7,45.610281,-74.6055611
+"Kazan, Russia",Russia,7,55.7946485,49.1115022
+"Kindersley, SK, Canada",Canada,7,51.4687094,-109.1581355
+"La Salle, QC, Canada",Canada,7,45.5133304,-73.4922268
+"Lahti, Finland",Finland,7,60.982628,25.6613418
+"Lakeville, MN, USA",USA,7,44.650051,-93.2432791
+"Listowel, ON, Canada",Canada,7,43.731593,-80.952882
+"Lloydminster, AB, Canada",Canada,7,53.279995,-110.00885
+"Malmo, Sweden",Sweden,7,55.6052931,13.0001566
+"Meadow Lake, SK, Canada",Canada,7,54.13026,-108.435059
+"Melrose, MA, USA",USA,7,42.4564323,-71.064182
+"New Haven, CT, USA",USA,7,41.3082138,-72.9250518
+"New Liskeard, ON, Canada",Canada,7,47.508731,-79.6789029
+"Parry Sound, ON, Canada",Canada,7,45.6675279,-80.1055284
+"Pointe-Claire, QC, Canada",Canada,7,45.4566767,-73.8067442
+"Port Colborne, ON, Canada",Canada,7,42.8862392,-79.2513905
+"Renfrew, ON, Canada",Canada,7,45.7300564,-77.2793698
+"Simcoe, ON, Canada",Canada,7,44.5014007,-79.7038708
+"Sodertalje, Sweden",Sweden,7,59.1964289,17.6271663
+"Spokane, WA, USA",USA,7,47.6571934,-117.42351
+"Sundsvall, Sweden",Sweden,7,62.3907552,17.3071024
+"Trenton, ON, Canada",Canada,7,44.1019126,-77.57539
+"Virginia, MN, USA",USA,7,47.52326,-92.536571
+"Waterloo, ON, Canada",Canada,7,43.4652699,-80.5222961
+"Weymouth, MA, USA",USA,7,42.2212188,-70.9391625
+"Woodbridge, ON, Canada",Canada,7,43.7848982,-79.5923855
+"Zlin, Czech Republic",Czech Republic,7,49.226766,17.6667415
+"Zvolen, Slovakia",Slovakia,7,48.5782517,19.1247135
+"Antigonish, NS, Canada",Canada,6,45.6213607,-61.9904928
+"Banska Bystrica, Slovakia",Slovakia,6,48.735429,19.1457338
+"Bowmanville, ON, Canada",Canada,6,43.9122995,-78.6891675
+"Camrose, AB, Canada",Canada,6,53.013131,-112.840576
+"Castlegar, BC, Canada",Canada,6,49.316171,-117.663574
+"Cherepovets, Russia",Russia,6,59.1242181,37.9123351
+"Cranston, RI, USA",USA,6,41.779588,-71.4366813
+"Delisle, SK, Canada",Canada,6,51.9230936,-107.1354
+"Fargo, ND, USA",USA,6,46.877229,-96.789821
+"Fergus, ON, Canada",Canada,6,43.7059439,-80.3779366
+"Fernie, BC, Canada",Canada,6,49.5041747,-115.062867
+"Fort Erie, ON, Canada",Canada,6,42.91308,-78.918611
+"Fort Saskatchewan, AB, Canada",Canada,6,53.7128571,-113.214894
+"Georgetown, ON, Canada",Canada,6,43.6553828,-79.9190449
+"Glace Bay, NS, Canada",Canada,6,46.1949393,-59.9561999
+"Grand Forks, ND, USA",USA,6,47.9252104,-97.0306325
+"Grande Prairie, AB, Canada",Canada,6,55.17108,-118.7949873
+"Humboldt, SK, Canada",Canada,6,52.202009,-105.1230368
+"Keswick, ON, Canada",Canada,6,44.2396166,-79.4686558
+"Kincardine, ON, Canada",Canada,6,44.1776378,-81.6348713
+"Langley, BC, Canada",Canada,6,49.1039289,-122.657047
+"Lappeenranta, Finland",Finland,6,61.0583417,28.1862293
+"Leamington, ON, Canada",Canada,6,42.0531385,-82.5997722
+"Liptovsky Mikulas, Slovakia",Slovakia,6,49.0835785,19.612785
+"Ljungby, Sweden",Sweden,6,56.8325886,13.9359916
+"Long Beach, CA, USA",USA,6,33.7690164,-118.191604
+"Magnitogorsk, Russia",Russia,6,53.4256867,59.0507322
+"Milton, ON, Canada",Canada,6,43.513671,-79.882817
+"Minnetonka, MN, USA",USA,6,44.9405086,-93.4638936
+"Mlada Boleslav, Czech Republic",Czech Republic,6,50.4116187,14.9031301
+"Murmansk, Russia",Russia,6,68.970665,33.07497
+"Novosibirsk, Russia",Russia,6,54.9678145,82.9515989
+"Oslo, Norway",Norway,6,59.9133301,10.7389701
+"Ostersund, Sweden",Sweden,6,63.1793655,14.6357061
+"Penza, Russia",Russia,6,53.1953477,45.0190437
+"Perth, ON, Canada",Canada,6,43.4935991,-81.0164111
+"Philadelphia, PA, USA",USA,6,39.9527237,-75.1635262
+"Rauma, Finland",Finland,6,61.1289148,21.5039401
+"Schumacher, ON, Canada",Canada,6,48.4768905,-81.2982223
+"Seaforth, ON, Canada",Canada,6,43.5534328,-81.3934183
+"Spruce Grove, AB, Canada",Canada,6,53.545204,-113.903503
+"Stoney Creek, ON, Canada",Canada,6,43.2167526,-79.7567616
+"Strathroy, ON, Canada",Canada,6,42.9549523,-81.6224961
+"Togliatti, Russia",Russia,6,53.5098845,49.4189187
+"Trenton, MI, USA",USA,6,42.1406552,-83.1800544
+"Uppsala, Sweden",Sweden,6,59.8586126,17.6387436
+"Valleyfield, QC, Canada",Canada,6,45.2555575,-74.1316718
+"Weston, ON, Canada",Canada,6,43.7000465,-79.5127589
+"Winchester, MA, USA",USA,6,42.4523178,-71.1369982
+"Bern, Switzerland",Switzerland,5,46.9484742,7.4521749
+"Bracebridge, ON, Canada",Canada,5,45.041508,-79.310989
+"Buckingham, QC, Canada",Canada,5,45.5864671,-75.4168252
+"Campbell River, BC, Canada",Canada,5,50.023071,-125.244153
+"Campbellton, NB, Canada",Canada,5,48.0046634,-66.6765986
+"Columbus, OH, USA",USA,5,39.9622601,-83.0007065
+"Copper Cliff, ON, Canada",Canada,5,46.4676274,-81.0661744
+"Deloraine, MB, Canada",Canada,5,49.1926295,-100.4945182
+"Duncan, BC, Canada",Canada,5,48.7786872,-123.7080446
+"Edinburgh, Scotland",Scotland,5,55.9533456,-3.1883749
+"Etobicoke, ON, Canada",Canada,5,43.6435559,-79.5656326
+"Farmington, MI, USA",USA,5,42.4644795,-83.3763219
+"Fort McMurray, AB, Canada",Canada,5,56.7291997,-111.3885221
+"Framingham, MA, USA",USA,5,42.2773177,-71.4165905
+"Fredericton, NB, Canada",Canada,5,45.9488278,-66.6291827
+"Greenfield Park, QC, Canada",Canada,5,45.4926624,-73.4870499
+"Hartford, CT, USA",USA,5,41.764582,-72.6908547
+"Herning, Denmark",Denmark,5,56.1379757,8.9746623
+"Hradec Kralove, Czech Republic",Czech Republic,5,50.2092113,15.8327512
+"Jonkoping, Sweden",Sweden,5,57.7825634,14.165719
+"Kapuskasing, ON, Canada",Canada,5,49.416667,-82.433333
+"Litvinov, Czech Republic",Czech Republic,5,50.6009532,13.6110485
+"Los Angeles, CA, USA",USA,5,34.0536909,-118.242766
+"Martin, Slovakia",Slovakia,5,49.0724921,18.929193
+"Meaford, ON, Canada",Canada,5,44.6069298,-80.5916531
+"Mimico, ON, Canada",Canada,5,43.6166773,-79.4968048
+"Nanaimo, BC, Canada",Canada,5,49.163877,-123.938122
+"Neepawa, MB, Canada",Canada,5,50.2284172,-99.4664008
+"Nelson, BC, Canada",Canada,5,49.494891,-117.290039
+"New Glasgow, NS, Canada",Canada,5,45.5869474,-62.6483547
+"Nitra, Slovakia",Slovakia,5,48.31295,18.0894593
+"Nizhny Tagil, Russia",Russia,5,57.9076001,59.97077
+"Novokuznetsk, Russia",Russia,5,53.7582436,87.14653
+"Peace River, AB, Canada",Canada,5,56.2337111,-117.2910839
+"Penetanguishene, ON, Canada",Canada,5,44.7688035,-79.9339487
+"Penticton, BC, Canada",Canada,5,49.5003268,-119.593249
+"Pitea, Sweden",Sweden,5,65.3134652,21.4900252
+"Ponoka, AB, Canada",Canada,5,52.6744291,-113.5771426
+"Port Alberni, BC, Canada",Canada,5,49.2343668,-124.8056517
+"Port Hope, ON, Canada",Canada,5,43.9515755,-78.2939704
+"Portage la Prairie, MB, Canada",Canada,5,49.972422,-98.289185
+"Providence, RI, USA",USA,5,41.8239891,-71.4128343
+"Quesnel, BC, Canada",Canada,5,52.9794279,-122.493627
+"Rimouski, QC, Canada",Canada,5,48.450155,-68.529968
+"Roseville, MN, USA",USA,5,45.0060767,-93.1566107
+"Rosthern, SK, Canada",Canada,5,52.663891,-106.335297
+"Saint John, NB, Canada",Canada,5,45.272764,-66.0627914
+"Shawville, QC, Canada",Canada,5,45.6035643,-76.491467599999993
+"Skalica, Slovakia",Slovakia,5,48.8461007,17.2287837
+"Souris, MB, Canada",Canada,5,49.6210094,-100.2582479
+"Springfield, MA, USA",USA,5,42.1018764,-72.5886727
+"St. Cloud, MN, USA",USA,5,45.5616075,-94.1642004
+"St. Thomas, ON, Canada",Canada,5,42.779022,-81.1929882
+"Sterling Heights, MI, USA",USA,5,42.5803122,-83.0302033
+"Temiscaming, QC, Canada",Canada,5,46.7219118,-79.0954543
+"Terrace, BC, Canada",Canada,5,54.5172715,-128.599548
+"Thetford Mines, QC, Canada",Canada,5,46.091329,-71.30127
+"Tolyatti, Russia",Russia,5,53.5098845,49.4189187
+"Val-d'Or, QC, Canada",Canada,5,48.1023356,-77.7875715
+"Vermilion, AB, Canada",Canada,5,53.3527093,-110.8542072
+"Waltham, MA, USA",USA,5,42.3762385,-71.2355644
+"Wetaskiwin, AB, Canada",Canada,5,52.968492,-113.36792
+"Winchester, ON, Canada",Canada,5,45.0928774,-75.35299
+"Yekaterinburg, Russia",Russia,5,56.8382071,60.6007886
+"Airdrie, AB, Canada",Canada,4,51.28597,-114.01062
+"Baie-Comeau, QC, Canada",Canada,4,49.2118373,-68.1801406
+"Barnaul, Russia",Russia,4,53.3475493,83.7788448
+"Blainville, QC, Canada",Canada,4,45.67932,-73.87619
+"Bloomfield Hills, MI, USA",USA,4,42.583645,-83.2454883
+"Bonnyville, AB, Canada",Canada,4,54.267925,-110.741515
+"Canton, MI, USA",USA,4,32.612602,-90.0367512
+"Carmel, IN, USA",USA,4,39.9784186,-86.1283681
+"Chambly, QC, Canada",Canada,4,45.4483467,-73.2936944
+"Chesley, ON, Canada",Canada,4,44.29874,-81.0952892
+"Cold Lake, AB, Canada",Canada,4,54.46046,-110.192871
+"Corner Brook, NL, Canada",Canada,4,48.95317,-57.947388
+"Creston, BC, Canada",Canada,4,49.0974046,-116.5130934
+"Danderyd, Sweden",Sweden,4,59.4043647,18.0358505
+"Dawson Creek, BC, Canada",Canada,4,55.7605306,-120.2364453
+"Delta, BC, Canada",Canada,4,49.0846258,-123.057938
+"Dorchester, MA, USA",USA,4,42.2973205,-71.0744952
+"Eau Claire, WI, USA",USA,4,44.811349,-91.4984941
+"Elk River, MN, USA",USA,4,45.3038538,-93.5671825
+"Espanola, ON, Canada",Canada,4,46.265341,-81.769867
+"Essex, ON, Canada",Canada,4,42.2354142,-82.7120106
+"Evanston, IL, USA",USA,4,42.0470043,-87.6846053
+"Farmington Hills, MI, USA",USA,4,42.4853125,-83.3771553
+"Fort Saint James, BC, Canada",Canada,4,54.3942513,-124.2617051
+"Glasgow, Scotland",Scotland,4,55.861155,-4.2501687
+"Goderich, ON, Canada",Canada,4,43.7430924,-81.7110949
+"Granby, QC, Canada",Canada,4,45.3990409,-72.721834
+"Grand'Mere, QC, Canada",Canada,4,46.612894,-72.69516
+"Greenwich, CT, USA",USA,4,41.0264862,-73.6284598
+"Grosse Pointe, MI, USA",USA,4,42.3861485,-82.9118591
+"Hameenlinna, Finland",Finland,4,60.9966192,24.465141
+"Hancock, MI, USA",USA,4,47.126871,-88.580956
+"Havlickuv Brod, Czech Republic",Czech Republic,4,49.606942,15.5795748
+"High River, AB, Canada",Canada,4,50.5801916,-113.8709332
+"Huntsville, ON, Canada",Canada,4,45.3263919,-79.218434
+"Ilava, Slovakia",Slovakia,4,48.9985674,18.2307598
+"Joliette, QC, Canada",Canada,4,46.0239798,-73.4419936
+"Kamsack, SK, Canada",Canada,4,51.5645433,-101.8953088
+"Kanata, ON, Canada",Canada,4,45.3128048,-75.8940505
+"Khabarovsk, Russia",Russia,4,51.6312684,136.121524
+"Kimberley, BC, Canada",Canada,4,49.6850876,-115.9819477
+"Kramfors, Sweden",Sweden,4,62.916667,17.666667
+"LaSalle, QC, Canada",Canada,4,45.4325141,-73.6292667
+"Lachute, QC, Canada",Canada,4,45.6560478,-74.3401388
+"Lanigan, SK, Canada",Canada,4,51.8457609,-105.033137
+"Liberec, Czech Republic",Czech Republic,4,50.7702648,15.0583947
+"Linkoping, Sweden",Sweden,4,58.4098135,15.6245252
+"Lumsden, SK, Canada",Canada,4,50.6463023,-104.8659356
+"Malartic, QC, Canada",Canada,4,48.137225,-78.125153
+"Midland, ON, Canada",Canada,4,44.750147,-79.885712
+"Mont-Laurier, QC, Canada",Canada,4,46.5524071,-75.4968899
+"Moosomin, SK, Canada",Canada,4,50.1443787,-101.669059
+"Munich, Germany",Germany,4,48.1371079,11.5753822
+"Nepean, ON, Canada",Canada,4,45.2862008,-75.7512324
+"Nizhnekamsk, Russia",Russia,4,55.6412879,51.8160376
+"Nokia, Finland",Finland,4,61.4781666,23.5096158
+"Omaha, NE, USA",USA,4,41.2587459,-95.9383758
+"Orangeville, ON, Canada",Canada,4,43.9193171,-80.0973754
+"Orillia, ON, Canada",Canada,4,44.6066135,-79.4169256
+"Paris, ON, Canada",Canada,4,43.193234,-80.384281
+"Park Ridge, IL, USA",USA,4,42.0112329,-87.8406031
+"Pelhrimov, Czech Republic",Czech Republic,4,49.4308737,15.2232341
+"Perm, Russia",Russia,4,58.0108531,56.2318528
+"Phoenix, AZ, USA",USA,4,33.4484367,-112.074141
+"Pickering, ON, Canada",Canada,4,43.835765,-79.090576
+"Pisek, Czech Republic",Czech Republic,4,49.3089887,14.147769
+"Portage La Prairie, MB, Canada",Canada,4,49.972422,-98.289185
+"Powell River, BC, Canada",Canada,4,49.835676,-124.524412
+"Presov, Slovakia",Slovakia,4,49.0000074,21.2392122
+"Raleigh, NC, USA",USA,4,35.7803977,-78.6390989
+"Rockland, ON, Canada",Canada,4,45.5485795,-75.2915629
+"Rocky Mountain House, AB, Canada",Canada,4,52.3768803,-114.9183995
+"Rossland, BC, Canada",Canada,4,49.0784756,-117.7999026
+"Royal Oak, MI, USA",USA,4,42.4894801,-83.1446485
+"Saint-Jerome, QC, Canada",Canada,4,45.7780402,-74.0033272
+"Sainte-Foy, QC, Canada",Canada,4,46.7743268,-71.2994438
+"Salt Lake City, UT, USA",USA,4,40.7596198,-111.886797
+"Sault Ste. Marie, MI, USA",USA,4,46.4976734,-84.3476583
+"Savonlinna, Finland",Finland,4,61.8699236,28.8800088
+"Scottsdale, AZ, USA",USA,4,33.4942189,-111.926018
+"Sept-Iles, QC, Canada",Canada,4,50.2109579,-66.3790642
+"Sicamous, BC, Canada",Canada,4,50.8367991,-118.9826386
+"Smithers, BC, Canada",Canada,4,54.7792074,-127.1760991
+"Smiths Falls, ON, Canada",Canada,4,44.9013316,-76.0212062
+"Smithtown, NY, USA",USA,4,40.8559314,-73.2006687
+"Steinbach, MB, Canada",Canada,4,49.5254414,-96.6854275
+"Stettler, AB, Canada",Canada,4,52.3228746,-112.71302
+"Stillwater, MN, USA",USA,4,45.0559126,-92.807572
+"Sturgeon Falls, ON, Canada",Canada,4,46.3653409,-79.9321566
+"Sverdlovsk, Russia",Russia,4,56.8382071,60.6007886
+"Thorold, ON, Canada",Canada,4,43.1249127,-79.2005935
+"Toledo, OH, USA",USA,4,41.6529143,-83.5378173
+"Trebic, Czech Republic",Czech Republic,4,49.2158752,15.8810841
+"Truro, NS, Canada",Canada,4,45.3656974,-63.2864971
+"Tver, Russia",Russia,4,56.858675,35.9208284
+"Wainwright, AB, Canada",Canada,4,52.8402725,-110.8514344
+"Wakaw, SK, Canada",Canada,4,52.6499347,-105.735836
+"Warroad, MN, USA",USA,4,48.905266,-95.314404
+"Westlock, AB, Canada",Canada,4,54.1525241,-113.8519902
+"White Bear Lake, MN, USA",USA,4,45.0838098,-93.0069304
+"White Rock, BC, Canada",Canada,4,49.0235357,-122.797924
+"Winkler, MB, Canada",Canada,4,49.187089,-97.937622
+"Abington, PA, USA",USA,3,40.114354,-75.1216878
+"Alliston, ON, Canada",Canada,3,44.1539369,-79.8692321
+"Alma, QC, Canada",Canada,3,48.548887,-71.651459
+"Anaheim, CA, USA",USA,3,33.8347516,-117.911732
+"Angarsk, Russia",Russia,3,52.5443167,103.8882138
+"Anjou, QC, Canada",Canada,3,45.6048982,-73.5466723
+"Arlington, TX, USA",USA,3,32.7355816,-97.1071186
+"Arvida, QC, Canada",Canada,3,48.425897,-71.1821701
+"Asbestos, QC, Canada",Canada,3,45.776623,-71.932297
+"Assiniboia, SK, Canada",Canada,3,49.6311192,-105.9926494
+"Banff, AB, Canada",Canada,3,51.175076,-115.5720773
+"Bayfield, NB, Canada",Canada,3,46.1369363,-63.8175385
+"Beauport, QC, Canada",Canada,3,46.8983492,-71.2062892
+"Bedford, NS, Canada",Canada,3,44.7303901,-63.6582365
+"Beeton, ON, Canada",Canada,3,44.0789618,-79.784557
+"Belfast, Northern Ireland",Northern Ireland,3,54.596391,-5.9301829
+"Belmont, MA, USA",USA,3,42.3959296,-71.1786655
+"Bemidji, MN, USA",USA,3,47.4723148,-94.8832791
+"Bentley, AB, Canada",Canada,3,52.4685411,-114.0432772
+"Big River, SK, Canada",Canada,3,53.833333,-107.033333
+"Billerica, MA, USA",USA,3,42.5584264,-71.268947
+"Birtle, MB, Canada",Canada,3,50.4218411,-101.0462012
+"Boden, Sweden",Sweden,3,65.8275004,21.6964105
+"Bolton, ON, Canada",Canada,3,43.879548,-79.73826
+"Borlange, Sweden",Sweden,3,60.4856426,15.4234561
+"Boucherville, QC, Canada",Canada,3,45.6050197,-73.4526144
+"Braintree, MA, USA",USA,3,42.2205956,-71.0041229
+"Bramalea, ON, Canada",Canada,3,43.70139,-79.6919794
+"Brockton, MA, USA",USA,3,42.0834335,-71.0183787
+"Canora, SK, Canada",Canada,3,51.636411,-102.4313006
+"Canton, NY, USA",USA,3,44.5956163,-75.1690942
+"Capreol, ON, Canada",Canada,3,46.705969,-80.922546
+"Carlyle, SK, Canada",Canada,3,49.6337518,-102.2669689
+"Chapleau, ON, Canada",Canada,3,47.8416702,-83.4036099
+"Charlestown, MA, USA",USA,3,42.3778749,-71.0619957
+"Cloquet, MN, USA",USA,3,46.7217279,-92.4613669
+"Cobalt, ON, Canada",Canada,3,47.3962288,-79.6856668
+"Cobourg, ON, Canada",Canada,3,43.9595998,-78.1677784
+"Colorado Springs, CO, USA",USA,3,38.8339578,-104.825348
+"Comox, BC, Canada",Canada,3,49.6727575,-124.9276204
+"Concord, NH, USA",USA,3,43.207178,-71.537476
+"Coniston, ON, Canada",Canada,3,46.4867024,-80.8496581
+"Craik, SK, Canada",Canada,3,51.0515057,-105.8159306
+"Cudworth, SK, Canada",Canada,3,52.4895703,-105.7299987
+"Darien, CT, USA",USA,3,41.0787079,-73.4692873
+"Donnacona, QC, Canada",Canada,3,46.676532,-71.73008
+"Drayton Valley, AB, Canada",Canada,3,53.2205548,-114.9832127
+"Dryden, ON, Canada",Canada,3,49.785698,-92.835846
+"Eganville, ON, Canada",Canada,3,45.5406943,-77.1004317
+"Eksjo, Sweden",Sweden,3,57.6674439,14.9735595
+"Elektrostal, Russia",Russia,3,55.7498843,38.4254338
+"Elmira, NY, USA",USA,3,42.0897965,-76.8077338
+"Elmira, ON, Canada",Canada,3,43.5893917,-80.5507359
+"Everett, MA, USA",USA,3,42.4085897,-71.0542002
+"Flint, MI, USA",USA,3,43.0161693,-83.6900211
+"Foam Lake, SK, Canada",Canada,3,51.647238,-103.5315944
+"Fort Wayne, IN, USA",USA,3,41.0799898,-85.1386015
+"Fridley, MN, USA",USA,3,45.0838291,-93.2590388
+"Gallivare, Sweden",Sweden,3,67.3,20.25
+"Golden, BC, Canada",Canada,3,51.2992217,-116.9642955
+"Goteborg, Sweden",Sweden,3,57.7072326,11.9670171
+"Grand Falls, NL, Canada",Canada,3,48.929718,-55.655365
+"Grand Rapids, MI, USA",USA,3,42.9632425,-85.6678639
+"Grimsby, ON, Canada",Canada,3,43.1931661,-79.560677
+"Haileybury, ON, Canada",Canada,3,47.4441901,-79.6360804
+"Haliburton, ON, Canada",Canada,3,45.1525396,-78.5148132
+"Hamiota, MB, Canada",Canada,3,50.183333,-100.6
+"Hazelton, BC, Canada",Canada,3,55.2553671,-127.670882
+"Helsingborg, Sweden",Sweden,3,56.0442098,12.703706
+"Hingham, MA, USA",USA,3,42.2417669,-70.8897676
+"Hudson Bay, SK, Canada",Canada,3,52.8565978,-102.3968073
+"Huntington Beach, CA, USA",USA,3,33.6783336,-118.000016
+"Indianapolis, IN, USA",USA,3,39.7683331,-86.1583502
+"International Falls, MN, USA",USA,3,48.601033,-93.4105904
+"Iroquois Falls, ON, Canada",Canada,3,48.7672213,-80.6770998
+"Jasper, AB, Canada",Canada,3,52.8752336,-118.0824291
+"Jindrichuv Hradec, Czech Republic",Czech Republic,3,49.1443265,15.003354
+"Joensuu, Finland",Finland,3,62.6006375,29.7619759
+"Kadan, Czech Republic",Czech Republic,3,50.3761991,13.2710364
+"Kajaani, Finland",Finland,3,64.2246862,27.7339281
+"Kalix, Sweden",Sweden,3,66,23
+"Karlskrona, Sweden",Sweden,3,56.1621073,15.5866422
+"Kelvington, SK, Canada",Canada,3,52.1643973,-103.5228082
+"King City, ON, Canada",Canada,3,43.929489,-79.5252267
+"Labrador City, NL, Canada",Canada,3,52.9422944,-66.9177291
+"Lacombe, AB, Canada",Canada,3,52.4727515,-113.733215
+"Lansing, MI, USA",USA,3,42.7338254,-84.5546295
+"Leduc, AB, Canada",Canada,3,53.2607825,-113.5511681
+"Leningrad, Russia",Russia,3,59.9606739,30.1586551
+"Litomerice, Czech Republic",Czech Republic,3,50.5340795,14.1317985
+"Lulea, Sweden",Sweden,3,65.5831187,22.1459535
+"Manchester, NH, USA",USA,3,42.9956397,-71.4547891
+"Mannville, AB, Canada",Canada,3,53.3373297,-111.1756071
+"Maple Creek, SK, Canada",Canada,3,49.9056917,-109.4800219
+"Maple Grove, MN, USA",USA,3,45.0984983,-93.4419222
+"Matane, QC, Canada",Canada,3,48.8468883,-67.5295198
+"Medford, MA, USA",USA,3,42.4184296,-71.1061639
+"Melfort, SK, Canada",Canada,3,52.8613707,-104.6135544
+"Merritt, BC, Canada",Canada,3,50.1124876,-120.7884149
+"Milford, MI, USA",USA,3,42.5917805,-83.6000696
+"Milwaukee, WI, USA",USA,3,43.0386475,-87.9090751
+"Montmagny, QC, Canada",Canada,3,46.8529223,-70.3551125
+"Moorhead, MN, USA",USA,3,46.8739081,-96.7538674
+"Munkfors, Sweden",Sweden,3,59.816667,13.5
+"Murrayville, BC, Canada",Canada,3,49.088493,-122.6133013
+"Nokomis, SK, Canada",Canada,3,51.510452,-105.008698
+"North Sydney, NS, Canada",Canada,3,46.2105845,-60.2470914
+"Novopolotsk, Belarus",Belarus,3,55.5348855,28.64519
+"Novy Jicin, Czech Republic",Czech Republic,3,49.594881,18.0102584
+"Nynashamn, Sweden",Sweden,3,58.9056457,17.9470987
+"Oak Park, IL, USA",USA,3,41.8878145,-87.7887615
+"Oklahoma City, OK, USA",USA,3,35.4729886,-97.5170536
+"Olomouc, Czech Republic",Czech Republic,3,49.5940567,17.251143
+"Opava, Czech Republic",Czech Republic,3,49.9389004,17.9024174
+"Orland Park, IL, USA",USA,3,41.630663,-87.8536288
+"Orlando, FL, USA",USA,3,28.5421218,-81.379045
+"Orleans, ON, Canada",Canada,3,45.4653654,-75.5035343
+"Oskarshamn, Sweden",Sweden,3,57.2632811,16.4443478
+"Ostervala, Sweden",Sweden,3,60.1809325,17.1780842
+"Oxbow, SK, Canada",Canada,3,49.2298181,-102.173666
+"Parma, OH, USA",USA,3,41.3822398,-81.7355692
+"Petawawa, ON, Canada",Canada,3,45.8984286,-77.2826645
+"Pierrefonds, QC, Canada",Canada,3,45.4955083,-73.8471749
+"Plano, TX, USA",USA,3,33.0136764,-96.6925096
+"Pointe-aux-Trembles, QC, Canada",Canada,3,45.6747302,-73.5062328
+"Port Huron, MI, USA",USA,3,42.9760854,-82.4333742
+"Port McNeill, BC, Canada",Canada,3,50.5893452,-127.0839027
+"Portland, OR, USA",USA,3,45.5202471,-122.674194
+"Prescott, ON, Canada",Canada,3,44.7184132,-75.5191675
+"Preston, ON, Canada",Canada,3,43.3940076,-80.3555103
+"Provost, AB, Canada",Canada,3,52.4137383,-110.639576
+"Quill Lake, SK, Canada",Canada,3,52.0725531,-104.253704
+"Raahe, Finland",Finland,3,64.6845313,24.4816349
+"Rochester, MI, USA",USA,3,42.680588,-83.1338214
+"Saint Paul, MN, USA",USA,3,44.9497487,-93.0931028
+"Salem, MA, USA",USA,3,42.5195292,-70.8967226
+"Salmon Arm, BC, Canada",Canada,3,50.7005059,-119.2790529
+"San Diego, CA, USA",USA,3,32.7174202,-117.162772
+"Seattle, WA, USA",USA,3,47.6038321,-122.330062
+"Shaunavon, SK, Canada",Canada,3,49.6507703,-108.410021
+"Smooth Rock Falls, ON, Canada",Canada,3,49.2768,-81.6311885
+"Solleftea, Sweden",Sweden,3,63.383333,16.916667
+"South St. Paul, MN, USA",USA,3,44.8906694,-93.0372808
+"Southborough, MA, USA",USA,3,42.3056501,-71.5245087
+"Staten Island, NY, USA",USA,3,40.5834557,-74.1496048
+"Sternberk, Czech Republic",Czech Republic,3,49.730712,17.2988474
+"Stony Mountain, MB, Canada",Canada,3,50.0877777,-97.2192172
+"Stouffville, ON, Canada",Canada,3,43.9717581,-79.2454446
+"Strasbourg, SK, Canada",Canada,3,51.0704195,-104.9568557
+"Sundbyberg, Sweden",Sweden,3,59.3628802,17.9681359
+"Sundridge, ON, Canada",Canada,3,45.7710789,-79.3957685
+"Swan River, MB, Canada",Canada,3,52.1076932,-101.2546797
+"Terrace Bay, ON, Canada",Canada,3,48.782437,-87.102356
+"The Pas, MB, Canada",Canada,3,53.8224172,-101.2405153
+"Thompson, MB, Canada",Canada,3,55.743347,-97.863464
+"Thornhill, ON, Canada",Canada,3,43.8161477,-79.4245925
+"Tillsonburg, ON, Canada",Canada,3,42.859494,-80.7265015
+"Timra, Sweden",Sweden,3,62.4922058,17.2995411
+"Tingsryd, Sweden",Sweden,3,56.533333,14.966667
+"Topolcany, Slovakia",Slovakia,3,48.5594345,18.1754394
+"Troy, NY, USA",USA,3,42.7284117,-73.6917878
+"Two Harbors, MN, USA",USA,3,47.0257139,-91.6730523
+"Unity, SK, Canada",Canada,3,52.4428508,-109.1548985
+"Usti nad Labem, Czech Republic",Czech Republic,3,50.6603327,14.0381357
+"Utica, NY, USA",USA,3,43.1009031,-75.2326641
+"Vienna, Austria",Austria,3,48.2083537,16.3725042
+"Vyskov, Czech Republic",Czech Republic,3,49.2778194,16.9994446
+"Wakefield, MA, USA",USA,3,42.506484,-71.0728306
+"Wallaceburg, ON, Canada",Canada,3,42.5928652,-82.3873866
+"Warren, MI, USA",USA,3,42.4932575,-83.0062746
+"Warwick, RI, USA",USA,3,41.6992717,-71.4586114
+"Watson, SK, Canada",Canada,3,52.1293715,-104.5236191
+"Waubaushene, ON, Canada",Canada,3,44.754404,-79.710969
+"West Vancouver, BC, Canada",Canada,3,49.3311208,-123.159479
+"Wilcox, SK, Canada",Canada,3,50.097679,-104.7258
+"Williamsville, NY, USA",USA,3,42.9637836,-78.7377258
+"Willowdale, ON, Canada",Canada,3,43.77887,-79.4175363
+"Worcester, MA, USA",USA,3,42.2625621,-71.8018877
+"Yellowknife, NT, Canada",Canada,3,62.4540807,-114.377385
+"Ylojarvi, Finland",Finland,3,61.5488965,23.5951425
+"100 Mile House, BC, Canada",Canada,2,51.6427866,-121.2956943
+"Aalborg, Denmark",Denmark,2,57.0462626,9.9215263
+"Acton, MA, USA",USA,2,42.4850931,-71.43284
+"Agincourt, ON, Canada",Canada,2,43.7853531,-79.2785494
+"Albany, NY, USA",USA,2,42.6511674,-73.754968
+"Aldergrove, BC, Canada",Canada,2,49.0596635,-122.4922381
+"Allan, SK, Canada",Canada,2,51.8960544,-106.0554168
+"Amherst, NS, Canada",Canada,2,45.8192941,-64.2333504
+"Amos, QC, Canada",Canada,2,48.5718519,-78.1160856
+"Angelholm, Sweden",Sweden,2,56.2429224,12.8619375
+"Apple Valley, MN, USA",USA,2,44.7319094,-93.21772
+"Are, Sweden",Sweden,2,63.4010888,13.0822241
+"Arkhangelsk, Russia",Russia,2,64.5410251,40.5286774
+"Arlington Heights, IL, USA",USA,2,42.0811563,-87.9802164
+"Arlington, MA, USA",USA,2,42.4153739,-71.1564428
+"Arnprior, ON, Canada",Canada,2,45.433515,-76.3543692
+"Atlanta, GA, USA",USA,2,33.7544657,-84.3898151
+"Bancroft, ON, Canada",Canada,2,45.0570769,-77.8537127
+"Bashaw, AB, Canada",Canada,2,52.583333,-112.966667
+"Baudette, MN, USA",USA,2,48.7124408,-94.600171
+"Beaconsfield, QC, Canada",Canada,2,45.4289766,-73.8654387
+"Beamsville, ON, Canada",Canada,2,43.1654577,-79.4751839
+"Beaverlodge, AB, Canada",Canada,2,55.2106188,-119.4286716
+"Beaverton, ON, Canada",Canada,2,44.4296227,-79.1550193
+"Belle River, ON, Canada",Canada,2,42.2928986,-82.7113352
+"Bellevue, QC, Canada",Canada,2,48.6621831,-72.4402626
+"Bellmawr, NJ, USA",USA,2,39.8676134,-75.0946183
+"Berlin, Germany",Germany,2,52.5173885,13.3951309
+"Beverly, MA, USA",USA,2,42.5489744,-70.8781883
+"Biddeford, ME, USA",USA,2,43.4925843,-70.4533844
+"Biel, Switzerland",Switzerland,2,47.1402077,7.2439029
+"Bilovec, Czech Republic",Czech Republic,2,49.7567664,18.01623
+"Birmingham, England",England,2,52.4948994,-1.8518439
+"Bismarck, ND, USA",USA,2,46.808327,-100.783739
+"Blackie, AB, Canada",Canada,2,50.6030153,-113.6177721
+"Blaine, MN, USA",USA,2,45.1607987,-93.2349489
+"Blind River, ON, Canada",Canada,2,46.188388,-82.95639
+"Bonavista, NL, Canada",Canada,2,48.6541763,-53.110338
+"Bourget, ON, Canada",Canada,2,45.4348751,-75.1578861
+"Boxboro, MA, USA",USA,2,42.4827512,-71.5142726
+"Boxford, MA, USA",USA,2,42.6605844,-70.9971204
+"Brighton, MA, USA",USA,2,42.3491615,-71.1533859
+"Brighton, MI, USA",USA,2,42.5316918,-83.7846458
+"Bromma, Sweden",Sweden,2,59.339769,17.9395411
+"Brookfield, WI, USA",USA,2,43.0615578,-88.1260678
+"Brooklyn, NY, USA",USA,2,40.6526006,-73.9497211
+"Brownsburg, QC, Canada",Canada,2,45.676516,-74.4046061
+"Buffalo Grove, IL, USA",USA,2,42.1544205,-87.9589621
+"Bulach, Switzerland",Switzerland,2,47.5172321,8.5407118
+"Burlington, MA, USA",USA,2,42.5048167,-71.1956111
+"Cache Bay, ON, Canada",Canada,2,46.3737816,-79.9885393
+"Calahoo, AB, Canada",Canada,2,53.7084868,-113.9589008
+"Caledon, ON, Canada",Canada,2,43.8320698,-79.9066871
+"Caledonia, ON, Canada",Canada,2,43.6923229,-79.4653403
+"Calumet, MI, USA",USA,2,47.246592,-88.454006
+"Calw, Germany",Germany,2,48.7142691,8.7397624
+"Campbellford, ON, Canada",Canada,2,44.3085912,-77.798084
+"Canton, MA, USA",USA,2,42.1584324,-71.1447732
+"Cap-de-la-Madeleine, QC, Canada",Canada,2,46.368253,-72.509079
+"Carbonear, NL, Canada",Canada,2,47.733123,-53.2366225
+"Cardston, AB, Canada",Canada,2,49.2001157,-113.3165704
+"Carleton Place, ON, Canada",Canada,2,45.1403366,-76.1465672
+"Carman, MB, Canada",Canada,2,49.5082995,-98.0016853
+"Caroline, AB, Canada",Canada,2,52.0943034,-114.7391684
+"Carp, ON, Canada",Canada,2,45.345148,-76.03672
+"Carroll, MB, Canada",Canada,2,49.6081848,-100.0315519
+"Centerville, SD, USA",USA,2,43.1169692,-96.9610032
+"Central Butte, SK, Canada",Canada,2,50.7938303,-106.5078309
+"Chanhassen, MN, USA",USA,2,44.8618403,-93.5307207
+"Charlesbourg, QC, Canada",Canada,2,46.8956499,-71.2908286
+"Chateauguay, QC, Canada",Canada,2,45.3602416,-73.749364
+"Chatham, NJ, USA",USA,2,40.7409242,-74.3836711
+"Chemainus, BC, Canada",Canada,2,48.922499,-123.718414
+"Chesterfield, MO, USA",USA,2,38.6581764,-90.5680617
+"Chilliwack, BC, Canada",Canada,2,49.1709788,-121.95255
+"Chomutov, Czech Republic",Czech Republic,2,50.4606456,13.4178324
+"Churchbridge, SK, Canada",Canada,2,50.9000886,-101.8933019
+"Clinton, ON, Canada",Canada,2,43.6171831,-81.5397155
+"Cologne, Germany",Germany,2,50.938361,6.959974
+"Concord, MA, USA",USA,2,42.4605189,-71.3488963
+"Coronation, AB, Canada",Canada,2,52.0929552,-111.4490001
+"Courtice, ON, Canada",Canada,2,43.9117719,-78.7780464
+"Cowansville, QC, Canada",Canada,2,45.2076125,-72.7479195
+"Creighton Mine, ON, Canada",Canada,2,46.4725204,-81.1860383
+"Crystal, MN, USA",USA,2,45.031823,-93.3606072
+"Dartmouth, NS, Canada",Canada,2,44.6799707,-63.5720232
+"Daysland, AB, Canada",Canada,2,52.8680426,-112.2656813
+"Dearborn Heights, MI, USA",USA,2,42.3369816,-83.2732627
+"Delano, MN, USA",USA,2,45.0419073,-93.7891331
+"Des Moines, IA, USA",USA,2,41.5868654,-93.6249494
+"Dingolfing, Germany",Germany,2,48.6300801,12.4977434
+"Dodsland, SK, Canada",Canada,2,51.8,-108.833333
+"Dollard-des-Ormeaux, QC, Canada",Canada,2,45.48423,-73.8064547
+"Downers Grove, IL, USA",USA,2,41.7936822,-88.0102281
+"Drumheller, AB, Canada",Canada,2,51.401597,-112.6185167
+"Dunnville, ON, Canada",Canada,2,42.9059168,-79.6188457
+"Durham, ON, Canada",Canada,2,44.0310471,-78.949678
+"Dysart, SK, Canada",Canada,2,50.9430848,-104.0374989
+"Eagle River, AK, USA",USA,2,61.2700284,-149.3863924
+"Earlton, ON, Canada",Canada,2,47.7110111,-79.8244011
+"East Amherst, NY, USA",USA,2,43.0183913,-78.696697
+"Edmundston, NB, Canada",Canada,2,47.3637203,-68.3288825
+"Elburn, IL, USA",USA,2,41.8922499,-88.4723014
+"Elektrenai, Lithuania",Lithuania,2,54.786657,24.6708398
+"Elk Point, AB, Canada",Canada,2,53.8999368,-110.8999785
+"Elliot Lake, ON, Canada",Canada,2,46.373464,-82.652893
+"Esterhazy, SK, Canada",Canada,2,50.6536237,-102.0763357
+"Fairport, NY, USA",USA,2,43.0993,-77.443014
+"Farmington, MN, USA",USA,2,44.6402434,-93.1435497
+"Ferme-Neuve, QC, Canada",Canada,2,46.7010748,-75.4497514
+"Fort Qu'Appelle, SK, Canada",Canada,2,50.7719106,-103.7958877
+"Fort Saint John, BC, Canada",Canada,2,56.2309014,-120.8326004
+"Fort St. John, BC, Canada",Canada,2,56.2527571,-120.8472064
+"Foxwarren, MB, Canada",Canada,2,50.518435,-101.1519893
+"Franklin, MA, USA",USA,2,42.5896205,-72.6110645
+"Fribourg, Switzerland",Switzerland,2,46.6789116,7.1027113
+"Frydek-Mistek, Czech Republic",Czech Republic,2,49.685635,18.3483416
+"Frydlant, Czech Republic",Czech Republic,2,50.9216775,15.0794594
+"Fuessen, Germany",Germany,2,47.567599800000004,10.6993217
+"Gaspe, QC, Canada",Canada,2,48.6146774,-66.0665726
+"Geraldton, ON, Canada",Canada,2,49.7188752,-86.9493168
+"Gilbert Plains, MB, Canada",Canada,2,51.1439239,-100.4847581
+"Glendon, AB, Canada",Canada,2,54.251111,-111.151389
+"Glenview, IL, USA",USA,2,42.0700662,-87.8114044
+"Gloucester, ON, Canada",Canada,2,45.3583853,-75.5707311
+"Gorky, Russia",Russia,2,56.3264816,44.0051395
+"Gottwaldov, Czech Republic",Czech Republic,2,49.226766,17.6667415
+"Grand Ledge, MI, USA",USA,2,42.7524401,-84.7463572
+"Grande Cache, AB, Canada",Canada,2,53.8888135,-119.1185658
+"Grenfell, SK, Canada",Canada,2,50.411344,-102.9300253
+"Gresham, OR, USA",USA,2,45.4978623,-122.4329883
+"Grums, Sweden",Sweden,2,59.45,13.083333
+"Ham Lake, MN, USA",USA,2,45.2502429,-93.2499508
+"Hanna, AB, Canada",Canada,2,51.6445566,-111.927479
+"Harnosand, Sweden",Sweden,2,62.6323084,17.9379914
+"Hartney, MB, Canada",Canada,2,49.4815988,-100.5231198
+"Hastings, MN, USA",USA,2,44.7426933,-92.8518697
+"Hearst, ON, Canada",Canada,2,49.690732,-83.666382
+"Hermantown, MN, USA",USA,2,46.8068852,-92.2382464
+"High Prairie, AB, Canada",Canada,2,55.4325044,-116.4836198
+"Hodonin, Czech Republic",Czech Republic,2,48.8563914,17.1234655
+"Holland Landing, ON, Canada",Canada,2,44.1015097,-79.4914772
+"Holland, MI, USA",USA,2,42.7876022,-86.1090828
+"Holliston, MA, USA",USA,2,42.2000966,-71.4245049
+"Holyoke, MA, USA",USA,2,42.2071184,-72.6075851
+"Hopkins, MN, USA",USA,2,44.9243986,-93.4114487
+"Houghton, MI, USA",USA,2,46.8591287,-88.7774734
+"Houston, TX, USA",USA,2,29.7589382,-95.3676974
+"Howell, MI, USA",USA,2,42.6072552,-83.9293952
+"Hudson, WI, USA",USA,2,44.9750953,-92.7554671
+"Hull, MA, USA",USA,2,42.3020436,-70.9078243
+"Huntsville, AL, USA",USA,2,34.729847,-86.5859011
+"Hyannis, MA, USA",USA,2,41.6535345,-70.2823287
+"Hyvinkaa, Finland",Finland,2,60.6311481,24.8603615
+"Ile-Bizard, QC, Canada",Canada,2,45.4944158,-73.8948882
+"Imatra, Finland",Finland,2,61.1959258,28.7766593
+"Innisfail, AB, Canada",Canada,2,52.0274651,-113.9502354
+"Izhevsk, Russia",Russia,2,56.8529729,53.2103071
+"Jarfalla, Sweden",Sweden,2,59.4204736,17.8285472
+"Johannesburg, South Africa",South Africa,2,-26.205,28.049722
+"Kalamazoo, MI, USA",USA,2,42.291707,-85.5872286
+"Karlovy Vary, Czech Republic",Czech Republic,2,50.2306216,12.8701437
+"Karlskoga, Sweden",Sweden,2,59.3291667,14.5176911
+"Kaufbeuren, Germany",Germany,2,47.8803788,10.622246
+"Kempele, Finland",Finland,2,64.91245,25.5108223
+"Kenogami, QC, Canada",Canada,2,48.4257336,-71.2390958
+"Kerrobert, SK, Canada",Canada,2,51.9158875,-109.1365445
+"Kezmarok, Slovakia",Slovakia,2,49.1362088,20.4308701
+"Kharkov, Ukraine",Ukraine,2,49.9923181,36.2310146
+"Kiiminki, Finland",Finland,2,65.1299324,25.7773028
+"Kiruna, Sweden",Sweden,2,67.8496111,20.30625
+"Kitimat, BC, Canada",Canada,2,54.0535577,-128.6540519
+"Klagenfurt, Austria",Austria,2,46.623943,14.3075976
+"Krasnoyarsk, Russia",Russia,2,56.0091173,92.872586
+"Kristianstad, Sweden",Sweden,2,56.0293778,14.1566859
+"Kungalv, Sweden",Sweden,2,57.8707951,11.9799616
+"Lac La Biche, AB, Canada",Canada,2,55.2467859,-111.8354916
+"Lac-Saint-Charles, QC, Canada",Canada,2,46.908295,-71.376457
+"Landis, SK, Canada",Canada,2,52.2,-108.45
+"Landshut, Germany",Germany,2,48.536217,12.1516551
+"Lang, SK, Canada",Canada,2,49.9189149,-104.3715121
+"Levack, ON, Canada",Canada,2,46.6394749,-81.3902774
+"Levis, QC, Canada",Canada,2,46.8033114,-71.1778792
+"Lidkoping, Sweden",Sweden,2,58.5037196,13.1576427
+"Lipetsk, Russia",Russia,2,52.6935178,39.1122664
+"Lucky Lake, SK, Canada",Canada,2,50.9850216,-107.1373209
+"Ludvika, Sweden",Sweden,2,60.2,14.833333
+"Lycksele, Sweden",Sweden,2,64.6,18.166667
+"Lynden, ON, Canada",Canada,2,43.2364003,-80.1468329
+"Maniwaki, QC, Canada",Canada,2,46.3778839,-75.9807967
+"Mannheim, Germany",Germany,2,49.4892913,8.4673098
+"Maple Ridge, BC, Canada",Canada,2,49.2197345,-122.599707
+"Maple, ON, Canada",Canada,2,43.8594952,-79.5068973
+"Marshfield, MA, USA",USA,2,42.091769,-70.7055941
+"Massapequa, NY, USA",USA,2,40.669501,-73.4698253
+"Massena, NY, USA",USA,2,44.9300823,-74.8922422
+"Michalovce, Slovakia",Slovakia,2,48.7514383,21.9211949
+"Middletown, NJ, USA",USA,2,40.3898188,-74.1162152
+"Milford, CT, USA",USA,2,41.2222218,-73.0570603
+"Milton, MA, USA",USA,2,42.2501425,-71.065573
+"Minnedosa, MB, Canada",Canada,2,50.249865,-99.8385233
+"Minot, ND, USA",USA,2,48.23251,-101.296273
+"Mission, BC, Canada",Canada,2,49.1589351,-122.283583
+"Mitchell, ON, Canada",Canada,2,43.467942,-81.197899
+"Mogilev, Belarus",Belarus,2,53.9090245,30.3429838
+"Morinville, AB, Canada",Canada,2,53.8009283,-113.6506625
+"Morrisburg, ON, Canada",Canada,2,44.8977043,-75.1829545
+"Motherwell, Scotland",Scotland,2,55.7893512,-3.9904173
+"Nanton, AB, Canada",Canada,2,50.3481989,-113.770256
+"Nashua, NH, USA",USA,2,42.7656251,-71.4677032
+"Needham, MA, USA",USA,2,42.2802645,-71.2360624
+"Neudorf, SK, Canada",Canada,2,50.7136022,-103.0120907
+"New Bedford, MA, USA",USA,2,41.6362152,-70.934205
+"New Hamburg, ON, Canada",Canada,2,43.3784216,-80.7097716
+"New Waterford, NS, Canada",Canada,2,46.2483846,-60.0873491
+"Newcastle, NB, Canada",Canada,2,47.0007875,-65.5741695
+"Newport Beach, CA, USA",USA,2,33.6170092,-117.9294401
+"Niagara Falls, NY, USA",USA,2,43.084841,-79.0701786
+"Nipawin, SK, Canada",Canada,2,53.3627879,-104.017425
+"Nobleton, ON, Canada",Canada,2,43.9022127,-79.652722
+"Norquay, SK, Canada",Canada,2,51.8842262,-102.0907464
+"North Andover, MA, USA",USA,2,42.7029687,-71.1309117
+"North Easton, MA, USA",USA,2,42.0667665,-71.1036592
+"Norwood, MA, USA",USA,2,42.194543,-71.1994976
+"Nykoping, Sweden",Sweden,2,58.7545409,17.0120656
+"Oakbank, MB, Canada",Canada,2,49.9373014,-96.8416613
+"Olten, Switzerland",Switzerland,2,47.3496571,7.903787
+"Osoyoos, BC, Canada",Canada,2,49.033333,-119.466667
+"Overtornea, Sweden",Sweden,2,66.666667,23.5
+"Oxford, MI, USA",USA,2,42.8247524,-83.2646624
+"Palmerston, ON, Canada",Canada,2,43.8341108,-80.8495763
+"Pembroke Pines, FL, USA",USA,2,26.0061943,-80.2872086
+"Piestany, Slovakia",Slovakia,2,48.5895247,17.8213848
+"Pilot Mound, MB, Canada",Canada,2,49.2,-98.9
+"Plantation, FL, USA",USA,2,26.1275862,-80.2331036
+"Plymouth, MN, USA",USA,2,45.0065149,-93.46651
+"Point Anne, ON, Canada",Canada,2,44.1595103,-77.2949269
+"Pontiac, MI, USA",USA,2,42.6389216,-83.2910468
+"Port Chester, NY, USA",USA,2,41.0017643,-73.6656834
+"Port Credit, ON, Canada",Canada,2,43.5560546,-79.5870828
+"Port Jefferson, NY, USA",USA,2,40.9465118,-73.0691257
+"Port Perry, ON, Canada",Canada,2,44.1054151,-78.9425076
+"Potlatch, ID, USA",USA,2,46.9214798,-116.896971
+"Pribram, Czech Republic",Czech Republic,2,49.6901444,14.0103663
+"Prior Lake, MN, USA",USA,2,44.7133271,-93.4226873
+"Quincy, MA, USA",USA,2,42.2509914,-71.0037374
+"Rakovnik, Czech Republic",Czech Republic,2,50.1041136,13.7310462
+"Red Lake, ON, Canada",Canada,2,51.018938,-93.827362
+"Revelstoke, BC, Canada",Canada,2,50.998045,-118.1956709
+"Rhinelander, WI, USA",USA,2,45.636623,-89.412075
+"Richfield, MN, USA",USA,2,44.8766431,-93.2877877
+"Richmond, VA, USA",USA,2,37.5385087,-77.43428
+"Rochester Hills, MI, USA",USA,2,42.6583661,-83.1499322
+"Rodovre, Denmark",Denmark,2,55.6812495,12.4547294
+"Rome, NY, USA",USA,2,43.2102196,-75.4583956
+"Russell, MB, Canada",Canada,2,50.7804542,-101.2878789
+"Ryazan, Russia",Russia,2,54.6702523,39.6884462
+"Saint-Charles, QC, Canada",Canada,2,46.34614,-72.538355
+"Saint-Jean, QC, Canada",Canada,2,45.2129063,-73.2194252
+"Saint-Lambert, QC, Canada",Canada,2,45.5016203,-73.5102981
+"Sainte-Adele, QC, Canada",Canada,2,45.951895,-74.1359579
+"Sainte-Agathe, QC, Canada",Canada,2,46.383068,-71.4095133
+"Sainte-Anne-de-Bellevue, QC, Canada",Canada,2,45.4038563,-73.9523976
+"Sainte-Genevieve, QC, Canada",Canada,2,45.4804749,-73.8701544
+"San Bernardino, CA, USA",USA,2,34.8253019,-116.0833144
+"San Jose, CA, USA",USA,2,37.3361663,-121.890591
+"Sarpsborg, Norway",Norway,2,59.254955,11.2297811
+"Saugus, MA, USA",USA,2,42.4648183,-71.010051
+"Sauk Rapids, MN, USA",USA,2,45.5913275,-94.1673802
+"Schenectady, NY, USA",USA,2,42.8142432,-73.9395687
+"Scituate, MA, USA",USA,2,42.1924492,-70.7261966
+"Seoul, South Korea",South Korea,2,37.5666791,126.9782914
+"Shaker Heights, OH, USA",USA,2,41.4739419,-81.5370671
+"Shelby Township, MI, USA",USA,2,43.5974492,-86.3379509
+"Slany, Czech Republic",Czech Republic,2,50.2306933,14.0868501
+"Slave Lake, AB, Canada",Canada,2,55.2810741,-114.7717876
+"Solna, Sweden",Sweden,2,59.366667,18.016667
+"South Boston, MA, USA",USA,2,42.3334312,-71.0494949
+"South Windsor, CT, USA",USA,2,41.8352395,-72.5562712
+"St. George, ON, Canada",Canada,2,43.6684387,-79.398844
+"St. James, MB, Canada",Canada,2,49.8995899,-97.2576253
+"Staffordshire, England",England,2,52.8246942,-2.0074547
+"Stittsville, ON, Canada",Canada,2,45.2584759,-75.9206345
+"Stoneham, MA, USA",USA,2,42.4802635,-71.0993581
+"Stony Plain, AB, Canada",Canada,2,53.5289862,-114.004873
+"Strakonice, Czech Republic",Czech Republic,2,49.261277,13.9025043
+"Strathclair, MB, Canada",Canada,2,50.4044635,-100.3955365
+"Sumperk, Czech Republic",Czech Republic,2,49.9655521,16.9705651
+"Sussex, NB, Canada",Canada,2,45.7234763,-65.5104239
+"Sutherland, SK, Canada",Canada,2,52.1394758,-106.6054057
+"Syosset, NY, USA",USA,2,40.814858,-73.5017966
+"Taber, AB, Canada",Canada,2,49.8895343,-112.0488074
+"Tabor, Czech Republic",Czech Republic,2,49.4141533,14.6587234
+"Tecumseh, ON, Canada",Canada,2,42.3117951,-82.8861974
+"Tokyo, Japan",Japan,2,35.6768601,139.7638947
+"Torrance, CA, USA",USA,2,33.8371392,-118.3413606
+"Tranas, Sweden",Sweden,2,58.0341073,14.9756413
+"Traverse City, MI, USA",USA,2,44.7606481,-85.6165976
+"Trumbull, CT, USA",USA,2,41.2428742,-73.2006687
+"Tyumen, Russia",Russia,2,57.153534,65.542274
+"Uherske Hradiste, Czech Republic",Czech Republic,2,49.0681018,17.4663899
+"Upplands Vasby, Sweden",Sweden,2,59.516667,17.916667
+"Uxbridge, ON, Canada",Canada,2,44.1088502,-79.1226768
+"Vaasa, Finland",Finland,2,63.0957722,21.6159187
+"Val Marie, SK, Canada",Canada,2,49.243966,-107.7287953
+"Valkeakoski, Finland",Finland,2,61.2655907,24.0304573
+"Varkaus, Finland",Finland,2,62.3151698,27.8748346
+"Vegreville, AB, Canada",Canada,2,53.5,-112.05
+"Vetlanda, Sweden",Sweden,2,57.365574,15.1677901
+"Villach, Austria",Austria,2,46.6167284,13.8500268
+"Vitebsk, Belarus",Belarus,2,55.1930197,30.2070437
+"Vlasim, Czech Republic",Czech Republic,2,49.7065863,14.8986883
+"Wapella, SK, Canada",Canada,2,50.2628345,-101.9717067
+"Washington, DC, USA",USA,2,38.8950982,-77.0363849
+"Washington, MI, USA",USA,2,42.3021687,-83.257153
+"Waterford, MI, USA",USA,2,42.7022527,-83.402718
+"Waterville, ME, USA",USA,2,44.5505773,-69.6303174
+"Wawa, ON, Canada",Canada,2,47.9929283,-84.7740199
+"Wayzata, MN, USA",USA,2,44.970759,-93.511947
+"Wellesley, MA, USA",USA,2,42.2964859,-71.2925571
+"West Bloomfield, MI, USA",USA,2,42.5684073,-83.3740333
+"West Islip, NY, USA",USA,2,40.7064515,-73.2987663
+"West Seneca, NY, USA",USA,2,42.8395833,-78.7541466
+"Westland, MI, USA",USA,2,42.3238056,-83.4005321
+"Whitehorse, YT, Canada",Canada,2,60.721571,-135.054932
+"Whittier, CA, USA",USA,2,33.9749136,-118.0338664
+"Windsor, QC, Canada",Canada,2,45.5697799,-72.0034954
+"Winnetka, IL, USA",USA,2,42.1080703,-87.7365286
+"Woodstock, ON, Canada",Canada,2,43.1301111,-80.7562977
+"Woonsocket, RI, USA",USA,2,42.0028761,-71.5147839
+"Wyandotte, MI, USA",USA,2,42.200409,-83.1506436
+"Yellow Grass, SK, Canada",Canada,2,49.8061795,-104.160128
+"York, ON, Canada",Canada,2,44.0007518,-79.4372217
+"Zilina, Slovakia",Slovakia,2,49.2234674,18.7393139
+"Zug, Switzerland",Switzerland,2,47.1486137,8.5539378
+"Aanekoski, Finland",Finland,1,62.6032186,25.7301361
+"Aberdeen, WA, USA",USA,1,46.975371,-123.815722
+"Abington, MA, USA",USA,1,42.1048228,-70.9453218
+"Acton Vale, QC, Canada",Canada,1,45.6471564,-72.5654107
+"Admiral, SK, Canada",Canada,1,49.7130748,-108.0036721
+"Agryz, Russia",Russia,1,56.525516,52.9971643
+"Aizkraukle, Latvia",Latvia,1,56.6010778,25.2542544
+"Alameda, CA, USA",USA,1,37.6090291,-121.899142
+"Alameda, SK, Canada",Canada,1,49.2652182,-102.2816393
+"Alba, PA, USA",USA,1,41.7050749,-76.8282913
+"Aldershot, England",England,1,51.2494169,-0.7630148
+"Alexandria, VA, USA",USA,1,38.8051095,-77.0470229
+"Alfred, ON, Canada",Canada,1,45.5579611,-74.8825971
+"Alingsas, Sweden",Sweden,1,57.9299658,12.5329678
+"Aliquippa, PA, USA",USA,1,40.6102386,-80.267726
+"Almonte, ON, Canada",Canada,1,45.226049,-76.1945277
+"Alton, IL, USA",USA,1,38.8908583,-90.1843091
+"Alvesta, Sweden",Sweden,1,56.9166599,14.4998825
+"Alvkarleby, Sweden",Sweden,1,60.583333,17.416667
+"Ambler, PA, USA",USA,1,40.1544727,-75.2221643
+"Amherst, NY, USA",USA,1,42.9783924,-78.7997616
+"Amherst, ON, Canada",Canada,1,43.7563044,-79.2736573
+"Amisk, AB, Canada",Canada,1,52.5646576,-111.0591824
+"Amqui, QC, Canada",Canada,1,48.4656706,-67.4315171
+"Amsterdam, Netherlands",Netherlands,1,52.3730796,4.8924534
+"Anahim Lake, BC, Canada",Canada,1,52.461867,-125.301819
+"Ancaster, ON, Canada",Canada,1,43.225693,-79.976692
+"Ancienne Lorette, QC, Canada",Canada,1,46.8098475,-71.3679158
+"Andover, MA, USA",USA,1,42.65717,-71.1408776
+"Andover, MN, USA",USA,1,45.2332985,-93.2913405
+"Ange, Sweden",Sweden,1,62.4737401,15.6411682
+"Ange-Gardien, QC, Canada",Canada,1,45.354075,-72.935829
+"Anoka, MN, USA",USA,1,45.2710195,-93.2827625
+"Antigo, WI, USA",USA,1,45.1404664,-89.1524959
+"Appelbo, Sweden",Sweden,1,60.4858844,14.0138529
+"Appleton, WI, USA",USA,1,44.2613967,-88.4069744
+"Arboga, Sweden",Sweden,1,59.394187,15.8396643
+"Arcadia, CA, USA",USA,1,34.1362075,-118.0401497
+"Arcola, SK, Canada",Canada,1,49.6350309,-102.4906662
+"Ardrossan, AB, Canada",Canada,1,53.5517087,-113.143322
+"Arni, Switzerland",Switzerland,1,46.9347371,7.6654733
+"Arthabaska, QC, Canada",Canada,1,45.9965832,-71.9875776
+"Arvika, Sweden",Sweden,1,59.6543555,12.5916225
+"Ashern, MB, Canada",Canada,1,51.183333,-98.333333
+"Ashland, WI, USA",USA,1,46.2062319,-90.6802594
+"Asikkala, Finland",Finland,1,61.2332298,25.5528781
+"Asquith, SK, Canada",Canada,1,52.1345075,-107.2284917
+"Astoria, NY, USA",USA,1,40.7720145,-73.9302673
+"Asuncion, Paraguay",Paraguay,1,-25.2800459,-57.6343814
+"Atikokan, ON, Canada",Canada,1,48.762526,-91.624603
+"Auburn, MA, USA",USA,1,42.1945465,-71.8358095
+"Auburn, NY, USA",USA,1,42.9320202,-76.5672029
+"Augsburg, Germany",Germany,1,48.3690341,10.8979522
+"Aurora, CO, USA",USA,1,39.7401441,-104.8733376
+"Aurora, MN, USA",USA,1,47.5298533,-92.2367644
+"Avesta, Sweden",Sweden,1,60.216667,16.333333
+"Aylmer, ON, Canada",Canada,1,42.773227,-80.983658
+"Aylmer, QC, Canada",Canada,1,45.3950895,-75.8442452
+"Ayr, ON, Canada",Canada,1,43.2855122,-80.4507012
+"Baar, Switzerland",Switzerland,1,47.1951976,8.5253985
+"Baerum, Norway",Norway,1,59.9289639,10.4997108
+"Bagotville, QC, Canada",Canada,1,48.3407795,-70.8797721
+"Baie Verte, NL, Canada",Canada,1,49.938848,-56.196442
+"Bainbridge, Ireland",Ireland,1,42.3185027,-75.522823
+"Balcarres, SK, Canada",Canada,1,50.804747,-103.5427231
+"Baldur, MB, Canada",Canada,1,49.3855177,-99.2440107
+"Balsta, Sweden",Sweden,1,59.5682102,17.5293647
+"Balve, Germany",Germany,1,51.3326498,7.8670563
+"Ban, Italy",Italy,1,45.1146372,6.988387
+"Bangor, ME, USA",USA,1,44.8016255,-68.7713289
+"Bankhead, AB, Canada",Canada,1,51.0959826,-115.3555408
+"Barnstable, MA, USA",USA,1,41.7016936,-70.3036163
+"Barrhead, AB, Canada",Canada,1,54.1262362,-114.4044117
+"Barriefield, ON, Canada",Canada,1,44.2405618,-76.4621681
+"Barry's Bay, ON, Canada",Canada,1,45.488298,-77.679176
+"Barry, Wales",Wales,1,51.4065052,-3.2666925
+"Basel, Switzerland",Switzerland,1,47.5581077,7.5878261
+"Basking Ridge, NJ, USA",USA,1,40.7064088,-74.5492725
+"Bassano, AB, Canada",Canada,1,50.7872187,-112.4653652
+"Baton Rouge, LA, USA",USA,1,30.4494155,-91.1869659
+"Battleford, SK, Canada",Canada,1,52.7376973,-108.303901
+"Bayfield, ON, Canada",Canada,1,43.5609982,-81.6959031
+"Bayonne, France",France,1,43.4945144,-1.4736657
+"Bayport, NY, USA",USA,1,40.74885,-73.052214
+"Beauceville, QC, Canada",Canada,1,46.210725,-70.774269
+"Beaumont, AB, Canada",Canada,1,53.3525496,-113.4151434
+"Beausejour, MB, Canada",Canada,1,50.0619312,-96.5140821
+"Beaver Dam, WI, USA",USA,1,43.4577692,-88.837329
+"Beaver Lodge, AB, Canada",Canada,1,53.5106539,-113.5576003
+"Becancour, QC, Canada",Canada,1,46.3415746,-72.4335088
+"Bedford, IN, USA",USA,1,38.8611619,-86.4872149
+"Bedford, NY, USA",USA,1,41.2041304,-73.642509
+"Beirut, Lebanon",Lebanon,1,33.8892265,35.5025585
+"Belgrade, Serbia",Serbia,1,44.8153318,20.4456588
+"Bellefeuille, QC, Canada",Canada,1,45.7856278,-74.0798851
+"Beloeil, QC, Canada",Canada,1,45.5643183,-73.2040066
+"Belogorsk, Russia",Russia,1,50.921326,128.47287
+"Belovo, Russia",Russia,1,54.419323,86.303429
+"Bend, OR, USA",USA,1,44.0581728,-121.3153096
+"Berckenla, Ireland",Ireland,1,NA,NA
+"Berdsk, Russia",Russia,1,54.75795,83.1068095
+"Berwick, NS, Canada",Canada,1,45.0455684,-64.7362073
+"Biel-Bienne, Switzerland",Switzerland,1,47.1402077,7.2439029
+"Big Cove, NB, Canada",Canada,1,46.0086187,-64.0763074
+"Big Springs, TX, USA",USA,1,32.0673855,-94.9674399
+"Biloxi, MS, USA",USA,1,30.4007626,-88.8893818
+"Binghamton, NY, USA",USA,1,42.098698,-75.9125187
+"Binscarth, MB, Canada",Canada,1,50.6253639,-101.2832312
+"Birch Hills, SK, Canada",Canada,1,52.984204,-105.433044
+"Birmingham, MI, USA",USA,1,42.5467012,-83.2113192
+"Bishops Falls, NL, Canada",Canada,1,49.0120002,-55.4989086
+"Bjorbo, Sweden",Sweden,1,60.456683,14.7272515
+"Blackburn, ON, Canada",Canada,1,45.4319678,-75.56428
+"Blaine Lake, SK, Canada",Canada,1,52.8278099,-106.8778567
+"Blairmore, AB, Canada",Canada,1,49.6071847,-114.4381219
+"Blansko, Czech Republic",Czech Republic,1,49.3636494,16.6442394
+"Blaydon-on-Tyne, England, United Kingdom",England,1,54.9646163,-1.7115301
+"Blenheim, ON, Canada",Canada,1,42.3354182,-81.9974055
+"Bloomfield, ON, Canada",Canada,1,43.9863908,-77.2300533
+"Blyth, ON, Canada",Canada,1,43.7365991,-81.4294024
+"Bobcaygeon, ON, Canada",Canada,1,44.5372969,-78.5444995
+"Boca Raton, FL, USA",USA,1,26.3586885,-80.0830984
+"Bocktrask, Sweden",Sweden,1,65.4185521,18.2519817
+"Boisbriand, QC, Canada",Canada,1,45.6130248,-73.8386113
+"Bojnice, Slovakia",Slovakia,1,48.7799591,18.5821986
+"Bollebygd, Sweden",Sweden,1,57.75,12.6
+"Bollnas, Sweden",Sweden,1,61.3513005,16.3972013
+"Bolton, CT, USA",USA,1,41.7689878,-72.4334173
+"Bonney Lake, WA, USA",USA,1,47.1870191,-122.1702293
+"Bootle, England",England,1,53.4506931,-2.9948834
+"Boras, Sweden",Sweden,1,57.721083899999996,12.9407407
+"Bothwell, ON, Canada",Canada,1,42.6309355,-81.8707447
+"Bottineau, ND, USA",USA,1,48.8243455,-100.8431321
+"Boulder, CO, USA",USA,1,40.0149856,-105.270545
+"Bovey, MN, USA",USA,1,47.2953214,-93.415418
+"Bow Island, AB, Canada",Canada,1,49.8696838,-111.3793512
+"Bowdoin, ME, USA",USA,1,44.0364973,-69.9720794
+"Bowling Green, OH, USA",USA,1,41.3747744,-83.6513229
+"Bradford, England",England,1,53.7944229,-1.7519186
+"Bradford, ON, Canada",Canada,1,44.1171265,-79.5560133
+"Braeburn, PA, USA",USA,1,40.1900927,-76.6596909
+"Brainerd, MN, USA",USA,1,46.3580221,-94.2008288
+"Brentwood, CA, USA",USA,1,37.9317766,-121.696026
+"Brick, NJ, USA",USA,1,40.0707244,-74.1280562
+"Bridgewater, MA, USA",USA,1,41.9902206,-70.9754432
+"Bridgewater, NJ, USA",USA,1,40.5598127,-74.5517146
+"Brigden, ON, Canada",Canada,1,42.8119213,-82.2828078
+"Bright's Grove, ON, Canada",Canada,1,43.0279026,-82.2529271
+"Bristol, England",England,1,51.4538022,-2.5972985
+"Bristol, QC, Canada",Canada,1,45.5182488,-76.4161209
+"Bristol, RI, USA",USA,1,41.6770463,-71.2661597
+"Brock, SK, Canada",Canada,1,51.4412074,-108.7179691
+"Bromont, QC, Canada",Canada,1,45.3187339,-72.6463074
+"Brondby, Denmark",Denmark,1,55.644111,12.4217135
+"Bronxville, NY, USA",USA,1,40.9381544,-73.8320784
+"Brookline, MA, USA",USA,1,42.332918,-71.1187829
+"Broumov, Czech Republic",Czech Republic,1,50.5854557,16.3322957
+"Bruck, Austria",Austria,1,48.0255094,16.7790041
+"Burbank, CA, USA",USA,1,34.1812089,-118.307201
+"Burgdorf, Switzerland",Switzerland,1,47.0571316,7.6237466
+"Burgwedel, Germany",Germany,1,52.5,9.86667
+"Burks Falls, ON, Canada",Canada,1,45.6198243,-79.4118392
+"Byron, ON, Canada",Canada,1,42.9561761,-81.3410635
+"Cadca, Slovakia",Slovakia,1,49.4375146,18.7896041
+"Cadomin, AB, Canada",Canada,1,53.0338966,-117.3261071
+"Cakovec, Czech Republic",Czech Republic,1,48.9669634,14.3190773
+"Caldaro, Italy",Italy,1,46.413467,11.2469106
+"Callander, ON, Canada",Canada,1,46.222603,-79.365234
+"Calumet, MN, USA",USA,1,47.321883,-93.276868
+"Cambridge, MN, USA",USA,1,45.5727408,-93.2243921
+"Campbellville, ON, Canada",Canada,1,43.4871704,-79.9821917
+"Canaan, NH, USA",USA,1,43.6465313,-72.0119915
+"Cannington, ON, Canada",Canada,1,44.3502068,-79.038628
+"Cap del la Madeleine, QC, Canada",Canada,1,49.0946701,-66.6975129
+"Cap-Rouge, QC, Canada",Canada,1,46.7498643,-71.3453452
+"Cape Tormentine, NB, Canada",Canada,1,46.1169135,-63.7903093
+"Caracas, Venezuela",Venezuela,1,10.5060934,-66.9146008
+"Cardiff, Wales",Wales,1,51.4816546,-3.1791934
+"Cardinal, ON, Canada",Canada,1,44.7877017,-75.3800984
+"Carlisle, England",England,1,54.8948478,-2.9362311
+"Carlisle, ON, Canada",Canada,1,43.3942273,-79.9807983
+"Carmel, SK, Canada",Canada,1,52.2247482,-105.3547922
+"Carstairs, AB, Canada",Canada,1,51.5622066,-114.095172
+"Caslav, Czech Republic",Czech Republic,1,49.9109171,15.3913205
+"Cassiar, BC, Canada",Canada,1,59.2883894,-129.850182
+"Castor, AB, Canada",Canada,1,52.216667,-111.9
+"Castro Valley, CA, USA",USA,1,37.713606,-122.0715658
+"Caughnawaga, QC, Canada",Canada,1,45.3858518,-73.6679891
+"Causapscal, QC, Canada",Canada,1,48.3542375,-67.2269621
+"Cayuga, ON, Canada",Canada,1,42.9497266,-79.8585358
+"Cedar Springs, ON, Canada",Canada,1,42.2804523,-82.0312894
+"Celadna, Czech Republic",Czech Republic,1,49.5487297,18.3375869
+"Centerville, MA, USA",USA,1,41.6499298,-70.3485753
+"Centre Wellington, ON, Canada",Canada,1,43.7180927,-80.3747736
+"Cervenka, Czech Republic",Czech Republic,1,49.7186878,17.0853904
+"Ceske-Budejovice, Czech Republic",Czech Republic,1,48.9747357,14.474285
+"Chambersburg, PA, USA",USA,1,39.9375112,-77.6612586
+"Chamonix, France",France,1,45.9230969,6.8700009
+"Chandler, QC, Canada",Canada,1,48.3491804,-64.6775915
+"Charlemagne, QC, Canada",Canada,1,45.7208903,-73.486115
+"Charleston, ON, Canada",Canada,1,44.512165,-75.9674268
+"Charlotte, NC, USA",USA,1,35.2272086,-80.8430827
+"Charlottesville, VA, USA",USA,1,38.029306,-78.4766781
+"Chaska, MN, USA",USA,1,44.7894072,-93.6021791
+"Chatham, NB, Canada",Canada,1,47.0294425,-65.4625791
+"Chekhov, Russia",Russia,1,55.1426603,37.4545328
+"Chelmsford, MA, USA",USA,1,42.5968617,-71.3517602
+"Chelsea, MA, USA",USA,1,42.3912241,-71.0369301
+"Cherry Hill, NJ, USA",USA,1,39.9348351,-75.0307264
+"Chester Springs, PA, USA",USA,1,40.0951038,-75.6168681
+"Chester, England",England,1,53.1908873,-2.8908955
+"Chesterfield, MI, USA",USA,1,42.4331859,-83.3037293
+"Chesterville, ON, Canada",Canada,1,45.1024266,-75.2289179
+"Chetwynd, BC, Canada",Canada,1,55.6956812,-121.6393966
+"Chevy Chase, MD, USA",USA,1,38.9813699,-77.0849245
+"Chicago Heights, IL, USA",USA,1,41.5062834,-87.6357079
+"Christina Lake, BC, Canada",Canada,1,49.1227255,-118.257846
+"Chrudim, Czech Republic",Czech Republic,1,49.9511458,15.7947559
+"Chula Vista, CA, USA",USA,1,32.6400541,-117.084195
+"Chur, Switzerland",Switzerland,1,46.854747,9.5264904
+"Churchill, MB, Canada",Canada,1,58.7693101,-94.1736843
+"Cincinnati, OH, USA",USA,1,39.1012809,-84.5127405
+"Clawson, MI, USA",USA,1,42.5333682,-83.1463166
+"Climax, SK, Canada",Canada,1,49.2081817,-108.3864958
+"Clinton, MA, USA",USA,1,42.4212463,-71.6874099
+"Clinton, NY, USA",USA,1,44.7278943,-73.6686982
+"Coal Creek, BC, Canada",Canada,1,49.4887332,-114.9570087
+"Coaticook, QC, Canada",Canada,1,45.1334169,-71.803479
+"Cochenour, ON, Canada",Canada,1,51.0730254,-93.8100155
+"Cochrane, AB, Canada",Canada,1,51.1874627,-114.4710708
+"Cochrane, ON, Canada",Canada,1,50.630898,-82.1914444
+"Cohasset, MA, USA",USA,1,42.2410158,-70.8035571
+"Cohasset, MN, USA",USA,1,47.263556,-93.620215
+"Cole Harbour, NS, Canada",Canada,1,44.6736008,-63.4877299
+"Coleman, AB, Canada",Canada,1,49.6377084,-114.4964358
+"Coleraine, MN, USA",USA,1,47.28883,-93.427708
+"Come By Chance, NL, Canada",Canada,1,47.8342295,-53.9907878
+"Commerce, MI, USA",USA,1,42.5911431,-83.4907721
+"Consort, AB, Canada",Canada,1,52.0094273,-110.7752786
+"Coon Rapids, MN, USA",USA,1,45.1728923,-93.3023898
+"Copenhagen, Denmark",Denmark,1,55.6867243,12.5700724
+"Coral Springs, FL, USA",USA,1,26.271192,-80.2706044
+"Cordenons, Italy",Italy,1,45.9881831,12.7067897
+"Corona, CA, USA",USA,1,33.8752945,-117.566444
+"Corpus Christi, TX, USA",USA,1,27.7635302,-97.4033191
+"Corvallis, OR, USA",USA,1,44.5645659,-123.2620435
+"Cottam, ON, Canada",Canada,1,42.1285929,-82.7441463
+"Cowan, MB, Canada",Canada,1,52.0347545,-100.6491295
+"Cranford, NJ, USA",USA,1,40.656539,-74.3035794
+"Craven, SK, Canada",Canada,1,50.7072638,-104.809204
+"Creelman, SK, Canada",Canada,1,49.8205508,-103.3092709
+"Crimmitschau, Germany",Germany,1,50.8162378,12.3867217
+"Crookston, MN, USA",USA,1,47.7739988,-96.6081167
+"Cross Lake, MB, Canada",Canada,1,54.6120275,-98.0506988
+"Crossfield, AB, Canada",Canada,1,51.4272738,-114.0309938
+"Crystal, ND, USA",USA,1,48.5969371,-97.6695334
+"Cumberland, RI, USA",USA,1,41.9667656,-71.4328363
+"Cumberland, WI, USA",USA,1,45.5332856,-92.0214764
+"Cupar, SK, Canada",Canada,1,50.9476885,-104.2139781
+"Dabrowa Bialostocka, Poland",Poland,1,53.654439000000004,23.3485102
+"Dade City, FL, USA",USA,1,28.3647248,-82.1959178
+"Dadesjo, Sweden",Sweden,1,57.0108336,15.1062151
+"Dalhousie, NB, Canada",Canada,1,48.0634448,-66.369555
+"Dallas, TX, USA",USA,1,32.7762719,-96.7968559
+"Dardenne Prairie, MO, USA",USA,1,38.7694969,-90.7290157
+"Davidson, SK, Canada",Canada,1,51.263985,-105.9874594
+"De Pere, WI, USA",USA,1,44.4493584,-88.0599986
+"De Winton, AB, Canada",Canada,1,50.8235916,-114.0174396
+"Debden, SK, Canada",Canada,1,53.525025,-106.8770352
+"Decatur, GA, USA",USA,1,30.8736613,-84.5740953
+"Dedovsk, Russia",Russia,1,55.8597808,37.1206449
+"Deer Lake, NL, Canada",Canada,1,49.1830366,-57.4320002
+"Deer Lake, ON, Canada",Canada,1,52.6314358,-94.0669568
+"Deerfield, IL, USA",USA,1,42.1711365,-87.8445119
+"Degelis, QC, Canada",Canada,1,47.5475334,-68.6448598
+"Deggendorf, Germany",Germany,1,48.7814115,13.0006423
+"Deje, Sweden",Sweden,1,59.6059394,13.4636486
+"Delafield, WI, USA",USA,1,43.0594237,-88.4040172
+"Delemont, Switzerland",Switzerland,1,47.3615882,7.354445
+"Delhi, ON, Canada",Canada,1,42.8544957,-80.4983709
+"Delson, QC, Canada",Canada,1,45.3748635,-73.5412607
+"Derry, NH, USA",USA,1,42.8808677,-71.3264492
+"Des Plaines, IL, USA",USA,1,42.0415823,-87.8873916
+"Deseronto, ON, Canada",Canada,1,44.195005,-77.049866
+"Dickinson, ND, USA",USA,1,46.8791756,-102.7896242
+"Dinsmore, SK, Canada",Canada,1,51.3325438,-107.4471085
+"Divide, SK, Canada",Canada,1,49.1492019,-109.1284296
+"Doagh, Northern Ireland, United Kingdom",Northern Ireland,1,54.7377917,-6.0429206
+"Dolbeau, QC, Canada",Canada,1,48.8770098,-72.2302039
+"Don Mills, ON, Canada",Canada,1,43.775347,-79.3459439
+"Donetsk, Ukraine",Ukraine,1,47.9212914,37.7809825
+"Donkin, NS, Canada",Canada,1,46.1820304,-59.8736839
+"Dorchester, NB, Canada",Canada,1,45.8992863,-64.5170033
+"Dorchester, ON, Canada",Canada,1,42.9886863,-81.0586953
+"Dorval, QC, Canada",Canada,1,45.4453082,-73.7510888
+"Douro, ON, Canada",Canada,1,44.3760543,-78.192366
+"Dover, NJ, USA",USA,1,40.883988,-74.5621025
+"Dowlais, Wales",Wales,1,51.7625134,-3.3555584
+"Downey, CA, USA",USA,1,33.9404441,-118.1292846
+"Downeyville, ON, Canada",Canada,1,44.3734331,-78.593756
+"Drake, SK, Canada",Canada,1,51.7461489,-105.0125027
+"Dresden, ON, Canada",Canada,1,42.5909853,-82.1795314
+"Drogichin, Belarus",Belarus,1,53.1095358,29.2990619
+"Drohiczyn, Poland",Poland,1,52.396648,22.658812
+"Dublin, OH, USA",USA,1,40.0996009,-83.1135563
+"Dublin, ON, Canada",Canada,1,43.5050055,-81.2856341
+"Dubnica, Slovakia",Slovakia,1,49.3045228,21.0165592
+"Dubuque, IA, USA",USA,1,42.5006243,-90.6647985
+"Duchess, AB, Canada",Canada,1,50.7305674,-111.9055311
+"Duesseldorf, Germany",Germany,1,51.2254018,6.7763137
+"Dugald, MB, Canada",Canada,1,49.8857175,-96.8428231
+"Dunblane, SK, Canada",Canada,1,51.2021493,-106.8802405
+"Duparquet, QC, Canada",Canada,1,48.5026134,-79.2224096
+"Durham, NH, USA",USA,1,43.1214141,-70.9177186
+"Durham-Sud, QC, Canada",Canada,1,45.6596873,-72.3410147
+"Duxbury, MA, USA",USA,1,42.0417695,-70.672259
+"Eardley, QC, Canada",Canada,1,45.5514566,-76.0983854
+"East Bridgewater, MA, USA",USA,1,42.0332957,-70.9588099
+"East Broughton, QC, Canada",Canada,1,46.216664,-71.075706
+"East Greenbush, NY, USA",USA,1,42.5909135,-73.7017858
+"East Greenwich, RI, USA",USA,1,41.6603788,-71.4558911
+"East Kildonan, MB, Canada",Canada,1,49.9209415,-97.0881378
+"East Lansing, MI, USA",USA,1,42.7320307,-84.4721678
+"East Longmeadow, MA, USA",USA,1,42.064906,-72.5129296
+"East Palestine, OH, USA",USA,1,40.8339509,-80.5403469
+"East Vancouver, BC, Canada",Canada,1,49.279437,-123.0666665
+"East Weymouth, MA, USA",USA,1,42.2157579,-70.9251565
+"East York, ON, Canada",Canada,1,43.699971,-79.3325198
+"Eastview, ON, Canada",Canada,1,44.2576048,-76.3917684
+"Eden, NY, USA",USA,1,42.6523734,-78.8954064
+"Edina, USA",USA,1,44.8897027,-93.3501222
+"Edinburgh, United Kingdom",United Kingdom,1,55.9533456,-3.1883749
+"Edington, SK, Canada",Canada,1,NA,NA
+"Edison, NJ, USA",USA,1,40.5005351,-74.3983939
+"Edmond, OK, USA",USA,1,35.6571367,-97.4649038
+"Egerkingen, Switzerland",Switzerland,1,47.3225009,7.7947889
+"Eisenstadt, Austria",Austria,1,47.8454821,16.5249288
+"Elcor, MN, USA",USA,1,47.505204,-92.4410154
+"Elgin Mills, ON, Canada",Canada,1,43.8959609,-79.4429693
+"Elgin, ON, Canada",Canada,1,42.7269522,-81.3660384
+"Elk Grove, IL, USA",USA,1,42.0035588,-88.0037711
+"Elkhorn, MB, Canada",Canada,1,49.9753411,-101.2365875
+"Ellensburg, WA, USA",USA,1,46.9970635,-120.545122
+"Ellerslie, PE, Canada",Canada,1,46.6029873,-63.9561601
+"Ellwood City, PA, USA",USA,1,40.858579,-80.2895502
+"Elmhurst, IL, USA",USA,1,41.8994745,-87.9403418
+"Emsdetten, Germany",Germany,1,52.174687,7.5301756
+"Englewood, OH, USA",USA,1,39.8775553,-84.3021673
+"Enkoping, Sweden",Sweden,1,59.6356115,17.077856
+"Ennismore, ON, Canada",Canada,1,44.4099602,-78.4317746
+"Enterprise, AL, USA",USA,1,31.3151708,-85.8552161
+"Erding, Germany",Germany,1,48.3064441,11.9076579
+"Erie, CO, USA",USA,1,40.0502623,-105.049981
+"Erie, PA, USA",USA,1,42.1294712,-80.0852695
+"Eriksdale, MB, Canada",Canada,1,50.866667,-98.1
+"Esbjerg, Denmark",Denmark,1,55.4664892,8.4520751
+"Eskilstuna, Sweden",Sweden,1,59.3717379,16.5051474
+"Esko, MN, USA",USA,1,46.7072985,-92.3631618
+"Essex, MA, USA",USA,1,42.6326501,-70.7803543
+"Everett, WA, USA",USA,1,47.9793437,-122.2127011
+"Excelsior, MN, USA",USA,1,44.9032963,-93.5663455
+"Exeter, ON, Canada",Canada,1,43.3449871,-81.4801081
+"Fagersta, Sweden",Sweden,1,59.966667,15.833333
+"Falconbridge, ON, Canada",Canada,1,46.5765483,-80.8102233
+"Falkirk, Scotland",Scotland,1,55.9991959,-3.784376
+"Fall River, MA, USA",USA,1,41.7010642,-71.1546367
+"Falmouth, MA, USA",USA,1,41.5514979,-70.6147519
+"Farevejle, Denmark",Denmark,1,54.9169504,10.7066501
+"Fargelanda, Sweden",Sweden,1,58.583333,12
+"Faribault, MN, USA",USA,1,43.6647961,-93.9510501
+"Farmingville, NY, USA",USA,1,40.8406525,-73.0349423
+"Farran's Point, ON, Canada",Canada,1,44.978714,-75.0004199
+"Felben Wellhausen, Switzerland",Switzerland,1,47.575645,8.939863
+"Feldkirch, Austria",Austria,1,47.2523923,9.5917573
+"Fenton, MI, USA",USA,1,42.7978061,-83.7049498
+"Fenton, MO, USA",USA,1,38.5131989,-90.4400578
+"Ferris, ON, Canada",Canada,1,46.1839063,-79.2774755
+"Fielding, SK, Canada",Canada,1,52.5175183,-107.5422444
+"Filipstad, Sweden",Sweden,1,59.7,14.183333
+"Fillmore, SK, Canada",Canada,1,49.883333,-103.433333
+"Fitchburg, MA, USA",USA,1,42.5838984,-71.8038268
+"Fjardhundra, Sweden",Sweden,1,59.7760701,16.9179368
+"Fleming, SK, Canada",Canada,1,50.0739017,-101.5115585
+"Flesherton, ON, Canada",Canada,1,44.2610602,-80.5457496
+"Floral, SK, Canada",Canada,1,52.0564557,-106.4585851
+"Florence, SC, USA",USA,1,34.1984435,-79.7671658
+"Flower Mound, TX, USA",USA,1,33.0283854,-97.0867203
+"Flushing, MI, USA",USA,1,43.0630834,-83.8510732
+"Forest Park, IL, USA",USA,1,41.8794989,-87.8136997
+"Forest, ON, Canada",Canada,1,43.1007795,-82.0003357
+"Forestburg, AB, Canada",Canada,1,52.583333,-112.0664866
+"Forks of Credit, ON, Canada",Canada,1,43.8154314,-80.0127352
+"Fors, Sweden",Sweden,1,60.2078658,16.3071709
+"Forssa, Finland",Finland,1,60.8145114,23.6240911
+"Fort Lauderdale, FL, USA",USA,1,26.1223084,-80.1433786
+"Fort Myers, FL, USA",USA,1,26.640628,-81.8723084
+"Fox Valley, SK, Canada",Canada,1,50.466667,-109.483333
+"Franklin Square, NY, USA",USA,1,40.700236,-73.676448
+"Fraser, MI, USA",USA,1,42.539202,-82.9493652
+"Frederikshavn, Denmark",Denmark,1,57.4412134,10.5336225
+"Freeport, Bahamas",Bahamas,1,26.535681,-78.6953623
+"Freiburg, Germany",Germany,1,47.9960901,7.8494005
+"Frenchman Butte, SK, Canada",Canada,1,53.5962735,-109.5710366
+"Frobisher, SK, Canada",Canada,1,49.2083214,-102.4277764
+"Frolunda, Sweden",Sweden,1,59.4464184,17.6915021
+"Ft. McMurray, AB, Canada",Canada,1,56.7291997,-111.3885221
+"Fuller Lake, BC, Canada",Canada,1,48.90826,-123.7209189
+"Fullerton, CA, USA",USA,1,33.8708215,-117.929416
+"Fulton, NY, USA",USA,1,43.1061507,-74.4461771
+"Gainsborough, SK, Canada",Canada,1,49.1775531,-101.4499529
+"Garden River, ON, Canada",Canada,1,46.7242015,-83.6623646
+"Gardena, CA, USA",USA,1,33.8815601,-118.2935879
+"Garnant, Wales",Wales,1,51.8000888,-3.9043208
+"Gary, IN, USA",USA,1,41.6020962,-87.3370646
+"Gastello, Russia",Russia,1,49.1014299,142.9424256
+"Geneva, IL, USA",USA,1,41.8875281,-88.3053525
+"Gentofte, Denmark",Denmark,1,55.7535946,12.541436
+"Gilbert, AZ, USA",USA,1,33.3527632,-111.789037
+"Gilroy, CA, USA",USA,1,37.0065078,-121.5631723
+"Glen Mills, PA, USA",USA,1,39.919698,-75.4904323
+"Glenboro, MB, Canada",Canada,1,49.5577313,-99.2877494
+"Glencoe, IL, USA",USA,1,42.1350268,-87.7581188
+"Glens Falls, NY, USA",USA,1,43.309941,-73.644447
+"Golden Valley, MN, USA",USA,1,44.9861176,-93.3784618
+"Golitsino, Russia",Russia,1,55.6149602,36.9887625
+"Goodsoil, SK, Canada",Canada,1,54.399722,-109.226111
+"Gore Bay, ON, Canada",Canada,1,45.9167876,-82.4640868
+"Grafton, ND, USA",USA,1,48.4122108,-97.410634
+"Grand Falls, NB, Canada",Canada,1,47.047563,-67.7407527
+"Grand Forks, BC, Canada",Canada,1,49.0312269,-118.4392039
+"Grand Haven, MI, USA",USA,1,43.0630734,-86.2283864
+"Grand-Baie, QC, Canada",Canada,1,50.2230564,-60.6882777
+"Gravelbourg, SK, Canada",Canada,1,49.8751033,-106.5557573
+"Gravenhurst, ON, Canada",Canada,1,44.91741,-79.373131
+"Green Bay, WI, USA",USA,1,44.5126379,-88.0125794
+"Greenlawn, NY, USA",USA,1,40.8608685,-73.3633136
+"Gretna, AB, Canada",Canada,1,53.6156539,-113.6255015
+"Grosse Isle, MB, Canada",Canada,1,50.0634652,-97.4420227
+"Grosse Pointe Woods, MI, USA",USA,1,42.4435616,-82.9069508
+"Grostenquin, France",France,1,48.98003,6.7396767
+"Guildford, England",England,1,51.2356068,-0.5732063
+"Gull Lake, SK, Canada",Canada,1,50.0958306,-108.4829951
+"Gurnee, IL, USA",USA,1,42.3702996,-87.9020186
+"Guysborough, NS, Canada",Canada,1,45.3922534,-61.4997896
+"Haapavesi, Finland",Finland,1,64.1378737,25.3658176
+"Hackensack, NJ, USA",USA,1,40.8870781,-74.0410667
+"Hafford, SK, Canada",Canada,1,52.7256225,-107.3521335
+"Hagerstown, MD, USA",USA,1,39.6430455,-77.7191081
+"Hagersville, ON, Canada",Canada,1,42.961976,-80.0517133
+"Halkirk, AB, Canada",Canada,1,52.2832118,-112.1537728
+"Halmstad, Sweden",Sweden,1,56.6739826,12.8574827
+"Hamar, Norway",Norway,1,61.0014937,11.1647964
+"Hamden, CT, USA",USA,1,41.383623299999996,-72.9020069
+"Hanford, CA, USA",USA,1,36.3277959,-119.6461565
+"Hanover, MA, USA",USA,1,42.1131572,-70.8119859
+"Hanson, MA, USA",USA,1,42.0753081,-70.8800559
+"Hardieville, AB, Canada",Canada,1,49.7406891,-112.8268498
+"Harjavalta, Finland",Finland,1,61.3125216,22.1357413
+"Harris, SK, Canada",Canada,1,51.7349299,-107.5835975
+"Hartford, MI, USA",USA,1,42.2067051,-86.1666876
+"Hartland, MI, USA",USA,1,42.656697,-83.7530022
+"Hassleholm, Sweden",Sweden,1,56.157986,13.7653328
+"Hattula, Finland",Finland,1,61.0631229,24.3669975
+"Hauho, Finland",Finland,1,61.1751591,24.5649152
+"Hauppauge, NY, USA",USA,1,40.8237354,-73.2062289
+"Hauterive, QC, Canada",Canada,1,49.1929593,-68.2570763
+"Haverhill, MA, USA",USA,1,42.7777829,-71.0767724
+"Havertown, PA, USA",USA,1,39.9809452,-75.3085201
+"Havirov, Czech Republic",Czech Republic,1,49.7801136,18.4368451
+"Havlickuv, Czech Republic",Czech Republic,1,49.606942,15.5795748
+"Havre St. Pierre, QC, Canada",Canada,1,50.2463647,-63.6003951
+"Hay River, NT, Canada",Canada,1,60.8155874,-115.7866099
+"Heathcote, ON, Canada",Canada,1,44.497098,-80.4914291
+"Hebertville, QC, Canada",Canada,1,48.3925109,-71.6787145
+"Hemer, Germany",Germany,1,51.3854116,7.7661798
+"Herisau, Switzerland",Switzerland,1,47.38555,9.2787571
+"Hermosa Beach, CA, USA",USA,1,33.8637822,-118.3992143
+"Herndon, VA, USA",USA,1,38.9695316,-77.3859479
+"Hespeler, ON, Canada",Canada,1,43.4314754,-80.3118603
+"Highland Creek, ON, Canada",Canada,1,43.7901172,-79.1733344
+"Hillsburgh, ON, Canada",Canada,1,43.7904083,-80.1439887
+"Hilton Head Island, SC, USA",USA,1,32.1618488,-80.7512616
+"Hinckley, MN, USA",USA,1,46.0113409,-92.9443707
+"Hines Creek, AB, Canada",Canada,1,56.2479207,-118.5985033
+"Hinsdale, IL, USA",USA,1,41.8024604,-87.9299841
+"Hinton, AB, Canada",Canada,1,53.3990512,-117.5886772
+"Hjorring, Denmark",Denmark,1,57.457183,9.9855998
+"Hluboka, Czech Republic",Czech Republic,1,49.8455813,16.0715447
+"Hobbema, AB, Canada",Canada,1,52.8345485,-113.450681
+"Hohenems, Austria",Austria,1,47.3639973,9.689271
+"Holland, MB, Canada",Canada,1,49.5945066,-98.8809533
+"Hollidaysburg, PA, USA",USA,1,40.430774,-78.3900826
+"Holt, MI, USA",USA,1,42.6365611,-84.5225315
+"Holte, Denmark",Denmark,1,55.8125143,12.4687513
+"Honeoye Falls, NY, USA",USA,1,42.9522855,-77.5902759
+"Honkajoki, Finland",Finland,1,61.993025,22.2637409
+"Hope, BC, Canada",Canada,1,49.3799779,-121.4415851
+"Hopkinton, MA, USA",USA,1,42.2288875,-71.5196439
+"Hornepayne, ON, Canada",Canada,1,49.2184997,-84.7744143
+"Horovice, Czech Republic",Czech Republic,1,49.8363239,13.902867
+"Horsholm, Denmark",Denmark,1,55.8832986,12.5000112
+"Hradiste, Czech Republic",Czech Republic,1,49.710467,13.3962918
+"Huddinge, Sweden",Sweden,1,59.216667,18
+"Hudson, MA, USA",USA,1,42.3913503,-71.5676895
+"Hudson, OH, USA",USA,1,41.240056,-81.440667
+"Humber Summit, ON, Canada",Canada,1,43.7600778,-79.5717598
+"Humppila, Finland",Finland,1,60.933333,23.366667
+"Huntington Woods, MI, USA",USA,1,42.4805913,-83.1668713
+"Huntington, NY, USA",USA,1,40.868154,-73.425676
+"Ibstock, England",England,1,52.6883907,-1.3987871
+"Ii, Finland",Finland,1,65.3218756,25.3716223
+"Ilderton, ON, Canada",Canada,1,43.0812001,-81.3751432
+"Ile-Perrot, QC, Canada",Canada,1,45.3961336,-73.9651703
+"Indian Head, SK, Canada",Canada,1,50.5347719,-103.6667957
+"Innisfil, ON, Canada",Canada,1,44.3150892,-79.5461073
+"Innsbruck, Austria",Austria,1,47.2654296,11.3927685
+"Instock, England",England,1,53.4355846,-2.1846945
+"Inuvik, NT, Canada",Canada,1,68.3602632,-133.720386
+"Inverness, NS, Canada",Canada,1,46.2307181,-61.3056432
+"Iroquois, ON, Canada",Canada,1,44.8492835,-75.3151083
+"Iserlohn, Germany",Germany,1,51.3746778,7.6999713
+"Island Park, NY, USA",USA,1,40.6042705,-73.6554078
+"Ithaca, NY, USA",USA,1,42.4374175,-76.5483724
+"Itzehoe, Germany",Germany,1,53.919448,9.5172441
+"Ivry-sur-Seine, France",France,1,48.8122302,2.3872525000000002
+"Jablonec Nad Nisou, Czech Republic",Czech Republic,1,50.7240899,15.1710958
+"Jackson, MI, USA",USA,1,42.2416466,-84.425589
+"Jacksonville, FL, USA",USA,1,30.3262247,-81.6579179
+"Jakobstad, Finland",Finland,1,63.6744703,22.7055385
+"Jamaica Plain, MA, USA",USA,1,42.3116046,-71.1143838
+"Jamsa, Finland",Finland,1,61.8637802,25.1897493
+"Jansen, SK, Canada",Canada,1,51.7866985,-104.7152855
+"Jarna, Sweden",Sweden,1,59.0913404,17.5651066
+"Jefferson Hills, PA, USA",USA,1,40.2911809,-79.9319942
+"Jericho, NY, USA",USA,1,40.78743,-73.5434608
+"Jesenice, Slovenia",Slovenia,1,46.4459152,14.0663103
+"Johnson City, NY, USA",USA,1,42.1157038,-75.9587873
+"Johnston, RI, USA",USA,1,41.8310404,-71.5412101
+"Johnstone, Scotland",Scotland,1,55.836517,-4.5122831
+"Jonquiere, QC, Canada",Canada,1,48.405959,-71.069183
+"Jonstorp, Sweden",Sweden,1,56.2283011,12.6748623
+"Joroinen, Finland",Finland,1,62.179801,27.829107
+"Judique, NS, Canada",Canada,1,45.876337,-61.4904937
+"Jurmala, Latvia",Latvia,1,56.9727164,23.7886979
+"Kage, Sweden",Sweden,1,64.8351736,20.9848115
+"Kalajoki, Finland",Finland,1,64.260017,23.950545
+"Kalvola, Finland",Finland,1,61.1010387,24.1253301
+"Kamenogorsk, Kazakhstan",Kazakhstan,1,49.9484438,82.6274791
+"Kansas City, MO, USA",USA,1,39.100105,-94.5781416
+"Karaganda, Kazakhstan",Kazakhstan,1,49.1767322,74.1811272
+"Karijoki, Finland",Finland,1,62.307535,21.7077697
+"Karkkila, Finland",Finland,1,60.5354141,24.2125223
+"Katrineholm, Sweden",Sweden,1,58.9959119,16.2062225
+"Kaunas, Lithuania",Lithuania,1,54.8982139,23.9044817
+"Kauniainen, Finland",Finland,1,60.2111209,24.7293466
+"Kemerovo, Russia",Russia,1,55.3550907,86.0871213
+"Kemi, Finland",Finland,1,65.7333404,24.5666495
+"Kemptville, ON, Canada",Canada,1,45.0154164,-75.644567
+"Kenmore, NY, USA",USA,1,42.961748,-78.870914
+"Kentville, NS, Canada",Canada,1,45.0784875,-64.495212
+"Kharkiv, Ukraine",Ukraine,1,49.9923181,36.2310146
+"Kharkov, Russia",Russia,1,54.5597561,85.3461711
+"Kilsyth, Scotland",Scotland,1,55.9765389,-4.0559704
+"Kimberly, BC, Canada",Canada,1,49.0296357,-122.2939597
+"Kincaid, SK, Canada",Canada,1,49.6691769,-107.0063462
+"Kingsford, MI, USA",USA,1,45.794956,-88.072071
+"Kingston, Jamaica",Jamaica,1,17.9712148,-76.7928128
+"Kingsville, ON, Canada",Canada,1,42.0378963,-82.7396606
+"Kinistino, NS, Canada",Canada,1,52.952775,-105.029297
+"Kinistino, SK, Canada",Canada,1,52.952775,-105.029297
+"Kirkkonummi, Finland",Finland,1,60.1217382,24.4406146
+"Kirkland, QC, Canada",Canada,1,45.4529194,-73.8647559
+"Kirovograd, Ukraine",Ukraine,1,48.5105805,32.2656283
+"Kirtland Hills, OH, USA",USA,1,41.623937,-81.307051
+"Kista, Sweden",Sweden,1,59.4031236,17.9424221
+"Klatovy, Czech Republic",Czech Republic,1,49.3951183,13.2935954
+"Kleinburg, ON, Canada",Canada,1,43.844184,-79.628906
+"Knowlton, QC, Canada",Canada,1,45.2191522,-72.5084881
+"Kolin, Czech Republic",Czech Republic,1,50.0288894,15.2011571
+"Komsomolsk, Russia",Russia,1,57.027321,40.377602
+"Koping, Sweden",Sweden,1,59.5137434,15.9970475
+"Koprivnice, Czech Republic",Czech Republic,1,49.598913,18.1452134
+"Korkino, Russia",Russia,1,54.889923,61.407963
+"Kostroma, Russia",Russia,1,57.7964854,40.9693305
+"Kotka, Finland",Finland,1,60.4672673,26.9459462
+"Kraft, Russia",Russia,1,50.481136,45.470367
+"Krasnogorsk, Russia",Russia,1,55.8204707,37.3196942
+"Krasnojarsk, Russia",Russia,1,56.0091173,92.872586
+"Krasnokamsk, Russia",Russia,1,58.0833042,55.769989699999996
+"Krnov, Czech Republic",Czech Republic,1,50.089894,17.7040842
+"Kromeriz, Czech Republic",Czech Republic,1,49.2984191,17.3929804
+"Kryłow, Poland",Poland,1,50.6830416,24.0552801
+"Kungsbacka, Sweden",Sweden,1,57.4888563,12.0787529
+"Kurgan, Russia",Russia,1,55.4409357,65.3421169
+"Kusmark, Sweden",Sweden,1,64.87881,20.79953
+"Kvissleby, Sweden",Sweden,1,62.2957919,17.3716888
+"L'Abord Plouffe, QC, Canada",Canada,1,45.5316116,-73.7274357
+"L'Ancienne Lorette, QC, Canada",Canada,1,46.8063745,-71.3584717
+"L'Ancienne-Lorette, QC, Canada",Canada,1,46.8063745,-71.3584717
+"L'Annonciation, QC, Canada",Canada,1,46.8009584,-71.3583727
+"L'Ile-Bizard, QC, Canada",Canada,1,45.4934398,-73.8754216
+"L'Ile-Perrot, QC, Canada",Canada,1,45.393146,-73.952751
+"L'Isle-aux-Allumettes, QC, Canada",Canada,1,45.9115856,-77.0764302
+"L'Islet, QC, Canada",Canada,1,47.1037283,-70.0550253
+"La Crescent, MN, USA",USA,1,43.8280216,-91.3040274
+"La Mirada, CA, USA",USA,1,33.9060971,-118.0107092
+"La Sarre, QC, Canada",Canada,1,48.8000956,-79.2010223
+"La Verne, CA, USA",USA,1,34.1008426,-117.7678355
+"LaSalle, ON, Canada",Canada,1,42.2450635,-83.0606534
+"Labelle, QC, Canada",Canada,1,46.279106,-74.732094
+"Labrador, NL, Canada",Canada,1,55.9114861,-61.7019148
+"Lac La Hache, BC, Canada",Canada,1,51.8149177,-121.4780081
+"Lac Pelletier, SK, Canada",Canada,1,49.9204926,-107.8486559
+"Lac St. Jean, QC, Canada",Canada,1,48.583336,-72.0048797
+"Lac la Tortue, QC, Canada",Canada,1,46.610149,-72.631904
+"Lac-Beauport, QC, Canada",Canada,1,46.944403,-71.296806
+"Lachenaie, QC, Canada",Canada,1,45.702283,-73.5535424
+"Ladysmith, BC, Canada",Canada,1,48.9936579,-123.8157964
+"Lafayette, CO, USA",USA,1,39.9935959,-105.089705
+"Lafontaine, QC, Canada",Canada,1,45.8116516,-74.014184
+"Lahr, Germany",Germany,1,49.9440704,6.2909431
+"Lakeville, NB, Canada",Canada,1,46.163177,-64.6670258
+"Lakewood, OH, USA",USA,1,41.4819932,-81.7981908
+"Lamont, AB, Canada",Canada,1,53.7834515,-112.4478142
+"Landsbro, Sweden",Sweden,1,57.3696208,14.9013204
+"Landskrona, Sweden",Sweden,1,55.8698007,12.8296734
+"Langenburg, SK, Canada",Canada,1,50.8417915,-101.701553
+"Lantzville, BC, Canada",Canada,1,49.2507112,-124.0746545
+"Lany, Czech Republic",Czech Republic,1,50.1246235,13.948307
+"Lapeer, MI, USA",USA,1,43.0904764,-83.2333705
+"Las Vegas, NV, USA",USA,1,36.1674263,-115.1484131
+"Lasalle, ON, Canada",Canada,1,42.2151672,-83.0642923
+"Lashburn, SK, Canada",Canada,1,53.1238209,-109.6135196
+"Lau, Sweden",Sweden,1,57.2824286,18.6184421
+"Laurel Hollow, NY, USA",USA,1,40.8567653,-73.4695665
+"Laurier-Station, QC, Canada",Canada,1,46.540207,-71.632919
+"Lauzon, QC, Canada",Canada,1,46.8256382,-71.1654982
+"Lawrence, MA, USA",USA,1,42.7070354,-71.1631137
+"Le Blanc-Mesnil, France",France,1,48.9385489,2.4631476
+"Le Moyne, QC, Canada",Canada,1,46.958114,-71.0393319
+"LeRoy, SK, Canada",Canada,1,52.0022724,-104.740329
+"Leesburg, FL, USA",USA,1,28.810823,-81.8778582
+"Lempaala, Finland",Finland,1,61.3136284,23.7547679
+"Leninogorsk, Russia",Russia,1,54.5994324,52.4469099
+"Les Saules, QC, Canada",Canada,1,46.8114119,-71.321575
+"Letellier, MB, Canada",Canada,1,49.1355013,-97.3026917
+"Leuven, Belgium",Belgium,1,50.879202,4.7011675
+"Levice, Slovakia",Slovakia,1,48.2163194,18.6000869
+"Lewiston, ME, USA",USA,1,44.0990717,-70.2177099
+"Lewisville, TX, USA",USA,1,33.046233,-96.994174
+"Lexington, MA, USA",USA,1,42.4473175,-71.2245003
+"Liepaja, Latvia",Latvia,1,56.5048435,21.0070903
+"Lincoln Park, MI, USA",USA,1,42.2505943,-83.1785361
+"Lincoln, MA, USA",USA,1,42.4259283,-71.3039469
+"Lincoln, NE, USA",USA,1,40.8088861,-96.7077751
+"Lindstrom, MN, USA",USA,1,45.3894083,-92.8479921
+"Lisbon, ME, USA",USA,1,43.9966919,-70.0606087
+"Little Current, ON, Canada",Canada,1,45.9800486,-81.9267993
+"Little Falls, MN, USA",USA,1,45.9763545,-94.3625024
+"Littleton, CO, USA",USA,1,39.613321,-105.016649
+"Lloyd Harbor, NY, USA",USA,1,40.9034315,-73.4598432
+"Lockeport, NS, Canada",Canada,1,43.7003894,-65.1147163
+"Lohja, Finland",Finland,1,60.2512041,24.0676953
+"London, England",England,1,51.5074456,-0.1277653
+"Long Beach, NY, USA",USA,1,40.5885508,-73.6582631
+"Long Island, NY, USA",USA,1,40.8514971,-73.0994297
+"Long Sault, ON, Canada",Canada,1,45.0283111,-74.8964683
+"Loon Lake, SK, Canada",Canada,1,54.025278,-109.160556
+"Lorenskog, Norway",Norway,1,59.8970034,10.9669148
+"Los Gatos, CA, USA",USA,1,37.226611,-121.9746797
+"Lowell, MA, USA",USA,1,42.6414437,-71.3085329
+"Lucknow, ON, Canada",Canada,1,43.961848,-81.5172512
+"Lugnvik, Sweden",Sweden,1,62.9295771,17.9142347
+"Lutsk, Ukraine",Ukraine,1,50.7450733,25.320078
+"Luumaki, Finland",Finland,1,60.9225204,27.5693101
+"Lyleton, MB, Canada",Canada,1,49.0570196,-101.1785755
+"Lynn, MA, USA",USA,1,42.466763,-70.9494939
+"Lynnfield, MA, USA",USA,1,42.5389836,-71.0481084
+"Lyon, France",France,1,45.7578137,4.8320114
+"MacNutt, SK, Canada",Canada,1,51.0842907,-101.6043912
+"Macomb, MI, USA",USA,1,42.6741189,-82.902901
+"Magog, QC, Canada",Canada,1,45.2658014,-72.1480686
+"Major, SK, Canada",Canada,1,51.8726933,-109.6164202
+"Malacky, Slovakia",Slovakia,1,48.4362992,17.0200447
+"Malden, MA, USA",USA,1,42.4268484,-71.0683741
+"Manalapan, NJ, USA",USA,1,40.2852895,-74.333495
+"Manhasset, NY, USA",USA,1,40.786702,-73.6967338
+"Manhattan Beach, CA, USA",USA,1,33.8872777,-118.4104324
+"Manitou, MB, Canada",Canada,1,49.2398981,-98.5388162
+"Manitouwadge, ON, Canada",Canada,1,49.121541,-85.8384058
+"Mankato, MN, USA",USA,1,44.1658533,-94.0028013
+"Manly, Australia",Australia,1,-33.7971937,151.2879845
+"Mannedorf, Switzerland",Switzerland,1,47.253174,8.6918153
+"Manor, SK, Canada",Canada,1,49.6048061,-102.0858736
+"Manotick, ON, Canada",Canada,1,45.2264407,-75.6860593
+"Mantta, Finland",Finland,1,62.0826146,24.4504322
+"Maplewood, MN, USA",USA,1,45.0082216,-93.0456985
+"Maracaibo, Venezuela",Venezuela,1,10.6498095,-71.6443596
+"Marblehead, MA, USA",USA,1,42.500096,-70.8578253
+"Mariapolis, MB, Canada",Canada,1,49.3606932,-98.9888249
+"Maribor, Slovenia",Slovenia,1,46.5576439,15.6455854
+"Mariefred, Sweden",Sweden,1,59.2599454,17.2229487
+"Mariestad, Sweden",Sweden,1,58.7093225,13.8228754
+"Markdale, ON, Canada",Canada,1,44.31869,-80.648575
+"Marlborough, MA, USA",USA,1,42.3468589,-71.5525188
+"Marmora, ON, Canada",Canada,1,44.4827759,-77.6823297
+"Marquette, MI, USA",USA,1,46.4481521,-87.6305899
+"Marsta, Sweden",Sweden,1,59.6252383,17.8515672
+"Martin, Czech Republic",Czech Republic,1,48.7675337,14.7254134
+"Marysville, BC, Canada",Canada,1,49.638703,-115.9593908
+"Maryville, France",France,1,47.7798837,2.1971899
+"Mascouche, QC, Canada",Canada,1,45.7453521,-73.6005591
+"Masham, QC, Canada",Canada,1,45.6402189,-76.0372354
+"Mason, QC, Canada",Canada,1,49.0065272,-70.7301645
+"Massawippi, QC, Canada",Canada,1,45.1824181,-71.9897484
+"Massey, ON, Canada",Canada,1,46.2126468,-82.0771831
+"Matawan, NJ, USA",USA,1,40.41483,-74.2295891
+"Matheson, ON, Canada",Canada,1,48.5354964,-80.464681
+"Mattawa, ON, Canada",Canada,1,46.317296,-78.703308
+"Mattawan, MI, USA",USA,1,42.2094839,-85.784453
+"Maykop, Russia",Russia,1,44.6062079,40.104053
+"Mayo, QC, Canada",Canada,1,45.6634129,-75.345801
+"McCreary, MB, Canada",Canada,1,50.7525914,-99.4213426
+"Melbourne, FL, USA",USA,1,28.0785034,-80.6077908
+"Melita, MB, Canada",Canada,1,49.2691138,-100.9904623
+"Mequon, WI, USA",USA,1,43.2219088,-87.9822969
+"Merrimack, NH, USA",USA,1,43.3260376,-71.6854725
+"Mezhdurechensk, Russia",Russia,1,53.6863763,88.0703443
+"Miami, FL, USA",USA,1,25.7741566,-80.1935973
+"Michel, BC, Canada",Canada,1,53.570651,-126.4791376
+"Midale, SK, Canada",Canada,1,49.3947073,-103.4113919
+"Middleton, NS, Canada",Canada,1,44.942431,-65.0680746
+"Milestone, SK, Canada",Canada,1,49.9927904,-104.5142534
+"Milford, MA, USA",USA,1,42.1428913,-71.5164618
+"Millersville, MD, USA",USA,1,39.0595542,-76.6480219
+"Millgrove, ON, Canada",Canada,1,43.336416,-79.958496
+"Milo, AB, Canada",Canada,1,50.5685205,-112.8838695
+"Mine Centre, ON, Canada",Canada,1,48.7649666,-92.618367
+"Mineola, NY, USA",USA,1,40.7492678,-73.6406845
+"Minesing, ON, Canada",Canada,1,44.4429839,-79.8423725
+"Minooka, IL, USA",USA,1,41.4553084,-88.2617305
+"Miramichi, NB, Canada",Canada,1,47.0298004,-65.4704158
+"Missouri City, TX, USA",USA,1,29.6185669,-95.5377215
+"Mistawasis, SK, Canada",Canada,1,53.1733863,-106.8063018
+"Moers, Germany",Germany,1,51.451283,6.62843
+"Molnlycke, Sweden",Sweden,1,57.6583613,12.1135762
+"Montmartre, SK, Canada",Canada,1,50.2176095,-103.4483712
+"Montmorency, QC, Canada",Canada,1,45.5584361,-73.7216312
+"Montrose, BC, Canada",Canada,1,49.0784097,-117.5928616
+"Moose Factory, ON, Canada",Canada,1,51.2602173,-80.6032819
+"Mora, Sweden",Sweden,1,61.0086787,14.5442519
+"Moravska Trebova, Czech Republic",Czech Republic,1,49.7581546,16.6641472
+"Moray, Scotland",Scotland,1,57.416667,-3.25
+"Morden, MB, Canada",Canada,1,49.1927055,-98.1014567
+"Morges, Switzerland",Switzerland,1,46.5093268,6.498317
+"Morristown, NJ, USA",USA,1,40.7970382,-74.4809868
+"Morrum, Sweden",Sweden,1,56.1928572,14.7532545
+"Morweena, MB, Canada",Canada,1,50.9934677,-97.4087843
+"Moshi, Tanzania",Tanzania,1,-3.3486456000000002,37.3435249
+"Mound, MN, USA",USA,1,44.9366295,-93.6660719
+"Mounds View, MN, USA",USA,1,45.1068949,-93.2075931
+"Mount Albert, ON, Canada",Canada,1,44.1368646,-79.3085305
+"Mount Brydges, ON, Canada",Canada,1,42.9097165,-81.4957317
+"Mount Clemens, MI, USA",USA,1,42.5972563,-82.8779754
+"Mount St. Dennis, ON, Canada",Canada,1,43.6883621,-79.4892152
+"Mt. Brydges, ON, Canada",Canada,1,42.9097165,-81.4957317
+"Mt. Clemens, MI, USA",USA,1,42.5972563,-82.8779754
+"Muenster, SK, Canada",Canada,1,52.1921406,-104.9999067
+"Munkedal, Sweden",Sweden,1,58.55,11.666667
+"Munsingen, Switzerland",Switzerland,1,46.8739775,7.5631943
+"Murdochville, QC, Canada",Canada,1,48.9602792,-65.4958325
+"Murray Bay, QC, Canada",Canada,1,45.7450087,-73.6337458
+"Murray Harbour, PE, Canada",Canada,1,46.0040525,-62.5231729
+"Murray River, PE, Canada",Canada,1,46.016957,-62.6116863
+"Muskegon, MI, USA",USA,1,43.2341813,-86.2483921
+"Muurame, Finland",Finland,1,62.1289925,25.6749474
+"Myjava, Slovakia",Slovakia,1,48.7540345,17.5650224
+"Myrnam, AB, Canada",Canada,1,53.6589875,-111.2279257
+"Naantali, Finland",Finland,1,60.4688687,22.0291149
+"Naberezhnye Chelny, Russia",Russia,1,55.7419774,52.399207
+"Nachod, Czech Republic",Czech Republic,1,50.4167025,16.1622871
+"Naicam, SK, Canada",Canada,1,52.4165073,-104.4963287
+"Nakusp, BC, Canada",Canada,1,50.2396111,-117.7974031
+"Nalibaki, Belarus",Belarus,1,53.761993,26.471273
+"Nanticoke, ON, Canada",Canada,1,42.8100954,-80.0728118
+"Naples, FL, USA",USA,1,26.1421976,-81.7942944
+"Narva, Estonia",Estonia,1,59.3767458,28.1919315
+"Nassjo, Sweden",Sweden,1,57.6530377,14.6981554
+"Naters, Switzerland",Switzerland,1,46.3242941,7.9884278
+"Natick, MA, USA",USA,1,42.2836393,-71.346996
+"Naughton, ON, Canada",Canada,1,46.4032744,-81.1878264
+"Netherhill, SK, Canada",Canada,1,51.4694527,-108.8569424
+"New Brunswick, NJ, USA",USA,1,40.4936119,-74.4436416
+"New Canaan, CT, USA",USA,1,41.146763,-73.4948446
+"New Hartford, NY, USA",USA,1,43.073108,-75.2879252
+"New Hope, MN, USA",USA,1,45.0347176,-93.3861037
+"New Lenox, IL, USA",USA,1,41.5119761,-87.9656098
+"New Rochelle, NY, USA",USA,1,40.9115386,-73.7826363
+"New Toronto, ON, Canada",Canada,1,43.6007625,-79.505264
+"Newport News, VA, USA",USA,1,36.9775016,-76.42977
+"Newport, RI, USA",USA,1,41.4899827,-71.3137707
+"Newton Robinson, ON, Canada",Canada,1,44.1262562,-79.6852938
+"Newton, MA, USA",USA,1,42.3300435,-71.194862
+"Newtown, CT, USA",USA,1,41.4134764,-73.3086445
+"Niagara-on-the-Lake, ON, Canada",Canada,1,43.2556116,-79.0723264
+"Nizhny Novgorod, Russia",Russia,1,56.3264816,44.0051395
+"Njurunda, Sweden",Sweden,1,62.2373632,17.4632778
+"Noormarkku, Finland",Finland,1,61.5927219,21.8684382
+"Nordingra, Sweden",Sweden,1,62.9248666,18.3919597
+"Norfolk, VA, USA",USA,1,36.8493695,-76.2899539
+"Norrkoping, Sweden",Sweden,1,58.5909124,16.1903511
+"Norrtalje, Sweden",Sweden,1,59.766667,18.7
+"North Barrington, IL, USA",USA,1,42.207802,-88.1406349
+"North Bellmore, NY, USA",USA,1,40.6892935,-73.5369169
+"North Billerica, MA, USA",USA,1,42.5852621,-71.2877645
+"North Branch, MN, USA",USA,1,45.5113515,-92.9802176
+"North Chelmsford, MA, USA",USA,1,42.6389798,-71.3828403
+"North Gower, ON, Canada",Canada,1,45.1332585,-75.7165345
+"North Pole, AK, USA",USA,1,64.750997,-147.349319
+"North Reading, MA, USA",USA,1,42.5750939,-71.0786653
+"North Ridgeville, OH, USA",USA,1,41.3894905,-82.0190321
+"North Smithfield, RI, USA",USA,1,41.9667652,-71.5495071
+"Northampton, MA, USA",USA,1,42.3178989,-72.6311006
+"Northbrook, IL, USA",USA,1,42.128704,-87.8265089
+"Northport, NY, USA",USA,1,40.9009595,-73.343167
+"Northridge, CA, USA",USA,1,34.2345615,-118.5369316
+"Northville, MI, USA",USA,1,42.4310816,-83.4832339
+"Norwell, MA, USA",USA,1,42.1617681,-70.7939307
+"Norwood, ON, Canada",Canada,1,44.3818091,-77.9798045
+"Notre-Dame-de-Lourdes, MB, Canada",Canada,1,49.5290019,-98.5566596
+"Notre-Dame-de-la-Salette, QC, Canada",Canada,1,45.768002,-75.584564
+"Nousiainen, Finland",Finland,1,60.5992408,22.0840745
+"Nouvelle, QC, Canada",Canada,1,48.1365262,-66.3096846
+"Nove Mesto na Morave, Czech Republic",Czech Republic,1,49.5616916,16.0744185
+"Nove Mesto nad Metuji, Czech Republic",Czech Republic,1,50.3442064,16.1512997
+"Nove Zamky, Slovakia",Slovakia,1,47.9861843,18.1631415
+"Novgorod, Russia",Russia,1,58.5609587,31.2809006
+"Nuernberg, Germany",Germany,1,49.453872,11.077298
+"Nun's Island, QC, Canada",Canada,1,45.4686014,-73.5541261
+"Nuremberg, Germany",Germany,1,49.453872,11.077298
+"Nymburk, Czech Republic",Czech Republic,1,50.1852696,15.0414543
+"O'Fallon, MO, USA",USA,1,38.7902503,-90.7033292
+"Oak Lake, MB, Canada",Canada,1,49.6810162,-100.7416933
+"Oakengates, England",England,1,52.6952242,-2.4520711
+"Oakland, CA, USA",USA,1,37.8044557,-122.271356
+"Oakville, MB, Canada",Canada,1,49.9306351,-97.9976543
+"Oberbalm, Switzerland",Switzerland,1,46.8730782,7.4026366
+"Ocala, FL, USA",USA,1,29.1871986,-82.1400923
+"Odenton, MD, USA",USA,1,39.0657788,-76.6876169
+"Odessa, Russia",Russia,1,55.7544455,37.6156865
+"Odessa, SK, Canada",Canada,1,50.2834867,-103.7857921
+"Odintsovo, Russia",Russia,1,55.678223,37.2668096
+"Okene, Nigeria",Nigeria,1,7.4610396,6.398817
+"Olds, AB, Canada",Canada,1,51.7923735,-114.1130367
+"Oliver, BC, Canada",Canada,1,49.183333,-119.55
+"Olofstrom, Sweden",Sweden,1,56.3014882,14.5161735
+"Olomuc, Czech Republic",Czech Republic,1,49.5940567,17.251143
+"Oneida, NY, USA",USA,1,43.2144051,-75.4039155
+"Onoway, AB, Canada",Canada,1,53.7038575,-114.1910354
+"Opocno, Czech Republic",Czech Republic,1,50.2676907,16.1145157
+"Opole, Poland",Poland,1,50.6787929,17.9298844
+"Orby, Sweden",Sweden,1,59.2718469,18.0271185
+"Orel, Russia",Russia,1,52.9709262,36.0642127
+"Orenburg, Russia",Russia,1,51.7671248,55.0978517
+"Orsk, Russia",Russia,1,51.2305015,58.4738015
+"Ortonville, MI, USA",USA,1,42.8522506,-83.4430002
+"Osby, Sweden",Sweden,1,56.416667,14.083333
+"Osgoode, ON, Canada",Canada,1,43.6508016,-79.3865409
+"Oshweken, ON, Canada",Canada,1,43.08283,-80.1131589
+"Osterhaninge, Sweden",Sweden,1,59.1274727,18.1666192
+"Ostrov Nad Ohri, Czech Republic",Czech Republic,1,50.3061911,12.9390017
+"Ostrov nad Ohri, Czech Republic",Czech Republic,1,50.3061911,12.9390017
+"Oswego, NY, USA",USA,1,43.4112973,-76.1279841
+"Oudolen, Czech Republic",Czech Republic,1,49.6593287,15.7556482
+"Oulunsalo, Finland",Finland,1,64.9333388,25.4166674
+"Outlook, SK, Canada",Canada,1,51.4866125,-107.0610496
+"Outokumpu, Finland",Finland,1,62.7255326,29.0186972
+"Outremont, QC, Canada",Canada,1,45.5186167,-73.6068856
+"Oviedo, FL, USA",USA,1,28.6702526,-81.2084941
+"Oxford, NS, Canada",Canada,1,45.7328222,-63.8593419
+"Ozieri, Italy",Italy,1,40.5859373,9.0010431
+"Paddockwood, SK, Canada",Canada,1,53.5073657,-105.563887
+"Padoue, QC, Canada",Canada,1,48.577737,-67.9882011
+"Painesdale, MI, USA",USA,1,47.0432617,-88.6723492
+"Paisley, ON, Canada",Canada,1,44.3060195,-81.2726203
+"Paisley, Scotland",Scotland,1,55.8455828,-4.4239646
+"Palkane, Finland",Finland,1,61.3371322,24.2649422
+"Palmarolle, QC, Canada",Canada,1,48.6638656,-79.2000487
+"Palmyra, PA, USA",USA,1,40.3088578,-76.5932369
+"Palos Heights, IL, USA",USA,1,41.6681632,-87.7962812
+"Papineauville, QC, Canada",Canada,1,45.61884,-75.020142
+"Paris, France",France,1,48.8588897,2.320041
+"Parkano, Finland",Finland,1,62.0105997,23.01869
+"Parkland, FL, USA",USA,1,26.3100794,-80.23727
+"Parrsboro, NS, Canada",Canada,1,45.4054809,-64.326059
+"Partizanske, Slovakia",Slovakia,1,48.6265223,18.371762
+"Pasadena, CA, USA",USA,1,34.1476507,-118.144155
+"Pavlodar, Kazakhstan",Kazakhstan,1,51.8111545,76.4285287
+"Pearl River, NY, USA",USA,1,41.0556645,-74.0076276
+"Pembroke, MA, USA",USA,1,42.0714907,-70.8092074
+"Pembroke, NH, USA",USA,1,43.1475795,-71.458043
+"Peribonka, QC, Canada",Canada,1,48.7664009,-72.0527581
+"Pictou, NS, Canada",Canada,1,45.5855373,-62.7283219
+"Pieksamaki, Finland",Finland,1,62.3016121,27.1634769
+"Pierceland, SK, Canada",Canada,1,54.340278,-109.776944
+"Pierreville, QC, Canada",Canada,1,46.070134,-72.810173
+"Pietarsaari, Finland",Finland,1,63.6744703,22.7055385
+"Piikkio, Finland",Finland,1,60.4254332,22.5130886
+"Pincher Creek, AB, Canada",Canada,1,49.485667,-113.9502919
+"Pinckney, MI, USA",USA,1,42.4567013,-83.9463359
+"Pincourt, QC, Canada",Canada,1,45.371202,-73.986053
+"Pine Falls, MB, Canada",Canada,1,50.5644747,-96.2175535
+"Pitt Meadows, BC, Canada",Canada,1,49.2207623,-122.690153
+"Plainfield, NJ, USA",USA,1,40.6201412,-74.4222416
+"Plana, Czech Republic",Czech Republic,1,48.9435942,14.4527645
+"Plattsburgh, NY, USA",USA,1,44.6960855,-73.4542915
+"Plattsville, ON, Canada",Canada,1,43.3032583,-80.6215757
+"Plenty, SK, Canada",Canada,1,51.7828888,-108.6477388
+"Plessisville, QC, Canada",Canada,1,46.219515,-71.771965
+"Plover, WI, USA",USA,1,44.4563579,-89.544007
+"Plymouth, England",England,1,50.3714122,-4.1424451
+"Plymouth, MI, USA",USA,1,42.3712,-83.4675021
+"Pointe Gatineau, QC, Canada",Canada,1,45.4733181,-75.6728979
+"Pont-Rouge, QC, Canada",Canada,1,46.756563,-71.697807
+"Ponteix, SK, Canada",Canada,1,49.7459773,-107.4880937
+"Poplar Point, MB, Canada",Canada,1,50.0571267,-97.9760166
+"Poprad, Czech Republic",Czech Republic,1,49.9722557,16.3971134
+"Poprad, Slovakia",Slovakia,1,49.0541521,20.2976401
+"Porcupine Plain, SK, Canada",Canada,1,52.5991278,-103.255577
+"Porcupine, ON, Canada",Canada,1,48.4940832,-81.1676359
+"Port Alice, BC, Canada",Canada,1,50.426893,-127.488098
+"Port Dalhousie, ON, Canada",Canada,1,43.1988905,-79.2726179
+"Port Elgin, NB, Canada",Canada,1,46.0533362,-64.092566
+"Port Elgin, ON, Canada",Canada,1,44.4358826,-81.3889458
+"Port Hardy, BC, Canada",Canada,1,50.7244402,-127.4976081
+"Port Hawkesbury, NS, Canada",Canada,1,45.6180851,-61.3574589
+"Port Moody, BC, Canada",Canada,1,49.2821981,-122.8293554
+"Port-Au-Prince, Haiti",Haiti,1,18.547327,-72.3395928
+"Portland, ME, USA",USA,1,43.6573605,-70.2586618
+"Potsdam, Germany",Germany,1,52.4009309,13.0591397
+"Potsdam, NY, USA",USA,1,44.6697996,-74.9813349
+"Povazska Bystrica, Slovakia",Slovakia,1,49.1159316,18.4469936
+"Powassan, ON, Canada",Canada,1,46.0814468,-79.3611147
+"Powell, OH, USA",USA,1,40.1578403,-83.0751869
+"Prelate, SK, Canada",Canada,1,50.8536853,-109.4056982
+"Prerov, Czech Republic",Czech Republic,1,49.4553775,17.4508621
+"Princeton, BC, Canada",Canada,1,49.460459,-120.507973
+"Princeton, NJ, USA",USA,1,40.3496953,-74.6597376
+"Prokopyevsk, Russia",Russia,1,53.8879117,86.7492072
+"Prostejov, Czech Republic",Czech Republic,1,49.4721467,17.1117979
+"Pskov, Russia",Russia,1,57.8173923,28.3343465
+"Punnichy, SK, Canada",Canada,1,51.3714106,-104.2978988
+"Puslinch, ON, Canada",Canada,1,43.4771775,-80.113735
+"Queens, NY, USA",USA,1,40.7135078,-73.8283132
+"Quispamsis, NB, Canada",Canada,1,45.4287577,-65.9551378
+"Radisson, SK, Canada",Canada,1,52.4610242,-107.3950488
+"Radomsko, Poland",Poland,1,51.0674769,19.4446109
+"Radville, SK, Canada",Canada,1,49.4629996,-104.2947907
+"Rahachow, Belarus",Belarus,1,53.0820031,30.0531983
+"Raisio, Finland",Finland,1,60.485513,22.1692664
+"Rama, SK, Canada",Canada,1,51.7601506,-102.9979154
+"Rancho Cucamonga, CA, USA",USA,1,34.1033192,-117.575173
+"Randolph, ON, Canada",Canada,1,46.4915197,-80.93644
+"Rantasalmi, Finland",Finland,1,62.063703,28.3045075
+"Ravensworth, ON, Canada",Canada,1,45.579342,-79.1348764
+"Reading, MA, USA",USA,1,42.5260297,-71.1020262
+"Recife, Brazil",Brazil,1,-8.0584933,-34.8848193
+"Red Bank, NJ, USA",USA,1,40.3470543,-74.0643065
+"Red Lake, MN, USA",USA,1,47.8605178,-96.0988343
+"Redvers, SK, Canada",Canada,1,49.5727567,-101.6979903
+"Redwater, AB, Canada",Canada,1,53.9527743,-113.1124871
+"Reet, Belgium",Belgium,1,51.1017566,4.4129446
+"Revere, MA, USA",USA,1,42.4084302,-71.0119948
+"Rexdale, ON, Canada",Canada,1,43.7213619,-79.5655129
+"Richelieu, QC, Canada",Canada,1,45.4439193,-73.2488055
+"Richland, WA, USA",USA,1,46.2804298,-119.275205
+"Richmond, ON, Canada",Canada,1,45.1943303,-75.8386342
+"Richmond, QC, Canada",Canada,1,45.6629572,-72.1411906
+"Ridgefield, CT, USA",USA,1,41.2814842,-73.4981792
+"Ridgeway, ON, Canada",Canada,1,42.8820503,-79.0490304
+"Ridgewood, NJ, USA",USA,1,40.9796683,-74.1194403
+"Riihimaki, Finland",Finland,1,60.7385197,24.7730514
+"Rimbey, AB, Canada",Canada,1,52.6433888,-114.2297319
+"River Falls, WI, USA",USA,1,44.8596498,-92.6255048
+"Riverside, CT, USA",USA,1,41.0314897,-73.5833604
+"Riverton, MB, Canada",Canada,1,50.9970846,-96.9986993
+"Riviere-du-Loup, QC, Canada",Canada,1,47.8541229,-69.5333016
+"Roanoke, VA, USA",USA,1,37.270973,-79.9414313
+"Robbinsdale, MN, USA",USA,1,45.0313156,-93.3395843
+"Robbinsville, NJ, USA",USA,1,40.2162828,-74.619833
+"Robertsonville, QC, Canada",Canada,1,46.1414041,-71.2152588
+"Roberval, QC, Canada",Canada,1,48.514785,-72.224808
+"Rochester, NH, USA",USA,1,43.3050758,-70.9753978
+"Rockford, IL, USA",USA,1,42.2713945,-89.093966
+"Rocky River, OH, USA",USA,1,41.4756031,-81.8393034
+"Rogers, MN, USA",USA,1,45.1888596,-93.5524563
+"Rokycany, Czech Republic",Czech Republic,1,49.7428813,13.594778
+"Rolla, MO, USA",USA,1,37.9509324,-91.7708076
+"Rosemere, QC, Canada",Canada,1,45.6323155,-73.8052338
+"Rosenheim, Germany",Germany,1,47.8557873,12.1272983
+"Rosersberg, Sweden",Sweden,1,59.5778633,17.8853319
+"Rosetown, SK, Canada",Canada,1,51.554815,-107.9912859
+"Roubaix, France",France,1,50.6915893,3.1741734
+"Rouen, France",France,1,49.4404591,1.0939658
+"Rouyn, QC, Canada",Canada,1,48.2382498,-79.0201438
+"Rumson, NJ, USA",USA,1,40.372054,-73.9990269
+"Ruse, Bulgaria",Bulgaria,1,43.8480413,25.9542057
+"Ruthven, ON, Canada",Canada,1,42.0520969,-82.6705741
+"Rye, NY, USA",USA,1,40.9821371,-73.6840902
+"Sackville, NB, Canada",Canada,1,45.9079431,-64.3723708
+"Saginaw, MN, USA",USA,1,46.8591081,-92.4443566
+"Saguenay, QC, Canada",Canada,1,48.405959,-71.069183
+"Saint Catharines, ON, Canada",Canada,1,43.1579812,-79.2441003
+"Saint Lazare, MB, Canada",Canada,1,50.45,-101.3
+"Saint Thomas, ON, Canada",Canada,1,42.1058603,-83.0835204
+"Saint-Agapit, QC, Canada",Canada,1,46.562873,-71.435165
+"Saint-Alexis-des-Monts, QC, Canada",Canada,1,46.462694,-73.143196
+"Saint-Antoine-de-Pontbriand, QC, Canada",Canada,1,NA,NA
+"Saint-Augustin, QC, Canada",Canada,1,51.2252759,-58.6494821
+"Saint-Emile, QC, Canada",Canada,1,46.87162,-71.3374892
+"Saint-Eustache, QC, Canada",Canada,1,45.5646052,-73.8929714
+"Saint-Fabien, QC, Canada",Canada,1,48.2950199,-68.8678927
+"Saint-Felicien, QC, Canada",Canada,1,48.654232,-72.448654
+"Saint-Francois-d'Assise, QC, Canada",Canada,1,47.9829945,-67.1651234
+"Saint-Georges, QC, Canada",Canada,1,46.122987,-70.671959
+"Saint-Georges-De-Beauce, QC, Canada",Canada,1,46.122987,-70.671959
+"Saint-Jean-sur-Richelieu, QC, Canada",Canada,1,45.3056879,-73.2533401
+"Saint-Leonard, QC, Canada",Canada,1,45.58671,-73.5969488
+"Saint-Martin-d'Heres, France",France,1,45.1836683,5.75448
+"Saint-Narcisse, QC, Canada",Canada,1,46.564054,-72.472
+"Saint-Odilon, QC, Canada",Canada,1,46.358065,-70.675735
+"Saint-Prime, QC, Canada",Canada,1,48.5933833,-72.3357771
+"Saint-Remi-de-Tingwick, QC, Canada",Canada,1,45.863955,-71.822433
+"Sainte-Anne-de-la-Perade, QC, Canada",Canada,1,46.5714957,-72.2086114
+"Sainte-Elisabeth, QC, Canada",Canada,1,46.0967306,-73.355276
+"Sainte-Justine, QC, Canada",Canada,1,46.410405,-70.348206
+"Sainte-Marie, QC, Canada",Canada,1,46.450395,-71.030731
+"Sainte-Marie-de-Kent, NB, Canada",Canada,1,46.408299,-64.8569065
+"Sainte-Rose, QC, Canada",Canada,1,45.625284,-73.7644249
+"Sala, Sweden",Sweden,1,59.9202268,16.6056444
+"Salaberry-de-Valleyfield, QC, Canada",Canada,1,45.2555575,-74.1316718
+"Salem, NJ, USA",USA,1,39.5980987,-75.3488201
+"Salisbury, MA, USA",USA,1,42.8418855,-70.8602328
+"Samara, Russia",Russia,1,53.1956255,50.1014927
+"San Francisco, CA, USA",USA,1,37.7879363,-122.4075201
+"San Ramon, CA, USA",USA,1,37.7648021,-121.9544387
+"Sanbornville, NH, USA",USA,1,43.5539309,-71.0304858
+"Sandon, BC, Canada",Canada,1,49.9761907,-117.229494
+"Sandy, UT, USA",USA,1,40.5710454,-111.8953815
+"Saratov, Russia",Russia,1,51.530018,46.034683
+"Sarawak Township, ON, Canada",Canada,1,NA,NA
+"Sault Ste-Marie, ON, Canada",Canada,1,46.5126554,-84.3330301
+"Savage, MN, USA",USA,1,44.7779041,-93.3356204
+"Sayabec, QC, Canada",Canada,1,48.566157,-67.688141
+"Sceptre, SK, Canada",Canada,1,50.8618041,-109.2683776
+"Schaffhausen, Switzerland",Switzerland,1,47.6960491,8.634513
+"Schomberg, ON, Canada",Canada,1,44.001387,-79.682541
+"Schwenningen, Germany",Germany,1,48.0657049,8.5361259
+"Sechelt, BC, Canada",Canada,1,49.4721147,-123.763124
+"Seinajoki, Finland",Finland,1,62.790666,22.8397378
+"Selz, Ukraine",Ukraine,1,46.6618481,29.9760782
+"Semans, SK, Canada",Canada,1,51.4059425,-104.7303424
+"Sementina, Switzerland",Switzerland,1,46.1827458,8.9925576
+"Seneca Township, ON, Canada",Canada,1,49.1273873,-85.8331383
+"Sergiyev Posad, Russia",Russia,1,56.3153284,38.1359898
+"Seria, Brunei",Brunei,1,4.6141594,114.3301832
+"Serov, Russia",Russia,1,59.6051267,60.5733483
+"Sete, France",France,1,43.4014434,3.6959771
+"Sewell, NJ, USA",USA,1,39.770683,-75.1438863
+"Sexsmith, AB, Canada",Canada,1,55.3497014,-118.7838578
+"Sharon, ON, Canada",Canada,1,44.1022535,-79.4319883
+"Shediac, NB, Canada",Canada,1,46.219454,-64.5492146
+"Shelburne, ON, Canada",Canada,1,44.078473,-80.203431
+"Shelekhov, Russia",Russia,1,52.2097478,104.097683
+"Sherridon, MB, Canada",Canada,1,55.116667,-101.083333
+"Sherwood, OR, USA",USA,1,45.3569315,-122.8403744
+"Shippegan, NB, Canada",Canada,1,47.8567341,-64.5996309
+"Shorewood, MN, USA",USA,1,44.930272,-93.5448303
+"Shuswap, BC, Canada",Canada,1,50.538892,-116.008185
+"Siikajoki, Finland",Finland,1,64.7116869,24.978369
+"Siilinjarvi, Finland",Finland,1,63.0744197,27.6589448
+"Silton, SK, Canada",Canada,1,50.8067831,-104.9092813
+"Silver Spring, MD, USA",USA,1,38.9997621,-77.0240371
+"Sioux Falls, SD, USA",USA,1,43.5476008,-96.7293629
+"Sjalevad, Sweden",Sweden,1,63.3355733,18.5325393
+"Skara, Sweden",Sweden,1,58.3846075,13.4397675
+"Skead, ON, Canada",Canada,1,46.6667476,-80.7497967
+"Skokie, IL, USA",USA,1,42.0262972,-87.7521069
+"Skovde, Sweden",Sweden,1,58.3896329,13.8456344
+"Slate Hill, NY, USA",USA,1,41.3909274,-74.4765471
+"Slite, Sweden",Sweden,1,57.7072207,18.8019196
+"Slough, United Kingdom",United Kingdom,1,51.5111014,-0.5940682
+"Smogen, Sweden",Sweden,1,58.3536447,11.2261188
+"Smrcek, Czech Republic",Czech Republic,1,49.867087,15.8885965
+"Snow Lake, MB, Canada",Canada,1,54.881347,-100.020905
+"Snowflake, MB, Canada",Canada,1,49.0469402,-98.6602218
+"Sokolce, Slovakia",Slovakia,1,47.8533391,17.827214
+"Sollentuna, Sweden",Sweden,1,59.4293164,17.9500556
+"Sollested, Denmark",Denmark,1,54.8124093,11.2709858
+"Somerville, MA, USA",USA,1,42.3875968,-71.0994968
+"Sonkajarvi, Finland",Finland,1,63.66907,27.5232488
+"Sorel-Tracy, QC, Canada",Canada,1,46.0435235,-73.1165159
+"Sound Beach, NY, USA",USA,1,40.9606885,-72.9729007
+"South Bend, IN, USA",USA,1,41.6833813,-86.2500066
+"South Hull, QC, Canada",Canada,1,45.3972674,-75.8039895
+"South Lyon, MI, USA",USA,1,42.4606345,-83.6514547
+"Southampton, NJ, USA",USA,1,39.931466,-74.7380885
+"Southfield, MI, USA",USA,1,42.4733689,-83.2218731
+"Speers, SK, Canada",Canada,1,52.7065402,-107.558713
+"Spisska Nova Ves, Slovakia",Slovakia,1,48.9435344,20.562964
+"Split, Croatia",Croatia,1,43.5116383,16.4399659
+"Spy Hill, SK, Canada",Canada,1,50.603596,-101.6866847
+"St-Hyacinthe, QC, Canada",Canada,1,45.627484,-72.940636
+"St-Jean-Richelieu, QC, Canada",Canada,1,45.3048682,-73.2505242
+"St-Joseph-de-Beauce, QC, Canada",Canada,1,46.310181,-70.877953
+"St-Martin-d'Heres, France",France,1,45.1836683,5.75448
+"St-Peter's, NS, Canada",Canada,1,45.6560326,-60.875068
+"St. Adolphe, MB, Canada",Canada,1,49.677499,-97.11228
+"St. Albans, VT, USA",USA,1,44.8107911,-73.0833607
+"St. Albert, ON, Canada",Canada,1,45.2550212,-75.1221013
+"St. Andrews, MB, Canada",Canada,1,50.0714,-96.9833
+"St. Apollinaire, QC, Canada",Canada,1,46.61195,-71.513786
+"St. Bonaventure, QC, Canada",Canada,1,45.964754,-72.68383
+"St. Charles, IL, USA",USA,1,41.9139808,-88.3128183
+"St. Charles, MB, Canada",Canada,1,49.8674257,-97.2854693
+"St. Charles, MO, USA",USA,1,38.7877791,-90.6747372
+"St. Clair Shores, MI, USA",USA,1,42.4969652,-82.8890965
+"St. Clair, MI, USA",USA,1,42.9426715,-82.6283554
+"St. Ephrem, QC, Canada",Canada,1,46.059891,-70.953827
+"St. Esprit, QC, Canada",Canada,1,45.898371,-73.666077
+"St. Etienne, QC, Canada",Canada,1,48.2010584,-69.9606673
+"St. Gallen, Switzerland",Switzerland,1,47.425618,9.3762397
+"St. Georges Beauce, QC, Canada",Canada,1,46.1219402,-70.6765239
+"St. Hyacinthe, QC, Canada",Canada,1,45.627484,-72.940636
+"St. Isidore, ON, Canada",Canada,1,45.38561,-74.9057344
+"St. Janvier, QC, Canada",Canada,1,45.705096,-73.9299104
+"St. Jean, QC, Canada",Canada,1,45.2129063,-73.2194252
+"St. Louis Park, MN, USA",USA,1,44.9475726,-93.3569023
+"St. Malo, MB, Canada",Canada,1,49.314695,-96.9538228
+"St. Malo, QC, Canada",Canada,1,45.1997482,-71.5001662
+"St. Mary's, ON, Canada",Canada,1,43.4369937,-80.5048295
+"St. Paul's, ON, Canada",Canada,1,48.3789392,-89.2496349
+"St. Paul, AB, Canada",Canada,1,53.9876467,-111.291114
+"St. Raymond, QC, Canada",Canada,1,46.889058,-71.835136
+"St. Stephen, NB, Canada",Canada,1,45.192667899999996,-67.2760077
+"St.-Francois de Madawaska, NB, Canada",Canada,1,47.2430821,-68.7024737
+"St.-Gabriel-de-Brandon, QC, Canada",Canada,1,46.2833708,-73.3608177
+"St.Catharines, ON, Canada",Canada,1,43.1579812,-79.2441003
+"St.John, NB, Canada",Canada,1,45.272764,-66.0627914
+"Star City, SK, Canada",Canada,1,52.8634517,-104.3326381
+"Stara Lubovna, Slovakia",Slovakia,1,49.3001533,20.6889231
+"Ste-Agathe-des-Monts, QC, Canada",Canada,1,46.046072,-74.279938
+"Ste-Catherine, QC, Canada",Canada,1,45.40049,-73.576257
+"Ste-Marie-du-Beauce, QC, Canada",Canada,1,46.4793195,-70.8715211
+"Ste-Methode-De-Frontenac, QC, Canada",Canada,1,46.0779142,-71.2006336
+"Ste. Rose, MB, Canada",Canada,1,51.0591249,-99.5194226
+"Ste.Anne des Plaines, QC, Canada",Canada,1,45.76417,-73.818855
+"Stellarton, NS, Canada",Canada,1,45.5574527,-62.6591139
+"Stenungsund, Sweden",Sweden,1,58.083333,11.916667
+"Sterling, MI, USA",USA,1,44.033354,-84.022772
+"Stevens Point, WI, USA",USA,1,44.5234467,-89.5844457
+"Stewart Valley, SK, Canada",Canada,1,50.596911,-107.8068222
+"Stirling, ON, Canada",Canada,1,44.2962217,-77.5473774
+"Stockport, England",England,1,53.407901,-2.160243
+"Stonewall, MB, Canada",Canada,1,50.1347338,-97.3266552
+"Stora Tuna, Sweden",Sweden,1,60.4415062,15.4976378
+"Stoughton, SK, Canada",Canada,1,49.6794164,-103.0261084
+"Stowe, VT, USA",USA,1,44.4643768,-72.6856197
+"Strasskirchen, Germany",Germany,1,48.8311567,12.7212851
+"Stratford, CT, USA",USA,1,41.1923646,-73.1304917
+"Strathmore, AB, Canada",Canada,1,51.0435486,-113.3998479
+"Stratton, ON, Canada",Canada,1,48.6851278,-94.1633302
+"Strongsville, OH, USA",USA,1,41.3144733,-81.83511
+"Sturgeon Lake, MN, USA",USA,1,46.3811622,-92.8238459
+"Summerland, BC, Canada",Canada,1,49.6,-119.666667
+"Sun Prairie, WI, USA",USA,1,43.183278,-89.2128297
+"Suomussalmi, Finland",Finland,1,64.8847582,28.9145906
+"Suonenjoki, Finland",Finland,1,62.6241926,27.1245609
+"Suoniemi, Finland",Finland,1,61.4415593,23.2153994
+"Superior, WI, USA",USA,1,46.7207737,-92.1040796
+"Surahammar, Sweden",Sweden,1,59.75,16.15
+"Sussex, England",England,1,50.9445139,-0.0622673
+"Sutton West, ON, Canada",Canada,1,44.3045535,-79.357929
+"Sverdlovsk, Ukraine",Ukraine,1,48.0811324,39.642561
+"Swalwell, AB, Canada",Canada,1,51.5585186,-113.3199689
+"Swan Hills, AB, Canada",Canada,1,54.7180657,-115.4008258
+"Swansea, ON, Canada",Canada,1,43.64494,-79.478313
+"Sydenham, ON, Canada",Canada,1,44.4107513,-76.5966864
+"Sydney Mines, NS, Canada",Canada,1,46.2340189,-60.2239916
+"Tacoma, WA, USA",USA,1,47.2455013,-122.438329
+"Taipei, Taiwan",Taiwan,1,25.0375198,121.5636796
+"Tammela, Finland",Finland,1,60.8069541,23.7587752
+"Tampa, FL, USA",USA,1,27.9449854,-82.4583107
+"Tarrytown, NY, USA",USA,1,41.0762077,-73.8587461
+"Taschereau, QC, Canada",Canada,1,48.6626064,-78.6830135
+"Tashkent, Uzbekistan",Uzbekistan,1,41.3123363,69.2787079
+"Telkwa, BC, Canada",Canada,1,54.6965165,-127.0509663
+"Teplice, Czech Republic",Czech Republic,1,50.6406644,13.8244461
+"Terrebonne, QC, Canada",Canada,1,45.6951527,-73.6350148
+"Thief River Falls, MN, USA",USA,1,48.1172301,-96.1770667
+"Thornwood, NY, USA",USA,1,41.1187775,-73.7770788
+"Thousand Oaks, CA, USA",USA,1,34.1705609,-118.8375937
+"Thurso, QC, Canada",Canada,1,45.598185,-75.246048
+"Tibro, Sweden",Sweden,1,58.416667,14.2
+"Tierp, Sweden",Sweden,1,60.333333,17.616667
+"Tilsonburg, ON, Canada",Canada,1,43.6379267,-79.7803647
+"Tintern, ON, Canada",Canada,1,45.2547771,-75.589266
+"Tofield, AB, Canada",Canada,1,53.3699134,-112.6686537
+"Togo, SK, Canada",Canada,1,51.4040026,-101.584352
+"Toijala, Finland",Finland,1,61.1706098,23.8609068
+"Toms River, NJ, USA",USA,1,39.9528389,-74.196741
+"Tomsk, Russia",Russia,1,58.6124279,82.0475315
+"Tonawanda, NY, USA",USA,1,43.020679,-78.878383
+"Tonka Bay, MN, USA",USA,1,44.9085741,-93.5930133
+"Tottenham, ON, Canada",Canada,1,44.0225014,-79.8056098
+"Tours, France",France,1,47.3900474,0.6889268
+"Tower Lake, IL, USA",USA,1,42.2319682,-88.1520248
+"Trangsund, Sweden",Sweden,1,59.2334123,18.140481
+"Transcona, MB, Canada",Canada,1,49.8987957,-97.0103126
+"Treherne, MB, Canada",Canada,1,49.6271787,-98.6979401
+"Trelleborg, Sweden",Sweden,1,55.37592,13.1461522
+"Trencin, Czech Republic",Czech Republic,1,50.4727578,14.9405586
+"Trenton, NJ, USA",USA,1,40.2203074,-74.7659
+"Trinec, Czech Republic",Czech Republic,1,49.6779212,18.6711993
+"Trochu, AB, Canada",Canada,1,51.8261473,-113.229651
+"Trondheim, Norway",Norway,1,63.4304475,10.3952118
+"Troon-Ayrshire, Scotland",Scotland,1,55.5437893,-4.663906
+"Trout Creek, ON, Canada",Canada,1,45.9870479,-79.3595127
+"Troy, MI, USA",USA,1,42.6055893,-83.1499304
+"Tuberose, SK, Canada",Canada,1,NA,NA
+"Tullinge, Sweden",Sweden,1,59.2067468,17.9051873
+"Tulsa, OK, USA",USA,1,36.1563122,-95.9927516
+"Tustin, CA, USA",USA,1,33.7458511,-117.826166
+"Tuusula, Finland",Finland,1,60.4015818,25.0295324
+"Two Hills, AB, Canada",Canada,1,53.6919793,-111.5421091
+"Tychy, Poland",Poland,1,50.126498,19.0067846
+"Tyreso, Sweden",Sweden,1,59.216667,18.333333
+"Uleaborg, Finland",Finland,1,65.0117914,25.4701973
+"Unionville, ON, Canada",Canada,1,43.851708,-79.314329
+"Upplands-Vasby, Sweden",Sweden,1,59.516667,17.916667
+"Ussuriysk, Russia",Russia,1,43.7972447,131.9520752
+"Usti Nad Labem, Czech Republic",Czech Republic,1,50.6603327,14.0381357
+"Usti-nad Labem, Czech Republic",Czech Republic,1,50.6603327,14.0381357
+"Uusikaarlepyy, Finland",Finland,1,63.5222473,22.5284347
+"Uusikaupunki, Finland",Finland,1,60.8016507,21.4086143
+"Uxbridge, England",England,1,51.5449509,-0.4816672
+"Val-Senneville, QC, Canada",Canada,1,48.1851816,-77.6553459
+"Valencia, CA, USA",USA,1,34.4131941,-118.559849
+"Vanguard, SK, Canada",Canada,1,49.9081257,-107.299645
+"Vanier, ON, Canada",Canada,1,45.437155,-75.6649896
+"Vanier, QC, Canada",Canada,1,46.8154669,-71.2570712
+"Vankleek Hill, ON, Canada",Canada,1,45.5196086,-74.6519669
+"Vannas, Sweden",Sweden,1,63.95,19.666667
+"Vastervik, Sweden",Sweden,1,57.7594186,16.6385035
+"Vaughan, ON, Canada",Canada,1,43.7941544,-79.5268023
+"Vaxjo, Sweden",Sweden,1,56.8787183,14.8094385
+"Ventspils, Latvia",Latvia,1,57.3903918,21.5635991
+"Vermillion, AB, Canada",Canada,1,50.9204404,-114.1544566
+"Verona, NJ, USA",USA,1,40.829822,-74.2401466
+"Victoria Mines, ON, Canada",Canada,1,NA,NA
+"Viersen, Germany",Germany,1,51.2562118,6.3905476
+"Vihti, Finland",Finland,1,60.4169963,24.323664
+"Vikhorevka, Russia",Russia,1,56.124722,101.171951
+"Villanova, PA, USA",USA,1,40.0385961,-75.3290464
+"Ville Ste-Pierre, QC, Canada",Canada,1,46.0253061,-73.438362
+"Ville de Vanier, QC, Canada",Canada,1,46.8118011,-71.2634948
+"Vimmerby, Sweden",Sweden,1,57.683333,15.833333
+"Vinton, QC, Canada",Canada,1,45.7862555,-76.613046
+"Virden, MB, Canada",Canada,1,49.8485092,-100.9322654
+"Vitkov, Czech Republic",Czech Republic,1,49.7758144,17.7517864
+"Vladivostok, Russia",Russia,1,43.1150678,131.8855768
+"Volgograd, Russia",Russia,1,48.7081906,44.5153353
+"Volketswil, Switzerland",Switzerland,1,47.3898617,8.690503
+"Vonda, SK, Canada",Canada,1,52.3218585,-106.0946058
+"Vorkuta, Russia",Russia,1,67.5035662,64.0627028
+"Voronezh, Russia",Russia,1,51.6800081,39.183725
+"Vsetin, Czech Republic",Czech Republic,1,49.3389775,17.9961534
+"WInnipeg, MB, Canada",Canada,1,49.8955367,-97.1384584
+"Waban, MA, USA",USA,1,42.3257351,-71.2304943
+"Waconia, MN, USA",USA,1,44.8507957,-93.7869088
+"Wakefield, RI, USA",USA,1,41.437324,-71.5014469
+"Waldheim, SK, Canada",Canada,1,52.6186624,-106.649761
+"Walkerton, ON, Canada",Canada,1,44.1331908,-81.1485894
+"Walpole, MA, USA",USA,1,42.1459019,-71.2538759
+"Ware, MA, USA",USA,1,42.2599297,-72.2397806
+"Warman, SK, Canada",Canada,1,52.320232,-106.575623
+"Warsaw, Poland",Poland,1,52.2333742,21.0711489
+"Washington, PA, USA",USA,1,40.1943798,-80.2541251
+"Waterbury, CT, USA",USA,1,41.5539066,-73.0438067
+"Waterdown, ON, Canada",Canada,1,43.3314156,-79.8956803
+"Waterford, ON, Canada",Canada,1,42.9345071,-80.290768
+"Waterloo, IA, USA",USA,1,42.498275,-92.3328743
+"Watrous, SK, Canada",Canada,1,51.675148,-105.4655393
+"Wawota, SK, Canada",Canada,1,49.9041649,-102.0241117
+"Wayne, MI, USA",USA,1,42.2682408,-83.2844172
+"Webbwood, ON, Canada",Canada,1,46.2695239,-81.8893929
+"Weesp, Netherlands",Netherlands,1,52.3072593,5.0420822
+"West Dundee, IL, USA",USA,1,42.0980812,-88.2828581
+"West Haven, CT, USA",USA,1,41.2706527,-72.9470471
+"West St. Paul, MN, USA",USA,1,44.9101545,-93.0802073
+"Westborough, MA, USA",USA,1,42.2694308,-71.6129907
+"Westhope, ND, USA",USA,1,48.909464,-101.020712
+"Westmont, IL, USA",USA,1,41.7950525,-87.9751964
+"Westport, CT, USA",USA,1,41.1414855,-73.3578955
+"Westwood, NJ, USA",USA,1,40.9912087,-74.0326395
+"Wethersfield, CT, USA",USA,1,41.7142665,-72.6525922
+"Wheat Ridge, CO, USA",USA,1,39.766098,-105.0772063
+"Wheatley, ON, Canada",Canada,1,42.0950707,-82.4630203
+"Wheaton, IL, USA",USA,1,41.8646959,-88.1101709
+"Wheeling, IL, USA",USA,1,42.138889,-87.9310944
+"White Lake, MI, USA",USA,1,42.049364,-84.2269344
+"White River, ON, Canada",Canada,1,48.5932963,-85.2844723
+"Whitefish, MT, USA",USA,1,48.4108018,-114.334624
+"Whycocomagh, NS, Canada",Canada,1,45.9740206,-61.1271652
+"Wilbraham, MA, USA",USA,1,42.1223378,-72.4313151
+"Wilkie, SK, Canada",Canada,1,52.4095307,-108.7068761
+"Williams, MN, USA",USA,1,48.768314,-94.95522
+"Williamstown, ON, Canada",Canada,1,45.1466728,-74.5795614
+"Willingboro, NJ, USA",USA,1,40.0289423,-74.8808221
+"Willingdon, AB, Canada",Canada,1,53.8272186,-112.1144684
+"Wilmette, IL, USA",USA,1,42.0719906,-87.682691
+"Wilmington, DE, USA",USA,1,39.7459468,-75.546589
+"Wingham, ON, Canada",Canada,1,43.886245,-81.31275
+"Winnipegosis, MB, Canada",Canada,1,51.6479408,-99.9272871
+"Winona, MN, USA",USA,1,44.0500054,-91.6392294
+"Winston-Salem, NC, USA",USA,1,36.0998131,-80.2440518
+"Winterthur, Switzerland",Switzerland,1,47.4991723,8.7291498
+"Winthrop, MA, USA",USA,1,42.3746525,-70.9825807
+"Woburn, MA, USA",USA,1,42.4792618,-71.1522766
+"Wolfville, NS, Canada",Canada,1,45.0914073,-64.3645102
+"Woodbury, MN, USA",USA,1,44.919896,-92.9339449
+"Woodridge, IL, USA",USA,1,41.7563344,-88.045559
+"Woodstock, NB, Canada",Canada,1,46.150346,-67.573471
+"Wrentham, MA, USA",USA,1,42.0667652,-71.3281114
+"Wynyard, SK, Canada",Canada,1,51.766667,-104.183333
+"Yakutsk, Russia",Russia,1,62.0274078,129.7319787
+"Yamaska, QC, Canada",Canada,1,46.004355,-72.913513
+"Yardley, PA, USA",USA,1,40.242506,-74.8389704
+"Yarmouth, NS, Canada",Canada,1,43.8372648,-66.1157
+"Yonkers, NY, USA",USA,1,40.9312099,-73.8987469
+"York, NY, USA",USA,1,42.8712284,-77.8852981
+"Yorkshire, England",England,1,53.9825271,-1.38525
+"Youngstown, AB, Canada",Canada,1,51.5288232,-111.206428
+"Youngstown, OH, USA",USA,1,41.1035786,-80.6520161
+"Ypsilanti, MI, USA",USA,1,42.241051,-83.6117646
+"Yuzhno-Sakhalinsk, Russia",Russia,1,46.9574273,142.727438
+"Zabrze, Poland",Poland,1,50.3142806,18.7815763
+"Zagreb, Croatia",Croatia,1,45.8130967,15.9772795
+"Zaria, Nigeria",Nigeria,1,11.0248119,7.6518533
+"Zell, Germany",Germany,1,48.3482133,8.0653343
+"Zhlobin, Belarus",Belarus,1,52.8909181,30.0368186
+"Zhukovsky, Russia",Russia,1,55.5691602,38.1168097
+"Zrenjanin, Serbia",Serbia,1,45.3802683,20.3907614
+"Zuzwil, Switzerland",Switzerland,1,47.0514104,7.4715761

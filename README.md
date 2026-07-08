@@ -34,27 +34,31 @@ Le script `Projet_Hockey_script.R` permet de :
 7. produire des cartes thématiques avec `tmap`;
 8. exporter les figures et tableaux dans le dossier `figures/`.
 
-## Structure recommandée du projet
+## Structure du projet
 
 ```text
-Projet_Hockey/
-├── Projet_Hockey_script.R
+GMQ-405_PROJET_SESSION_ANALYSE_HOCKEY/
+├── Projet_Hockey_script.R      # Script principal d'analyse
+├── install_packages.R          # Installe toutes les dépendances (à lancer une fois)
 ├── README.md
+├── .vscode/
+│   └── settings.json           # Config VS Code pour R
 ├── data/
-│   ├── GMQ-405_Hockey_Players_complet_lieux_modernes.csv
-│   └── geocodage/
-│       └── lieux_naissance_geocodes_lieux_modernes.csv
-└── figures/
+│   ├── GMQ-405_Hockey_Players_complet_lieux_modernes.csv   # Données utilisées
+│   ├── geocodage/
+│   │   └── lieux_naissance_geocodes_lieux_modernes.csv     # Cache de géocodage
+│   └── source/                 # Fichiers sources originaux (non utilisés par le script)
+└── figures/                    # Sorties générées (non versionné, recréé à l'exécution)
 ```
 
-Le dossier `figures/` est créé automatiquement par le script si celui-ci n’existe pas déjà. Le dossier `data/geocodage/` est aussi créé automatiquement pour sauvegarder ou relire les résultats du géocodage.
+Les dossiers `figures/` et `data/geocodage/` sont créés automatiquement par le script s'ils n'existent pas déjà. Le dossier `figures/` n'est volontairement pas versionné (voir `.gitignore`) : il est régénéré à chaque exécution.
 
 ## Données nécessaires
 
 Le script utilise le fichier CSV suivant :
 
 ```text
-Projet_Hockey/data/GMQ-405_Hockey_Players_complet_lieux_modernes.csv
+data/GMQ-405_Hockey_Players_complet_lieux_modernes.csv
 ```
 
 Le jeu de données doit contenir au minimum les champs suivants :
@@ -103,42 +107,43 @@ Une section du script charge aussi `rnaturalearthhires`. Cette librairie peut ê
 
 ## Installation des dépendances
 
-Dans R ou RStudio, installer les librairies nécessaires avec :
+**Le plus simple** : ouvrir `install_packages.R` et l'exécuter (« Source »), ou dans un terminal :
+
+```bash
+Rscript install_packages.R
+```
+
+Ce script installe automatiquement tous les packages requis, y compris `rnaturalearthhires`
+(qui n'est **pas** sur le CRAN et provient du dépôt r-universe).
+
+Sinon, manuellement dans R :
 
 ```r
 install.packages(c(
-  "readr",
-  "dplyr",
-  "tidyr",
-  "stringr",
-  "lubridate",
-  "ggplot2",
-  "sf",
-  "tmap",
-  "rnaturalearth",
-  "rnaturalearthdata",
-  "tidygeocoder",
-  "scales"
+  "readr", "dplyr", "tidyr", "stringr", "lubridate", "ggplot2",
+  "sf", "tmap", "rnaturalearth", "rnaturalearthdata", "tidygeocoder", "scales"
 ))
+# Package supplémentaire hors CRAN (fonds de carte détaillés) :
+install.packages("rnaturalearthhires", repos = "https://ropensci.r-universe.dev")
 ```
 
-Selon l’environnement utilisé, l’installation de `sf` peut nécessiter des dépendances géospatiales supplémentaires.
+Selon l'environnement utilisé, l'installation de `sf` peut nécessiter des dépendances géospatiales supplémentaires.
 
-## Exécution du script
+## Exécution du script (VS Code)
 
-1. Ouvrir le projet dans RStudio.
-2. Vérifier que le dossier de travail correspond au dossier du projet.
-3. Ajuster le chemin dans `setwd()` si nécessaire.
-4. Vérifier que le fichier de données est bien placé dans le dossier `data/`.
-5. Lancer le script `Projet_Hockey_script.R`.
+Prérequis : **R**, **VS Code** avec l'extension **R** (`REditorSupport.r`), et le package `languageserver` (installé par `install_packages.R`).
 
-Le script contient actuellement un chemin absolu :
+1. Cloner le dépôt, puis ouvrir le **dossier** du projet dans VS Code (`File > Open Folder`).
+   > Important : ouvrir le dossier, pas seulement le fichier `.R`. C'est ce qui permet aux
+   > chemins relatifs (`data/...`) de fonctionner sans configuration.
+2. Lancer `install_packages.R` une première fois pour installer les dépendances.
+3. Ouvrir `Projet_Hockey_script.R` et exécuter le code :
+   - ligne par ligne / par bloc avec **Ctrl+Entrée**, ou
+   - tout le fichier avec **Ctrl+Shift+S** (Run Source).
 
-```r
-setwd("C:/Users/phili/Downloads/UNIVERSITÉ/GMQ E-2026/GMQ-405/Projet_Hockey")
-```
-
-Ce chemin doit être modifié si le projet est déplacé sur un autre ordinateur. Pour faciliter l’exécution, il est aussi possible de remplacer les chemins absolus par des chemins relatifs au dossier du projet.
+Le script n'utilise **aucun chemin absolu** : tout est relatif au dossier du projet, donc il
+fonctionne tel quel sur n'importe quel ordinateur une fois le dépôt cloné. Aucune modification
+de `setwd()` n'est nécessaire.
 
 ## Traitements réalisés
 
