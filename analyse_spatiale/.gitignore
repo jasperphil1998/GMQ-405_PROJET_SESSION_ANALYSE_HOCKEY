@@ -1,0 +1,10 @@
+# --- Section analyse spatiale ---
+#
+# Les figures (.png), tableaux (.csv) et journaux (.txt) de sorties/ SONT
+# versionnes volontairement : le README y renvoie et ils permettent de
+# consulter les resultats sans avoir a executer R.
+#
+# En revanche, le fichier .rds est un artefact binaire intermediaire, produit
+# par 01_normalisation.R et relu par 02 et 05. Il se regenere en quelques
+# secondes et n'a aucun interet pour un lecteur humain.
+sorties/*.rds

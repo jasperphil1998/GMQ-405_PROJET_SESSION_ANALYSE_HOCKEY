@@ -1,0 +1,65 @@
+CodeProv,NomUnite,Pays,Population,AnneeRecensement,Source
+NL,Terre-Neuve-et-Labrador,Canada,510550,2021,Statistique Canada - Recensement 2021
+PE,Ile-du-Prince-Edouard,Canada,154331,2021,Statistique Canada - Recensement 2021
+NS,Nouvelle-Ecosse,Canada,969383,2021,Statistique Canada - Recensement 2021
+NB,Nouveau-Brunswick,Canada,775610,2021,Statistique Canada - Recensement 2021
+QC,Quebec,Canada,8501833,2021,Statistique Canada - Recensement 2021
+ON,Ontario,Canada,14223942,2021,Statistique Canada - Recensement 2021
+MB,Manitoba,Canada,1342153,2021,Statistique Canada - Recensement 2021
+SK,Saskatchewan,Canada,1132505,2021,Statistique Canada - Recensement 2021
+AB,Alberta,Canada,4262635,2021,Statistique Canada - Recensement 2021
+BC,Colombie-Britannique,Canada,5000879,2021,Statistique Canada - Recensement 2021
+YT,Yukon,Canada,40232,2021,Statistique Canada - Recensement 2021
+NT,Territoires du Nord-Ouest,Canada,41070,2021,Statistique Canada - Recensement 2021
+NU,Nunavut,Canada,36858,2021,Statistique Canada - Recensement 2021
+AL,Alabama,USA,5024279,2020,US Census Bureau - Census 2020
+AK,Alaska,USA,733391,2020,US Census Bureau - Census 2020
+AZ,Arizona,USA,7151502,2020,US Census Bureau - Census 2020
+AR,Arkansas,USA,3011524,2020,US Census Bureau - Census 2020
+CA,Californie,USA,39538223,2020,US Census Bureau - Census 2020
+CO,Colorado,USA,5773714,2020,US Census Bureau - Census 2020
+CT,Connecticut,USA,3605944,2020,US Census Bureau - Census 2020
+DE,Delaware,USA,989948,2020,US Census Bureau - Census 2020
+DC,District de Columbia,USA,689545,2020,US Census Bureau - Census 2020
+FL,Floride,USA,21538187,2020,US Census Bureau - Census 2020
+GA,Georgie,USA,10711908,2020,US Census Bureau - Census 2020
+HI,Hawai,USA,1455271,2020,US Census Bureau - Census 2020
+ID,Idaho,USA,1839106,2020,US Census Bureau - Census 2020
+IL,Illinois,USA,12812508,2020,US Census Bureau - Census 2020
+IN,Indiana,USA,6785528,2020,US Census Bureau - Census 2020
+IA,Iowa,USA,3190369,2020,US Census Bureau - Census 2020
+KS,Kansas,USA,2937880,2020,US Census Bureau - Census 2020
+KY,Kentucky,USA,4505836,2020,US Census Bureau - Census 2020
+LA,Louisiane,USA,4657757,2020,US Census Bureau - Census 2020
+ME,Maine,USA,1362359,2020,US Census Bureau - Census 2020
+MD,Maryland,USA,6177224,2020,US Census Bureau - Census 2020
+MA,Massachusetts,USA,7029917,2020,US Census Bureau - Census 2020
+MI,Michigan,USA,10077331,2020,US Census Bureau - Census 2020
+MN,Minnesota,USA,5706494,2020,US Census Bureau - Census 2020
+MS,Mississippi,USA,2961279,2020,US Census Bureau - Census 2020
+MO,Missouri,USA,6154913,2020,US Census Bureau - Census 2020
+MT,Montana,USA,1084225,2020,US Census Bureau - Census 2020
+NE,Nebraska,USA,1961504,2020,US Census Bureau - Census 2020
+NV,Nevada,USA,3104614,2020,US Census Bureau - Census 2020
+NH,New Hampshire,USA,1377529,2020,US Census Bureau - Census 2020
+NJ,New Jersey,USA,9288994,2020,US Census Bureau - Census 2020
+NM,Nouveau-Mexique,USA,2117522,2020,US Census Bureau - Census 2020
+NY,New York,USA,20201249,2020,US Census Bureau - Census 2020
+NC,Caroline du Nord,USA,10439388,2020,US Census Bureau - Census 2020
+ND,Dakota du Nord,USA,779094,2020,US Census Bureau - Census 2020
+OH,Ohio,USA,11799448,2020,US Census Bureau - Census 2020
+OK,Oklahoma,USA,3959353,2020,US Census Bureau - Census 2020
+OR,Oregon,USA,4237256,2020,US Census Bureau - Census 2020
+PA,Pennsylvanie,USA,13002700,2020,US Census Bureau - Census 2020
+RI,Rhode Island,USA,1097379,2020,US Census Bureau - Census 2020
+SC,Caroline du Sud,USA,5118425,2020,US Census Bureau - Census 2020
+SD,Dakota du Sud,USA,886667,2020,US Census Bureau - Census 2020
+TN,Tennessee,USA,6910840,2020,US Census Bureau - Census 2020
+TX,Texas,USA,29145505,2020,US Census Bureau - Census 2020
+UT,Utah,USA,3271616,2020,US Census Bureau - Census 2020
+VT,Vermont,USA,643077,2020,US Census Bureau - Census 2020
+VA,Virginie,USA,8631393,2020,US Census Bureau - Census 2020
+WA,Washington,USA,7705281,2020,US Census Bureau - Census 2020
+WV,Virginie-Occidentale,USA,1793716,2020,US Census Bureau - Census 2020
+WI,Wisconsin,USA,5893718,2020,US Census Bureau - Census 2020
+WY,Wyoming,USA,576851,2020,US Census Bureau - Census 2020

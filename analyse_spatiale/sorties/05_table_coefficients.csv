@@ -1,0 +1,16 @@
+Modele,Terme,Estime,EcartType,ValeurP,Signif
+OLS,(Intercept),-14.5242,2.277,3.02e-8,***
+OLS,Latitude,0.2673,0.0372,1.29e-9,***
+OLS,log(DensitePop),0.6144,0.1915,0.00216,**
+OLS,DistCote_km,3e-4,6e-4,0.649,
+OLS,DistLNH_km,1e-4,5e-4,0.762,
+SEM,(Intercept),-9.4595,3.4572,0.00622,**
+SEM,Latitude,0.1371,0.0609,0.0244,*
+SEM,log(DensitePop),0.7907,0.2119,1.91e-4,***
+SEM,DistCote_km,9e-4,9e-4,0.322,
+SEM,DistLNH_km,-3e-4,4e-4,0.45,
+SAR lag,(Intercept),-9.8069,2.6295,1.92e-4,***
+SAR lag,Latitude,0.1786,0.0438,4.5e-5,***
+SAR lag,log(DensitePop),0.495,0.189,0.0088,**
+SAR lag,DistCote_km,4e-4,5e-4,0.499,
+SAR lag,DistLNH_km,-2e-4,4e-4,0.697,

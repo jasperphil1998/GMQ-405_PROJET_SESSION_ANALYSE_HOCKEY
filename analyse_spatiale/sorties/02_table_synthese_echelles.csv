@@ -1,0 +1,4 @@
+Echelle,Variable,NbUnites,MoranI,ValeurP,Lecture
+Provinces / etats,Joueurs par 100 000 hab. (taux),64,0.3202,3.29e-9,autocorrelation positive forte
+Hexagones 200 km,Nombre de joueurs (effectif),122,0.0587,0.0274,autocorrelation positive faible
+Hexagones 200 km,Points moyens par joueur (calibre),122,-0.0287,0.672,aucune autocorrelation detectable

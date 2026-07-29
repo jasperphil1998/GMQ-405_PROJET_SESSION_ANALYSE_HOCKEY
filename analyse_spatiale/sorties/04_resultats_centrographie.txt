@@ -1,0 +1,92 @@
+=====================================================
+ ANALYSE SPATIALE — 04. CENTROGRAPHIE TEMPORELLE
+=====================================================
+Joueurs geolocalises et dates : 8761 sur 8802
+Decennies retenues (>= 30 joueurs) : 1890 a 2000
+
+--- CENTRE DE GRAVITE MONDIAL PAR DECENNIE DE NAISSANCE ---
+
+   Decennie NbJoueurs latitude longitude DistanceType_km PartEurope PartCanada
+1      1890       145    46.86    -79.75         1040.16       1.38      95.17
+2      1900       260    48.34    -80.64         1583.42       5.00      85.38
+3      1910       321    48.70    -84.96         1498.70       3.43      87.23
+4      1920       335    49.53    -86.63         1502.46       3.58      93.43
+5      1930       330    48.17    -85.51         1158.60       0.30      96.97
+6      1940       502    48.99    -83.40         1590.40       3.59      91.04
+7      1950       964    51.01    -82.99         2226.73       8.61      78.01
+8      1960      1281    53.13    -81.90         2620.63      12.41      70.65
+9      1970      1286    60.63    -67.96         3459.19      29.08      53.89
+10     1980      1341    58.60    -73.31         3341.91      24.83      50.86
+11     1990      1463    60.12    -67.84         3495.19      31.78      40.67
+12     2000       505    63.10    -59.48         3752.13      37.82      38.61
+   Deplacement_km
+1              NA
+2          177.33
+3          320.30
+4          153.07
+5          171.58
+6          179.55
+7          226.23
+8          247.06
+9         1184.26
+10         376.02
+11         353.23
+12         551.60
+
+--- Bilan mondial ---
+Decennie 1890 : 46.86 N, -79.75 E  (1.4 % d'Europeens)
+Decennie 2000 : 63.1 N, -59.48 E  (37.8 % d'Europeens)
+Deplacement net du centre : 2201 km
+Dispersion (distance-type) : de 1040 km a 3752 km
+Sens du deplacement en longitude : vers l'EST
+
+INTERPRETATION
+Le centre de gravite se deplace vers l'EST et la dispersion
+AUGMENTE : le bassin de recrutement de la LNH s'elargit
+geographiquement. Les deux mesures traduisent le meme
+phenomene : l'internationalisation de la ligue.
+
+ATTENTION A UNE FAUSSE LECTURE
+Le centre de gravite est une moyenne : il tombe dans l'Atlantique,
+la ou personne ne nait. Il ne designe donc AUCUN lieu reel. Seuls
+son DEPLACEMENT et la distance-type ont un sens ici.
+
+-----------------------------------------------------
+ DERIVE INTERNE AU CANADA
+-----------------------------------------------------
+
+--- CENTRE DE GRAVITE DES JOUEURS CANADIENS PAR DECENNIE ---
+
+   Decennie NbJoueurs longitude latitude DistanceType_km
+1      1890       138    -80.17    46.63          813.07
+2      1900       222    -83.10    47.23         1004.64
+3      1910       280    -86.50    48.01         1095.34
+4      1920       313    -88.51    48.77         1070.95
+5      1930       320    -85.48    48.29         1085.84
+6      1940       457    -85.08    48.12         1136.53
+7      1950       752    -87.63    48.52         1308.05
+8      1960       905    -89.54    49.06         1388.22
+9      1970       693    -89.85    49.54         1434.13
+10     1980       682    -91.18    49.65         1444.05
+11     1990       595    -89.46    48.80         1406.63
+12     2000       195    -88.58    49.19         1480.75
+
+Deplacement net du centre canadien : 693 km
+Longitude : de -80.17 a -88.58 degres
+Sens : vers l'OUEST
+Dispersion : de 813 km a 1481 km
+
+--- TEST DE TENDANCE — correlation de Spearman entre decennie et longitude du centre ---
+
+
+	Spearman's rank correlation rho
+
+data:  centres_ca$Decennie and centres_ca$longitude
+S = 516, p-value = 0.001615
+alternative hypothesis: true rho is not equal to 0
+sample estimates:
+       rho 
+-0.8041958 
+
+Une correlation negative significative confirmerait une derive
+reguliere vers l'ouest, et non un simple va-et-vient.
