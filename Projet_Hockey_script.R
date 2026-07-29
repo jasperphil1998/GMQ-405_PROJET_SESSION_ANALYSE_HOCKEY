@@ -1947,4 +1947,4 @@ write_csv(joueurs_1000, "figures/table_joueurs_1000pts.csv")
 # Permet de voir l'évolution de la provenance des joueurs au fil du temps, 
 # en utilisant une estimation de densité de noyau spatio-temporelle (STKDE).
 
-
+# test
