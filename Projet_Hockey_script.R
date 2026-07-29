@@ -1941,3 +1941,10 @@ joueurs_1000 <- hockey |>
 
 write_csv(joueurs_1000, "figures/table_joueurs_1000pts.csv")
 
+
+# SECTION 5 — Analyse spatio-temporelle de la provenance des joueurs ----
+## Densité spatio-temporelle dans une maille régulière avec STKDE ----
+# Permet de voir l'évolution de la provenance des joueurs au fil du temps, 
+# en utilisant une estimation de densité de noyau spatio-temporelle (STKDE).
+
+
