@@ -36,7 +36,7 @@ summary(hockey)
 
 # 4. Nettoyage et préparation des variables ----
 
-hockey <- hockey %>%
+hockey <- hockey |>
   mutate(
     # Conversion de la date de naissance
     Birthdate = dmy(Birthdate),
@@ -59,7 +59,7 @@ table(hockey$Country)
 
 # 5. Création des groupes géographiques----
 
-hockey <- hockey %>%
+hockey <- hockey |>
   mutate(
     GroupeGeo = case_when(
       Country == "Canada" ~ "Canada",
@@ -92,8 +92,9 @@ couleurs_geo <- c(
 
 ## Graphique 1 : Top 15 des pays producteurs de joueurs----
 
-top15_pays <- hockey %>%
-  count(Country, sort = TRUE) %>%
+top15_pays <- hockey |>
+  count(Country, sort = TRUE) |>
+
   slice_head(n = 15)
 
 graph_top15_pays <- ggplot(top15_pays, aes(x = reorder(Country, n), y = n)) +
@@ -118,8 +119,9 @@ ggsave(
 
 ## Graphique 2 : Répartition par décennie de naissance----
 
-joueurs_decennie <- hockey %>%
-  filter(!is.na(Decennie)) %>%
+joueurs_decennie <- hockey |>
+  filter(!is.na(Decennie)) |>
+
   count(Decennie)
 
 graph_decennie <- ggplot(joueurs_decennie, aes(x = Decennie, y = n)) +
@@ -143,8 +145,9 @@ ggsave(
 
 ## Graphique 3 : Évolution Canada / USA / Europe / Autres----
 
-evolution_geo <- hockey %>%
-  filter(!is.na(Decennie)) %>%
+evolution_geo <- hockey |>
+  filter(!is.na(Decennie)) |>
+
   count(Decennie, GroupeGeo)
 
 graph_evolution_geo_prop <- ggplot(evolution_geo, aes(x = Decennie, y = n, fill = GroupeGeo)) +
@@ -170,8 +173,9 @@ ggsave(
 
 ## Graphique 4 : Top 20 des lieux de naissance----
 #rgg5
-top20_villes <- hockey %>%
-  count(Birthplace,GroupeGeo, sort = TRUE) %>%
+top20_villes <- hockey |>
+  count(Birthplace,GroupeGeo, sort = TRUE) |>
+
   slice_head(n = 20)
 
 graph_top20_villes <- ggplot(top20_villes, aes(x = reorder(Birthplace, n), y = n, fill = GroupeGeo)) +
@@ -199,14 +203,17 @@ ggsave(
 ## Graphique 5 : Moyenne de points par pays 
 ## On garde seulement les pays avec au moins 20 joueurs----
 
-moyenne_pts_pays <- hockey %>%
-  group_by(Country, GroupeGeo) %>%
+moyenne_pts_pays <- hockey |>
+  group_by(Country, GroupeGeo) |>
+
   summarise(
     Joueurs = n(),
     MoyennePts = mean(Pts, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  filter(Joueurs >= 20) %>%
+  ) |>
+
+  filter(Joueurs >= 20) |>
+
   arrange(desc(MoyennePts))
 
 graph_moyenne_pts_pays <- ggplot(
@@ -237,8 +244,9 @@ ggsave(
 
 ## Graphique 6 : Boxplot des points selon la position----
 
-graph_boxplot_position <- hockey %>%
-  filter(!is.na(`Pos.`), Pts > 0) %>%
+graph_boxplot_position <- hockey |>
+  filter(!is.na(`Pos.`), Pts > 0) |>
+
   ggplot(aes(x = `Pos.`, y = Pts)) +
   geom_boxplot() +
   scale_y_log10() +
@@ -284,15 +292,18 @@ ggsave(
 
 ## Graphique 8 : Top 20 villes selon les points totaux----
 
-top20_villes_pts <- hockey %>%
-  group_by(Birthplace, GroupeGeo) %>%
+top20_villes_pts <- hockey |>
+  group_by(Birthplace, GroupeGeo) |>
+
   summarise(
     Joueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
     MoyennePts = mean(Pts, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  arrange(desc(TotalPts)) %>%
+  ) |>
+
+  arrange(desc(TotalPts)) |>
+
   slice_head(n = 20)
 
 graph_top20_villes_pts <- ggplot(
@@ -322,8 +333,9 @@ ggsave(
 
 ## Graphique 9 : Joueurs de 1000 points et plus par pays----
 
-elite_pays <- hockey %>%
-  filter(Pts >= 1000) %>%
+elite_pays <- hockey |>
+  filter(Pts >= 1000) |>
+
   count(Country, GroupeGeo, sort = TRUE)
 
 graph_elite_pays <- ggplot(
@@ -359,7 +371,7 @@ library(scales)
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Nettoyage minimal pour les graphiques
-hockey_graph <- hockey %>%
+hockey_graph <- hockey |>
   mutate(
     Position = str_trim(.data[["Pos."]]),
     Position_label = recode(
@@ -375,16 +387,20 @@ hockey_graph <- hockey %>%
     Pts = as.numeric(Pts)
   )
 
-pim_pays_top <- hockey_graph %>%
-  filter(!is.na(Country), !is.na(PIM), !is.na(GroupeGeo)) %>%
-  group_by(Country, GroupeGeo) %>%
+pim_pays_top <- hockey_graph |>
+  filter(!is.na(Country), !is.na(PIM), !is.na(GroupeGeo)) |>
+
+  group_by(Country, GroupeGeo) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPIM = sum(PIM, na.rm = TRUE),
     MoyPIM = mean(PIM, na.rm = TRUE),
     .groups = "drop"
-  ) %>%
-  arrange(desc(TotalPIM)) %>%
+  ) |>
+
+  arrange(desc(TotalPIM)) |>
+
   slice_head(n = 15)
 
 graph_pim_pays <- ggplot(
@@ -417,7 +433,7 @@ ggsave(
 
 ## Graphique 11 : relation entre points et position jouée----
 
-points_position <- hockey_graph %>%
+points_position <- hockey_graph |>
   filter(
     !is.na(Position_label),
     !is.na(Pts)
@@ -472,8 +488,9 @@ unique(monde$name)
 
 ## 2. Préparation des données par pays----
 
-joueurs_pays <- hockey %>%
-  count(Country, name = "NbJoueurs") %>%
+joueurs_pays <- hockey |>
+  count(Country, name = "NbJoueurs") |>
+
   mutate(
     Country_map = case_when(
       Country == "USA" ~ "United States of America",
@@ -481,8 +498,10 @@ joueurs_pays <- hockey %>%
       Country %in% c("England", "Scotland", "Wales", "Northern Ireland", "United Kingdom") ~ "United Kingdom",
       TRUE ~ Country
     )
-  ) %>%
-  group_by(Country_map) %>%
+  ) |>
+
+  group_by(Country_map) |>
+
   summarise(
     NbJoueurs = sum(NbJoueurs),
     .groups = "drop"
@@ -493,7 +512,7 @@ anti_join(joueurs_pays, monde, by = c("Country_map" = "name"))
 
 ## 3. Jointure entre les pays et les données----
 
-monde_hockey <- monde %>%
+monde_hockey <- monde |>
   left_join(joueurs_pays, by = c("name" = "Country_map"))
 
 # Remplacer les NA par 0 pour les pays sans joueur
@@ -504,9 +523,11 @@ monde_hockey$NbJoueurs[is.na(monde_hockey$NbJoueurs)] <- 0
 tmap_mode("plot")
 
 # Création d'un point à l'intérieur de chaque pays
-monde_hockey_points <- monde_hockey %>%
-  filter(!is.na(NbJoueurs), NbJoueurs > 0) %>%
-  st_make_valid() %>%
+monde_hockey_points <- monde_hockey |>
+  filter(!is.na(NbJoueurs), NbJoueurs > 0) |>
+
+  st_make_valid() |>
+
   st_point_on_surface()
 
 # Classes rondes pour la légende
@@ -552,9 +573,11 @@ tmap_save(
 
 ## Carte 2 : Joueurs de 1000 points et plus par pays avec cercles proportionnels ----
 
-elite_pays_carte <- hockey %>%
-  filter(Pts >= 1000) %>%
-  count(Country, name = "NbElite") %>%
+elite_pays_carte <- hockey |>
+  filter(Pts >= 1000) |>
+
+  count(Country, name = "NbElite") |>
+
   mutate(
     Country_map = case_when(
       Country == "USA" ~ "United States of America",
@@ -562,22 +585,26 @@ elite_pays_carte <- hockey %>%
       Country %in% c("England", "Scotland", "Wales", "Northern Ireland", "United Kingdom") ~ "United Kingdom",
       TRUE ~ Country
     )
-  ) %>%
-  group_by(Country_map) %>%
+  ) |>
+
+  group_by(Country_map) |>
+
   summarise(
     NbElite = sum(NbElite),
     .groups = "drop"
   )
 
-monde_elite <- monde %>%
+monde_elite <- monde |>
   left_join(elite_pays_carte, by = c("name" = "Country_map"))
 
 monde_elite$NbElite[is.na(monde_elite$NbElite)] <- 0
 
 # Création des points au centre des pays
-monde_elite_points <- monde_elite %>%
-  filter(NbElite > 0) %>%
-  st_make_valid() %>%
+monde_elite_points <- monde_elite |>
+  filter(NbElite > 0) |>
+
+  st_make_valid() |>
+
   st_point_on_surface()
 
 # Classes rondes pour la légende
@@ -625,7 +652,7 @@ tmap_save(
 
 ## 1. Préparer les lieux uniques à géocoder----
 
-lieux_naissance <- hockey %>%
+lieux_naissance <- hockey |>
   count(Birthplace, Country, sort = TRUE, name = "NbJoueurs")
 
 # Vérification
@@ -653,12 +680,13 @@ if (file.exists(fichier_cache)) {
 }
 
 # Lieux présents dans les données mais pas encore dans le cache
-lieux_a_geocoder <- lieux_naissance %>%
+lieux_a_geocoder <- lieux_naissance |>
   filter(!(Birthplace %in% cache_geo$Birthplace))
 
 if (nrow(lieux_a_geocoder) > 0) {
   message("Géocodage de ", nrow(lieux_a_geocoder), " nouveau(x) lieu(x)...")
-  nouveaux_geo <- lieux_a_geocoder %>%
+  nouveaux_geo <- lieux_a_geocoder |>
+
     geocode(
       address = Birthplace,
       method  = "arcgis",   # rapide, sans limite 1 req/sec, sans clé API
@@ -677,14 +705,16 @@ lieux_geocodes <- cache_geo
 
 # 4. Conversion en objet spatial sf
 
-lieux_sf <- lieux_geocodes %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+lieux_sf <- lieux_geocodes |>
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
 ## Carte 3 : Principales villes de naissance----
 
-top_villes_sf <- lieux_sf %>%
-  arrange(desc(NbJoueurs)) %>%
+top_villes_sf <- lieux_sf |>
+  arrange(desc(NbJoueurs)) |>
+
   slice_head(n = 50)
 
 carte_top_villes <- tm_shape(monde) +
@@ -717,14 +747,18 @@ tmap_save(
 
 ## Carte 4 : Villes ayant produit des joueurs de 1000+ pts----
 
-villes_elite <- hockey %>%
-  filter(Pts >= 1000) %>%
+villes_elite <- hockey |>
+  filter(Pts >= 1000) |>
+
   count(Birthplace, Country, name = "NbElite")
 
-villes_elite_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_elite, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_elite_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_elite, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
 carte_villes_elite <- tm_shape(monde) +
@@ -757,22 +791,27 @@ tmap_save(
 
 ## Carte 5 : Production offensive totale par ville----
 
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
     .groups = "drop"
   )
 
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
-top_villes_points_sf <- villes_points_geo %>%
-  arrange(desc(TotalPts)) %>%
+top_villes_points_sf <- villes_points_geo |>
+  arrange(desc(TotalPts)) |>
+
   slice_head(n = 50)
 
 carte_villes_points <- tm_shape(monde) +
@@ -812,8 +851,9 @@ library(rnaturalearth)
 library(rnaturalearthhires)
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -821,15 +861,19 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
 
 # Garder seulement les villes du Québec
-villes_points_qc_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", QC, Canada")) %>%
+villes_points_qc_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", QC, Canada")) |>
+
   arrange(desc(TotalPts))
 
 # Boîte de zoom approximative sur le Québec
@@ -877,8 +921,9 @@ tmap_save(
 canada_prov <- ne_states(country = "Canada", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -886,10 +931,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -900,8 +948,9 @@ tmap_mode("plot")
 
 ##Carte : Ontario---- 
 
-villes_points_on_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", ON, Canada")) %>%
+villes_points_on_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", ON, Canada")) |>
+
   arrange(desc(TotalPts))
 
 bbox_ontario <- st_bbox(
@@ -943,8 +992,9 @@ tmap_save(
 )
 ## Carte : Ontario
 
-villes_points_on_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", ON, Canada")) %>%
+villes_points_on_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", ON, Canada")) |>
+
   arrange(desc(TotalPts))
 
 bbox_ontario <- st_bbox(
@@ -987,8 +1037,9 @@ tmap_save(
 
 ## Carte : Alberta----
 
-villes_points_ab_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", AB, Canada")) %>%
+villes_points_ab_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", AB, Canada")) |>
+
   arrange(desc(TotalPts))
 
 bbox_alberta <- st_bbox(
@@ -1031,8 +1082,9 @@ tmap_save(
 
 ## Carte : Colombie-Britannique----
 
-villes_points_bc_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", BC, Canada")) %>%
+villes_points_bc_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", BC, Canada")) |>
+
   arrange(desc(TotalPts))
 
 bbox_bc <- st_bbox(
@@ -1079,8 +1131,9 @@ tmap_save(
 # PE / PEI = Île-du-Prince-Édouard
 # NL / NFLD / NFL = Terre-Neuve-et-Labrador
 
-villes_points_atl_sf <- villes_points_geo %>%
-  filter(str_detect(Birthplace, ", (NB|NS|PE|PEI|NL|NFLD|NFL), Canada")) %>%
+villes_points_atl_sf <- villes_points_geo |>
+  filter(str_detect(Birthplace, ", (NB|NS|PE|PEI|NL|NFLD|NFL), Canada")) |>
+
   arrange(desc(TotalPts))
 
 bbox_atlantique <- st_bbox(
@@ -1128,8 +1181,9 @@ tmap_save(
 usa_states <- ne_states(country = "United States of America", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -1137,10 +1191,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -1148,8 +1205,9 @@ villes_points_geo <- lieux_geocodes %>%
   )
 
 # Garder seulement les villes aux États-Unis
-villes_points_us_sf <- villes_points_geo %>%
-  filter(Country == "USA") %>%
+villes_points_us_sf <- villes_points_geo |>
+  filter(Country == "USA") |>
+
   mutate(
     State = str_match(Birthplace, ", ([A-Z]{2}), USA$")[, 2]
   )
@@ -1179,12 +1237,13 @@ us_regions <- tibble::tibble(
 )
 
 # Ajouter la région aux villes américaines
-villes_points_us_sf <- villes_points_us_sf %>%
+villes_points_us_sf <- villes_points_us_sf |>
   left_join(us_regions, by = "State")
 
 # Vérifier si certaines villes américaines n'ont pas de région
-villes_points_us_sf %>%
-  filter(is.na(RegionUS)) %>%
+villes_points_us_sf |>
+  filter(is.na(RegionUS)) |>
+
   select(Birthplace, State, NbJoueurs, TotalPts)
 
 # Mode cartographie
@@ -1192,8 +1251,9 @@ tmap_mode("plot")
 
 ## Carte : Northeast----
 
-villes_points_us_ne_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "Northeast") %>%
+villes_points_us_ne_sf <- villes_points_us_sf |>
+  filter(RegionUS == "Northeast") |>
+
   arrange(desc(TotalPts))
 
 bbox_us_northeast <- st_bbox(
@@ -1236,8 +1296,9 @@ tmap_save(
 
 ## Carte : Midwest----
 
-villes_points_us_midwest_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "Midwest") %>%
+villes_points_us_midwest_sf <- villes_points_us_sf |>
+  filter(RegionUS == "Midwest") |>
+
   arrange(desc(TotalPts))
 
 bbox_us_midwest <- st_bbox(
@@ -1280,8 +1341,9 @@ tmap_save(
 
 ## Carte : South----
 
-villes_points_us_south_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "South") %>%
+villes_points_us_south_sf <- villes_points_us_sf |>
+  filter(RegionUS == "South") |>
+
   arrange(desc(TotalPts))
 
 bbox_us_south <- st_bbox(
@@ -1324,8 +1386,9 @@ tmap_save(
 
 ## Carte : Mountain / Southwest----
 
-villes_points_us_mountain_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "Mountain_Southwest") %>%
+villes_points_us_mountain_sf <- villes_points_us_sf |>
+  filter(RegionUS == "Mountain_Southwest") |>
+
   arrange(desc(TotalPts))
 
 bbox_us_mountain <- st_bbox(
@@ -1368,8 +1431,9 @@ tmap_save(
 
 ## Carte : Pacific / West Coast----
 
-villes_points_us_pacific_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "Pacific") %>%
+villes_points_us_pacific_sf <- villes_points_us_sf |>
+  filter(RegionUS == "Pacific") |>
+
   arrange(desc(TotalPts))
 
 bbox_us_pacific <- st_bbox(
@@ -1412,8 +1476,9 @@ tmap_save(
 
 ## Carte optionnelle : Alaska et Hawaii----
 
-villes_points_us_ak_hi_sf <- villes_points_us_sf %>%
-  filter(RegionUS == "Alaska_Hawaii") %>%
+villes_points_us_ak_hi_sf <- villes_points_us_sf |>
+  filter(RegionUS == "Alaska_Hawaii") |>
+
   arrange(desc(TotalPts))
 
 nrow(villes_points_us_ak_hi_sf)
@@ -1465,8 +1530,9 @@ dir.create("figures", showWarnings = FALSE)
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -1474,10 +1540,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -1518,13 +1587,15 @@ pays_europe <- c(
 )
 
 # Garder seulement les villes européennes
-villes_points_europe_sf <- villes_points_geo %>%
-  filter(Country %in% pays_europe) %>%
+villes_points_europe_sf <- villes_points_geo |>
+  filter(Country %in% pays_europe) |>
+
   arrange(desc(TotalPts))
 
 # Vérification rapide
-villes_points_europe_sf %>%
-  st_drop_geometry() %>%
+villes_points_europe_sf |>
+  st_drop_geometry() |>
+
   count(Country, sort = TRUE)
 
 # Boîte de zoom pour l'Europe
@@ -1576,8 +1647,9 @@ tmap_save(
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -1585,10 +1657,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -1604,13 +1679,15 @@ pays_nordiques <- c(
 )
 
 # Garder seulement les villes des pays nordiques
-villes_points_nordiques_sf <- villes_points_geo %>%
-  filter(Country %in% pays_nordiques) %>%
+villes_points_nordiques_sf <- villes_points_geo |>
+  filter(Country %in% pays_nordiques) |>
+
   arrange(desc(TotalPts))
 
 # Vérification rapide
-villes_points_nordiques_sf %>%
-  st_drop_geometry() %>%
+villes_points_nordiques_sf |>
+  st_drop_geometry() |>
+
   count(Country, sort = TRUE)
 
 # Boîte de zoom pour les pays nordiques
@@ -1662,8 +1739,9 @@ tmap_save(
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -1671,10 +1749,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -1682,17 +1763,20 @@ villes_points_geo <- lieux_geocodes %>%
   )
 
 # Garder seulement les villes de la Russie européenne
-villes_points_russie_euro_sf <- villes_points_geo %>%
+villes_points_russie_euro_sf <- villes_points_geo |>
   filter(
     Country == "Russia",
     longitude <= 60
-  ) %>%
+  ) |>
+
   arrange(desc(TotalPts))
 
 # Vérification rapide
-villes_points_russie_euro_sf %>%
-  st_drop_geometry() %>%
-  select(Birthplace, Country, longitude, TotalPts) %>%
+villes_points_russie_euro_sf |>
+  st_drop_geometry() |>
+
+  select(Birthplace, Country, longitude, TotalPts) |>
+
   arrange(desc(TotalPts))
 
 # Boîte de zoom pour la Russie européenne
@@ -1744,8 +1828,9 @@ tmap_save(
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
 # Agrégation des points par lieu de naissance
-villes_points <- hockey %>%
-  group_by(Birthplace, Country) %>%
+villes_points <- hockey |>
+  group_by(Birthplace, Country) |>
+
   summarise(
     NbJoueurs = n(),
     TotalPts = sum(Pts, na.rm = TRUE),
@@ -1753,10 +1838,13 @@ villes_points <- hockey %>%
   )
 
 # Jointure avec les coordonnées géocodées
-villes_points_geo <- lieux_geocodes %>%
-  select(Birthplace, latitude, longitude) %>%
-  right_join(villes_points, by = "Birthplace") %>%
-  filter(!is.na(latitude), !is.na(longitude)) %>%
+villes_points_geo <- lieux_geocodes |>
+  select(Birthplace, latitude, longitude) |>
+
+  right_join(villes_points, by = "Birthplace") |>
+
+  filter(!is.na(latitude), !is.na(longitude)) |>
+
   st_as_sf(
     coords = c("longitude", "latitude"),
     crs = 4326,
@@ -1764,17 +1852,20 @@ villes_points_geo <- lieux_geocodes %>%
   )
 
 # Garder seulement les villes de la Russie asiatique
-villes_points_russie_asie_sf <- villes_points_geo %>%
+villes_points_russie_asie_sf <- villes_points_geo |>
   filter(
     Country == "Russia",
     longitude > 60
-  ) %>%
+  ) |>
+
   arrange(desc(TotalPts))
 
 # Vérification rapide
-villes_points_russie_asie_sf %>%
-  st_drop_geometry() %>%
-  select(Birthplace, Country, longitude, latitude, TotalPts) %>%
+villes_points_russie_asie_sf |>
+  st_drop_geometry() |>
+
+  select(Birthplace, Country, longitude, latitude, TotalPts) |>
+
   arrange(desc(TotalPts))
 
 # Boîte de zoom pour la Russie asiatique
@@ -1824,8 +1915,9 @@ tmap_save(
 
 
 ## Nombre de joueurs par pays----
-table_pays <- hockey %>%
-  count(Country, sort = TRUE) %>%
+table_pays <- hockey |>
+  count(Country, sort = TRUE) |>
+
   mutate(Pourcentage = round(n / sum(n) * 100, 2))
 
 write_csv(table_pays, "figures/table_joueurs_pays.csv")
@@ -1840,9 +1932,11 @@ write_csv(top20_villes_pts, "figures/table_top20_villes_points.csv")
 
 
 ## Joueurs de 1000 points et plus----
-joueurs_1000 <- hockey %>%
-  filter(Pts >= 1000) %>%
-  arrange(desc(Pts)) %>%
+joueurs_1000 <- hockey |>
+  filter(Pts >= 1000) |>
+
+  arrange(desc(Pts)) |>
+
   select(`Player Name`, `Pos.`, Birthdate, Birthplace, Country, GP, G, A, Pts)
 
 write_csv(joueurs_1000, "figures/table_joueurs_1000pts.csv")
