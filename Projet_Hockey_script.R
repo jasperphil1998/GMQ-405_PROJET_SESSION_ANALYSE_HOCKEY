@@ -1946,5 +1946,129 @@ write_csv(joueurs_1000, "figures/table_joueurs_1000pts.csv")
 ## Densité spatio-temporelle dans une maille régulière avec STKDE ----
 # Permet de voir l'évolution de la provenance des joueurs au fil du temps, 
 # en utilisant une estimation de densité de noyau spatio-temporelle (STKDE).
+# Vaudrait plus peine que la variable temporelle sois la première année de jeu
+# dans la lnh plutôt que l'année de naissance.
+library(spatstat)
+library(terra)
+library(gifski)
+library(sparr)
+library(classInt)
+library(viridis)
+
+## Géocodage du lieux de naissance chaque joueur
+lieux_uniques <- hockey |>
+  distinct(Birthplace) |>
+  filter(!is.na(Birthplace), !(Birthplace %in% cache_geo$Birthplace))
+
+if (nrow(lieux_uniques) > 0) {
+  message("Géocodage de ", nrow(lieux_uniques), " nouveau(x) lieu(x)...")
+  nouveaux_geo <- lieux_uniques |>
+    geocode(
+      address = Birthplace,
+      method  = "arcgis",   # rapide, sans limite 1 req/sec, sans clé API
+      lat     = latitude,
+      long    = longitude
+    )
+  cache_geo <- bind_rows(cache_geo, nouveaux_geo)
+  write_csv(cache_geo, fichier_cache)   # met le cache à jour
+} else {
+  message("Aucun nouveau lieu à géocoder : le cache est complet.")
+}
+
+# Jeu de données géocodé prêt pour la suite du script
+prov_joueur_stkde <- hockey |>
+  left_join(cache_geo, by = "Birthplace")
+
+# Conversion en objet spatial sf
+prov_joueur_stkde_sf <- prov_joueur_stkde |>
+  filter(!is.na(latitude), !is.na(longitude)) |>
+  st_as_sf(coords = c("longitude", "latitude"), crs = 4326)
+
+
+## Visualisation de la densité temporelle
+prov_joueur_stkde_sf$dt <- (prov_joueur_stkde_sf$AnneeNaissance)
+prov_joueur_stkde_sf$dt_num <- as.numeric(prov_joueur_stkde_sf$dt - min(prov_joueur_stkde_sf$dt))
+ggplot(prov_joueur_stkde_sf, aes(x=dt)) + 
+  geom_density(bw = 'sj', color = "blue", lwd = 1) + 
+  labs(y= "Densité", x = "Décénnies")+
+  theme_bw()
+# Préparation des données
+monde_sf <- st_transform(monde, crs = "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=m +no_defs")
+prov_joueur_stkde_sf <- st_transform(prov_joueur_stkde_sf, crs = "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=m +no_defs")
+pays_union <- st_union(monde_sf)
+fenetre_pays <- as.owin(st_buffer(pays_union, 10000))
+
+joueurs_union <- st_union(prov_joueur_stkde_sf)
+fenetre_joueurs_sf <- st_buffer(joueurs_union, 100000)
+fenetre_joueurs <- as.owin(fenetre_joueurs_sf)
+
+XY <- st_coordinates(prov_joueur_stkde_sf)
+prov_joueur_stkde_sf.ppp <- ppp(x = XY[,1],
+                      y = XY[,2],
+                      window = fenetre_pays, check = T)
+## Estimation des deux meilleures bandwidths
+# On applique un jittering (micro déplacement) puisque les points sont à la même place
+ppp_jittered <- rjitter(
+  prov_joueur_stkde_sf.ppp, 
+  radius = 25,   # Perturbation maximale en m
+  retry  = TRUE
+)
+# VÉRIFICATION CRITIQUE
+# Ces deux valeurs doivent être STRICTEMENT ÉGALES
+print(npoints(ppp_jittered))
+print(length(prov_joueur_stkde_sf$dt_num))
+stopifnot(npoints(ppp_jittered) == length(prov_joueur_stkde_sf$dt_num))
+# Fonction d'estimation
+scores_bw <- LIK.spattemp(
+  ppp_jittered,
+  tt = prov_joueur_stkde_sf$dt_num,
+  tlim = range(prov_joueur_stkde_sf$dt_num),
+  # start = c(100000, 5),
+  parallelise = NA,
+  verbose = TRUE
+)
+print(scores_bw)
+
+# Calcul des valeurs de densités
+dens_vals <- spattemp.density(prov_joueur_stkde_sf.ppp,
+                              h = 100000,
+                              lambda = 10,
+                              tt = prov_joueur_stkde_sf$dt_num,
+                              tlim = c(0,128),
+                              sres = 500,
+                              tres = 150, verbose = FALSE)
+
+## Extraction des rasters à chaque période
+all_rasts <- lapply(dens_vals$z, function(x){
+  my_rast <- terra::rast(x) * 10000 # petit ajustement pour la carto
+  vals <- terra::values(my_rast)
+  vals <- ifelse(is.na(vals), 0, vals)
+  terra::values(my_rast) <- vals
+  terra::crs(my_rast) <- "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=m +no_defs"
+  return(my_rast)
+})
+## Extraction des valeurs pour créer une échelle commune de couleur
+all_densities <- do.call(c, lapply(all_rasts, function(x){
+  sample(terra::values(x),size = 100,replace = FALSE)
+}))
+color_breaks <- classIntervals(all_densities, n = 10, style = "kmeans")
+## Préparation des dates
+timestamps <- round(as.numeric(names(dens_vals$z)))
+time_frames <- min(prov_joueur_stkde_sf$dt) + timestamps
+## Compilation des cartes
+all_maps <- lapply(1:length(time_frames), function(i){
+  tm_shape(all_rasts[[i]]) +
+    tm_raster(breaks = color_breaks$brks, palette = viridis(10))+
+    tm_shape(monde) + tm_borders(col = "black", lwd = 0.05) +
+    tm_title(text = time_frames[[i]], color = "black", size = 8) +
+    tm_legend(show = FALSE)
+})
+    
+# Création d'une animation pour produire la carte animée
+tmap_animation(all_maps, filename = "figures/stkde_joueurs_5.gif", 
+               width = 500, height = 500, dpi = 150, delay = 25)
+
+
+# SECTION 6 — ClustGeo ----
 
 
