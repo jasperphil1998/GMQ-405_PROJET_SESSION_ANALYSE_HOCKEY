@@ -40,16 +40,89 @@ Il produit :
 - `figures/stkde_densite_temporelle.png`
 - `figures/stkde_joueurs.gif` — 150 images
 
-⏱️ **Compter 5 min 20 s et 2,2 Go de RAM.** À lui seul, ce module coûte huit
-fois plus que les onze autres réunis. Le goulot est
-`spattemp.density(sres = 500, tres = 150)`, soit 37,5 millions de cellules.
-Les deux résolutions sont en haut du fichier si tu veux itérer plus vite
-pendant la mise au point :
+⏱️ **Compter environ 5 minutes et 2,2 Go de RAM.** À lui seul, ce module coûte
+huit fois plus que les onze autres réunis (271 s sur 308 s pour un run
+complet).
+
+### Où passe le temps — mesuré, pas supposé
+
+Le module se chronomètre lui-même et affiche la répartition en fin
+d'exécution :
+
+```
+densite calculee en 199 s
+rendu des 150 images en 79 s
+REPARTITION : densite 199 s | rendu 79 s
+```
+
+Soit **73 % dans `spattemp.density()`** et **26 % dans le rendu des images**.
+
+### `sres` : ne pas le baisser
+
+C'est contre-intuitif, donc voici les chiffres. La fenêtre est le monde entier,
+soit 34 735 km de large en projection cylindrique équivalente :
+
+| `sres` | Taille de cellule | Cellules par largeur de bande (h = 100 km) |
+|---|---|---|
+| 250 | 139 km | **0,7** — le noyau n'est plus résolu |
+| **500 (actuel)** | 69 km | **1,4** — déjà limite |
+| 1000 | 35 km | 2,9 — confortable |
+
+À `sres = 500` la grille est **déjà sous-résolue** par rapport au lissage
+spatial. Baisser cette valeur n'est pas un compromis vitesse/qualité, c'est une
+erreur de méthode : tu lisserais sur 100 km une grille dont la maille fait
+139 km.
+
+Recadrer la fenêtre n'aide pas beaucoup non plus : les lieux de naissance
+couvrent 84 % de la largeur du monde et 62 % de sa surface. De Vancouver à
+Vladivostok, ils sont réellement partout.
+
+### `tres` : là, il y a un gain gratuit
+
+| `tres` | Années par image | Images par largeur de bande (λ = 10 ans) |
+|---|---|---|
+| **150 (actuel)** | 0,85 | **11,7** — suréchantillonné d'un facteur ~12 |
+| 64 | 2,0 | 5,0 — largement suffisant |
+
+Le lissage temporel vaut 10 ans. Produire une image tous les 10 mois ne montre
+rien de plus qu'une image tous les 2 ans : l'information supplémentaire a été
+lissée par construction. Passer à `tres = 64` diviserait **à la fois** le calcul
+de densité et le rendu par environ 2,3, pour un coût scientifique nul.
+
+Estimation : **271 s → environ 115 s.**
 
 ```r
-RESOLUTION_SPATIALE   <- 500   # -> 250 pour tester quatre fois plus vite
-RESOLUTION_TEMPORELLE <- 150
+RESOLUTION_SPATIALE   <- 500   # ne pas baisser (voir le tableau ci-dessus)
+RESOLUTION_TEMPORELLE <- 150   # -> 64 : deux fois plus rapide, sans perte
 ```
+
+Je ne l'ai **pas changé moi-même** : c'est un paramètre de modélisation, et le
+modifier change tes sorties. À toi de trancher, et de le justifier en rapport.
+
+### Et le GPU ?
+
+Question posée, réponse mesurée : **non, ça ne sert à rien ici.**
+
+- `spattemp.density()` n'a même pas d'argument de parallélisation CPU, alors que
+  ses voisines `bivariate.density()` et `LIK.spattemp()` en ont un. Elle appelle
+  `density.ppp` de spatstat, du C mono-thread.
+- `tmap`, `gifski`, `sf`, `spdep` : tous sur CPU, aucun backend CUDA.
+- Les paquets R à backend GPU qui existent (`torch`, `tensorflow`) ne se
+  branchent sur aucun de ceux-là. `gpuR` et `cuda.ml` sont archivés du CRAN.
+
+Accélérer le STKDE par GPU voudrait dire réimplémenter l'estimateur en
+opérations tensorielles. C'est faisable — un noyau gaussien spatio-temporel
+séparable est une convolution — mais tu échangerais « j'ai utilisé `sparr`,
+estimateur publié de Davies et Hazelton, cité au manuel » contre « j'ai réécrit
+l'estimateur moi-même », et toute divergence numérique deviendrait ta charge de
+preuve. Le coût pédagogique dépasse largement les quelques minutes gagnées.
+
+**Si le temps devient vraiment gênant**, dans l'ordre de rentabilité :
+1. `tres` 150 → 64 (facteur 2,3, gratuit) ;
+2. paralléliser le rendu sur les 16 threads de la machine — `tmap_animation`
+   écrit ses 150 images **séquentiellement** avec `tmap_save()`, donc écrire les
+   PNG avec `parallel::parLapply()` puis appeler `gifski::gifski()` sur la liste
+   de fichiers récupère l'essentiel des 79 s.
 
 ### Deux choses que j'ai remarquées, sans y toucher
 

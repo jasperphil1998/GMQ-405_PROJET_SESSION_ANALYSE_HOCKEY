@@ -65,11 +65,28 @@ suppressPackageStartupMessages({
 
 # --- Parametres -------------------------------------------------------------
 # Regroupes ici pour que tu puisses les changer sans fouiller le code.
+#
+# COUT MESURE avec les valeurs ci-dessous : 294 s au total, dont 199 s pour
+# spattemp.density et 79 s pour le rendu des 150 images. Le module se
+# chronometre et affiche la repartition en fin d'execution.
+#
+# RESOLUTION_SPATIALE : NE PAS BAISSER.
+#   La fenetre fait 34 735 km de large. A 500, la maille vaut 69 km pour une
+#   largeur de bande de 100 km, soit 1,4 cellule par bande : c'est deja
+#   sous-resolu. A 250, la maille (139 km) depasserait la largeur de bande et
+#   le noyau ne serait plus resolu du tout.
+#
+# RESOLUTION_TEMPORELLE : marge disponible.
+#   A 150, on produit une image tous les 0,85 an pour un lissage de 10 ans,
+#   soit 11,7 images par largeur de bande — suréchantillonné d'un facteur ~12.
+#   Passer a 64 (2 ans par image, 5 images par bande) diviserait le calcul ET
+#   le rendu par ~2,3 sans perte reelle. C'est ton choix de modelisation :
+#   voir docs/GUIDE_XAVIER.md.
 
 H_SPATIAL   <- 100000   # largeur de bande spatiale, en metres
 LAMBDA_TEMP <- 10       # largeur de bande temporelle, en annees
-RESOLUTION_SPATIALE <- 500
-RESOLUTION_TEMPORELLE <- 150
+RESOLUTION_SPATIALE   <- 500   # ne pas baisser (voir ci-dessus)
+RESOLUTION_TEMPORELLE <- 150   # -> 64 : deux fois plus rapide, sans perte
 ESTIMER_BANDWIDTH <- FALSE   # TODO XAVIER : voir la section 3 ci-dessous
 
 
