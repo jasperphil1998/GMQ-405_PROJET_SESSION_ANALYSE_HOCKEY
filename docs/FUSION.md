@@ -119,6 +119,7 @@ Toutes portent sur des problèmes qui existaient **avant** la fusion.
 | `tlim = c(0, 128)` codé en dur | section 5 | déduit des données |
 | Prairies (MB, SK) sans aucune carte régionale | SECTION 3 | carte ajoutée |
 | Mention « Source / Auteur » recopiée ~40 fois | tout le script | constante `CREDITS` |
+| `recode()` des positions cherchait `LW`/`RW`, absents des données (qui utilisent `L`, `R`, `F`, `W`) : **3 408 joueurs sur 8 802 gardaient un code brut** dans les graphiques 6 et 11 | SECTION 1 | codes réels recodés |
 
 ---
 
@@ -157,9 +158,33 @@ effet sur les résultats.
 
 ## 7. État de la chaîne
 
-Les douze modules s'exécutent sans erreur (`Rscript run_all.R`, environ une
-minute). Le module 11 s'ignore proprement si `sparr`, `gifski` et `viridis` ne
-sont pas installés.
+`Rscript run_all.R` produit un bilan avec trois états possibles, et la
+distinction compte :
+
+| État | Signification |
+|---|---|
+| `ok` | le module a tourné **et produit ses sorties** |
+| `IGNORE` | le module s'est sauté lui-même faute d'un paquet optionnel — **aucune sortie produite** |
+| `ECHEC` | le module a planté ; les suivants ont continué |
+
+Cette distinction a été ajoutée après coup, parce que le premier bilan affichait
+`ok` pour un module qui s'était entièrement sauté : on ne s'en apercevait qu'en
+cherchant une sortie qui n'existait pas. Un module ignoré est maintenant signalé
+explicitement en fin d'exécution.
+
+**Modules 01 à 10 et 12** : vérifiés à l'exécution, y compris depuis un état
+froid (`figures/` et `sorties/*.rds` supprimés). Environ 40 secondes au total.
+
+**Module 11 (STKDE)** : vérifié à l'exécution après installation de `sparr`,
+`gifski` et `viridis`. Il produit bien `figures/stkde_densite_temporelle.png`
+et `figures/stkde_joueurs.gif` (150 images).
+
+⏱️ **Mais il coûte à lui seul 5 min 20 s et 2,2 Go de RAM**, contre 40 secondes
+pour les onze autres modules réunis. C'est `spattemp.density()` avec
+`sres = 500` et `tres = 150`, soit 37,5 millions de cellules. Si le temps
+d'exécution devient gênant, baisser ces deux résolutions dans l'en-tête du
+module divise le coût d'autant — mais c'est une décision de Xavier, pas un
+réglage à changer par commodité.
 
 ---
 

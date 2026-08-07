@@ -47,8 +47,12 @@ if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 message("\n=== 12 — CLASSIFICATION SPATIALE (ClustGeo) ===")
 
 if (!requireNamespace("ClustGeo", quietly = TRUE)) {
-  message("Module 12 ignore : le paquet ClustGeo n'est pas installe.\n",
-          "  install.packages(\"ClustGeo\")")
+  # Voir la note dans 11_stkde.R : run_all.R lit MODULE_IGNORE pour ne pas
+  # afficher "ok" sur un module qui n'a rien produit.
+  MODULE_IGNORE <- TRUE
+  message("Module 12 IGNORE : le paquet ClustGeo n'est pas installe.\n",
+          "  install.packages(\"ClustGeo\")\n",
+          "  AUCUNE sortie de classification ne sera produite.")
 } else {
 
 suppressPackageStartupMessages(library(ClustGeo))

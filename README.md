@@ -134,10 +134,30 @@ Interprétations complètes et mises en garde :
 
 | Module | État | Responsable |
 |---|---|---|
-| **11** STKDE | fonctionnel, trois `# TODO XAVIER` ouverts | Xavier Lafrance |
+| **11** STKDE | vérifié à l'exécution, trois `# TODO XAVIER` ouverts | Xavier Lafrance |
 | **12** ClustGeo | trame exécutable, quatre `# CHOIX XAVIER` à trancher | Xavier Lafrance |
 
 Voir [`docs/GUIDE_XAVIER.md`](docs/GUIDE_XAVIER.md).
+
+⏱️ **Le module 11 coûte 5 min 20 s et 2,2 Go de RAM** — huit fois plus que les
+onze autres réunis. Pour une exécution rapide, le sauter :
+
+```r
+source("run_all.R"); lancer_modules(c("01","02","03","04","05","06","07","08","09","10","12"))
+```
+
+---
+
+## Lire le bilan de `run_all.R`
+
+| État | Signification |
+|---|---|
+| `ok` | le module a tourné **et produit ses sorties** |
+| `IGNORE` | il s'est sauté faute d'un paquet optionnel — **aucune sortie** |
+| `ECHEC` | il a planté ; les suivants ont continué |
+
+La distinction `ok` / `IGNORE` compte : un module sauté affichait auparavant
+`ok`, et on ne s'en apercevait qu'en cherchant une sortie qui n'existait pas.
 
 ---
 

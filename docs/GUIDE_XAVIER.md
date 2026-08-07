@@ -32,6 +32,37 @@ source("run_all.R"); lancer_modules(c("11", "12"))
 
 ## Module 11 — STKDE
 
+### État : vérifié, il tourne
+
+Exécuté de bout en bout après installation de `sparr`, `gifski` et `viridis`.
+Il produit :
+
+- `figures/stkde_densite_temporelle.png`
+- `figures/stkde_joueurs.gif` — 150 images
+
+⏱️ **Compter 5 min 20 s et 2,2 Go de RAM.** À lui seul, ce module coûte huit
+fois plus que les onze autres réunis. Le goulot est
+`spattemp.density(sres = 500, tres = 150)`, soit 37,5 millions de cellules.
+Les deux résolutions sont en haut du fichier si tu veux itérer plus vite
+pendant la mise au point :
+
+```r
+RESOLUTION_SPATIALE   <- 500   # -> 250 pour tester quatre fois plus vite
+RESOLUTION_TEMPORELLE <- 150
+```
+
+### Deux choses que j'ai remarquées, sans y toucher
+
+Ce sont tes réglages d'origine, donc je les ai laissés — mais regarde le GIF et
+juge :
+
+1. **`tm_title(size = 8)`** : l'année occupe environ la moitié de la hauteur de
+   chaque image, la carte est écrasée en dessous. `size = 2` ou `3` rééquilibre.
+2. **`tm_legend(show = FALSE)`** : il n'y a aucune échelle de densité sur
+   l'animation. Le lecteur voit des couleurs changer sans savoir ce qu'elles
+   valent. Comme l'échelle est commune à toutes les images (`color_breaks`),
+   l'afficher une fois serait juste, et rendrait le GIF citable en rapport.
+
 ### Ce qui n'a pas changé
 
 **Tout le calcul.** Mêmes noms de variables (`prov_joueur_stkde`,
@@ -75,8 +106,10 @@ immédiatement.
    (le `_5` venait du numéro de section).
 
 8. **Le module s'ignore proprement** si `sparr`, `gifski` ou `viridis` manquent,
-   au lieu de faire planter la chaîne. Sur le poste de test, ces trois-là ne
-   sont pas installés :
+   au lieu de faire planter la chaîne. Dans ce cas `run_all.R` affiche
+   **`IGNORE`** (et non `ok`) dans son bilan, avec un avertissement explicite :
+   un module sauté n'a produit aucune sortie, et il ne faut pas croire le
+   contraire.
 
    ```r
    install.packages(c("sparr", "gifski", "viridis"))

@@ -21,6 +21,13 @@
 # SORTIES
 #   figures/  descriptif  (non versionne, se regenere)
 #   sorties/  statistique (versionne, cite dans le rapport)
+#
+# BILAN DE FIN D'EXECUTION
+#   ok      le module a tourne et produit ses sorties
+#   IGNORE  le module s'est saute lui-meme, faute d'un paquet optionnel.
+#           IL N'A PRODUIT AUCUNE SORTIE. C'est le cas du module 11 tant que
+#           sparr, gifski et viridis ne sont pas installes.
+#   ECHEC   le module a plante ; les suivants ont continue
 # =============================================================================
 
 
@@ -122,24 +129,30 @@ lancer_modules <- function(ids = NULL) {
     chemin <- file.path("R", module$fichier)
     message("\n>>> ", module$id, " — ", module$nom)
 
-    t0 <- Sys.time()
+    t0  <- Sys.time()
+    env <- new.env(parent = globalenv())
     # Chaque module tourne dans son propre environnement : cela evite qu'une
     # variable laissee par un module en masque une autre dans le suivant.
-    resultat <- try(
-      sys.source(chemin, envir = new.env(parent = globalenv())),
-      silent = FALSE
-    )
+    resultat <- try(sys.source(chemin, envir = env), silent = FALSE)
     duree <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")))
 
-    if (inherits(resultat, "try-error")) {
+    # Un module qui depend de paquets optionnels absents se saute lui-meme et
+    # pose MODULE_IGNORE dans son environnement. Sans cette distinction, il
+    # apparaitrait "ok" alors qu'il n'a rien produit : c'est trompeur, et on
+    # ne s'en apercoit qu'en cherchant une sortie qui n'existe pas.
+    etat <- if (inherits(resultat, "try-error")) {
       message("!!! ECHEC de ", module$fichier,
               " — les modules suivants continuent.")
-      data.frame(Module = module$id, Nom = module$nom,
-                 Etat = "ECHEC", Secondes = duree)
+      "ECHEC"
+    } else if (isTRUE(mget("MODULE_IGNORE", envir = env,
+                           ifnotfound = list(FALSE))[[1]])) {
+      "IGNORE"
     } else {
-      data.frame(Module = module$id, Nom = module$nom,
-                 Etat = "ok", Secondes = duree)
+      "ok"
     }
+
+    data.frame(Module = module$id, Nom = module$nom,
+               Etat = etat, Secondes = duree)
   })
 
   bilan <- do.call(rbind, bilan)
@@ -152,8 +165,16 @@ lancer_modules <- function(ids = NULL) {
 
   echecs <- bilan[bilan$Etat == "ECHEC", ]
   if (nrow(echecs) > 0) {
-    message("\n", nrow(echecs), " module(s) en echec : ",
+    message("\n", nrow(echecs), " module(s) en ECHEC : ",
             paste(echecs$Module, collapse = ", "))
+  }
+
+  ignores <- bilan[bilan$Etat == "IGNORE", ]
+  if (nrow(ignores) > 0) {
+    message("\n", nrow(ignores), " module(s) IGNORE(S) faute de paquets : ",
+            paste(ignores$Module, collapse = ", "),
+            "\nCes modules n'ont produit AUCUNE sortie. Voir le message",
+            " ci-dessus pour la commande d'installation.")
   }
 
   message("\nSorties statistiques : sorties/")

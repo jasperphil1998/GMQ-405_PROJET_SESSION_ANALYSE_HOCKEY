@@ -189,15 +189,27 @@ charger_hockey <- function() {
           Country %in% PAYS_EUROPE  ~ "Europe",
           TRUE                      ~ "Autres"
         ),
-        # Position nettoyee et traduite, utilisee par les graphiques 6 et 11.
+        # Position nettoyee et traduite, utilisee par les graphiques 6 et 11
+        # et par le tableau des statistiques par position (module 05).
+        #
+        # ATTENTION — le script d'origine recodait "LW" et "RW". Or le jeu de
+        # donnees n'emploie pas ces codes : il utilise L, R, F et W. Sur
+        # 8802 joueurs, "RW" n'apparait que 2 fois et "LW" jamais. Resultat :
+        # 3408 joueurs (39 %) gardaient un code brut non traduit dans les
+        # graphiques. Les codes reellement presents sont, par frequence :
+        #   D 2631 | C 1882 | L 1567 | R 1424 | G 881 | F 363 | W 52 | RW 2
         Position = str_trim(.data[["Pos."]]),
         PositionLabel = recode(
           Position,
           "C"  = "Centre",
           "D"  = "Defenseur",
           "G"  = "Gardien",
+          "L"  = "Ailier gauche",
           "LW" = "Ailier gauche",
+          "R"  = "Ailier droit",
           "RW" = "Ailier droit",
+          "W"  = "Ailier",
+          "F"  = "Avant",
           .default = Position
         ),
         PIM = as.numeric(PIM),

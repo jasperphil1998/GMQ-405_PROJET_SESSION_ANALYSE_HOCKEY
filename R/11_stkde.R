@@ -41,10 +41,14 @@ manquants <- paquets_stkde[
 ]
 
 if (length(manquants) > 0) {
+  # MODULE_IGNORE est lu par run_all.R : sans lui, le bilan afficherait "ok"
+  # pour un module qui n'a rien produit du tout.
+  MODULE_IGNORE <- TRUE
   message(
-    "Module 11 ignore : paquets manquants -> ",
+    "Module 11 IGNORE : paquets manquants -> ",
     paste(manquants, collapse = ", "), "\n",
-    "  install.packages(c(\"", paste(manquants, collapse = "\", \""), "\"))"
+    "  install.packages(c(\"", paste(manquants, collapse = "\", \""), "\"))\n",
+    "  AUCUNE sortie STKDE ne sera produite."
   )
 } else {
 
@@ -192,23 +196,34 @@ if (ESTIMER_BANDWIDTH) {
 # tout en brut. Le jittering est necessaire des qu'un calcul depend des
 # distances entre paires ; pour une densite de noyau il est moins critique.
 
-message("Calcul de la densite spatio-temporelle...")
+message("Calcul de la densite spatio-temporelle (",
+        RESOLUTION_SPATIALE, "x", RESOLUTION_SPATIALE, "x",
+        RESOLUTION_TEMPORELLE, " = ",
+        format(RESOLUTION_SPATIALE^2 * RESOLUTION_TEMPORELLE / 1e6,
+               digits = 3), " M cellules)...")
 
 # tlim couvre toute l'etendue temporelle observee. La valeur c(0, 128) etait
 # codee en dur : elle est maintenant deduite des donnees, ce qui evite de
 # tronquer silencieusement les dernieres decennies si le CSV est mis a jour.
 tlim_observe <- range(prov_joueur_stkde_sf$dt_num)
 
-dens_vals <- spattemp.density(
-  prov_joueur_stkde_sf.ppp,
-  h      = H_SPATIAL,
-  lambda = LAMBDA_TEMP,
-  tt     = prov_joueur_stkde_sf$dt_num,
-  tlim   = tlim_observe,
-  sres   = RESOLUTION_SPATIALE,
-  tres   = RESOLUTION_TEMPORELLE,
-  verbose = FALSE
-)
+# Chronometrage des deux etapes couteuses. Sans ca, on optimise a l'aveugle :
+# selon que le temps part dans le calcul de densite ou dans le rendu des
+# images, la marche a suivre n'est pas du tout la meme.
+t_densite <- system.time(
+  dens_vals <- spattemp.density(
+    prov_joueur_stkde_sf.ppp,
+    h      = H_SPATIAL,
+    lambda = LAMBDA_TEMP,
+    tt     = prov_joueur_stkde_sf$dt_num,
+    tlim   = tlim_observe,
+    sres   = RESOLUTION_SPATIALE,
+    tres   = RESOLUTION_TEMPORELLE,
+    verbose = FALSE
+  )
+)["elapsed"]
+
+message("  densite calculee en ", round(t_densite), " s")
 
 ## Extraction des rasters a chaque periode
 all_rasts <- lapply(dens_vals$z, function(x) {
@@ -254,12 +269,18 @@ all_maps <- lapply(seq_along(time_frames), function(i) {
 
 fichier_gif <- chemin_figure("stkde_joueurs.gif")
 
-tmap_animation(
-  all_maps, filename = fichier_gif,
-  width = 500, height = 500, dpi = 150, delay = 25
-)
+t_rendu <- system.time(
+  tmap_animation(
+    all_maps, filename = fichier_gif,
+    width = 500, height = 500, dpi = 150, delay = 25
+  )
+)["elapsed"]
 
 message("  -> ", basename(fichier_gif))
+message("  rendu des ", length(time_frames), " images en ",
+        round(t_rendu), " s")
+message("  REPARTITION : densite ", round(t_densite), " s | rendu ",
+        round(t_rendu), " s")
 
 }   # fin du bloc conditionnel sur les paquets
 
