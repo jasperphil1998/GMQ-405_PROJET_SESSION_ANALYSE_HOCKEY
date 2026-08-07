@@ -2071,4 +2071,4 @@ tmap_animation(all_maps, filename = "figures/stkde_joueurs_5.gif",
 
 # SECTION 6 — ClustGeo ----
 
-
+# test
