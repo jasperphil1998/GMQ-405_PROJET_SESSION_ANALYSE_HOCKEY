@@ -1,37 +1,62 @@
-# ============================================================
-# Installation des packages requis pour le projet Hockey
-# À exécuter une seule fois (ou après une réinstallation de R).
-# Dans VS Code : ouvrir ce fichier et faire "Source" (ou le
-# lancer avec  Rscript install_packages.R  dans un terminal).
-# ============================================================
+# =============================================================================
+# install_packages.R — Installation des dependances du projet
+# =============================================================================
+# A executer une seule fois (ou apres une reinstallation de R).
+# Dans VS Code / RStudio : ouvrir ce fichier et faire "Source".
+# En terminal :  Rscript install_packages.R
+# =============================================================================
 
-# Packages disponibles sur le CRAN
-packages_cran <- c(
+# --- Socle commun : requis par run_all.R ------------------------------------
+packages_requis <- c(
   "readr",
   "dplyr",
   "tidyr",
   "stringr",
   "lubridate",
   "ggplot2",
-  "sf",
-  "tmap",
+  "scales",
+  "sf",                 # donnees spatiales vectorielles
+  "tmap",               # cartographie thematique (version 4 requise)
   "rnaturalearth",
   "rnaturalearthdata",
-  "tidygeocoder",
-  "scales",
-  "languageserver"   # requis par l'extension R de VS Code
+  "spdep",              # autocorrelation spatiale (modules 07, 10)
+  "spatialreg",         # modeles SAR / SEM (module 10)
+  "spatstat.geom",      # objets ppp / owin (module 08)
+  "spatstat.explore",   # densite de noyau, fonction L (module 08)
+  "languageserver"      # requis par l'extension R de VS Code
 )
 
-manquants <- packages_cran[!(packages_cran %in% rownames(installed.packages()))]
+# --- Optionnels : les modules concernes sont ignores s'ils manquent ---------
+packages_optionnels <- c(
+  "tidygeocoder",   # geocodage de nouveaux lieux         (module 01)
+  "ggrepel",        # etiquettes non chevauchantes        (modules 07, 09)
+  "MASS",           # binomial negatif, robustesse        (module 10)
+  "spgwr",          # regression geographiquement ponderee (module 10)
+  "ClustGeo",       # classification spatiale             (module 12)
+  "sparr",          # densite spatio-temporelle (STKDE)   (module 11)
+  "terra",          # rasters                             (module 11)
+  "gifski",         # animation GIF                       (module 11)
+  "classInt",       # discretisation                      (module 11)
+  "viridis"         # palettes                            (module 11)
+)
 
-if (length(manquants) > 0) {
-  message("Installation depuis le CRAN : ", paste(manquants, collapse = ", "))
-  install.packages(manquants, repos = "https://cloud.r-project.org")
-} else {
-  message("Tous les packages CRAN sont déjà installés.")
+installer <- function(liste, etiquette) {
+  manquants <- liste[!(liste %in% rownames(installed.packages()))]
+  if (length(manquants) > 0) {
+    message("Installation (", etiquette, ") : ",
+            paste(manquants, collapse = ", "))
+    install.packages(manquants, repos = "https://cloud.r-project.org")
+  } else {
+    message("Tous les packages ", etiquette, " sont deja installes.")
+  }
 }
 
-# rnaturalearthhires n'est PAS sur le CRAN : il vient du dépôt r-universe
+installer(packages_requis, "requis")
+installer(packages_optionnels, "optionnels")
+
+# --- rnaturalearthhires : PAS sur le CRAN -----------------------------------
+# Fournit les fonds de carte detailles des provinces et des etats, utilises
+# par les modules 04 et 06.
 if (!requireNamespace("rnaturalearthhires", quietly = TRUE)) {
   message("Installation de rnaturalearthhires depuis r-universe...")
   install.packages(
@@ -39,7 +64,23 @@ if (!requireNamespace("rnaturalearthhires", quietly = TRUE)) {
     repos = "https://ropensci.r-universe.dev"
   )
 } else {
-  message("rnaturalearthhires est déjà installé.")
+  message("rnaturalearthhires est deja installe.")
 }
 
-message("\nInstallation terminée.")
+# --- Verification de la version de tmap -------------------------------------
+# Le projet utilise la syntaxe tmap 4 (tm_scale_*, fill / col separes).
+# Avec tmap 3, toutes les cartes echoueraient.
+if (requireNamespace("tmap", quietly = TRUE)) {
+  version_tmap <- packageVersion("tmap")
+  if (version_tmap < "4.0.0") {
+    warning(
+      "tmap ", version_tmap, " est installe, mais le projet exige tmap 4.\n",
+      "Mettre a jour avec : install.packages(\"tmap\")",
+      call. = FALSE
+    )
+  } else {
+    message("tmap ", version_tmap, " : version compatible.")
+  }
+}
+
+message("\nInstallation terminee. Lancer ensuite :  Rscript run_all.R")
