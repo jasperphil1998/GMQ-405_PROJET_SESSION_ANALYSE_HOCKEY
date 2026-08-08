@@ -1,12 +1,14 @@
 # Références scientifiques — Projet GMQ-405 (analyse géomatique des joueurs de la LNH)
 
-Bibliographie de départ pour le rapport. Deux blocs :
+Bibliographie de départ pour le rapport. Trois blocs :
 
 - **A. Littérature de contenu** — ce que d'autres ont déjà trouvé sur la géographie
   de la production de joueurs de hockey. Sert à situer nos résultats et à écrire
   l'introduction et la discussion.
 - **B. Littérature méthodologique** — la source à citer pour chaque méthode
   employée dans les modules 06 à 10. Sert à justifier les choix techniques.
+- **C. Sources de données** — d'où viennent les chiffres eux-mêmes. Sert à la
+  section « Données » du rapport et aux crédits sous les cartes.
 
 **Statut de vérification.** Les entrées marquées ✅ ont été vérifiées en ligne
 (journal, volume, pages, DOI). Celles marquées ⚠️ sont des classiques cités de
@@ -273,6 +275,97 @@ Springer.
 En R, `citation("spdep")`, `citation("sf")`, `citation("tmap")`,
 `citation("spatstat")` produisent la référence officielle de chaque paquet,
 prête à copier.
+
+---
+
+## C. Sources de données
+
+Le projet mobilise des populations à **deux échelles distinctes**, qui ne
+viennent pas du tout de la même source. Les confondre dans le rapport serait une
+faute : l'une est un recensement, l'autre une estimation.
+
+### C.1 — Populations des provinces et des États (module 06, partie B)
+
+C'est le fichier [`data/population_provinces_etats.csv`](../data/population_provinces_etats.csv).
+Ses 64 valeurs ont été **vérifiées une à une contre les tableaux officiels le
+2026-08-08 : aucun écart**, et les deux totaux se reconstituent exactement
+(36 991 981 et 331 449 281). Chaque ligne du fichier porte sa source et son URL.
+
+✅ **Statistique Canada. (2022).** *Chiffres de population et des logements :
+Canada, provinces et territoires* (Tableau 98-10-0001-01) [Ensemble de données].
+Recensement de la population de 2021. Diffusé le 9 février 2022.
+<https://doi.org/10.25318/9810000101-fra>
+→ Les 13 provinces et territoires. Le tableau a un **DOI**, donc citez-le : c'est
+la forme la plus solide possible pour une donnée gouvernementale.
+*Appel en texte :* (Statistique Canada, 2022)
+
+✅ **U.S. Census Bureau. (2021).** *Table 2. Resident Population for the 50 States,
+the District of Columbia, and Puerto Rico: 2020 Census* [Ensemble de données].
+U.S. Department of Commerce.
+<https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment-2020-table02.pdf>
+→ Les 50 États plus le District de Columbia, population au 1ᵉʳ avril 2020.
+*Appel en texte :* (U.S. Census Bureau, 2021)
+
+⚠️ **Deux pièges à éviter en rédigeant.**
+
+1. Ne pas écrire « population de redécoupage (P.L. 94-171) » : ce que nous
+   utilisons est la **population résidente** du tableau 2 des résultats de
+   répartition. Ce sont les mêmes chiffres, mais le nom du tableau cité doit
+   correspondre à celui qu'on a réellement consulté.
+2. Ne pas confondre avec la ***apportionment population***, qui figure au tableau 1
+   de la même diffusion. Celle-là ajoute le personnel fédéral en poste à
+   l'étranger et **exclut le District de Columbia** — elle donne 331 108 434 au
+   lieu de 331 449 281. Nos taux seraient faux si on la reprenait.
+
+### C.2 — Populations des pays (module 06, partie A)
+
+⚠️ **Natural Earth. (s. d.).** *Admin 0 – Countries* (version 5.1.1) [Données
+vectorielles]. <https://www.naturalearthdata.com/downloads/10m-cultural-vectors/10m-admin-0-countries/>
+→ **Ce n'est pas un recensement.** Le champ `pop_est` employé par le module 06 est
+une estimation compilée par Natural Earth à partir de sources tierces (ONU, CIA
+World Factbook), avec un attribut `POP_YEAR` valant 2019. Le fournisseur ne
+publie pas de documentation détaillée de ce champ.
+
+**Conséquence pour le rapport.** Les taux et QL par pays sont robustes comme
+*ordres de grandeur* — un rapport de 1 à 300 entre le Canada et les États-Unis ne
+tient pas à la précision de l'estimation — mais ils ne doivent pas être présentés
+avec la même autorité que les taux par province et par État. Une phrase suffit
+dans les limites.
+
+Deux façons de renforcer ce point si le temps le permet, par ordre d'effort :
+
+- **Nuancer sans recalculer** : dire explicitement que l'échelle des pays repose
+  sur une estimation et que l'échelle infranationale, elle, repose sur deux
+  recensements vérifiés. C'est honnête et ça coûte deux phrases.
+- **Remplacer la source** : joindre les populations de la Banque mondiale
+  (indicateur `SP.POP.TOTL`) ou de l'ONU (*World Population Prospects*) au lieu de
+  `pop_est`. Ça donnerait une source citable et une année de référence explicite,
+  au prix d'un recalcul de la partie A du module 06 et des deux cartes associées.
+
+⚠️ **Massicotte, P., & South, A.** *rnaturalearth: World Map Data from Natural
+Earth* [Paquet R]. → La citation du paquet, distincte de celle des données.
+Obtenez la version exacte avec `citation("rnaturalearth")`.
+
+### C.3 — Données sur les joueurs
+
+**Données de base du cours GMQ-405** — `GMQ-405_Fichier_Hockey_Players_un_seul_tableau.xlsx`,
+8 802 joueurs de la LNH. Fichier fourni dans le cadre du cours ; les crédits de
+cartes du projet le désignent comme « Hockey DB / NHL player data ».
+→ **À confirmer auprès de l'enseignant** avant la remise : si le fichier provient
+d'une compilation identifiable (*The Internet Hockey Database*, hockeydb.com, ou
+*Hockey-Reference*), c'est cette source-là qu'il faut nommer, avec la date de
+consultation.
+
+**Coordonnées des lieux de naissance** — géocodage réalisé par le module 01, cache
+dans `data/geocodage/`. Nommez dans le rapport le service de géocodage utilisé
+(voir `R/01_geocodage.R`) : c'est lui qui détermine la précision des points, donc
+la validité de tout le volet semis de points.
+
+### C.4 — Ligne de crédit prête à coller sous les cartes
+
+> Population : Statistique Canada, Recensement de 2021 (tableau 98-10-0001-01) ;
+> U.S. Census Bureau, 2020 Census (tableau 2, population résidente).
+> Fond de carte : Natural Earth. Données joueurs : GMQ-405.
 
 ---
 
