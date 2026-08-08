@@ -44,7 +44,7 @@ log(DensitePop)  6.144e-01  1.915e-01   3.208  0.00216 **
 DistCote_km      2.653e-04  5.805e-04   0.457  0.64931    
 DistLNH_km       1.392e-04  4.571e-04   0.305  0.76179    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 Residual standard error: 1.69 on 59 degrees of freedom
 Multiple R-squared:  0.5114,	Adjusted R-squared:  0.4783 
@@ -78,8 +78,7 @@ pas. Il faut passer a un modele spatial.
 
 --- TESTS DU MULTIPLICATEUR DE LAGRANGE (score de Rao) ---
 
-	Rao's score (a.k.a Lagrange multiplier) diagnostics for spatial
-	dependence
+	Rao's score (a.k.a Lagrange multiplier) diagnostics for spatial dependence
 data:  
 model: lm(formula = FORMULE, data = donnees_modele)
 test weights: lw
@@ -91,7 +90,7 @@ adjRSerr   0.59466         1 0.44062
 adjRSlag   3.47003         1 0.06249 .
 SARMA      6.67651         2 0.03550 *
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 LECTURE : comparer les versions ROBUSTES (adjRSerr / adjRSlag).
 Celle qui est significative alors que l'autre ne l'est pas
 designe la forme spatiale a retenir.
@@ -138,7 +137,7 @@ Residuals:
 Type: lag 
 Coefficients: (asymptotic standard errors) 
                    Estimate  Std. Error z value  Pr(>|z|)
-(Intercept)     -9.80694254  2.62949215 -3.7296 0.0001918
+(Intercept)     -9.80694256  2.62949215 -3.7296 0.0001918
 Latitude         0.17860272  0.04377111  4.0804 4.496e-05
 log(DensitePop)  0.49504556  0.18897813  2.6196 0.0088035
 DistCote_km      0.00035304  0.00052238  0.6758 0.4991476
@@ -224,7 +223,7 @@ log(DensitePop)  2.840e-01  1.619e-01   1.755   0.0793 .
 DistCote_km     -6.908e-04  4.464e-04  -1.548   0.1217    
 DistLNH_km      -8.062e-04  6.847e-04  -1.177   0.2390    
 ---
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for Negative Binomial(0.6983) family taken to be 1)
 
@@ -257,16 +256,16 @@ Moran I statistic       Expectation          Variance
 
 --- ROBUSTESSE — OLS SUR LOG DU TAUX vs BINOMIAL NEGATIF SUR COMPTAGE ---
 
-         Variable SigneOLS ValeurP_OLS SigneBinNeg ValeurP_BinNeg MemeSigne
-1        Latitude        +    1.29e-09           +       3.92e-25      TRUE
-2 log(DensitePop)        +    2.16e-03           +       7.93e-02      TRUE
-3     DistCote_km        +    6.49e-01           -       1.22e-01     FALSE
-4      DistLNH_km        +    7.62e-01           -       2.39e-01     FALSE
-  Significatif                                        Verdict
-1         TRUE             Robuste (significatif, meme signe)
-2         TRUE             Robuste (significatif, meme signe)
-3        FALSE Non significatif, signe instable (sans portee)
-4        FALSE Non significatif, signe instable (sans portee)
+         Variable SigneOLS ValeurP_OLS SigneBinNeg ValeurP_BinNeg MemeSigne Significatif
+1        Latitude        +    1.29e-09           +       3.92e-25      TRUE         TRUE
+2 log(DensitePop)        +    2.16e-03           +       7.93e-02      TRUE         TRUE
+3     DistCote_km        +    6.49e-01           -       1.22e-01     FALSE        FALSE
+4      DistLNH_km        +    7.62e-01           -       2.39e-01     FALSE        FALSE
+                                         Verdict
+1             Robuste (significatif, meme signe)
+2             Robuste (significatif, meme signe)
+3 Non significatif, signe instable (sans portee)
+4 Non significatif, signe instable (sans portee)
 
 AUCUNE conclusion significative ne change de signe entre les
 deux specifications. Les resultats etablis ne dependent donc

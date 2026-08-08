@@ -8,13 +8,13 @@ Variables : TauxPar100k, PtsPar100k, PtsMoyen, PartElite
 
 --- SOMMAIRE DES VARIABLES AVANT NORMALISATION ---
 
-  TauxPar100k         PtsPar100k          PtsMoyen        PartElite     
- Min.   : 0.02147   Min.   :   0.032   Min.   :  0.50   Min.   :0.0000  
- 1st Qu.: 0.11706   1st Qu.:   8.509   1st Qu.: 67.29   1st Qu.:0.0000  
- Median : 0.33835   Median :  48.380   Median :109.05   Median :0.0000  
- Mean   : 3.98570   Mean   : 445.411   Mean   :106.42   Mean   :0.5322  
- 3rd Qu.: 2.94802   3rd Qu.: 296.671   3rd Qu.:130.50   3rd Qu.:0.1211  
- Max.   :47.77021   Max.   :5273.619   Max.   :409.50   Max.   :7.1429  
+  TauxPar100k         PtsPar100k           PtsMoyen        PartElite     
+ Min.   : 0.02147   Min.   :   0.0322   Min.   :  0.50   Min.   :0.0000  
+ 1st Qu.: 0.11706   1st Qu.:   8.5093   1st Qu.: 67.29   1st Qu.:0.0000  
+ Median : 0.33835   Median :  48.3798   Median :109.05   Median :0.0000  
+ Mean   : 3.98570   Mean   : 445.4115   Mean   :106.42   Mean   :0.5322  
+ 3rd Qu.: 2.94802   3rd Qu.: 296.6713   3rd Qu.:130.50   3rd Qu.:0.1211  
+ Max.   :47.77021   Max.   :5273.6191   Max.   :409.50   Max.   :7.1429  
 
 --- INERTIE EXPLIQUEE SELON ALPHA ---
 
@@ -60,18 +60,12 @@ Alpha retenu : 0.15
 
 --- PROFIL MOYEN DE CHAQUE CLASSE ---
 
-  Classe NbUnites Population NbJoueurs TauxPar100k PtsPar100k PtsMoyen
-1      4        1    1132505       541       47.77     5273.6    110.4
-2      2        9   34300466      4900       13.76     1607.3    121.0
-3      5        4   42163519       168        2.51      347.8    157.4
-4      3       33  239873299      1438        1.09       91.3     68.5
-5      1        8   27625175        42        0.18       44.3    220.2
-  PartElite
-1      1.29
-2      0.60
-3      4.77
-4      0.11
-5      0.00
+  Classe NbUnites Population NbJoueurs TauxPar100k PtsPar100k PtsMoyen PartElite
+1      4        1    1132505       541       47.77     5273.6    110.4      1.29
+2      2        9   34300466      4900       13.76     1607.3    121.0      0.60
+3      5        4   42163519       168        2.51      347.8    157.4      4.77
+4      3       33  239873299      1438        1.09       91.3     68.5      0.11
+5      1        8   27625175        42        0.18       44.3    220.2      0.00
 
 A FAIRE : nommer chaque classe a partir du tableau ci-dessus.
 
