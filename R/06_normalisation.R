@@ -134,7 +134,8 @@ carte_taux_pays <- tm_shape(monde_taux) +
   ) +
   tm_title("Taux de production de joueurs de la LNH par pays") +
   tm_credits(
-    paste0("Population : Natural Earth (pop_est). Pays avec au moins 5 joueurs.",
+    paste0("Population : estimation Natural Earth (pop_est, POP_YEAR 2019),",
+           "\npas un recensement. Pays avec au moins 5 joueurs.",
            "\nSource : Hockey DB / NHL player data",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.6
@@ -315,7 +316,8 @@ carte_taux_unites <- tm_shape(unites_proj) +
   ) +
   tm_title("Taux de production de joueurs de la LNH par province et etat") +
   tm_credits(
-    paste0("Population : Recensement 2021 (Canada) et Census 2020 (E.-U.).",
+    paste0("Population : Statistique Canada, Recensement de 2021 (tab. 98-10-0001-01) ;",
+           "\nU.S. Census Bureau, 2020 Census (tab. 2, population residente).",
            "\nProjection : Albers equivalente Amerique du Nord.",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.6

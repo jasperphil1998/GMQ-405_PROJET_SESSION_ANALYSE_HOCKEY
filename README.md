@@ -216,11 +216,18 @@ conclusions écrites changent avec elles.
 Champs requis dans le jeu principal : `Player Name`, `Pos.`, `Birthdate`
 (jour-mois-année), `Birthplace`, `Country`, `GP`, `G`, `A`, `Pts`, `PIM`.
 
-> ⚠️ **À vérifier avant de citer dans le rapport.** Les chiffres de
-> `population_provinces_etats.csv` ont été saisis manuellement. Ils sont
-> cohérents et plausibles, mais un chiffre de recensement cité dans un travail
-> universitaire doit être confirmé à la source (Statistique Canada, tableau
-> 98-10-0001 ; US Census Bureau, P.L. 94-171).
+> ✅ **Populations vérifiées à la source le 2026-08-08.** Les 64 valeurs de
+> `population_provinces_etats.csv` ont été confrontées une à une aux tableaux
+> officiels : **aucun écart**, et les deux totaux tombent juste (Canada
+> 36 991 981 ; États-Unis 331 449 281). Le fichier porte maintenant les colonnes
+> `Source`, `URL_source` et `DateVerification`. Citations complètes dans
+> [docs/REFERENCES.md](docs/REFERENCES.md), section C.
+>
+> ⚠️ **Attention, l'échelle des pays est une autre histoire.** Le module 06,
+> partie A, n'utilise pas ce fichier : il prend le champ `pop_est` du fond de
+> carte Natural Earth, qui est une *estimation* compilée par Natural Earth
+> (`POP_YEAR = 2019`), pas un chiffre de recensement. À signaler comme tel dans
+> le rapport.
 
 > ℹ️ Le module 01 signale que **64 lieux du cache n'ont pas de coordonnées**
 > (Shawinigan, Chambly, Charlottetown, quelques villes européennes…). Ces

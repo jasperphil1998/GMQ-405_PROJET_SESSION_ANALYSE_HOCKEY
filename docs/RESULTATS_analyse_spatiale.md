@@ -212,14 +212,43 @@ que le calcul ne montre pas.
 ## Données ajoutées
 
 ### `data/population_provinces_etats.csv`
-64 unités : 13 provinces et territoires (Recensement 2021) + 51 États incluant
-le District de Columbia (Census 2020).
+64 unités : 13 provinces et territoires (Recensement de 2021) + 51 États incluant
+le District de Columbia (2020 Census).
 
-⚠️ **À vérifier avant de citer dans le rapport.** Ces chiffres ont été saisis
-manuellement et n'ont pas été extraits automatiquement d'une source officielle.
-Ils sont cohérents et plausibles, mais un chiffre de recensement cité dans un
-travail universitaire doit être confirmé à la source
-(Statistique Canada, tableau 98-10-0001 ; US Census Bureau, P.L. 94-171).
+✅ **Vérifié à la source le 2026-08-08.** Les valeurs avaient d'abord été saisies
+manuellement ; elles ont depuis été confrontées une à une aux tableaux officiels.
+**Aucun écart sur les 64 unités**, et les deux totaux se reconstituent exactement :
+36 991 981 pour le Canada et 331 449 281 pour les États-Unis, ce qui confirme du
+même coup qu'aucune unité ne manque et qu'aucune n'est comptée deux fois. Le
+fichier porte désormais les colonnes `Source`, `URL_source` et `DateVerification`.
+
+Sources exactes (formulation prête à citer : voir `docs/REFERENCES.md`, section C) :
+
+- **Canada** — Statistique Canada, tableau 98-10-0001-01, *Chiffres de population
+  et des logements : Canada, provinces et territoires*, Recensement de 2021,
+  diffusé le 2022-02-09. <https://doi.org/10.25318/9810000101-fra>
+- **États-Unis** — U.S. Census Bureau, *Table 2. Resident Population for the 50
+  States, the District of Columbia, and Puerto Rico: 2020 Census*, population au
+  1ᵉʳ avril 2020.
+  <https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment-2020-table02.pdf>
+
+⚠️ **Deux réserves de méthode à écrire dans le rapport.**
+
+1. **Les deux recensements n'ont pas la même date de référence** (mai 2021 au
+   Canada, 1ᵉʳ avril 2020 aux États-Unis). L'écart d'un an gonfle très
+   légèrement les taux américains par rapport aux taux canadiens. L'effet est
+   négligeable devant les rapports de 1 à 20 observés entre la Saskatchewan et
+   les États du Sud, mais il faut le mentionner.
+2. **La population d'aujourd'hui sert à normaliser des joueurs nés sur un
+   siècle.** C'est la limite de fond de tout le module 06, indépendante de la
+   qualité des chiffres : la Saskatchewan pesait démographiquement bien plus
+   lourd en 1930 qu'en 2021, ce qui gonfle son taux. Cette limite est déjà
+   énoncée plus bas et reste la plus importante des deux.
+
+Pour l'échelle des **pays** (module 06, partie A), la source est tout autre : le
+champ `pop_est` du fond de carte Natural Earth (`POP_YEAR = 2019`), une
+estimation compilée par Natural Earth à partir de sources tierces. Ce n'est pas
+une donnée de recensement et cela ne doit pas être présenté comme telle.
 
 ### `data/equipes_lnh.csv`
 32 équipes de la LNH avec les coordonnées de leur ville. Sert à calculer la
