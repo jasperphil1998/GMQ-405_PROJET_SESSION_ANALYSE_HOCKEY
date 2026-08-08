@@ -71,23 +71,19 @@ jrn$ecrire("=====================================================")
 
 
 # =============================================================================
-# 1. DONNEES ET VARIABLES
+# 1. DONNEES ET VARIABLES ----
 # =============================================================================
-
+# Lecture de l'objet contenant les variables sémantiques
 unites <- readRDS(fichier_unites) |>
   st_transform(CRS_NA) |>
   filter(!is.na(TauxPar100k), !is.na(Population))
 
-# CHOIX XAVIER no 1 — les variables de la matrice semantique.
-# Les quatre retenues ici decrivent des aspects DIFFERENTS du hockey local :
-#   TauxPar100k : combien de joueurs une population donnee produit
+# Les quatre variables sémantiques retenues décrivent des aspects différents 
+# du hockey local :
+#   TauxPar100k : combien de joueurs une population donnée produit
 #   PtsPar100k  : combien de production offensive elle produit
 #   PtsMoyen    : le calibre moyen des joueurs produits (independant du volume)
 #   PartElite   : la capacite a produire des joueurs de tout premier plan
-# Tu peux en ajouter (densite de population, latitude, distance a une equipe
-# de la LNH : elles sont calculees dans 10_modelisation.R) ou en retirer.
-# ATTENTION : eviter deux variables quasi identiques, elles compteraient
-# double dans la distance.
 
 unites <- unites |>
   mutate(PartElite = ifelse(NbJoueurs > 0, NbElite / NbJoueurs * 100, 0))
@@ -115,35 +111,28 @@ jrn$capturer(summary(donnees), "SOMMAIRE DES VARIABLES AVANT NORMALISATION")
 
 
 # =============================================================================
-# 2. LES DEUX MATRICES DE DISTANCE
+# 2. LES DEUX MATRICES DE DISTANCE ----
 # =============================================================================
-# Recette du manuel, a la lettre.
-
-# Centrage (moyenne = 0) et reduction (variance = 1). Indispensable : sans
-# cela, PtsPar100k (des milliers) ecraserait PartElite (quelques pour cent).
+# Centrage (moyenne = 0) et réduction des données (variance = 1)
 donnees_zscore <- data.frame(scale(donnees))
 
-# D0 : matrice semantique, dissimilarite selon les variables
+# D0 : matrice sémantique, dissimilarité selon les variables
 Matrice.Semantique <- dist(donnees_zscore, method = "euclidean")
 
 # D1 : matrice spatiale, distance euclidienne entre centroides.
-# Elle est calculee dans CRS_NA (projection metrique) : une distance calculee
-# en degres n'aurait aucun sens (voir la note de 00_config.R).
-xy <- st_coordinates(suppressWarnings(st_centroid(st_geometry(unites))))
+# Elle est calculée dans CRS_NA (projection metrique)
+xy <- st_coordinates(st_centroid(st_geometry(unites)))
 Matrice.Spatiale <- dist(xy, method = "euclidean")
 
 
 # =============================================================================
-# 3. CHOIX DU PARAMETRE ALPHA
+# 3. CHOIX DU PARAMETRE ALPHA ----
 # =============================================================================
 # choicealpha() calcule, pour chaque valeur d'alpha, la part d'inertie
 # expliquee par la matrice semantique (Q0) et par la matrice spatiale (Q1).
 # On cherche le point ou l'on gagne beaucoup de coherence spatiale en perdant
 # peu de coherence thematique.
 
-# CHOIX XAVIER no 2 — le nombre de classes.
-# 5 est la valeur du manuel. Avec 64 unites, entre 4 et 6 est raisonnable ;
-# au-dela, certaines classes n'auraient que deux ou trois unites.
 K_CLASSES <- 5
 
 alphas <- seq(0, 1, 0.05)
