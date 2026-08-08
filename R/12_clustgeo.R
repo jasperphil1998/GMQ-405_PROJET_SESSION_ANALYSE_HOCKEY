@@ -160,19 +160,19 @@ graph_alpha <- ggplot(df_alpha, aes(x = alpha)) +
             linewidth = 0.9) +
   geom_point(aes(y = Q0, colour = "Matrice semantique (variables)"),
              size = 2.4) +
-  geom_line(aes(y = Q1, colour = "Matrice spatiale (geographie)"),
+  geom_line(aes(y = Q1, colour = "Matrice spatiale (géographie)"),
             linewidth = 0.9) +
-  geom_point(aes(y = Q1, colour = "Matrice spatiale (geographie)"),
+  geom_point(aes(y = Q1, colour = "Matrice spatiale (géographie)"),
              size = 2.4) +
   scale_colour_manual(values = c("Matrice semantique (variables)" = "black",
-                                 "Matrice spatiale (geographie)"  = "#b2182b")) +
+                                 "Matrice spatiale (géographie)"  = "#b2182b")) +
   labs(
-    title = "Choix du parametre alpha de ClustGeo",
-    subtitle = paste0("Part d'inertie expliquee par chaque matrice, pour K = ",
+    title = "Choix du paramètre alpha de ClustGeo",
+    subtitle = paste0("Part d'inertie expliquée par chaque matrice, pour K = ",
                       K_CLASSES, " classes.\nLe bon alpha est celui ou la ",
                       "courbe rouge monte encore vite alors que la noire ",
-                      "n'a pas encore chute."),
-    x = "Parametre alpha", y = "Pseudo-inertie expliquee",
+                      "n'a pas encore chutée."),
+    x = "Paramètre alpha", y = "Pseudo-inertie expliquée",
     colour = NULL, caption = CREDITS
   ) +
   theme_minimal(base_size = 11) +
@@ -187,6 +187,7 @@ sauver_graphique(graph_alpha, "12_graph_choix_alpha.png",
 q0_reference <- df_alpha$Q0[df_alpha$alpha == 0]
 candidats <- df_alpha$alpha[df_alpha$Q0 >= 0.90 * q0_reference]
 alpha_suggere <- max(candidats)
+alpha_choisi <- 0.23 # NOUVEAU. À PRENDRE SI ON EST CONTENT À LA FIN!
 
 jrn$capturer(
   df_alpha |>
@@ -204,13 +205,13 @@ jrn$ecrire(" semantique obtenue a alpha = 0)")
 # Le manuel retient 0,30 pour son jeu de donnees. Ici on part de la suggestion
 # automatique ; remplace-la par une valeur fixe une fois que tu as regarde
 # 12_graph_choix_alpha.png, et justifie-la dans le rapport.
-ALPHA <- alpha_suggere
+ALPHA <- alpha_choisi
 
 jrn$ecrire("Alpha retenu : ", ALPHA)
 
 
 # =============================================================================
-# 4. CLASSIFICATION
+# 4. CLASSIFICATION ----
 # =============================================================================
 
 arbre_clustgeo <- hclustgeo(
@@ -221,10 +222,7 @@ arbre_clustgeo <- hclustgeo(
 
 unites$Classe <- as.character(cutree(arbre_clustgeo, k = K_CLASSES))
 
-# Classification SANS contrainte spatiale, pour comparaison. C'est elle qui
-# montre l'apport de la methode : si les deux donnent la meme chose, alpha ne
-# sert a rien ; si la version spatiale est nettement plus compacte sur la
-# carte, la contrainte a joue.
+# Classification SANS contrainte spatiale, pour comparaison. 
 arbre_sans_contrainte <- hclustgeo(D0 = Matrice.Semantique, alpha = 0)
 unites$ClasseSansEspace <- as.character(
   cutree(arbre_sans_contrainte, k = K_CLASSES)
@@ -235,7 +233,7 @@ jrn$capturer(table(unites$Classe),
 jrn$capturer(table(unites$ClasseSansEspace),
              "NOMBRE D'UNITES PAR CLASSE (alpha = 0, sans contrainte)")
 
-# --- Profil moyen des classes -----------------------------------------------
+## --- Profil moyen des classes -----------------------------------------------
 # C'est le tableau qui permet de NOMMER les classes.
 
 profils <- unites |>
@@ -263,7 +261,7 @@ jrn$capturer(as.data.frame(profils),
 # reporter dans le rapport. Une classification qu'on ne sait pas nommer est
 # une classification qu'on n'a pas comprise.
 jrn$ecrire("")
-jrn$ecrire("A FAIRE : nommer chaque classe a partir du tableau ci-dessus.")
+jrn$ecrire("A FAIRE : nommer chaque classe à partir du tableau ci-dessus.")
 
 # Composition detaillee, pour savoir quelles provinces tombent ensemble
 composition <- unites |>
@@ -272,11 +270,11 @@ composition <- unites |>
   select(Classe, Code = postal, Unite = NomUnite, Pays,
          TauxPar100k, PtsMoyen, PartElite)
 
-jrn$capturer(as.data.frame(composition), "COMPOSITION DETAILLEE DES CLASSES")
+jrn$capturer(as.data.frame(composition), "COMPOSITION DETAILLÉE DES CLASSES")
 
 
 # =============================================================================
-# 5. CARTOGRAPHIE
+# 5. CARTOGRAPHIE ----
 # =============================================================================
 
 carte_clustgeo <- tm_shape(unites) +
@@ -320,8 +318,8 @@ carte_comparaison_clustgeo <- tm_shape(comparaison_sf) +
   tm_facets(by = "Methode", ncol = 2) +
   tm_title("Apport de la contrainte spatiale dans la classification") +
   tm_credits(
-    paste0("A gauche, les classes peuvent etre eparpillees ; a droite, elles ",
-           "sont geographiquement compactes.",
+    paste0("A gauche, les classes peuvent être éparpillées ; à droite, elles ",
+           "sont géographiquement compactes.",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.5
   )
@@ -338,11 +336,6 @@ jrn$ecrire("")
 jrn$ecrire("=====================================================")
 jrn$ecrire(" PISTES POUR LA SUITE")
 jrn$ecrire("=====================================================")
-jrn$ecrire("1. SKATER (spdep::skater), couvert par le manuel a la section")
-jrn$ecrire("   8.1, est l'autre grande methode de classification sous")
-jrn$ecrire("   contrainte spatiale. Contrairement a ClustGeo, elle garantit")
-jrn$ecrire("   que chaque classe est un bloc CONNEXE sur la carte. Comparer")
-jrn$ecrire("   les deux ferait une bonne sous-section de rapport.")
 jrn$ecrire("2. Les variables du module 10 (latitude, densite de population,")
 jrn$ecrire("   distance a la cote, distance a une equipe de la LNH) peuvent")
 jrn$ecrire("   entrer dans la matrice semantique : la classification")

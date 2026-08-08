@@ -44,13 +44,13 @@ alpha=1     1.00 0.2054 0.8172
 Alpha suggere automatiquement : 0.15
 (le plus grand alpha qui conserve au moins 90 % de l'inertie
  semantique obtenue a alpha = 0)
-Alpha retenu : 0.15
+Alpha retenu : 0.23
 
---- NOMBRE D'UNITES PAR CLASSE (alpha = 0.15) ---
+--- NOMBRE D'UNITES PAR CLASSE (alpha = 0.23) ---
 
 
  1  2  3  4  5 
- 8  9 33  1  4 
+ 8  5 33  5  4 
 
 --- NOMBRE D'UNITES PAR CLASSE (alpha = 0, sans contrainte) ---
 
@@ -61,15 +61,15 @@ Alpha retenu : 0.15
 --- PROFIL MOYEN DE CHAQUE CLASSE ---
 
   Classe NbUnites Population NbJoueurs TauxPar100k PtsPar100k PtsMoyen PartElite
-1      4        1    1132505       541       47.77     5273.6    110.4      1.29
-2      2        9   34300466      4900       13.76     1607.3    121.0      0.60
+1      4        5   25354764      4327       25.65     2906.8    118.2      0.96
+2      2        5   10078207      1114        8.67     1040.9    121.7      0.37
 3      5        4   42163519       168        2.51      347.8    157.4      4.77
 4      3       33  239873299      1438        1.09       91.3     68.5      0.11
 5      1        8   27625175        42        0.18       44.3    220.2      0.00
 
-A FAIRE : nommer chaque classe a partir du tableau ci-dessus.
+A FAIRE : nommer chaque classe à partir du tableau ci-dessus.
 
---- COMPOSITION DETAILLEE DES CLASSES ---
+--- COMPOSITION DETAILLÉE DES CLASSES ---
 
    Classe Code                     Unite   Pays TauxPar100k  PtsMoyen PartElite
 1       1   VT                   Vermont    USA  0.31100475 409.50000 0.0000000
@@ -80,49 +80,49 @@ A FAIRE : nommer chaque classe a partir du tableau ci-dessus.
 6       1   AZ                   Arizona    USA  0.12584769 272.00000 0.0000000
 7       1   MT                   Montana    USA  0.09223178 181.00000 0.0000000
 8       1   SC           Caroline du Sud    USA  0.03907452 201.00000 0.0000000
-9       2   MB                  Manitoba Canada 30.77145452  91.86925 0.2421308
-10      2   PE     Ile-du-Prince-Edouard Canada 22.03057066 129.38235 0.0000000
-11      2   ON                   Ontario Canada 17.20338848 128.27789 1.2668574
-12      2   AB                   Alberta Canada 15.69451759 103.79522 0.8968610
-13      2   NT Territoires du Nord-Ouest Canada 12.17433650 140.00000 0.0000000
-14      2   QC                    Quebec Canada 10.49185511 131.19507 2.0179372
-15      2   BC      Colombie-Britannique Canada  8.45851299 113.39716 0.9456265
-16      2   YT                     Yukon Canada  4.97116723 136.00000 0.0000000
-17      2   AK                    Alaska    USA  2.04529371 115.40000 0.0000000
-18      3   NB         Nouveau-Brunswick Canada  6.96226196  77.83333 0.0000000
-19      3   NL   Terre-Neuve-et-Labrador Canada  6.26775047  92.68750 0.0000000
-20      3   MN                 Minnesota    USA  5.52002683 102.01587 0.3174603
-21      3   MA             Massachusetts    USA  3.20060678 111.64000 0.8888889
-22      3   ND            Dakota du Nord    USA  2.69543855  28.90476 0.0000000
-23      3   RI              Rhode Island    USA  2.09590306  49.82609 0.0000000
-24      3   MI                  Michigan    USA  2.05411532 111.57488 0.9661836
-25      3   NH             New Hampshire    USA  1.08890630  47.00000 0.0000000
-26      3   CT               Connecticut    USA  0.99835161 116.91667 0.0000000
-27      3   NY                  New York    USA  0.74252835 115.41333 1.3333333
-28      3   ME                     Maine    USA  0.66061882  36.44444 0.0000000
-29      3   IL                  Illinois    USA  0.61658498  89.48101 0.0000000
-30      3   CO                  Colorado    USA  0.38103723  64.90909 0.0000000
-31      3   NJ                New Jersey    USA  0.34449371 140.43750 0.0000000
-32      3   SD             Dakota du Sud    USA  0.33834574   7.00000 0.0000000
-33      3   PA              Pennsylvanie    USA  0.31531913  74.75610 0.0000000
-34      3   OH                      Ohio    USA  0.30509902 132.58333 0.0000000
-35      3   IN                   Indiana    USA  0.19158421 121.92308 0.0000000
-36      3   OR                    Oregon    USA  0.18880143  28.00000 0.0000000
-37      3   CA                Californie    USA  0.14163510  59.53571 0.0000000
-38      3   OK                  Oklahoma    USA  0.12628326  76.60000 0.0000000
-39      3   IA                      Iowa    USA  0.12537735   7.50000 0.0000000
-40      3   ID                     Idaho    USA  0.10874849   0.50000 0.0000000
-41      3   DE                  Delaware    USA  0.10101541  85.00000 0.0000000
-42      3   FL                   Floride    USA  0.09750124 109.04762 0.0000000
-43      3   VA                  Virginie    USA  0.09268492  71.50000 0.0000000
-44      3   MD                  Maryland    USA  0.08094251  11.40000 0.0000000
-45      3   AL                   Alabama    USA  0.05971006  69.66667 0.0000000
-46      3   NC          Caroline du Nord    USA  0.05747463  28.83333 0.0000000
-47      3   MS               Mississippi    USA  0.03376919  92.00000 0.0000000
-48      3   NV                    Nevada    USA  0.03221012   1.00000 0.0000000
-49      3   GA                   Georgie    USA  0.02800622  28.00000 0.0000000
-50      3   LA                 Louisiane    USA  0.02146956  72.00000 0.0000000
-51      4   SK              Saskatchewan Canada 47.77020852 110.39556 1.2939002
+9       2   AB                   Alberta Canada 15.69451759 103.79522 0.8968610
+10      2   NT Territoires du Nord-Ouest Canada 12.17433650 140.00000 0.0000000
+11      2   BC      Colombie-Britannique Canada  8.45851299 113.39716 0.9456265
+12      2   YT                     Yukon Canada  4.97116723 136.00000 0.0000000
+13      2   AK                    Alaska    USA  2.04529371 115.40000 0.0000000
+14      3   NB         Nouveau-Brunswick Canada  6.96226196  77.83333 0.0000000
+15      3   NL   Terre-Neuve-et-Labrador Canada  6.26775047  92.68750 0.0000000
+16      3   MN                 Minnesota    USA  5.52002683 102.01587 0.3174603
+17      3   MA             Massachusetts    USA  3.20060678 111.64000 0.8888889
+18      3   ND            Dakota du Nord    USA  2.69543855  28.90476 0.0000000
+19      3   RI              Rhode Island    USA  2.09590306  49.82609 0.0000000
+20      3   MI                  Michigan    USA  2.05411532 111.57488 0.9661836
+21      3   NH             New Hampshire    USA  1.08890630  47.00000 0.0000000
+22      3   CT               Connecticut    USA  0.99835161 116.91667 0.0000000
+23      3   NY                  New York    USA  0.74252835 115.41333 1.3333333
+24      3   ME                     Maine    USA  0.66061882  36.44444 0.0000000
+25      3   IL                  Illinois    USA  0.61658498  89.48101 0.0000000
+26      3   CO                  Colorado    USA  0.38103723  64.90909 0.0000000
+27      3   NJ                New Jersey    USA  0.34449371 140.43750 0.0000000
+28      3   SD             Dakota du Sud    USA  0.33834574   7.00000 0.0000000
+29      3   PA              Pennsylvanie    USA  0.31531913  74.75610 0.0000000
+30      3   OH                      Ohio    USA  0.30509902 132.58333 0.0000000
+31      3   IN                   Indiana    USA  0.19158421 121.92308 0.0000000
+32      3   OR                    Oregon    USA  0.18880143  28.00000 0.0000000
+33      3   CA                Californie    USA  0.14163510  59.53571 0.0000000
+34      3   OK                  Oklahoma    USA  0.12628326  76.60000 0.0000000
+35      3   IA                      Iowa    USA  0.12537735   7.50000 0.0000000
+36      3   ID                     Idaho    USA  0.10874849   0.50000 0.0000000
+37      3   DE                  Delaware    USA  0.10101541  85.00000 0.0000000
+38      3   FL                   Floride    USA  0.09750124 109.04762 0.0000000
+39      3   VA                  Virginie    USA  0.09268492  71.50000 0.0000000
+40      3   MD                  Maryland    USA  0.08094251  11.40000 0.0000000
+41      3   AL                   Alabama    USA  0.05971006  69.66667 0.0000000
+42      3   NC          Caroline du Nord    USA  0.05747463  28.83333 0.0000000
+43      3   MS               Mississippi    USA  0.03376919  92.00000 0.0000000
+44      3   NV                    Nevada    USA  0.03221012   1.00000 0.0000000
+45      3   GA                   Georgie    USA  0.02800622  28.00000 0.0000000
+46      3   LA                 Louisiane    USA  0.02146956  72.00000 0.0000000
+47      4   SK              Saskatchewan Canada 47.77020852 110.39556 1.2939002
+48      4   MB                  Manitoba Canada 30.77145452  91.86925 0.2421308
+49      4   PE     Ile-du-Prince-Edouard Canada 22.03057066 129.38235 0.0000000
+50      4   ON                   Ontario Canada 17.20338848 128.27789 1.2668574
+51      4   QC                    Quebec Canada 10.49185511 131.19507 2.0179372
 52      5   NS           Nouvelle-Ecosse Canada  8.87162247 135.97674 5.8139535
 53      5   WI                 Wisconsin    USA  0.69565595 173.00000 2.4390244
 54      5   MO                  Missouri    USA  0.43867395 126.11111 3.7037037
