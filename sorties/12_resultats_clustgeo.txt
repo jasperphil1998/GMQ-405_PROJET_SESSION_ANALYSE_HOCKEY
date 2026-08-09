@@ -131,11 +131,6 @@ A FAIRE : nommer chaque classe à partir du tableau ci-dessus.
 =====================================================
  PISTES POUR LA SUITE
 =====================================================
-1. SKATER (spdep::skater), couvert par le manuel a la section
-   8.1, est l'autre grande methode de classification sous
-   contrainte spatiale. Contrairement a ClustGeo, elle garantit
-   que chaque classe est un bloc CONNEXE sur la carte. Comparer
-   les deux ferait une bonne sous-section de rapport.
 2. Les variables du module 10 (latitude, densite de population,
    distance a la cote, distance a une equipe de la LNH) peuvent
    entrer dans la matrice semantique : la classification

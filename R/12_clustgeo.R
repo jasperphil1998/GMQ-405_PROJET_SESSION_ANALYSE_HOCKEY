@@ -2,44 +2,23 @@
 # 12_clustgeo.R — Classification ascendante hierarchique avec contrainte
 #                 spatiale (ClustGeo)
 # =============================================================================
-# >>> MODULE DE XAVIER LAFRANCE — CHANTIER EN COURS <<<
-#
-# ORIGINE : dans archive/Projet_Hockey_script_ORIGINAL.R, la SECTION 6 se
-# resume a son titre :
-#
-#     # SECTION 6 — ClustGeo ----
-#
-# Ce fichier est le point de depart : une trame COMPLETE ET EXECUTABLE, calquee
-# sur la recette du manuel du cours (section 8.2.1, "Calcul de la methode
-# ClustGeo"), appliquee aux donnees du projet. Tu peux la lancer telle quelle,
-# regarder les sorties, puis changer ce qui doit l'etre.
-#
-# LES QUATRE DECISIONS QUI TE REVIENNENT sont marquees  # CHOIX XAVIER  :
-#   1. quelles variables entrent dans la matrice semantique ;
-#   2. combien de classes (K) ;
-#   3. quelle valeur d'alpha (arbitrage entre coherence thematique et
-#      coherence spatiale) ;
-#   4. comment nommer et interpreter les classes obtenues.
-#
-# CE QUE FAIT LA METHODE
-# La classification ascendante hierarchique ordinaire regroupe les unites
-# uniquement selon leurs VALEURS : deux provinces aux profils identiques
-# finissent ensemble meme si elles sont aux antipodes, ce qui donne des classes
-# eparpillees sur la carte. ClustGeo (Chavent et coll., 2018) melange deux
-# matrices de distance :
-#   D0 = dissimilarite SEMANTIQUE (les variables)
-#   D1 = dissimilarite SPATIALE   (la distance entre centroides)
-# et le parametre alpha regle le dosage :
+# MÉTHODE : La classification ascendante hiérarchique ordinaire regroupe les 
+# unités uniquement selon leurs valeurs : deux provinces aux profils identiques
+# finissent ensemble même si elles sont aux antipodes, ce qui donne des classes
+# éparpillées sur la carte. ClustGeo mélange deux matrices de distance :
+#   D0 = dissimilarite sémantique (les variables)
+#   D1 = dissimilarite spatiale   (la distance entre centroides)
+# et le paramètre alpha règle le dosage :
 #   alpha = 0   -> classification classique, aucune contrainte spatiale
 #   alpha = 1   -> classification purement geographique, les variables ne
 #                  comptent plus
-#   entre les deux -> des classes a la fois homogenes ET geographiquement
-#                  compactes. C'est tout l'interet de la methode.
+#   entre les deux -> des classes à la fois homogenes et géographiquement
+#                  compactes. C'est tout l'intérêt de la méthode.
 #
-# PREREQUIS : lancer 06_normalisation.R avant (il produit
+# PRÉREQUIS : lancer 06_normalisation.R avant (il produit
 # sorties/unites_normalisees.rds).
 #
-# SORTIES : 3 figures, 2 tableaux, 1 journal de resultats.
+# SORTIES : 3 figures, 2 tableaux, 1 journal de résultats.
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -83,7 +62,7 @@ unites <- readRDS(fichier_unites) |>
 #   TauxPar100k : combien de joueurs une population donnée produit
 #   PtsPar100k  : combien de production offensive elle produit
 #   PtsMoyen    : le calibre moyen des joueurs produits (independant du volume)
-#   PartElite   : la capacite a produire des joueurs de tout premier plan
+#   PartElite   : la capacite à produire des joueurs de tout premier plan
 
 unites <- unites |>
   mutate(PartElite = ifelse(NbJoueurs > 0, NbElite / NbJoueurs * 100, 0))
@@ -94,17 +73,17 @@ donnees <- unites |>
   st_drop_geometry() |>
   select(all_of(VARS_SEMANTIQUES))
 
-# Toute unite avec une valeur manquante ferait echouer dist() : on les ecarte
-# explicitement plutot que de laisser R produire des NA silencieux.
+# Toute unite avec une valeur manquante ferait échouer dist() : on les écarte
+# explicitement plutôt que de laisser R produire des NA silencieux.
 complet <- stats::complete.cases(donnees)
 if (any(!complet)) {
-  jrn$ecrire("Unites ecartees (valeur manquante) : ", sum(!complet), " -> ",
+  jrn$ecrire("Unités écartées (valeur manquante) : ", sum(!complet), " -> ",
              paste(unites$postal[!complet], collapse = ", "))
   unites  <- unites[complet, ]
   donnees <- donnees[complet, ]
 }
 
-jrn$ecrire("Unites classees : ", nrow(unites))
+jrn$ecrire("Unités classées : ", nrow(unites))
 jrn$ecrire("Variables : ", paste(VARS_SEMANTIQUES, collapse = ", "))
 
 jrn$capturer(summary(donnees), "SOMMAIRE DES VARIABLES AVANT NORMALISATION")
@@ -129,16 +108,16 @@ Matrice.Spatiale <- dist(xy, method = "euclidean")
 # 3. CHOIX DU PARAMETRE ALPHA ----
 # =============================================================================
 # choicealpha() calcule, pour chaque valeur d'alpha, la part d'inertie
-# expliquee par la matrice semantique (Q0) et par la matrice spatiale (Q1).
-# On cherche le point ou l'on gagne beaucoup de coherence spatiale en perdant
-# peu de coherence thematique.
+# expliquée par la matrice sémantique (Q0) et par la matrice spatiale (Q1).
+# On cherche le point ou l'on gagne beaucoup de cohérence spatiale en perdant
+# peu de cohérence thématique.
 
 K_CLASSES <- 5
 
 alphas <- seq(0, 1, 0.05)
 
 resultat_alpha <- choicealpha(
-  D0 = Matrice.Semantique,   # matrice semantique
+  D0 = Matrice.Semantique,   # matrice sémantique
   D1 = Matrice.Spatiale,     # matrice spatiale
   range.alpha = alphas,      # valeurs de alpha
   K = K_CLASSES,             # nombre de classes
@@ -156,22 +135,20 @@ sauver_tableau(
 )
 
 graph_alpha <- ggplot(df_alpha, aes(x = alpha)) +
-  geom_line(aes(y = Q0, colour = "Matrice semantique (variables)"),
+  geom_line(aes(y = Q0, colour = "Matrice sémantique (variables)"),
             linewidth = 0.9) +
-  geom_point(aes(y = Q0, colour = "Matrice semantique (variables)"),
+  geom_point(aes(y = Q0, colour = "Matrice sémantique (variables)"),
              size = 2.4) +
   geom_line(aes(y = Q1, colour = "Matrice spatiale (géographie)"),
             linewidth = 0.9) +
   geom_point(aes(y = Q1, colour = "Matrice spatiale (géographie)"),
              size = 2.4) +
-  scale_colour_manual(values = c("Matrice semantique (variables)" = "black",
+  scale_colour_manual(values = c("Matrice sémantique (variables)" = "black",
                                  "Matrice spatiale (géographie)"  = "#b2182b")) +
   labs(
     title = "Choix du paramètre alpha de ClustGeo",
     subtitle = paste0("Part d'inertie expliquée par chaque matrice, pour K = ",
-                      K_CLASSES, " classes.\nLe bon alpha est celui ou la ",
-                      "courbe rouge monte encore vite alors que la noire ",
-                      "n'a pas encore chutée."),
+                      K_CLASSES),
     x = "Paramètre alpha", y = "Pseudo-inertie expliquée",
     colour = NULL, caption = CREDITS
   ) +
@@ -181,31 +158,18 @@ graph_alpha <- ggplot(df_alpha, aes(x = alpha)) +
 sauver_graphique(graph_alpha, "12_graph_choix_alpha.png",
                  largeur = 9, hauteur = 6)
 
-# Suggestion automatique : le plus grand alpha qui coute moins de 10 % de
-# l'inertie semantique par rapport a alpha = 0. C'est une regle simple, pas
-# une verite : REGARDE LE GRAPHIQUE avant de trancher.
-q0_reference <- df_alpha$Q0[df_alpha$alpha == 0]
-candidats <- df_alpha$alpha[df_alpha$Q0 >= 0.90 * q0_reference]
-alpha_suggere <- max(candidats)
-alpha_choisi <- 0.23 # NOUVEAU. À PRENDRE SI ON EST CONTENT À LA FIN!
+# Choix de la valeur de alpha. Correspond à la valeur d'alpha là où la droite
+# de la matrice sémantique et celle de la matrice spatiale se croisent dans 
+# la figure précédente.
+ALPHA <- 0.23 
 
 jrn$capturer(
   df_alpha |>
     mutate(across(c(Q0, Q1), ~ round(.x, 4))) |>
     select(alpha, Q0, Q1) |>
     as.data.frame(),
-  "INERTIE EXPLIQUEE SELON ALPHA"
+  "INERTIE EXPLIQUÉE SELON ALPHA"
 )
-jrn$ecrire("")
-jrn$ecrire("Alpha suggere automatiquement : ", alpha_suggere)
-jrn$ecrire("(le plus grand alpha qui conserve au moins 90 % de l'inertie")
-jrn$ecrire(" semantique obtenue a alpha = 0)")
-
-# CHOIX XAVIER no 3 — la valeur d'alpha retenue.
-# Le manuel retient 0,30 pour son jeu de donnees. Ici on part de la suggestion
-# automatique ; remplace-la par une valeur fixe une fois que tu as regarde
-# 12_graph_choix_alpha.png, et justifie-la dans le rapport.
-ALPHA <- alpha_choisi
 
 jrn$ecrire("Alpha retenu : ", ALPHA)
 
@@ -222,7 +186,7 @@ arbre_clustgeo <- hclustgeo(
 
 unites$Classe <- as.character(cutree(arbre_clustgeo, k = K_CLASSES))
 
-# Classification SANS contrainte spatiale, pour comparaison. 
+# Classification sans contrainte spatiale, pour comparaison. 
 arbre_sans_contrainte <- hclustgeo(D0 = Matrice.Semantique, alpha = 0)
 unites$ClasseSansEspace <- as.character(
   cutree(arbre_sans_contrainte, k = K_CLASSES)
@@ -234,7 +198,7 @@ jrn$capturer(table(unites$ClasseSansEspace),
              "NOMBRE D'UNITES PAR CLASSE (alpha = 0, sans contrainte)")
 
 ## --- Profil moyen des classes -----------------------------------------------
-# C'est le tableau qui permet de NOMMER les classes.
+# Tableau des valeurs moyennes des variables pour les 5 classes obtenues
 
 profils <- unites |>
   st_drop_geometry() |>
@@ -255,20 +219,12 @@ sauver_tableau(profils, "12_table_profils_classes.csv")
 jrn$capturer(as.data.frame(profils),
              "PROFIL MOYEN DE CHAQUE CLASSE")
 
-# CHOIX XAVIER no 4 — nommer les classes.
-# Le tableau ci-dessus donne les moyennes de chaque classe. A toi de leur
-# donner un nom parlant ("Prairies a fort taux", "Sun Belt", ...) et de le
-# reporter dans le rapport. Une classification qu'on ne sait pas nommer est
-# une classification qu'on n'a pas comprise.
-jrn$ecrire("")
-jrn$ecrire("A FAIRE : nommer chaque classe à partir du tableau ci-dessus.")
-
-# Composition detaillee, pour savoir quelles provinces tombent ensemble
+# Composition détaillée, pour savoir quelles provinces tombent ensemble
 composition <- unites |>
   st_drop_geometry() |>
   arrange(Classe, desc(TauxPar100k)) |>
   select(Classe, Code = postal, Unite = NomUnite, Pays,
-         TauxPar100k, PtsMoyen, PartElite)
+         TauxPar100k, PtsPar100k, PtsMoyen, PartElite)
 
 jrn$capturer(as.data.frame(composition), "COMPOSITION DETAILLÉE DES CLASSES")
 
@@ -284,11 +240,11 @@ carte_clustgeo <- tm_shape(unites) +
     fill.legend = tm_legend(title = "Classe"),
     col = "white", lwd = 0.4
   ) +
-  tm_title(paste0("Classification spatiale des provinces et etats (ClustGeo, ",
+  tm_title(paste0("Classification spatiale des provinces et états (ClustGeo, ",
                   "alpha = ", ALPHA, ")")) +
   tm_credits(
     paste0("Variables : ", paste(VARS_SEMANTIQUES, collapse = ", "), ".",
-           "\nK = ", K_CLASSES, " classes. Projection : Albers equivalente.",
+           "\nK = ", K_CLASSES, " classes. Projection : Albers équivalente.",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.6
   )
@@ -327,23 +283,6 @@ carte_comparaison_clustgeo <- tm_shape(comparaison_sf) +
 sauver_carte(carte_comparaison_clustgeo, "12_carte_comparaison_contrainte.png",
              largeur = 14, hauteur = 6)
 
-
-# =============================================================================
-# 6. PISTES POUR LA SUITE
-# =============================================================================
-
-jrn$ecrire("")
-jrn$ecrire("=====================================================")
-jrn$ecrire(" PISTES POUR LA SUITE")
-jrn$ecrire("=====================================================")
-jrn$ecrire("2. Les variables du module 10 (latitude, densite de population,")
-jrn$ecrire("   distance a la cote, distance a une equipe de la LNH) peuvent")
-jrn$ecrire("   entrer dans la matrice semantique : la classification")
-jrn$ecrire("   deviendrait alors une typologie de CONTEXTES et non seulement")
-jrn$ecrire("   de resultats.")
-jrn$ecrire("3. Le module 07 montre que les provinces sont peu nombreuses")
-jrn$ecrire("   (n = 64). Une classification sur la grille hexagonale du")
-jrn$ecrire("   module 07 donnerait beaucoup plus d'unites.")
 
 jrn$fermer()
 

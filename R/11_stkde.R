@@ -1,7 +1,7 @@
 # =============================================================================
 # 11_stkde.R — Densite spatio-temporelle par noyau (STKDE)
 # =============================================================================
-# METHODE : estimation de densité de noyau spatio-temporelle dans une maille
+# MÉTHODE : estimation de densité de noyau spatio-temporelle dans une maille
 # régulière. Permet de voir l'évolution de la provenance des joueurs au fil du 
 # temps.
 #
@@ -13,9 +13,9 @@ if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 message("\n=== 11 — DENSITE SPATIO-TEMPORELLE (STKDE) ===")
 
 
-# --- Paquets specifiques ----------------------------------------------------
-# sparr, gifski et viridis ne font pas partie du socle du projet. Plutot que
-# de planter au milieu du calcul, on verifie tout de suite.
+# --- Paquets spécifiques ----------------------------------------------------
+# sparr, gifski et viridis ne font pas partie du socle du projet. Plutôt que
+# de planter au milieu du calcul, on vérifie tout de suite.
 
 paquets_stkde <- c("spatstat.geom", "spatstat.explore", "sparr",
                    "terra", "gifski", "classInt", "viridis")
@@ -46,38 +46,21 @@ suppressPackageStartupMessages({
 })
 
 
-# --- Parametres -------------------------------------------------------------
+# --- Paramètres -------------------------------------------------------------
 # Regroupés ici pour qu'on puisse les changer sans fouiller dans le code.
-#
-# COÛT MESURÉ avec les valeurs ci-dessous : 294 s au total, dont 199 s pour
-# spattemp.density et 79 s pour le rendu des 150 images. Le module se
-# chronomètre et affiche la répartition en fin d'exécution.
-#
-# RESOLUTION_SPATIALE : NE PAS BAISSER.
-#   La fenetre fait 34 735 km de large. A 500, la maille vaut 69 km pour une
-#   largeur de bande de 100 km, soit 1,4 cellule par bande : c'est deja
-#   sous-resolu. A 250, la maille (139 km) depasserait la largeur de bande et
-#   le noyau ne serait plus resolu du tout.
-#
-# RESOLUTION_TEMPORELLE : marge disponible.
-#   A 150, on produit une image tous les 0,85 an pour un lissage de 10 ans,
-#   soit 11,7 images par largeur de bande — suréchantillonné d'un facteur ~12.
-#   Passer a 64 (2 ans par image, 5 images par bande) diviserait le calcul ET
-#   le rendu par ~2,3 sans perte reelle. C'est ton choix de modelisation :
-#   voir docs/GUIDE_XAVIER.md.
 
-H_SPATIAL   <- 100000   # largeur de bande spatiale, en metres
-LAMBDA_TEMP <- 10       # largeur de bande temporelle, en annees
+H_SPATIAL   <- 150000   # largeur de bande spatiale, en mètres
+LAMBDA_TEMP <- 8       # largeur de bande temporelle, en annees
 RESOLUTION_SPATIALE   <- 500   # ne pas baisser (voir ci-dessus)
 RESOLUTION_TEMPORELLE <- 150   # -> 64 : deux fois plus rapide, sans perte
-ESTIMER_BANDWIDTH <- FALSE   # TODO XAVIER : voir la section 3 ci-dessous
+ESTIMER_BANDWIDTH <- FALSE   # Mettre TRUE si on souhaite ré-optimiser
 
 
 # =============================================================================
 # 1. PRÉPARATION DES DONNÉES ----
 # =============================================================================
 # Le script 01_geocodage.R alimente le fichier cache pour garder ce géocodage en
-# mémoire. Une fois qu'il est rouler, on fait juste le lire.
+# mémoire. Une fois qu'il est roulé, on fait juste le lire.
 
 hockey         <- charger_hockey()
 lieux_geocodes <- charger_lieux_geocodes()
@@ -147,11 +130,11 @@ prov_joueur_stkde_sf.ppp <- ppp(
 # partagent exactement la même coordonnée (même ville de naissance).
 ppp_jittered <- rjitter(
   prov_joueur_stkde_sf.ppp,
-  radius = 25,     # perturbation maximale, en metres
+  radius = 25,     # perturbation maximale, en mètres
   retry  = TRUE
 )
 
-# VERIFICATION CRITIQUE : ces deux valeurs doivent etre STRICTEMENT EGALES.
+# VERIFICATION CRITIQUE : ces deux valeurs doivent être strictement égales.
 message("Points dans le ppp jittere : ", npoints(ppp_jittered))
 message("Longueur du vecteur temps  : ", length(prov_joueur_stkde_sf$dt_num))
 stopifnot(npoints(ppp_jittered) == length(prov_joueur_stkde_sf$dt_num))
@@ -183,7 +166,7 @@ message("Calcul de la densite spatio-temporelle (",
 # Trouve l'étendue temporelle des données
 tlim_observe <- range(prov_joueur_stkde_sf$dt_num)
 
-# Chronometrage des deux étapes coûteuses. Sans ca, on optimise à l'aveugle :
+# Chronometrage des deux étapes coûteuses :
 # Calcul des valeurs de densités
 t_densite <- system.time(
   dens_vals <- spattemp.density(
@@ -218,7 +201,7 @@ all_densities <- do.call(c, lapply(all_rasts, function(x) {
 }))
 color_breaks <- classIntervals(all_densities, n = 10, style = "kmeans")
 
-## Preparation des dates
+## Préparation des dates
 timestamps  <- round(as.numeric(names(dens_vals$z)))
 time_frames <- min(prov_joueur_stkde_sf$dt) + timestamps
 
@@ -238,7 +221,7 @@ all_maps <- lapply(seq_along(time_frames), function(i) {
       ),
       col.legend = tm_legend(show = FALSE)
     ) +
-    tm_shape(monde) + tm_borders(col = "black", lwd = 0.05) +
+    tm_shape(monde) + tm_borders(col = "gray", lwd = 0.05) +
     tm_title(text = as.character(time_frames[[i]]), color = "black", size = 2)
 })
 
@@ -254,7 +237,7 @@ t_rendu <- system.time(
 message("  -> ", basename(fichier_gif))
 message("  rendu des ", length(time_frames), " images en ",
         round(t_rendu), " s")
-message("  REPARTITION : densite ", round(t_densite), " s | rendu ",
+message("  REPARTITION : densité ", round(t_densite), " s | rendu ",
         round(t_rendu), " s")
 
 }   # fin du bloc conditionnel sur les paquets
