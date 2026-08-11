@@ -97,37 +97,68 @@ depend pas d'un choix arbitraire de voisinage.
 
 --- LISA — unites significatives en detail ---
 
-   Code                     Unite TauxPar100k                     Grappe LisaIi LisaP
-1    SK              Saskatchewan       47.77  Haut-Haut (grappe chaude)  4.113 0.005
-2    MB                  Manitoba       30.77  Haut-Haut (grappe chaude)  4.870 0.006
-3    AB                   Alberta       15.69  Haut-Haut (grappe chaude)  1.613 0.010
-4    NT Territoires du Nord-Ouest       12.17  Haut-Haut (grappe chaude)  1.331 0.013
-5    BC      Colombie-Britannique        8.46  Haut-Haut (grappe chaude)  0.664 0.020
-6    YT                     Yukon        4.97  Haut-Haut (grappe chaude)  0.334 0.004
-7    CO                  Colorado        0.38    Bas-Bas (grappe froide)  0.159 0.011
-8    DC      District de Columbia        0.29    Bas-Bas (grappe froide)  0.161 0.026
-9    UT                      Utah        0.15    Bas-Bas (grappe froide)  0.170 0.006
-10   CA                Californie        0.14    Bas-Bas (grappe froide)  0.171 0.028
-11   OK                  Oklahoma        0.13    Bas-Bas (grappe froide)  0.172 0.016
-12   AZ                   Arizona        0.13    Bas-Bas (grappe froide)  0.171 0.026
-13   ID                     Idaho        0.11    Bas-Bas (grappe froide)  0.172 0.016
-14   FL                   Floride        0.10    Bas-Bas (grappe froide)  0.176 0.009
-15   VA                  Virginie        0.09    Bas-Bas (grappe froide)  0.172 0.021
-16   MD                  Maryland        0.08    Bas-Bas (grappe froide)  0.170 0.035
-17   AL                   Alabama        0.06    Bas-Bas (grappe froide)  0.178 0.003
-18   NC          Caroline du Nord        0.06    Bas-Bas (grappe froide)  0.176 0.009
-19   TX                     Texas        0.05    Bas-Bas (grappe froide)  0.179 0.008
-20   SC           Caroline du Sud        0.04    Bas-Bas (grappe froide)  0.178 0.003
-21   MS               Mississippi        0.03    Bas-Bas (grappe froide)  0.180 0.001
-22   NV                    Nevada        0.03    Bas-Bas (grappe froide)  0.175 0.029
-23   GA                   Georgie        0.03    Bas-Bas (grappe froide)  0.179 0.005
-24   LA                 Louisiane        0.02    Bas-Bas (grappe froide)  0.179 0.006
-25   HI                     Hawai        0.00    Bas-Bas (grappe froide)  0.176 0.046
-26   AR                  Arkansas        0.00    Bas-Bas (grappe froide)  0.177 0.021
-27   TN                 Tennessee        0.00    Bas-Bas (grappe froide)  0.181 0.001
-28   WV      Virginie-Occidentale        0.00    Bas-Bas (grappe froide)  0.175 0.020
-29   ND            Dakota du Nord        2.70 Bas-Haut (valeur atypique) -0.099 0.019
-30   NU                   Nunavut        0.00 Bas-Haut (valeur atypique) -1.069 0.001
+   Code                     Unite TauxPar100k                     Grappe LisaIi
+1    SK              Saskatchewan       47.77  Haut-Haut (grappe chaude)  4.113
+2    MB                  Manitoba       30.77  Haut-Haut (grappe chaude)  4.870
+3    AB                   Alberta       15.69  Haut-Haut (grappe chaude)  1.613
+4    NT Territoires du Nord-Ouest       12.17  Haut-Haut (grappe chaude)  1.331
+5    BC      Colombie-Britannique        8.46  Haut-Haut (grappe chaude)  0.664
+6    YT                     Yukon        4.97  Haut-Haut (grappe chaude)  0.334
+7    CO                  Colorado        0.38    Bas-Bas (grappe froide)  0.159
+8    DC      District de Columbia        0.29    Bas-Bas (grappe froide)  0.161
+9    UT                      Utah        0.15    Bas-Bas (grappe froide)  0.170
+10   CA                Californie        0.14    Bas-Bas (grappe froide)  0.171
+11   OK                  Oklahoma        0.13    Bas-Bas (grappe froide)  0.172
+12   AZ                   Arizona        0.13    Bas-Bas (grappe froide)  0.171
+13   ID                     Idaho        0.11    Bas-Bas (grappe froide)  0.172
+14   FL                   Floride        0.10    Bas-Bas (grappe froide)  0.176
+15   VA                  Virginie        0.09    Bas-Bas (grappe froide)  0.172
+16   MD                  Maryland        0.08    Bas-Bas (grappe froide)  0.170
+17   AL                   Alabama        0.06    Bas-Bas (grappe froide)  0.178
+18   NC          Caroline du Nord        0.06    Bas-Bas (grappe froide)  0.176
+19   TX                     Texas        0.05    Bas-Bas (grappe froide)  0.179
+20   SC           Caroline du Sud        0.04    Bas-Bas (grappe froide)  0.178
+21   MS               Mississippi        0.03    Bas-Bas (grappe froide)  0.180
+22   NV                    Nevada        0.03    Bas-Bas (grappe froide)  0.175
+23   GA                   Georgie        0.03    Bas-Bas (grappe froide)  0.179
+24   LA                 Louisiane        0.02    Bas-Bas (grappe froide)  0.179
+25   HI                     Hawai        0.00    Bas-Bas (grappe froide)  0.176
+26   AR                  Arkansas        0.00    Bas-Bas (grappe froide)  0.177
+27   TN                 Tennessee        0.00    Bas-Bas (grappe froide)  0.181
+28   WV      Virginie-Occidentale        0.00    Bas-Bas (grappe froide)  0.175
+29   ND            Dakota du Nord        2.70 Bas-Haut (valeur atypique) -0.099
+30   NU                   Nunavut        0.00 Bas-Haut (valeur atypique) -1.069
+   LisaP
+1  0.005
+2  0.006
+3  0.010
+4  0.013
+5  0.020
+6  0.004
+7  0.011
+8  0.026
+9  0.006
+10 0.028
+11 0.016
+12 0.026
+13 0.016
+14 0.009
+15 0.021
+16 0.035
+17 0.003
+18 0.009
+19 0.008
+20 0.003
+21 0.001
+22 0.029
+23 0.005
+24 0.006
+25 0.046
+26 0.021
+27 0.001
+28 0.020
+29 0.019
+30 0.001
 
 Getis-Ord Gi* : Z analytique et 999 permutations.
 Correlation entre les deux scores z : 1 (une valeur proche de 1 confirme que l'approximation tient).
@@ -142,19 +173,32 @@ Correlation entre les deux scores z : 1 (une valeur proche de 1 confirme que l'a
 
 --- GETIS-ORD Gi* — 12 points les plus chauds ---
 
-   Code                     Unite TauxPar100k GiEtoile GiValeurP         ClasseGi
-1    NU                   Nunavut        0.00    5.126     0.003       Chaud 99 %
-2    MB                  Manitoba       30.77    4.754     0.002       Chaud 99 %
-3    SK              Saskatchewan       47.77    4.095     0.007       Chaud 99 %
-4    AB                   Alberta       15.69    3.756     0.007       Chaud 99 %
-5    YT                     Yukon        4.97    3.754     0.007       Chaud 99 %
-6    NT Territoires du Nord-Ouest       12.17    3.336     0.014       Chaud 99 %
-7    BC      Colombie-Britannique        8.46    3.006     0.019       Chaud 99 %
-8    ND            Dakota du Nord        2.70    2.816     0.020       Chaud 99 %
-9    ON                   Ontario       17.20    2.457     0.067       Chaud 95 %
-10   QC                    Quebec       10.49    1.970     0.078       Chaud 95 %
-11   NL   Terre-Neuve-et-Labrador        6.27    1.848     0.085       Chaud 90 %
-12   MT                   Montana        0.09    1.618     0.075 Non significatif
+   Code                     Unite TauxPar100k GiEtoile GiValeurP
+1    NU                   Nunavut        0.00    5.126     0.003
+2    MB                  Manitoba       30.77    4.754     0.002
+3    SK              Saskatchewan       47.77    4.095     0.007
+4    AB                   Alberta       15.69    3.756     0.007
+5    YT                     Yukon        4.97    3.754     0.007
+6    NT Territoires du Nord-Ouest       12.17    3.336     0.014
+7    BC      Colombie-Britannique        8.46    3.006     0.019
+8    ND            Dakota du Nord        2.70    2.816     0.020
+9    ON                   Ontario       17.20    2.457     0.067
+10   QC                    Quebec       10.49    1.970     0.078
+11   NL   Terre-Neuve-et-Labrador        6.27    1.848     0.085
+12   MT                   Montana        0.09    1.618     0.075
+           ClasseGi
+1        Chaud 99 %
+2        Chaud 99 %
+3        Chaud 99 %
+4        Chaud 99 %
+5        Chaud 99 %
+6        Chaud 99 %
+7        Chaud 99 %
+8        Chaud 99 %
+9        Chaud 95 %
+10       Chaud 95 %
+11       Chaud 90 %
+12 Non significatif
 
 -----------------------------------------------------
  CHANGEMENT D'ECHELLE — GRILLE HEXAGONALE (MAUP)
@@ -172,11 +216,11 @@ Cellules isolees detectees -> voisinage knn (k = 6) utilise.
 data:  grille_analyse$NbJoueurs  
 weights: lw_grille    
 
-Moran I statistic standard deviate = 2.1729, p-value = 0.01489
+Moran I statistic standard deviate = 1.9201, p-value = 0.02742
 alternative hypothesis: greater
 sample estimates:
 Moran I statistic       Expectation          Variance 
-      0.067533968      -0.008264463       0.001216884 
+      0.058728072      -0.008264463       0.001217324 
 
 
 --- MORAN — points moyens par joueur, par cellule hexagonale ---
@@ -187,19 +231,23 @@ Moran I statistic       Expectation          Variance
 data:  grille_analyse$PtsMoyen  
 weights: lw_grille    
 
-Moran I statistic standard deviate = -0.41372, p-value = 0.6605
+Moran I statistic standard deviate = -0.44498, p-value = 0.6718
 alternative hypothesis: greater
 sample estimates:
 Moran I statistic       Expectation          Variance 
-     -0.027285225      -0.008264463       0.002113720 
+     -0.028725669      -0.008264463       0.002114390 
 
 
 --- SYNTHESE — I de Moran selon l'echelle et la variable ---
 
-            Echelle                           Variable NbUnites  MoranI  ValeurP                           Lecture
-1 Provinces / etats    Joueurs par 100 000 hab. (taux)       64  0.3202 3.29e-09    autocorrelation positive forte
-2  Hexagones 200 km       Nombre de joueurs (effectif)      122  0.0675 1.49e-02   autocorrelation positive faible
-3  Hexagones 200 km Points moyens par joueur (calibre)      122 -0.0273 6.60e-01 aucune autocorrelation detectable
+            Echelle                           Variable NbUnites  MoranI
+1 Provinces / etats    Joueurs par 100 000 hab. (taux)       64  0.3202
+2  Hexagones 200 km       Nombre de joueurs (effectif)      122  0.0587
+3  Hexagones 200 km Points moyens par joueur (calibre)      122 -0.0287
+   ValeurP                           Lecture
+1 3.29e-09    autocorrelation positive forte
+2 2.74e-02   autocorrelation positive faible
+3 6.72e-01 aucune autocorrelation detectable
 
 DISCUSSION
 
@@ -222,7 +270,7 @@ DISCUSSION
    particulierement plus que deux cellules quelconques.
 
 3) RESULTAT NEGATIF, MAIS INSTRUCTIF
-   Les points moyens par joueur donnent I = -0.0273 (p = 0.66) :
+   Les points moyens par joueur donnent I = -0.0287 (p = 0.672) :
    aucune autocorrelation detectable.
    Interpretation : le lieu de naissance structure le fait
    d'ATTEINDRE la LNH, mais pas le CALIBRE une fois rendu.

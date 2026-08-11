@@ -610,8 +610,8 @@ if (nrow(grille_analyse) > 20) {
     tm_title(paste0("Grappes de production, grille hexagonale de ",
                     TAILLE_CELLULE / 1000, " km")) +
     tm_credits(
-      paste0("Unites independantes des frontieres administratives ",
-             "(demonstration du MAUP).",
+      paste0("Unites indépendantes des frontières administratives ",
+             "(démonstration du MAUP).",
              "\nCellules de ", MIN_JOUEURS, " joueurs et plus.",
              "\nAuteur : ", AUTEURS),
       position = tm_pos_in("left", "bottom"), size = 0.6
@@ -632,7 +632,7 @@ if (nrow(grille_analyse) > 20) {
     ) +
     tm_title("Production offensive moyenne par joueur selon le lieu de naissance") +
     tm_credits(
-      paste0("Indicateur de calibre, independant de la population.",
+      paste0("Indicateur de calibre, indépendant de la population.",
              "\nCellules de ", MIN_JOUEURS, " joueurs et plus.",
              "\nAuteur : ", AUTEURS),
       position = tm_pos_in("left", "bottom"), size = 0.6

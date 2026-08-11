@@ -5,19 +5,32 @@
 
 --- PAYS : top 20 par TAUX (min. 20 joueurs) — comparaison avec le rang brut ---
 
-                       Pays NbJoueurs RangBrut TauxParMillion RangTaux DeplacementRang     QL
-1                    Canada      5598        1         148.93        1               0 129.89
-2                   Finland       275        5          49.82        2               3  43.45
-3                    Sweden       438        3          42.58        3               0  37.14
-4                   Czechia       271        6          25.40        4               2  22.15
-5                  Slovakia        95        7          17.42        5               2  15.19
-6                    Latvia        29       11          15.16        6               5  13.22
-7               Switzerland        44        9           5.13        7               2   4.48
-8  United States of America      1492        2           4.55        8              -6   3.96
-9                    Russia       312        4           2.16       13              -9   1.88
-10                  Belarus        20       12           2.11       14              -2   1.84
-11           United Kingdom        48        8           0.72       19             -11   0.63
-12                  Germany        42       10           0.51       21             -11   0.44
+                       Pays NbJoueurs RangBrut TauxParMillion RangTaux
+1                    Canada      5598        1         148.93        1
+2                   Finland       275        5          49.82        2
+3                    Sweden       438        3          42.58        3
+4                   Czechia       271        6          25.40        4
+5                  Slovakia        95        7          17.42        5
+6                    Latvia        29       11          15.16        6
+7               Switzerland        44        9           5.13        7
+8  United States of America      1492        2           4.55        8
+9                    Russia       312        4           2.16       13
+10                  Belarus        20       12           2.11       14
+11           United Kingdom        48        8           0.72       19
+12                  Germany        42       10           0.51       21
+   DeplacementRang     QL
+1                0 129.89
+2                3  43.45
+3                0  37.14
+4                2  22.15
+5                2  15.19
+6                5  13.22
+7                2   4.48
+8               -6   3.96
+9               -9   1.88
+10              -2   1.84
+11             -11   0.63
+12             -11   0.44
 
 LECTURE : un DeplacementRang positif signifie que le pays monte
 dans le classement une fois la population prise en compte.
@@ -37,38 +50,70 @@ Non rattaches a une province/etat : 1
 
 --- PROVINCES / ETATS : 15 premieres unites par TAUX ---
 
-   Code                     Unite NbJoueurs RangBrut TauxPar100k RangTaux DeplacementRang    QL
-1    SK              Saskatchewan       541        4       47.77        1               3 24.83
-2    MB                  Manitoba       413        6       30.77        2               4 15.99
-3    PE     Ile-du-Prince-Edouard        34       19       22.03        3              16 11.45
-4    ON                   Ontario      2447        1       17.20        4              -3  8.94
-5    AB                   Alberta       669        3       15.69        5              -2  8.16
-6    NT Territoires du Nord-Ouest         5       37       12.17        6              31  6.33
-7    QC                    Quebec       892        2       10.49        7              -5  5.45
-8    NS           Nouvelle-Ecosse        86       11        8.87        8               3  4.61
-9    BC      Colombie-Britannique       423        5        8.46        9              -4  4.40
-10   NB         Nouveau-Brunswick        54       14        6.96       10               4  3.62
-11   NL   Terre-Neuve-et-Labrador        32       20        6.27       11               9  3.26
-12   MN                 Minnesota       315        7        5.52       12              -5  2.87
-13   YT                     Yukon         2       46        4.97       13              33  2.58
-14   MA             Massachusetts       225        8        3.20       14              -6  1.66
-15   ND            Dakota du Nord        21       25        2.70       15              10  1.40
+   Code                     Unite NbJoueurs RangBrut TauxPar100k RangTaux
+1    SK              Saskatchewan       541        4       47.77        1
+2    MB                  Manitoba       413        6       30.77        2
+3    PE     Ile-du-Prince-Edouard        34       19       22.03        3
+4    ON                   Ontario      2447        1       17.20        4
+5    AB                   Alberta       669        3       15.69        5
+6    NT Territoires du Nord-Ouest         5       37       12.17        6
+7    QC                    Quebec       892        2       10.49        7
+8    NS           Nouvelle-Ecosse        86       11        8.87        8
+9    BC      Colombie-Britannique       423        5        8.46        9
+10   NB         Nouveau-Brunswick        54       14        6.96       10
+11   NL   Terre-Neuve-et-Labrador        32       20        6.27       11
+12   MN                 Minnesota       315        7        5.52       12
+13   YT                     Yukon         2       46        4.97       13
+14   MA             Massachusetts       225        8        3.20       14
+15   ND            Dakota du Nord        21       25        2.70       15
+   DeplacementRang    QL
+1                3 24.83
+2                4 15.99
+3               16 11.45
+4               -3  8.94
+5               -2  8.16
+6               31  6.33
+7               -5  5.45
+8                3  4.61
+9               -4  4.40
+10               4  3.62
+11               9  3.26
+12              -5  2.87
+13              33  2.58
+14              -6  1.66
+15              10  1.40
 
 --- PROVINCES / ETATS : 15 premieres unites par EFFECTIF BRUT (comparaison) ---
 
-   Code                Unite NbJoueurs RangBrut TauxPar100k RangTaux DeplacementRang    QL
-1    ON              Ontario      2447        1       17.20        4              -3  8.94
-2    QC               Quebec       892        2       10.49        7              -5  5.45
-3    AB              Alberta       669        3       15.69        5              -2  8.16
-4    SK         Saskatchewan       541        4       47.77        1               3 24.83
-5    BC Colombie-Britannique       423        5        8.46        9              -4  4.40
-6    MB             Manitoba       413        6       30.77        2               4 15.99
-7    MN            Minnesota       315        7        5.52       12              -5  2.87
-8    MA        Massachusetts       225        8        3.20       14              -6  1.66
-9    MI             Michigan       207        9        2.05       17              -8  1.07
-10   NY             New York       150       10        0.74       21             -11  0.39
-11   NS      Nouvelle-Ecosse        86       11        8.87        8               3  4.61
-12   IL             Illinois        79       12        0.62       24             -12  0.32
-13   CA           Californie        56       13        0.14       38             -25  0.07
-14   NB    Nouveau-Brunswick        54       14        6.96       10               4  3.62
-15   WI            Wisconsin        41       15        0.70       22              -7  0.36
+   Code                Unite NbJoueurs RangBrut TauxPar100k RangTaux
+1    ON              Ontario      2447        1       17.20        4
+2    QC               Quebec       892        2       10.49        7
+3    AB              Alberta       669        3       15.69        5
+4    SK         Saskatchewan       541        4       47.77        1
+5    BC Colombie-Britannique       423        5        8.46        9
+6    MB             Manitoba       413        6       30.77        2
+7    MN            Minnesota       315        7        5.52       12
+8    MA        Massachusetts       225        8        3.20       14
+9    MI             Michigan       207        9        2.05       17
+10   NY             New York       150       10        0.74       21
+11   NS      Nouvelle-Ecosse        86       11        8.87        8
+12   IL             Illinois        79       12        0.62       24
+13   CA           Californie        56       13        0.14       38
+14   NB    Nouveau-Brunswick        54       14        6.96       10
+15   WI            Wisconsin        41       15        0.70       22
+   DeplacementRang    QL
+1               -3  8.94
+2               -5  5.45
+3               -2  8.16
+4                3 24.83
+5               -4  4.40
+6                4 15.99
+7               -5  2.87
+8               -6  1.66
+9               -8  1.07
+10             -11  0.39
+11               3  4.61
+12             -12  0.32
+13             -25  0.07
+14               4  3.62
+15              -7  0.36
