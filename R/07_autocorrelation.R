@@ -607,6 +607,8 @@ if (nrow(grille_analyse) > 20) {
       fill.legend = tm_legend(title = paste0("Grappe LISA\n(p < ", SEUIL, ")")),
       col = "white", lwd = 0.2
     ) +
+    tm_shape(unites) +
+    tm_borders(col = "#4d4d4d41", lwd = 0.5, linetype = "solid") +
     tm_title(paste0("Grappes de production, grille hexagonale de ",
                     TAILLE_CELLULE / 1000, " km")) +
     tm_credits(
@@ -630,6 +632,8 @@ if (nrow(grille_analyse) > 20) {
       fill.legend = tm_legend(title = "Points moyens\npar joueur"),
       col = "white", lwd = 0.2
     ) +
+    tm_shape(unites) +
+    tm_borders(col = "#4d4d4d41", lwd = 0.5, linetype = "solid") +
     tm_title("Production offensive moyenne par joueur selon le lieu de naissance") +
     tm_credits(
       paste0("Indicateur de calibre, indépendant de la population.",

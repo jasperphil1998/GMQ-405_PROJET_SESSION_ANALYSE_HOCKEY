@@ -302,9 +302,9 @@ part_pixels_retenus <- n_pixels_retenus / n_pixels_total
 
 carte_risque <- carte_surface(
   risque_relatif,
-  titre = paste0("Probabilite qu'un joueur devienne un joueur d'elite — ",
+  titre = paste0("Probabilité qu'un joueur devienne un joueur d'élite — ",
                  PAYS_ETUDE),
-  sous_titre = paste0("Rapport de densites (Kelsall-Diggle) : joueurs de ",
+  sous_titre = paste0("Rapport de densités (Kelsall-Diggle) : joueurs de ",
                       SEUIL_ELITE, "+ points / tous les joueurs.",
                       "\nZones grises : trop peu de joueurs pour un rapport fiable."),
   legende = paste0("Part de joueurs\nde ", SEUIL_ELITE, "+ pts"),
