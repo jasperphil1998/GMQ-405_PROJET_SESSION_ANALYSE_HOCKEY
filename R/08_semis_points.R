@@ -87,6 +87,12 @@ fenetre <- as.mask(fenetre, dimyx = RESOLUTION)
 jrn$ecrire("Superficie de la fenetre : ",
            format(round(area.owin(fenetre) / 1e6), big.mark = " "), " km2")
 
+
+# Chargement et projection des provinces canadiennes
+provinces_pays <- ne_states(country = PAYS_ETUDE, returnclass = "sf") |>
+  st_transform(CRS_CA) |>
+  st_simplify(dTolerance = 2000)           
+
 # --- Semis de points --------------------------------------------------------
 # IMPORTANT : on travaille au niveau des LOCALITES (une ville = un point), et
 # non des joueurs. Empiler 5598 joueurs sur 997 coordonnees creerait des
@@ -154,21 +160,23 @@ limites_y <- c(emprise[["ymin"]] - MARGE_AFFICHAGE,
                emprise[["ymax"]] + MARGE_AFFICHAGE)
 
 carte_surface <- function(image, titre, sous_titre, legende,
-                          palette = "viridis", transformation = "identity") {
+                          palette = "viridis", transformation = "identity",
+                          limites_admin = provinces_pays) {
   df <- as.data.frame(image)
   names(df) <- c("x", "y", "valeur")
 
-  # ORDRE DES COUCHES (important)
-  #  1. le pays en gris pale : sert de fond, de sorte que les zones sans
-  #     donnee se lisent comme "pas de donnee" et non comme du vide blanc ;
-  #  2. la surface calculee ;
-  #  3. le contour en gris fonce PAR-DESSUS. Un contour blanc serait
-  #     invisible sur le fond blanc de la figure.
+  # ORDRE DES COUCHES :
+  # 1. Le pays en gris pâle (fond)
+  # 2. La surface calculée (raster)
+  # 3. Les frontières administratives (provinces) par-dessus
+  # 4. Le contour national extérieur (un peu plus épais)
   gg <- ggplot() +
     geom_sf(data = contour_pays, fill = "grey92", colour = NA) +
     geom_raster(data = df, aes(x = x, y = y, fill = valeur)) +
-    geom_sf(data = contour_pays, fill = NA, colour = "grey35",
-            linewidth = 0.3) +
+    geom_sf(data = limites_admin, fill = NA, colour = "grey40", 
+            linewidth = 0.35, linetype = "solid") +
+    geom_sf(data = contour_pays, fill = NA, colour = "grey20", 
+            linewidth = 0.5) +
     coord_sf(xlim = limites_x, ylim = limites_y, expand = FALSE) +
     labs(title = titre, subtitle = sous_titre, fill = legende,
          x = NULL, y = NULL,
