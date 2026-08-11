@@ -2,18 +2,18 @@
 # 02_graphiques.R — Graphiques descriptifs
 # =============================================================================
 # ORIGINE : SECTION 1 de archive/Projet_Hockey_script_ORIGINAL.R (11 graphiques
-# realises par Philippe Filion et Xavier Lafrance).
+# réalisés par Philippe Filion et Xavier Lafrance).
 #
-# Le contenu statistique est inchange. Ce qui a change :
-#  - le pipe %>% est remplace par le pipe natif |> (convention du projet) ;
+# Le contenu statistique est inchangé. Ce qui a changé :
+#  - le pipe %>% est remplacé par le pipe natif |> (convention du projet) ;
 #  - la mention de source et d'auteurs vient de la constante CREDITS ;
 #  - la palette vient de la constante COULEURS_GEO ;
-#  - la preparation des donnees (dates, decennies, positions traduites) est
-#    faite une seule fois dans 00_config.R au lieu d'etre repetee ici ;
-#  - les View() interactifs ont ete retires : ils bloquent une execution par
-#    Rscript. Les verifications equivalentes passent par message().
+#  - la préparation des données (dates, décennies, positions traduites) est
+#    faite une seule fois dans 00_config.R au lieu d'être répétée ici ;
+#  - les View() interactifs ont été retirés : ils bloquent une exécution par
+#    Rscript. Les vérifications équivalentes passent par message().
 #
-# SORTIES : 11 figures PNG dans figures/ (non versionnees).
+# SORTIES : 11 figures PNG dans figures/ (non versionnées).
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -22,11 +22,11 @@ message("\n=== 02 — GRAPHIQUES DESCRIPTIFS ===")
 
 hockey <- charger_hockey()
 
-# Verifications rapides (remplacent les View() du script d'origine)
+# Vérifications rapides (remplacent les View() du script d'origine)
 message("Joueurs : ", nrow(hockey))
 message("Pays distincts : ", dplyr::n_distinct(hockey$Country))
-message("Decennies : ",
-        paste(range(hockey$Decennie, na.rm = TRUE), collapse = " a "))
+message("Décennies : ",
+        paste(range(hockey$Decennie, na.rm = TRUE), collapse = " à "))
 
 
 ## Graphique 1 : Top 15 des pays producteurs de joueurs ----------------------
@@ -50,7 +50,7 @@ sauver_graphique_fig(graph_top15_pays, "graph_top15_pays.png",
                      largeur = 10, hauteur = 6)
 
 
-## Graphique 2 : Repartition par decennie de naissance -----------------------
+## Graphique 2 : Répartition par décennie de naissance -----------------------
 
 joueurs_decennie <- hockey |>
   filter(!is.na(Decennie)) |>
@@ -59,8 +59,8 @@ joueurs_decennie <- hockey |>
 graph_decennie <- ggplot(joueurs_decennie, aes(x = Decennie, y = n)) +
   geom_col(fill = "#2C7FB8") +
   labs(
-    title = "Nombre de joueurs de la LNH par decennie de naissance",
-    x = "Decennie de naissance",
+    title = "Nombre de joueurs de la LNH par décennie de naissance",
+    x = "Décennie de naissance",
     y = "Nombre de joueurs",
     caption = CREDITS
   ) +
@@ -70,7 +70,7 @@ sauver_graphique_fig(graph_decennie, "graph_joueurs_decennie.png",
                      largeur = 10, hauteur = 6)
 
 
-## Graphique 3 : Evolution Canada / USA / Europe / Autres --------------------
+## Graphique 3 : Évolution Canada / USA / Europe / Autres --------------------
 
 evolution_geo <- hockey |>
   filter(!is.na(Decennie)) |>
@@ -84,11 +84,11 @@ graph_evolution_geo_prop <- ggplot(
   scale_fill_manual(values = COULEURS_GEO) +
   scale_y_continuous(labels = label_percent()) +
   labs(
-    title = "Evolution de la provenance des joueurs de la LNH par decennie",
-    subtitle = "Repartition proportionnelle selon le groupe geographique",
-    x = "Decennie de naissance",
+    title = "Évolution de la provenance des joueurs de la LNH par décennie",
+    subtitle = "Répartition proportionnelle selon le groupe géographique",
+    x = "Décennie de naissance",
     y = "Proportion des joueurs",
-    fill = "Groupe geographique",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -115,7 +115,7 @@ graph_top20_villes <- ggplot(
     title = "Top 20 des lieux de naissance des joueurs de la LNH",
     x = "Lieu de naissance",
     y = "Nombre de joueurs",
-    fill = "Groupe geographique",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -126,7 +126,7 @@ sauver_graphique_fig(graph_top20_villes, "graph_top20_villes.png",
 
 ## Graphique 5 : Moyenne de points par pays ----------------------------------
 # Seuls les pays comptant au moins 20 joueurs sont retenus : sous ce seuil, la
-# moyenne est dominee par le bruit d'echantillonnage.
+# moyenne est dominée par le bruit d'échantillonnage.
 
 moyenne_pts_pays <- hockey |>
   group_by(Country, GroupeGeo) |>
@@ -149,8 +149,8 @@ graph_moyenne_pts_pays <- ggplot(
     title = "Nombre moyen de points par joueur selon le pays",
     subtitle = "Pays avec au moins 20 joueurs",
     x = "Pays",
-    y = "Moyenne de points en carriere",
-    fill = "Groupe geographique",
+    y = "Moyenne de points en carrière",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -167,10 +167,10 @@ graph_boxplot_position <- hockey |>
   geom_boxplot(fill = "grey75", colour = "grey30") +
   scale_y_log10(labels = label_number(big.mark = " ")) +
   labs(
-    title = "Distribution des points en carriere selon la position",
-    subtitle = "Echelle logarithmique",
+    title = "Distribution des points en carrière selon la position",
+    subtitle = "Échelle logarithmique",
     x = "Position",
-    y = "Points en carriere",
+    y = "Points en carrière",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -179,10 +179,10 @@ sauver_graphique_fig(graph_boxplot_position, "graph_boxplot_position.png",
                      largeur = 9, hauteur = 6)
 
 
-## Graphique 7 : Relation entre matchs joues et points -----------------------
-# Nuage de points avec droite de regression : c'est le graphique ajoute par
-# Philippe Filion (commits "droite de regression graphique #7" et "ajout de la
-# droite et courbe de regression").
+## Graphique 7 : Relation entre matchs joués et points -----------------------
+# Nuage de points avec droite de régression : c'est le graphique ajouté par
+# Philippe Filion (commits "droite de régression graphique #7" et "ajout de la
+# droite et courbe de régression").
 
 graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
   geom_point(aes(colour = Elite1000), alpha = 0.5, size = 1) +
@@ -193,12 +193,12 @@ graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
   scale_colour_manual(values = c("1000 points et plus"  = "#b2182b",
                                  "Moins de 1000 points" = "#2c7fb8")) +
   labs(
-    title = "Relation entre les matchs joues et la production offensive",
-    subtitle = paste("Droite de regression lineaire (noir) et courbe de",
-                     "regression locale loess (orange pointille)"),
-    x = "Matchs joues",
+    title = "Relation entre les matchs joués et la production offensive",
+    subtitle = paste("Droite de régression linéaire (noir) et courbe de",
+                     "régression locale loess (orange pointillé)"),
+    x = "Matchs joués",
     y = "Points",
-    colour = "Categorie",
+    colour = "Catégorie",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -206,9 +206,9 @@ graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
 sauver_graphique_fig(graph_gp_pts, "graph_relation_gp_pts.png",
                      largeur = 10, hauteur = 6)
 
-# Coefficient de la regression, utile a citer dans le rapport
+# Coefficient de la régression, utile à citer dans le rapport
 modele_gp_pts <- lm(Pts ~ GP, data = hockey)
-message("Regression Pts ~ GP : pente = ",
+message("Régression Pts ~ GP : pente = ",
         round(coef(modele_gp_pts)[["GP"]], 3),
         " point par match ; R2 = ",
         round(summary(modele_gp_pts)$r.squared, 3))
@@ -239,7 +239,7 @@ graph_top20_villes_pts <- ggplot(
     title = "Top 20 des lieux de naissance selon les points totaux produits",
     x = "Lieu de naissance",
     y = "Total des points produits en LNH",
-    fill = "Groupe geographique",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -266,7 +266,7 @@ graph_elite_pays <- ggplot(
                    " points et plus par pays"),
     x = "Pays",
     y = paste0("Nombre de joueurs de ", SEUIL_ELITE_PTS, " points et plus"),
-    fill = "Groupe geographique",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -275,7 +275,7 @@ sauver_graphique_fig(graph_elite_pays, "graph_elite_pays.png",
                      largeur = 9, hauteur = 6)
 
 
-## Graphique 10 : Pays avec le plus de minutes de penalite -------------------
+## Graphique 10 : Pays avec le plus de minutes de pénalité -------------------
 
 pim_pays_top <- hockey |>
   filter(!is.na(Country), !is.na(PIM), !is.na(GroupeGeo)) |>
@@ -298,12 +298,12 @@ graph_pim_pays <- ggplot(
   scale_fill_manual(values = COULEURS_GEO) +
   scale_y_continuous(labels = label_number(big.mark = " ", decimal.mark = ",")) +
   labs(
-    title = "Pays avec le plus de minutes de penalite",
-    subtitle = paste("Top 15 des pays selon le total de minutes de penalite",
-                     "accumulees"),
+    title = "Pays avec le plus de minutes de pénalité",
+    subtitle = paste("Top 15 des pays selon le total de minutes de pénalité",
+                     "accumulées"),
     x = "Pays",
-    y = "Minutes de penalite totales",
-    fill = "Groupe geographique",
+    y = "Minutes de pénalité totales",
+    fill = "Groupe géographique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -312,7 +312,7 @@ sauver_graphique_fig(graph_pim_pays, "graph_pays_minutes_penalite.png",
                      largeur = 10, hauteur = 6)
 
 
-## Graphique 11 : Relation entre points et position jouee --------------------
+## Graphique 11 : Relation entre points et position jouée --------------------
 
 points_position <- hockey |>
   filter(!is.na(PositionLabel), !is.na(Pts))
@@ -328,11 +328,11 @@ graph_points_position <- ggplot(
     labels = label_number(big.mark = " ", decimal.mark = ",")
   ) +
   labs(
-    title = "Relation entre le nombre de points et la position jouee",
-    subtitle = paste("Distribution des points en carriere selon la position",
+    title = "Relation entre le nombre de points et la position jouée",
+    subtitle = paste("Distribution des points en carrière selon la position",
                      "principale du joueur"),
     x = "Position",
-    y = "Points en carriere, echelle pseudo-logarithmique",
+    y = "Points en carrière, échelle pseudo-logarithmique",
     caption = CREDITS
   ) +
   theme_minimal()
@@ -341,4 +341,4 @@ sauver_graphique_fig(graph_points_position, "graph_points_position.png",
                      largeur = 10, hauteur = 6)
 
 
-message("=== 02 termine ===")
+message("=== 02 terminé ===")

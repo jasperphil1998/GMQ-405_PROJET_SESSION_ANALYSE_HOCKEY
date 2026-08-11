@@ -1,18 +1,18 @@
 # =============================================================================
-# 12_clustgeo.R — Classification ascendante hierarchique avec contrainte
+# 12_clustgeo.R — Classification ascendante hiérarchique avec contrainte
 #                 spatiale (ClustGeo)
 # =============================================================================
 # MÉTHODE : La classification ascendante hiérarchique ordinaire regroupe les 
 # unités uniquement selon leurs valeurs : deux provinces aux profils identiques
 # finissent ensemble même si elles sont aux antipodes, ce qui donne des classes
 # éparpillées sur la carte. ClustGeo mélange deux matrices de distance :
-#   D0 = dissimilarite sémantique (les variables)
-#   D1 = dissimilarite spatiale   (la distance entre centroides)
+#   D0 = dissimilarité sémantique (les variables)
+#   D1 = dissimilarité spatiale   (la distance entre centroïdes)
 # et le paramètre alpha règle le dosage :
 #   alpha = 0   -> classification classique, aucune contrainte spatiale
-#   alpha = 1   -> classification purement geographique, les variables ne
+#   alpha = 1   -> classification purement géographique, les variables ne
 #                  comptent plus
-#   entre les deux -> des classes à la fois homogenes et géographiquement
+#   entre les deux -> des classes à la fois homogènes et géographiquement
 #                  compactes. C'est tout l'intérêt de la méthode.
 #
 # PRÉREQUIS : lancer 06_normalisation.R avant (il produit
@@ -29,7 +29,7 @@ if (!requireNamespace("ClustGeo", quietly = TRUE)) {
   # Voir la note dans 11_stkde.R : run_all.R lit MODULE_IGNORE pour ne pas
   # afficher "ok" sur un module qui n'a rien produit.
   MODULE_IGNORE <- TRUE
-  message("Module 12 IGNORE : le paquet ClustGeo n'est pas installe.\n",
+  message("Module 12 IGNORÉ : le paquet ClustGeo n'est pas installé.\n",
           "  install.packages(\"ClustGeo\")\n",
           "  AUCUNE sortie de classification ne sera produite.")
 } else {
@@ -45,12 +45,12 @@ if (!file.exists(fichier_unites)) {
 jrn <- journal_resultats("12_resultats_clustgeo.txt")
 jrn$ecrire("=====================================================")
 jrn$ecrire(" ANALYSE SPATIALE — 12. CLASSIFICATION SPATIALE")
-jrn$ecrire(" Methode ClustGeo (manuel, section 8.2.1)")
+jrn$ecrire(" Méthode ClustGeo (manuel, section 8.2.1)")
 jrn$ecrire("=====================================================")
 
 
 # =============================================================================
-# 1. DONNEES ET VARIABLES ----
+# 1. DONNÉES ET VARIABLES ----
 # =============================================================================
 # Lecture de l'objet contenant les variables sémantiques
 unites <- readRDS(fichier_unites) |>
@@ -61,8 +61,8 @@ unites <- readRDS(fichier_unites) |>
 # du hockey local :
 #   TauxPar100k : combien de joueurs une population donnée produit
 #   PtsPar100k  : combien de production offensive elle produit
-#   PtsMoyen    : le calibre moyen des joueurs produits (independant du volume)
-#   PartElite   : la capacite à produire des joueurs de tout premier plan
+#   PtsMoyen    : le calibre moyen des joueurs produits (indépendant du volume)
+#   PartElite   : la capacité à produire des joueurs de tout premier plan
 
 unites <- unites |>
   mutate(PartElite = ifelse(NbJoueurs > 0, NbElite / NbJoueurs * 100, 0))
@@ -73,7 +73,7 @@ donnees <- unites |>
   st_drop_geometry() |>
   select(all_of(VARS_SEMANTIQUES))
 
-# Toute unite avec une valeur manquante ferait échouer dist() : on les écarte
+# Toute unité avec une valeur manquante ferait échouer dist() : on les écarte
 # explicitement plutôt que de laisser R produire des NA silencieux.
 complet <- stats::complete.cases(donnees)
 if (any(!complet)) {
@@ -98,18 +98,18 @@ donnees_zscore <- data.frame(scale(donnees))
 # D0 : matrice sémantique, dissimilarité selon les variables
 Matrice.Semantique <- dist(donnees_zscore, method = "euclidean")
 
-# D1 : matrice spatiale, distance euclidienne entre centroides.
-# Elle est calculée dans CRS_NA (projection metrique)
+# D1 : matrice spatiale, distance euclidienne entre centroïdes.
+# Elle est calculée dans CRS_NA (projection métrique)
 xy <- st_coordinates(st_centroid(st_geometry(unites)))
 Matrice.Spatiale <- dist(xy, method = "euclidean")
 
 
 # =============================================================================
-# 3. CHOIX DU PARAMETRE ALPHA ----
+# 3. CHOIX DU PARAMÈTRE ALPHA ----
 # =============================================================================
 # choicealpha() calcule, pour chaque valeur d'alpha, la part d'inertie
 # expliquée par la matrice sémantique (Q0) et par la matrice spatiale (Q1).
-# On cherche le point ou l'on gagne beaucoup de cohérence spatiale en perdant
+# On cherche le point où l'on gagne beaucoup de cohérence spatiale en perdant
 # peu de cohérence thématique.
 
 K_CLASSES <- 5
@@ -193,9 +193,9 @@ unites$ClasseSansEspace <- as.character(
 )
 
 jrn$capturer(table(unites$Classe),
-             paste0("NOMBRE D'UNITES PAR CLASSE (alpha = ", ALPHA, ")"))
+             paste0("NOMBRE D'UNITÉS PAR CLASSE (alpha = ", ALPHA, ")"))
 jrn$capturer(table(unites$ClasseSansEspace),
-             "NOMBRE D'UNITES PAR CLASSE (alpha = 0, sans contrainte)")
+             "NOMBRE D'UNITÉS PAR CLASSE (alpha = 0, sans contrainte)")
 
 ## --- Profil moyen des classes -----------------------------------------------
 # Tableau des valeurs moyennes des variables pour les 5 classes obtenues
@@ -226,7 +226,7 @@ composition <- unites |>
   select(Classe, Code = postal, Unite = NomUnite, Pays,
          TauxPar100k, PtsPar100k, PtsMoyen, PartElite)
 
-jrn$capturer(as.data.frame(composition), "COMPOSITION DETAILLÉE DES CLASSES")
+jrn$capturer(as.data.frame(composition), "COMPOSITION DÉTAILLÉE DES CLASSES")
 
 
 # =============================================================================
@@ -274,7 +274,7 @@ carte_comparaison_clustgeo <- tm_shape(comparaison_sf) +
   tm_facets(by = "Methode", ncol = 2) +
   tm_title("Apport de la contrainte spatiale dans la classification") +
   tm_credits(
-    paste0("A gauche, les classes peuvent être éparpillées ; à droite, elles ",
+    paste0("À gauche, les classes peuvent être éparpillées ; à droite, elles ",
            "sont géographiquement compactes.",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.5
@@ -288,4 +288,4 @@ jrn$fermer()
 
 }   # fin du bloc conditionnel sur ClustGeo
 
-message("=== 12 termine ===")
+message("=== 12 terminé ===")

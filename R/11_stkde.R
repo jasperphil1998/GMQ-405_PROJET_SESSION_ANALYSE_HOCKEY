@@ -1,16 +1,16 @@
 # =============================================================================
-# 11_stkde.R — Densite spatio-temporelle par noyau (STKDE)
+# 11_stkde.R — Densité spatio-temporelle par noyau (STKDE)
 # =============================================================================
 # MÉTHODE : estimation de densité de noyau spatio-temporelle dans une maille
 # régulière. Permet de voir l'évolution de la provenance des joueurs au fil du 
 # temps.
 #
-# SORTIES : figures/stkde_joueurs.gif (+ un graphique de densite temporelle).
+# SORTIES : figures/stkde_joueurs.gif (+ un graphique de densité temporelle).
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
-message("\n=== 11 — DENSITE SPATIO-TEMPORELLE (STKDE) ===")
+message("\n=== 11 — DENSITÉ SPATIO-TEMPORELLE (STKDE) ===")
 
 
 # --- Paquets spécifiques ----------------------------------------------------
@@ -28,7 +28,7 @@ if (length(manquants) > 0) {
   # pour un module qui n'a rien produit du tout.
   MODULE_IGNORE <- TRUE
   message(
-    "Module 11 IGNORE : paquets manquants -> ",
+    "Module 11 IGNORÉ : paquets manquants -> ",
     paste(manquants, collapse = ", "), "\n",
     "  install.packages(c(\"", paste(manquants, collapse = "\", \""), "\"))\n",
     "  AUCUNE sortie STKDE ne sera produite."
@@ -50,7 +50,7 @@ suppressPackageStartupMessages({
 # Regroupés ici pour qu'on puisse les changer sans fouiller dans le code.
 
 H_SPATIAL   <- 150000   # largeur de bande spatiale, en mètres
-LAMBDA_TEMP <- 8       # largeur de bande temporelle, en annees
+LAMBDA_TEMP <- 8       # largeur de bande temporelle, en années
 RESOLUTION_SPATIALE   <- 500   # ne pas baisser (voir ci-dessus)
 RESOLUTION_TEMPORELLE <- 150   # -> 64 : deux fois plus rapide, sans perte
 ESTIMER_BANDWIDTH <- FALSE   # Mettre TRUE si on souhaite ré-optimiser
@@ -66,7 +66,7 @@ hockey         <- charger_hockey()
 lieux_geocodes <- charger_lieux_geocodes()
 monde          <- charger_monde("medium")
 
-# Jeu de données geocode, au niveau de chaque joueur
+# Jeu de données géocodé, au niveau de chaque joueur
 prov_joueur_stkde <- hockey |>
   left_join(lieux_geocodes, by = "Birthplace")
 
@@ -75,13 +75,13 @@ prov_joueur_stkde_sf <- prov_joueur_stkde |>
   filter(!is.na(latitude), !is.na(longitude), !is.na(AnneeNaissance)) |>
   st_as_sf(coords = c("longitude", "latitude"), crs = CRS_GEO)
 
-message("Joueurs geolocalises et dates : ", nrow(prov_joueur_stkde_sf))
+message("Joueurs géolocalisés et dates : ", nrow(prov_joueur_stkde_sf))
 
 
 # =============================================================================
 # 2. VISUALISATION DE LA DENSITÉ TEMPORELLE ----
 # =============================================================================
-# Note : Il aurait été plus interessant de faire le STKDE avec la date d'entrée
+# Note : Il aurait été plus intéressant de faire le STKDE avec la date d'entrée
 # dans la LNH du joueur plutôt que sa date de naissance, mais nous ne possédons 
 # pas cette information. On aurait pu la déduire en ajoutant, par exemple, 20 
 # ans à l'année de naissance, mais cela n'est pas nécessairement vrai pour 
@@ -95,8 +95,8 @@ prov_joueur_stkde_sf$dt_num <- as.numeric(
 graph_densite_temporelle <- ggplot(prov_joueur_stkde_sf, aes(x = dt)) +
   geom_density(bw = "sj", color = "blue", lwd = 1) +
   labs(
-    title = "Densite temporelle des naissances de joueurs de la LNH",
-    y = "Densite", x = "Annee de naissance",
+    title = "Densité temporelle des naissances de joueurs de la LNH",
+    y = "Densité", x = "Année de naissance",
     caption = CREDITS
   ) +
   theme_bw()
@@ -109,8 +109,8 @@ sauver_graphique_fig(graph_densite_temporelle,
 # =============================================================================
 # 3. FENÊTRE D'OBSERVATION ET SEMIS ----
 # =============================================================================
-# Projection cylindrique equivalente mondiale : obligatoire, spatstat travaille
-# en unites planes. CRS_MONDE est defini dans 00_config.R 
+# Projection cylindrique équivalente mondiale : obligatoire, spatstat travaille
+# en unités planes. CRS_MONDE est défini dans 00_config.R 
 
 monde_sf <- st_transform(monde, crs = CRS_MONDE)
 prov_joueur_stkde_sf <- st_transform(prov_joueur_stkde_sf, crs = CRS_MONDE)
@@ -134,8 +134,8 @@ ppp_jittered <- rjitter(
   retry  = TRUE
 )
 
-# VERIFICATION CRITIQUE : ces deux valeurs doivent être strictement égales.
-message("Points dans le ppp jittere : ", npoints(ppp_jittered))
+# VÉRIFICATION CRITIQUE : ces deux valeurs doivent être strictement égales.
+message("Points dans le semis jittéré : ", npoints(ppp_jittered))
 message("Longueur du vecteur temps  : ", length(prov_joueur_stkde_sf$dt_num))
 stopifnot(npoints(ppp_jittered) == length(prov_joueur_stkde_sf$dt_num))
 
@@ -157,7 +157,7 @@ if (ESTIMER_BANDWIDTH) {
 # 4. CALCUL DES DENSITÉS SPATIO-TEMPORELLES ----
 # =============================================================================
 
-message("Calcul de la densite spatio-temporelle (",
+message("Calcul de la densité spatio-temporelle (",
         RESOLUTION_SPATIALE, "x", RESOLUTION_SPATIALE, "x",
         RESOLUTION_TEMPORELLE, " = ",
         format(RESOLUTION_SPATIALE^2 * RESOLUTION_TEMPORELLE / 1e6,
@@ -166,7 +166,7 @@ message("Calcul de la densite spatio-temporelle (",
 # Trouve l'étendue temporelle des données
 tlim_observe <- range(prov_joueur_stkde_sf$dt_num)
 
-# Chronometrage des deux étapes coûteuses :
+# Chronométrage des deux étapes coûteuses :
 # Calcul des valeurs de densités
 t_densite <- system.time(
   dens_vals <- spattemp.density(
@@ -181,7 +181,7 @@ t_densite <- system.time(
   )
 )["elapsed"]
 
-message("  densite calculee en ", round(t_densite), " s")
+message("  densité calculée en ", round(t_densite), " s")
 
 ## Extraction des rasters à chaque période
 all_rasts <- lapply(dens_vals$z, function(x) {
@@ -237,9 +237,9 @@ t_rendu <- system.time(
 message("  -> ", basename(fichier_gif))
 message("  rendu des ", length(time_frames), " images en ",
         round(t_rendu), " s")
-message("  REPARTITION : densité ", round(t_densite), " s | rendu ",
+message("  RÉPARTITION : densité ", round(t_densite), " s | rendu ",
         round(t_rendu), " s")
 
 }   # fin du bloc conditionnel sur les paquets
 
-message("=== 11 termine ===")
+message("=== 11 terminé ===")

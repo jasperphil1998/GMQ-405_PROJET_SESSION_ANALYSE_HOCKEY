@@ -36,19 +36,19 @@ LECTURE : un DeplacementRang positif signifie que le pays monte
 dans le classement une fois la population prise en compte.
 
 -------------------------------------------------
- PROVINCES ET ETATS
+ PROVINCES ET ÉTATS
 -------------------------------------------------
-Joueurs canadiens et americains : 7090
-Non rattaches a une province/etat : 1
+Joueurs canadiens et américains : 7090
+Non rattachés à une province ou à un état : 1
 
---- Lieux non rattaches (a corriger dans le geocodage si nombreux) ---
+--- Lieux non rattachés (à corriger dans le géocodage si nombreux) ---
 
 # A tibble: 1 × 2
   Birthplace     n
   <chr>      <int>
 1 Edina, USA     1
 
---- PROVINCES / ETATS : 15 premieres unites par TAUX ---
+--- PROVINCES / ÉTATS : 15 premières unités par TAUX ---
 
    Code                     Unite NbJoueurs RangBrut TauxPar100k RangTaux
 1    SK              Saskatchewan       541        4       47.77        1
@@ -83,7 +83,7 @@ Non rattaches a une province/etat : 1
 14              -6  1.66
 15              10  1.40
 
---- PROVINCES / ETATS : 15 premieres unites par EFFECTIF BRUT (comparaison) ---
+--- PROVINCES / ÉTATS : 15 premières unités par EFFECTIF BRUT (comparaison) ---
 
    Code                Unite NbJoueurs RangBrut TauxPar100k RangTaux
 1    ON              Ontario      2447        1       17.20        4

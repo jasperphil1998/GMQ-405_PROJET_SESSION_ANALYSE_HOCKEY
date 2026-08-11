@@ -1,6 +1,6 @@
 =====================================================
  ANALYSE SPATIALE — 12. CLASSIFICATION SPATIALE
- Methode ClustGeo (manuel, section 8.2.1)
+ Méthode ClustGeo (manuel, section 8.2.1)
 =====================================================
 Unités écartées (valeur manquante) : 9 -> NM, NU, HI, WY, KS, KY, AR, TN, WV
 Unités classées : 55
@@ -42,13 +42,13 @@ alpha=0.95  0.95 0.2101 0.8226
 alpha=1     1.00 0.2054 0.8172
 Alpha retenu : 0.23
 
---- NOMBRE D'UNITES PAR CLASSE (alpha = 0.23) ---
+--- NOMBRE D'UNITÉS PAR CLASSE (alpha = 0.23) ---
 
 
  1  2  3  4  5 
  8  5 33  5  4 
 
---- NOMBRE D'UNITES PAR CLASSE (alpha = 0, sans contrainte) ---
+--- NOMBRE D'UNITÉS PAR CLASSE (alpha = 0, sans contrainte) ---
 
 
  1  2  3  4  5 
@@ -69,7 +69,7 @@ Alpha retenu : 0.23
 4      0.11
 5      0.00
 
---- COMPOSITION DETAILLÉE DES CLASSES ---
+--- COMPOSITION DÉTAILLÉE DES CLASSES ---
 
    Classe Code                     Unite   Pays TauxPar100k   PtsPar100k
 1       1   VT                   Vermont    USA  0.31100475 1.273564e+02

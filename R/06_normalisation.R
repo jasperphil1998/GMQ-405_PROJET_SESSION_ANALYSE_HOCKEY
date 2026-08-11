@@ -1,23 +1,23 @@
 # =============================================================================
 # 06_normalisation.R — Taux de production et quotient de localisation
 # =============================================================================
-# PROBLEME ADRESSE
+# PROBLÈME TRAITÉ
 # Les modules descriptifs 03 et 04 cartographient des EFFECTIFS BRUTS (nombre de joueurs,
 # points totaux). Or l'Ontario produit beaucoup de joueurs surtout parce que
 # l'Ontario compte beaucoup d'habitants. Une carte d'effectifs bruts est donc
-# largement une carte de la population : elle ne dit rien de la geographie
+# largement une carte de la population : elle ne dit rien de la géographie
 # propre du hockey.
 #
-# DEUX INDICATEURS NORMALISES
+# DEUX INDICATEURS NORMALISÉS
 #  1. Taux de production : joueurs par 100 000 habitants.
 #  2. Quotient de localisation (QL) :
 #         QL = (joueurs_i / joueurs_total) / (population_i / population_total)
-#     QL = 1  -> la region produit exactement sa "part demographique"
+#     QL = 1  -> la région produit exactement sa "part démographique"
 #     QL = 4  -> elle produit 4 fois plus de joueurs qu'attendu
-#     QL < 1  -> sous-representation
-#     Le QL est l'indicateur standard en analyse regionale (specialisation).
+#     QL < 1  -> sous-représentation
+#     Le QL est l'indicateur standard en analyse régionale (spécialisation).
 #
-# SORTIES : 4 cartes, 3 tableaux, 1 journal de resultats.
+# SORTIES : 4 cartes, 3 tableaux, 1 journal de résultats.
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -34,7 +34,7 @@ jrn$ecrire("=====================================================")
 
 
 # =============================================================================
-# PARTIE A — ECHELLE DES PAYS
+# PARTIE A — ÉCHELLE DES PAYS
 # =============================================================================
 
 monde <- ne_countries(scale = "medium", returnclass = "sf")
@@ -66,8 +66,8 @@ monde_norm <- monde |>
     NbElite   = coalesce(NbElite, 0L)
   )
 
-# Totaux de reference calcules UNIQUEMENT sur les pays effectivement
-# representes dans le fond de carte, pour que les parts se somment a 1.
+# Totaux de référence calculés UNIQUEMENT sur les pays effectivement
+# représentés dans le fond de carte, pour que les parts se somment à 1.
 total_joueurs_pays <- sum(monde_norm$NbJoueurs, na.rm = TRUE)
 total_pop_pays     <- sum(monde_norm$pop_est,   na.rm = TRUE)
 
@@ -81,7 +81,7 @@ monde_norm <- monde_norm |>
     )
   )
 
-# --- Tableau comparatif : rang brut vs rang normalise -----------------------
+# --- Tableau comparatif : rang brut vs rang normalisé -----------------------
 # C'est LE tableau qui montre l'apport de la normalisation.
 
 table_pays_norm <- monde_norm |>
@@ -117,7 +117,7 @@ jrn$ecrire("dans le classement une fois la population prise en compte.")
 # --- Carte A1 : taux de production par pays ---------------------------------
 
 # On ne cartographie que les pays avec au moins 5 joueurs : sous ce seuil, le
-# taux est domine par le bruit d'echantillonnage (un seul joueur ne dans un
+# taux est dominé par le bruit d'échantillonnage (un seul joueur né dans un
 # petit pays produit un taux aberrant).
 monde_taux <- monde_norm |>
   mutate(TauxAffiche = ifelse(NbJoueurs >= 5, TauxParMillion, NA_real_))
@@ -146,8 +146,8 @@ sauver_carte(carte_taux_pays, "06_carte_taux_pays.png")
 
 # --- Carte A2 : quotient de localisation par pays ---------------------------
 
-# Palette divergente centree sur QL = 1 (la valeur d'equilibre). Les bornes
-# sont fixees manuellement pour que la classe centrale encadre 1.
+# Palette divergente centrée sur QL = 1 (la valeur d'équilibre). Les bornes
+# sont fixées manuellement pour que la classe centrale encadre 1.
 monde_ql <- monde_norm |>
   mutate(QLAffiche = ifelse(NbJoueurs >= 5, QL, NA_real_))
 
@@ -175,12 +175,12 @@ sauver_carte(carte_ql_pays, "06_carte_ql_pays.png")
 
 
 # =============================================================================
-# PARTIE B — ECHELLE DES PROVINCES ET DES ETATS
+# PARTIE B — ÉCHELLE DES PROVINCES ET DES ÉTATS
 # =============================================================================
-# C'est l'echelle la plus parlante : elle isole les "chateaux d'eau" du hockey
-# a l'interieur du Canada et des Etats-Unis.
+# C'est l'échelle la plus parlante : elle isole les "châteaux d'eau" du hockey
+# à l'intérieur du Canada et des États-Unis.
 
-# Extraction du code de province / etat au niveau du JOUEUR
+# Extraction du code de province / état au niveau du JOUEUR
 hockey_prov <- hockey |>
   mutate(
     CodeProv = case_when(
@@ -190,21 +190,21 @@ hockey_prov <- hockey |>
     )
   )
 
-# Controle de qualite : combien de joueurs nord-americains non rattaches ?
+# Contrôle de qualité : combien de joueurs nord-américains non rattachés ?
 non_rattaches <- hockey_prov |>
   filter(Country %in% c("Canada", "USA"), is.na(CodeProv))
 
 jrn$ecrire("")
 jrn$ecrire("-------------------------------------------------")
-jrn$ecrire(" PROVINCES ET ETATS")
+jrn$ecrire(" PROVINCES ET ÉTATS")
 jrn$ecrire("-------------------------------------------------")
-jrn$ecrire("Joueurs canadiens et americains : ",
+jrn$ecrire("Joueurs canadiens et américains : ",
            sum(hockey_prov$Country %in% c("Canada", "USA")))
-jrn$ecrire("Non rattaches a une province/etat : ", nrow(non_rattaches))
+jrn$ecrire("Non rattachés à une province ou à un état : ", nrow(non_rattaches))
 if (nrow(non_rattaches) > 0) {
   jrn$capturer(
     non_rattaches |> count(Birthplace, sort = TRUE) |> head(10),
-    "Lieux non rattaches (a corriger dans le geocodage si nombreux)"
+    "Lieux non rattachés (à corriger dans le géocodage si nombreux)"
   )
 }
 
@@ -224,7 +224,7 @@ population <- read_csv(
   show_col_types = FALSE
 )
 
-# Fond de carte : provinces canadiennes + etats americains
+# Fond de carte : provinces canadiennes + états américains
 unites_geo <- ne_states(
   country = c("Canada", "United States of America"),
   returnclass = "sf"
@@ -240,14 +240,14 @@ unites <- unites_geo |>
     NbElite   = coalesce(NbElite, 0L)
   )
 
-# Verification de la jointure population : toute unite sans population
+# Vérification de la jointure population : toute unité sans population
 # invaliderait le calcul du taux.
 manquantes <- unites |> st_drop_geometry() |> filter(is.na(Population))
 if (nrow(manquantes) > 0) {
   warning("Population manquante pour : ",
           paste(manquantes$postal, collapse = ", "))
   jrn$capturer(manquantes |> select(postal, name),
-               "ATTENTION — unites sans population")
+               "ATTENTION — unités sans population")
 }
 
 total_joueurs_na <- sum(unites$NbJoueurs, na.rm = TRUE)
@@ -279,7 +279,7 @@ jrn$capturer(
     select(Code, Unite, NbJoueurs, RangBrut, TauxPar100k, RangTaux,
            DeplacementRang, QL) |>
     head(15),
-  "PROVINCES / ETATS : 15 premieres unites par TAUX"
+  "PROVINCES / ÉTATS : 15 premières unités par TAUX"
 )
 
 jrn$capturer(
@@ -289,19 +289,19 @@ jrn$capturer(
     select(Code, Unite, NbJoueurs, RangBrut, TauxPar100k, RangTaux,
            DeplacementRang, QL) |>
     head(15),
-  "PROVINCES / ETATS : 15 premieres unites par EFFECTIF BRUT (comparaison)"
+  "PROVINCES / ÉTATS : 15 premières unités par EFFECTIF BRUT (comparaison)"
 )
 
-# Sauvegarde de l'objet spatial pour reutilisation par 07 et 10.
-# Evite de refaire toute la preparation dans chaque script.
+# Sauvegarde de l'objet spatial pour réutilisation par 07 et 10.
+# Évite de refaire toute la préparation dans chaque script.
 saveRDS(unites, chemin_sortie("unites_normalisees.rds"))
-message("  -> unites_normalisees.rds (reutilise par 07 et 10)")
+message("  -> unites_normalisees.rds (réutilisé par 07 et 10)")
 
 
-# --- Carte B1 : taux par province / etat ------------------------------------
+# --- Carte B1 : taux par province / état ------------------------------------
 
-# Projection : Albers equivalente d'Amerique du Nord. Indispensable pour une
-# carte de taux (les aires doivent etre comparables visuellement).
+# Projection : Albers équivalente d'Amérique du Nord. Indispensable pour une
+# carte de taux (les aires doivent être comparables visuellement).
 unites_proj <- st_transform(unites, CRS_NA)
 
 carte_taux_unites <- tm_shape(unites_proj) +
@@ -309,16 +309,16 @@ carte_taux_unites <- tm_shape(unites_proj) +
     fill = "TauxPar100k",
     fill.scale = tm_scale_intervals(
       style = "fisher", n = 6, values = "brewer.yl_or_rd",
-      value.na = "grey90", label.na = "Aucune donnee"
+      value.na = "grey90", label.na = "Aucune donnée"
     ),
     fill.legend = tm_legend(title = "Joueurs par\n100 000 habitants"),
     col = "white", lwd = 0.4
   ) +
-  tm_title("Taux de production de joueurs de la LNH par province et etat") +
+  tm_title("Taux de production de joueurs de la LNH par province et état") +
   tm_credits(
     paste0("Population : Statistique Canada, Recensement de 2021 (tab. 98-10-0001-01) ;",
-           "\nU.S. Census Bureau, 2020 Census (tab. 2, population residente).",
-           "\nProjection : Albers equivalente Amerique du Nord.",
+           "\nU.S. Census Bureau, 2020 Census (tab. 2, population résidente).",
+           "\nProjection : Albers équivalente Amérique du Nord.",
            "\nAuteur : ", AUTEURS),
     position = tm_pos_in("left", "bottom"), size = 0.6
   )
@@ -346,7 +346,7 @@ carte_comparaison <- tm_shape(unites_long) +
     fill = "Valeur",
     fill.scale = tm_scale_intervals(
       style = "fisher", n = 6, values = "brewer.yl_or_rd",
-      value.na = "grey90", label.na = "Aucune donnee"
+      value.na = "grey90", label.na = "Aucune donnée"
     ),
     fill.legend = tm_legend(title = "Valeur", orientation = "landscape"),
     col = "white", lwd = 0.3
@@ -362,9 +362,9 @@ sauver_carte(carte_comparaison, "06_carte_comparaison_brut_taux.png",
              largeur = 14, hauteur = 6)
 
 
-# --- Graphique B3 : diagramme du deplacement de rang ------------------------
-# Visualise quelles unites gagnent ou perdent le plus au changement
-# d'indicateur. Complement non cartographique utile au rapport.
+# --- Graphique B3 : diagramme du déplacement de rang ------------------------
+# Visualise quelles unités gagnent ou perdent le plus au changement
+# d'indicateur. Complément non cartographique utile au rapport.
 
 top_deplacement <- table_unites_norm |>
   filter(NbJoueurs >= 20) |>
@@ -381,10 +381,10 @@ graph_deplacement <- ggplot(top_deplacement,
   scale_fill_manual(values = c("Monte au taux" = "#2c7fb8",
                                "Descend au taux" = "#d95f0e")) +
   labs(
-    title = "Provinces et etats : deplacement de rang apres normalisation",
+    title = "Provinces et états : déplacement de rang après normalisation",
     subtitle = paste("Rang selon l'effectif brut moins rang selon le taux",
-                     "par 100 000 habitants (unites de 20 joueurs et plus)"),
-    x = "Deplacement de rang (positif = gagne des places au taux)",
+                     "par 100 000 habitants (unités de 20 joueurs et plus)"),
+    x = "Déplacement de rang (positif = gagne des places au taux)",
     y = NULL, fill = NULL,
     caption = CREDITS
   ) +
@@ -396,4 +396,4 @@ sauver_graphique(graph_deplacement, "06_graph_deplacement_rang.png",
 
 
 jrn$fermer()
-message("=== 06 termine ===")
+message("=== 06 terminé ===")

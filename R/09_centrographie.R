@@ -1,36 +1,36 @@
 # =============================================================================
-# 09_centrographie.R — Centre de gravite et dispersion dans le temps
+# 09_centrographie.R — Centre de gravité et dispersion dans le temps
 # =============================================================================
-# PROBLEME ADRESSE
+# PROBLÈME TRAITÉ
 # Le projet contient deux dimensions riches — l'ESPACE (lieux de naissance) et
-# le TEMPS (decennie de naissance) — mais ne les croise jamais. Les graphiques
-# temporels ignorent la geographie ; les cartes ignorent le temps.
+# le TEMPS (décennie de naissance) — mais ne les croise jamais. Les graphiques
+# temporels ignorent la géographie ; les cartes ignorent le temps.
 #
-# La centrographie comble exactement ce vide : elle resume un semis de points
+# La centrographie comble exactement ce vide : elle résume un semis de points
 # par quelques mesures (centre, dispersion) que l'on peut alors suivre d'une
-# decennie a l'autre. Une seule figure raconte le deplacement du "centre de
-# gravite" du hockey sur plus d'un siecle.
+# décennie à l'autre. Une seule figure raconte le déplacement du "centre de
+# gravité" du hockey sur plus d'un siècle.
 #
-# DEUX ECHELLES
-#  A. Monde : le centre se deplace-t-il vers l'Europe a mesure que la ligue
+# DEUX ÉCHELLES
+#  A. Monde : le centre se déplace-t-il vers l'Europe à mesure que la ligue
 #     s'internationalise ?
-#  B. Canada seul : y a-t-il une derive interne vers l'Ouest ?
+#  B. Canada seul : y a-t-il une dérive interne vers l'Ouest ?
 #
-# NOTE METHODOLOGIQUE IMPORTANTE
-# A l'echelle mondiale, on ne peut PAS faire la moyenne de coordonnees en
-# degres : la longitude est cyclique et un degre ne represente pas la meme
-# distance selon la latitude. Le centre moyen est donc calcule sur la SPHERE,
-# en passant par des vecteurs cartesiens 3D. C'est la methode correcte pour des
-# points disperses sur plusieurs continents.
+# NOTE MÉTHODOLOGIQUE IMPORTANTE
+# À l'échelle mondiale, on ne peut PAS faire la moyenne de coordonnées en
+# degrés : la longitude est cyclique et un degré ne représente pas la même
+# distance selon la latitude. Le centre moyen est donc calculé sur la SPHÈRE,
+# en passant par des vecteurs cartésiens 3D. C'est la méthode correcte pour des
+# points dispersés sur plusieurs continents.
 #
-# SORTIES : 3 figures, 2 tableaux, 1 journal de resultats.
+# SORTIES : 3 figures, 2 tableaux, 1 journal de résultats.
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
 message("\n=== 09 — CENTROGRAPHIE TEMPORELLE ===")
 
-MIN_JOUEURS_DECENNIE <- 30   # sous ce seuil, un centre n'a aucune stabilite
+MIN_JOUEURS_DECENNIE <- 30   # sous ce seuil, un centre n'a aucune stabilité
 
 jrn <- journal_resultats("09_resultats_centrographie.txt")
 jrn$ecrire("=====================================================")
@@ -40,14 +40,14 @@ jrn$ecrire("=====================================================")
 hockey         <- charger_hockey()
 lieux_geocodes <- charger_lieux_geocodes()
 
-# Donnees au niveau du JOUEUR, chacun porte les coordonnees de sa ville.
-# Contrairement au module 08, la duplication des coordonnees est ici SANS
-# probleme : on calcule des moyennes ponderees, pas des distances entre paires.
+# Données au niveau du JOUEUR, chacun porte les coordonnées de sa ville.
+# Contrairement au module 08, la duplication des coordonnées est ici SANS
+# problème : on calcule des moyennes pondérées, pas des distances entre paires.
 joueurs_geo <- hockey |>
   left_join(lieux_geocodes, by = "Birthplace") |>
   filter(!is.na(latitude), !is.na(longitude), !is.na(Decennie))
 
-jrn$ecrire("Joueurs geolocalises et dates : ", nrow(joueurs_geo),
+jrn$ecrire("Joueurs géolocalisés et dates : ", nrow(joueurs_geo),
            " sur ", nrow(hockey))
 
 
@@ -55,9 +55,9 @@ jrn$ecrire("Joueurs geolocalises et dates : ", nrow(joueurs_geo),
 # FONCTIONS DE CENTROGRAPHIE
 # =============================================================================
 
-# --- Centre moyen spherique -------------------------------------------------
+# --- Centre moyen sphérique -------------------------------------------------
 # Chaque point (lat, lon) devient un vecteur unitaire 3D. On fait la moyenne
-# ponderee des vecteurs, puis on reprojette le resultat sur la sphere.
+# pondérée des vecteurs, puis on reprojette le résultat sur la sphère.
 centre_spherique <- function(lat, lon, poids = NULL) {
   if (is.null(poids)) poids <- rep(1, length(lat))
   phi    <- lat * pi / 180
@@ -76,9 +76,9 @@ centre_spherique <- function(lat, lon, poids = NULL) {
   )
 }
 
-# --- Distance standard geodesique -------------------------------------------
-# "Distance standard" est le terme employe par le manuel (section 3.2.2).
-# C'est l'equivalent spatial de l'ecart-type : racine de la moyenne des carres
+# --- Distance standard géodésique -------------------------------------------
+# "Distance standard" est le terme employé par le manuel (section 3.2.2).
+# C'est l'équivalent spatial de l'écart-type : racine de la moyenne des carrés
 # des distances au centre moyen. Elle mesure la DISPERSION du semis, en km.
 distance_type <- function(lat, lon, centre) {
   pts <- st_as_sf(
@@ -87,28 +87,28 @@ distance_type <- function(lat, lon, centre) {
   )
   ctr <- st_sfc(st_point(c(centre[["longitude"]], centre[["latitude"]])),
                 crs = CRS_GEO)
-  # st_distance en CRS geographique renvoie des distances geodesiques (m)
+  # st_distance en CRS géographique renvoie des distances géodésiques (m)
   d <- as.numeric(st_distance(pts, ctr))
   sqrt(mean(d^2)) / 1000   # en km
 }
 
 
-# --- Ellipse de deviation standard ------------------------------------------
-# Manuel, section 3.2.2 : troisieme parametre de dispersion, apres la distance
+# --- Ellipse de déviation standard ------------------------------------------
+# Manuel, section 3.2.2 : troisième paramètre de dispersion, après la distance
 # standard des X / des Y et le cercle de distance standard. Contrairement au
-# cercle, l'ellipse a une ORIENTATION : elle revele l'axe le long duquel le
-# semis s'etire. Pour le hockey canadien, cet axe devrait suivre le corridor
-# habite est-ouest, et c'est precisement ce qu'on veut montrer.
+# cercle, l'ellipse a une ORIENTATION : elle révèle l'axe le long duquel le
+# semis s'étire. Pour le hockey canadien, cet axe devrait suivre le corridor
+# habité est-ouest, et c'est précisément ce qu'on veut montrer.
 #
-# Formulation retenue : celle de CrimeStat (Levine, 2006 ; equations 3.14 et
+# Formulation retenue : celle de CrimeStat (Levine, 2006 ; équations 3.14 et
 # 3.15 du manuel).
 #
 # MISE EN GARDE, reprise telle quelle du manuel : il existe plusieurs
-# definitions de l'ellipse (Yuill, ArcGIS Pro, CrimeStat, correction de Wang).
-# Toutes donnent le meme CENTRE et le meme ANGLE, mais des TAILLES
-# differentes. Il ne faut donc jamais comparer une ellipse produite ici avec
-# une ellipse produite par ArcGIS ou QGIS. A l'interieur de ce module, toutes
-# les ellipses viennent de la meme formule : elles sont comparables entre
+# définitions de l'ellipse (Yuill, ArcGIS Pro, CrimeStat, correction de Wang).
+# Toutes donnent le même CENTRE et le même ANGLE, mais des TAILLES
+# différentes. Il ne faut donc jamais comparer une ellipse produite ici avec
+# une ellipse produite par ArcGIS ou QGIS. À l'intérieur de ce module, toutes
+# les ellipses viennent de la même formule : elles sont comparables entre
 # elles, ce qui est le seul usage qu'on en fait.
 ellipse_deviation_standard <- function(x, y, n_sommets = 180) {
   n  <- length(x)
@@ -122,7 +122,7 @@ ellipse_deviation_standard <- function(x, y, n_sommets = 180) {
   somme_yd2 <- sum(yd^2)
   somme_xy  <- sum(xd * yd)
 
-  # Angle de rotation de l'ellipse (equation 3.14)
+  # Angle de rotation de l'ellipse (équation 3.14)
   if (abs(somme_xy) < .Machine$double.eps) {
     theta <- 0
   } else {
@@ -131,21 +131,21 @@ ellipse_deviation_standard <- function(x, y, n_sommets = 180) {
     theta <- atan(numerateur / (2 * somme_xy))
   }
 
-  # Demi-axes (equation 3.15).
+  # Demi-axes (équation 3.15).
   # Les deux directions de l'ellipse dans le plan de la carte sont
   #   u = ( cos(theta), sin(theta) )  et  v = ( -sin(theta), cos(theta) ).
-  # On projette les ecarts au centre sur CES directions-la, exactement celles
-  # qui servent ensuite a tracer le contour. Les formules imprimees dans le
-  # manuel supposent une convention de rotation qui n'est pas explicitee ;
-  # projeter soi-meme garantit que les demi-axes calcules et l'ellipse tracee
-  # decrivent bien la meme chose.
+  # On projette les écarts au centre sur CES directions-là, exactement celles
+  # qui servent ensuite à tracer le contour. Les formules imprimées dans le
+  # manuel supposent une convention de rotation qui n'est pas explicitée ;
+  # projeter soi-même garantit que les demi-axes calculés et l'ellipse tracée
+  # décrivent bien la même chose.
   u <- xd * cos(theta) + yd * sin(theta)
   v <- -xd * sin(theta) + yd * cos(theta)
 
   sigma_x <- sqrt(2) * sqrt(sum(u^2) / (n - 2))
   sigma_y <- sqrt(2) * sqrt(sum(v^2) / (n - 2))
 
-  # Echantillonnage du contour, puis rotation de theta
+  # Échantillonnage du contour, puis rotation de theta
   t <- seq(0, 2 * pi, length.out = n_sommets + 1)
   ex <- sigma_x * cos(t)
   ey <- sigma_y * sin(t)
@@ -154,15 +154,15 @@ ellipse_deviation_standard <- function(x, y, n_sommets = 180) {
     cx + ex * cos(theta) - ey * sin(theta),
     cy + ex * sin(theta) + ey * cos(theta)
   )
-  # st_polygon exige un anneau FERME au bit pres. cos(2*pi) et cos(0) ne sont
-  # pas exactement egaux en virgule flottante : on recopie donc explicitement
-  # le premier sommet en dernier plutot que de compter sur l'arithmetique.
+  # st_polygon exige un anneau FERMÉ au bit près. cos(2*pi) et cos(0) ne sont
+  # pas exactement égaux en virgule flottante : on recopie donc explicitement
+  # le premier sommet en dernier plutôt que de compter sur l'arithmétique.
   contour[nrow(contour), ] <- contour[1, ]
 
-  # Azimut du GRAND axe, en degres depuis le nord (lecture cartographique).
+  # Azimut du GRAND axe, en degrés depuis le nord (lecture cartographique).
   # Le grand axe n'est pas toujours "u" : si la dispersion est plus forte dans
-  # la direction perpendiculaire, c'est "v" qu'il faut decrire. Sans ce test,
-  # l'azimut est decale de 90 degres une fois sur deux.
+  # la direction perpendiculaire, c'est "v" qu'il faut décrire. Sans ce test,
+  # l'azimut est décalé de 90 degrés une fois sur deux.
   direction <- if (sigma_x >= sigma_y) {
     c(cos(theta), sin(theta))
   } else {
@@ -182,7 +182,7 @@ ellipse_deviation_standard <- function(x, y, n_sommets = 180) {
 
 
 # =============================================================================
-# PARTIE A — CENTRE DE GRAVITE MONDIAL PAR DECENNIE
+# PARTIE A — CENTRE DE GRAVITÉ MONDIAL PAR DÉCENNIE
 # =============================================================================
 
 decennies_valides <- joueurs_geo |>
@@ -190,8 +190,8 @@ decennies_valides <- joueurs_geo |>
   filter(n >= MIN_JOUEURS_DECENNIE) |>
   pull(Decennie)
 
-jrn$ecrire("Decennies retenues (>= ", MIN_JOUEURS_DECENNIE, " joueurs) : ",
-           paste(range(decennies_valides), collapse = " a "))
+jrn$ecrire("Décennies retenues (>= ", MIN_JOUEURS_DECENNIE, " joueurs) : ",
+           paste(range(decennies_valides), collapse = " à "))
 
 centres_monde <- lapply(sort(decennies_valides), function(dec) {
   sous <- joueurs_geo |> filter(Decennie == dec)
@@ -207,7 +207,7 @@ centres_monde <- lapply(sort(decennies_valides), function(dec) {
   )
 }) |> bind_rows()
 
-# Deplacement d'une decennie a la suivante
+# Déplacement d'une décennie à la suivante
 centres_monde <- centres_monde |>
   mutate(
     Deplacement_km = c(NA, sapply(2:n(), function(i) {
@@ -225,10 +225,10 @@ jrn$capturer(
                     PartEurope, PartCanada, Deplacement_km),
                   ~ round(.x, 2))) |>
     as.data.frame(),
-  "CENTRE DE GRAVITE MONDIAL PAR DECENNIE DE NAISSANCE"
+  "CENTRE DE GRAVITÉ MONDIAL PAR DÉCENNIE DE NAISSANCE"
 )
 
-# Bilan du deplacement total
+# Bilan du déplacement total
 depart  <- centres_monde |> slice_head(n = 1)
 arrivee <- centres_monde |> slice_tail(n = 1)
 deplacement_total <- as.numeric(st_distance(
@@ -238,40 +238,40 @@ deplacement_total <- as.numeric(st_distance(
 
 jrn$ecrire("")
 jrn$ecrire("--- Bilan mondial ---")
-jrn$ecrire("Decennie ", depart$Decennie, " : ",
+jrn$ecrire("Décennie ", depart$Decennie, " : ",
            round(depart$latitude, 2), " N, ", round(depart$longitude, 2), " E",
-           "  (", round(depart$PartEurope, 1), " % d'Europeens)")
-jrn$ecrire("Decennie ", arrivee$Decennie, " : ",
+           "  (", round(depart$PartEurope, 1), " % d'Européens)")
+jrn$ecrire("Décennie ", arrivee$Decennie, " : ",
            round(arrivee$latitude, 2), " N, ", round(arrivee$longitude, 2), " E",
-           "  (", round(arrivee$PartEurope, 1), " % d'Europeens)")
-jrn$ecrire("Deplacement net du centre : ", round(deplacement_total), " km")
+           "  (", round(arrivee$PartEurope, 1), " % d'Européens)")
+jrn$ecrire("Déplacement net du centre : ", round(deplacement_total), " km")
 jrn$ecrire("Dispersion (distance-type) : de ",
-           round(depart$DistanceType_km), " km a ",
+           round(depart$DistanceType_km), " km à ",
            round(arrivee$DistanceType_km), " km")
 
 sens_lon <- ifelse(arrivee$longitude > depart$longitude, "vers l'EST",
                    "vers l'OUEST")
-jrn$ecrire("Sens du deplacement en longitude : ", sens_lon)
+jrn$ecrire("Sens du déplacement en longitude : ", sens_lon)
 jrn$ecrire("")
 jrn$ecrire("INTERPRETATION")
-jrn$ecrire("Le centre de gravite se deplace ", sens_lon, " et la dispersion")
+jrn$ecrire("Le centre de gravité se déplace ", sens_lon, " et la dispersion")
 if (arrivee$DistanceType_km > depart$DistanceType_km) {
-  jrn$ecrire("AUGMENTE : le bassin de recrutement de la LNH s'elargit")
-  jrn$ecrire("geographiquement. Les deux mesures traduisent le meme")
-  jrn$ecrire("phenomene : l'internationalisation de la ligue.")
+  jrn$ecrire("AUGMENTE : le bassin de recrutement de la LNH s'élargit")
+  jrn$ecrire("géographiquement. Les deux mesures traduisent le même")
+  jrn$ecrire("phénomène : l'internationalisation de la ligue.")
 } else {
   jrn$ecrire("DIMINUE : le bassin de recrutement se resserre.")
 }
 jrn$ecrire("")
-jrn$ecrire("ATTENTION A UNE FAUSSE LECTURE")
-jrn$ecrire("Le centre de gravite est une moyenne : il tombe dans l'Atlantique,")
-jrn$ecrire("la ou personne ne nait. Il ne designe donc AUCUN lieu reel. Seuls")
-jrn$ecrire("son DEPLACEMENT et la distance-type ont un sens ici.")
+jrn$ecrire("ATTENTION À UNE FAUSSE LECTURE")
+jrn$ecrire("Le centre de gravité est une moyenne : il tombe dans l'Atlantique,")
+jrn$ecrire("là où personne ne naît. Il ne désigne donc AUCUN lieu réel. Seuls")
+jrn$ecrire("son DÉPLACEMENT et la distance-type ont un sens ici.")
 
 
-# --- Carte A : trajectoire du centre de gravite mondial ---------------------
-# Projection azimutale equivalente centree sur l'Atlantique Nord : elle place
-# le Canada et l'Europe dans le meme champ avec une deformation limitee.
+# --- Carte A : trajectoire du centre de gravité mondial ---------------------
+# Projection azimutale équivalente centrée sur l'Atlantique Nord : elle place
+# le Canada et l'Europe dans le même champ avec une déformation limitée.
 # Projection retenue : voir CRS_ATL dans 00_config.R
 
 monde <- ne_countries(scale = "medium", returnclass = "sf")
@@ -287,8 +287,8 @@ trajectoire <- centres_monde |>
   as.matrix() |>
   st_linestring() |>
   st_sfc(crs = CRS_GEO) |>
-  # Segmentation : sans cela, la ligne serait tracee "droite" dans la
-  # projection au lieu de suivre le trajet geodesique
+  # Segmentation : sans cela, la ligne serait tracée "droite" dans la
+  # projection au lieu de suivre le trajet géodésique
   st_segmentize(units::set_units(50, km)) |>
   st_transform(CRS_ATL)
 
@@ -317,12 +317,12 @@ carte_trajectoire <- ggplot() +
   coord_sf(xlim = emprise_atl[c("xmin", "xmax")],
            ylim = emprise_atl[c("ymin", "ymax")], expand = FALSE) +
   labs(
-    title = "Deplacement du centre de gravite des naissances de joueurs de la LNH",
-    subtitle = paste0("Centre moyen spherique pondere, par decennie de ",
+    title = "Déplacement du centre de gravité des naissances de joueurs de la LNH",
+    subtitle = paste0("Centre moyen sphérique pondéré, par décennie de ",
                       "naissance (", min(centres_monde$Decennie), "-",
                       max(centres_monde$Decennie), ")"),
-    size = "Joueurs nes\ndans la decennie",
-    fill = "Decennie", x = NULL, y = NULL,
+    size = "Joueurs nés\ndans la décennie",
+    fill = "Décennie", x = NULL, y = NULL,
     caption = CREDITS
   ) +
   theme_minimal(base_size = 11) +
@@ -335,12 +335,12 @@ sauver_graphique(carte_trajectoire, "09_carte_trajectoire_centre_monde.png",
 
 # --- Graphique A2 : longitude et dispersion dans le temps -------------------
 # Version non cartographique, souvent plus convaincante dans un rapport parce
-# qu'elle montre la tendance sans ambiguite de lecture.
+# qu'elle montre la tendance sans ambiguïté de lecture.
 
 donnees_tendance <- centres_monde |>
-  select(Decennie, `Longitude du centre (degres)` = longitude,
+  select(Decennie, `Longitude du centre (degrés)` = longitude,
          `Distance-type (km)` = DistanceType_km,
-         `Part de joueurs europeens (%)` = PartEurope) |>
+         `Part de joueurs européens (%)` = PartEurope) |>
   pivot_longer(-Decennie, names_to = "Indicateur", values_to = "Valeur")
 
 graph_tendance <- ggplot(donnees_tendance,
@@ -350,10 +350,10 @@ graph_tendance <- ggplot(donnees_tendance,
   facet_wrap(~ Indicateur, scales = "free_y", ncol = 1) +
   labs(
     title = "Internationalisation de la LNH : trois indicateurs concordants",
-    subtitle = paste("Par decennie de naissance des joueurs.",
-                     "La longitude du centre et la dispersion evoluent",
-                     "\nde pair avec la part de joueurs europeens."),
-    x = "Decennie de naissance", y = NULL,
+    subtitle = paste("Par décennie de naissance des joueurs.",
+                     "La longitude du centre et la dispersion évoluent",
+                     "\nde pair avec la part de joueurs européens."),
+    x = "Décennie de naissance", y = NULL,
     caption = CREDITS
   ) +
   theme_minimal(base_size = 11) +
@@ -364,16 +364,16 @@ sauver_graphique(graph_tendance, "09_graph_tendances_centre.png",
 
 
 # =============================================================================
-# PARTIE B — DERIVE INTERNE AU CANADA
+# PARTIE B — DÉRIVE INTERNE AU CANADA
 # =============================================================================
-# Le signal mondial est domine par l'arrivee des Europeens. En se restreignant
-# au Canada, on isole une question differente : a l'interieur d'un meme pays,
-# le foyer du hockey s'est-il deplace ?
+# Le signal mondial est dominé par l'arrivée des Européens. En se restreignant
+# au Canada, on isole une question différente : à l'intérieur d'un même pays,
+# le foyer du hockey s'est-il déplacé ?
 #
-# Ici, une projection plane (Lambert de Statistique Canada) est appropriee :
+# Ici, une projection plane (Lambert de Statistique Canada) est appropriée :
 # l'emprise est assez petite pour que les distances planes soient fiables. On
-# peut donc ajouter un CERCLE DE DISTANCE-TYPE, impossible a tracer proprement
-# a l'echelle mondiale.
+# peut donc ajouter un CERCLE DE DISTANCE-TYPE, impossible à tracer proprement
+# à l'échelle mondiale.
 
 joueurs_ca <- joueurs_geo |> filter(Country == "Canada")
 
@@ -392,9 +392,9 @@ joueurs_ca_plan <- joueurs_ca_sf |>
   st_drop_geometry() |>
   mutate(X = coords_ca[, 1], Y = coords_ca[, 2])
 
-# On passe par group_modify plutot que summarise : la distance-type a besoin du
-# centre ET de tous les points individuels du groupe en meme temps, ce qu'un
-# summarise ne permet pas d'exprimer sans reutiliser une colonne deja agregee.
+# On passe par group_modify plutôt que summarise : la distance-type a besoin du
+# centre ET de tous les points individuels du groupe en même temps, ce qu'un
+# summarise ne permet pas d'exprimer sans réutiliser une colonne déjà agrégée.
 centres_ca <- joueurs_ca_plan |>
   group_by(Decennie) |>
   group_modify(~ {
@@ -407,7 +407,7 @@ centres_ca <- joueurs_ca_plan |>
   }) |>
   ungroup()
 
-# Retour en coordonnees geographiques pour le tableau de sortie
+# Retour en coordonnées géographiques pour le tableau de sortie
 centres_ca_geo <- centres_ca |>
   st_as_sf(coords = c("X", "Y"), crs = CRS_CA, remove = FALSE) |>
   st_transform(CRS_GEO)
@@ -421,7 +421,7 @@ sauver_tableau(centres_ca, "09_table_centres_canada.csv")
 
 jrn$ecrire("")
 jrn$ecrire("-----------------------------------------------------")
-jrn$ecrire(" DERIVE INTERNE AU CANADA")
+jrn$ecrire(" DÉRIVE INTERNE AU CANADA")
 jrn$ecrire("-----------------------------------------------------")
 
 jrn$capturer(
@@ -429,7 +429,7 @@ jrn$capturer(
     mutate(across(c(DistanceType_km, longitude, latitude), ~ round(.x, 2))) |>
     select(Decennie, NbJoueurs, longitude, latitude, DistanceType_km) |>
     as.data.frame(),
-  "CENTRE DE GRAVITE DES JOUEURS CANADIENS PAR DECENNIE"
+  "CENTRE DE GRAVITÉ DES JOUEURS CANADIENS PAR DÉCENNIE"
 )
 
 depart_ca  <- centres_ca |> slice_head(n = 1)
@@ -438,30 +438,30 @@ derive_ca  <- sqrt((arrivee_ca$X - depart_ca$X)^2 +
                    (arrivee_ca$Y - depart_ca$Y)^2) / 1000
 
 jrn$ecrire("")
-jrn$ecrire("Deplacement net du centre canadien : ", round(derive_ca), " km")
-jrn$ecrire("Longitude : de ", round(depart_ca$longitude, 2), " a ",
-           round(arrivee_ca$longitude, 2), " degres")
+jrn$ecrire("Déplacement net du centre canadien : ", round(derive_ca), " km")
+jrn$ecrire("Longitude : de ", round(depart_ca$longitude, 2), " à ",
+           round(arrivee_ca$longitude, 2), " degrés")
 sens_ca <- ifelse(arrivee_ca$longitude < depart_ca$longitude,
                   "vers l'OUEST", "vers l'EST")
 jrn$ecrire("Sens : ", sens_ca)
-jrn$ecrire("Dispersion : de ", round(depart_ca$DistanceType_km), " km a ",
+jrn$ecrire("Dispersion : de ", round(depart_ca$DistanceType_km), " km à ",
            round(arrivee_ca$DistanceType_km), " km")
 
-# Test de tendance : la derive longitudinale est-elle systematique ?
+# Test de tendance : la dérive longitudinale est-elle systématique ?
 if (nrow(centres_ca) >= 4) {
   tendance <- cor.test(centres_ca$Decennie, centres_ca$longitude,
                        method = "spearman", exact = FALSE)
   jrn$capturer(tendance,
-               "TEST DE TENDANCE — correlation de Spearman entre decennie et longitude du centre")
-  jrn$ecrire("Une correlation negative significative confirmerait une derive")
-  jrn$ecrire("reguliere vers l'ouest, et non un simple va-et-vient.")
+               "TEST DE TENDANCE — corrélation de Spearman entre décennie et longitude du centre")
+  jrn$ecrire("Une corrélation négative significative confirmerait une dérive")
+  jrn$ecrire("régulière vers l'ouest, et non un simple va-et-vient.")
 }
 
 
-# --- Ellipses de deviation standard par decennie ----------------------------
+# --- Ellipses de déviation standard par décennie ----------------------------
 # Le cercle de distance standard ne dit rien de l'ORIENTATION du semis.
-# L'ellipse, elle, donne l'axe d'etirement et son azimut : c'est le troisieme
-# parametre de dispersion du manuel (section 3.2.2).
+# L'ellipse, elle, donne l'axe d'étirement et son azimut : c'est le troisième
+# paramètre de dispersion du manuel (section 3.2.2).
 
 ellipses_ca <- lapply(sort(unique(joueurs_ca_plan$Decennie)), function(dec) {
   sous <- joueurs_ca_plan |> filter(Decennie == dec)
@@ -487,16 +487,16 @@ table_ellipses <- bind_rows(lapply(ellipses_ca, `[[`, "resume"))
 sauver_tableau(table_ellipses, "09_table_ellipses_canada.csv")
 
 jrn$capturer(as.data.frame(table_ellipses),
-             "ELLIPSES DE DEVIATION STANDARD PAR DECENNIE (Canada)")
-jrn$ecrire("LECTURE : l'azimut est l'orientation du GRAND axe, en degres")
-jrn$ecrire("depuis le nord. Une valeur proche de 90 signale un semis etire")
-jrn$ecrire("est-ouest ; l'aplatissement (petit axe / grand axe) dit a quel")
-jrn$ecrire("point cet etirement est marque : plus il est proche de 0, plus le")
-jrn$ecrire("semis est allonge, plus il est proche de 1, plus il est circulaire.")
+             "ELLIPSES DE DÉVIATION STANDARD PAR DÉCENNIE (Canada)")
+jrn$ecrire("LECTURE : l'azimut est l'orientation du GRAND axe, en degrés")
+jrn$ecrire("depuis le nord. Une valeur proche de 90 signale un semis étiré")
+jrn$ecrire("est-ouest ; l'aplatissement (petit axe / grand axe) dit à quel")
+jrn$ecrire("point cet étirement est marqué : plus il est proche de 0, plus le")
+jrn$ecrire("semis est allongé, plus il est proche de 1, plus il est circulaire.")
 jrn$ecrire("")
 jrn$ecrire("MISE EN GARDE (manuel, section 3.2.2) : la TAILLE d'une ellipse")
-jrn$ecrire("depend de la formule employee (Yuill, ArcGIS Pro, CrimeStat...).")
-jrn$ecrire("Celle utilisee ici est celle de CrimeStat. Les ellipses de ce")
+jrn$ecrire("dépend de la formule employée (Yuill, ArcGIS Pro, CrimeStat...).")
+jrn$ecrire("Celle utilisée ici est celle de CrimeStat. Les ellipses de ce")
 jrn$ecrire("tableau sont comparables entre elles, mais PAS avec des ellipses")
 jrn$ecrire("produites par un autre logiciel.")
 
@@ -514,11 +514,11 @@ canada_contour <- ne_countries(country = "Canada", scale = "medium",
 centres_ca_sf <- centres_ca |>
   st_as_sf(coords = c("X", "Y"), crs = CRS_CA, remove = FALSE)
 
-# Cercles de distance standard : rayon = dispersion de la decennie
+# Cercles de distance standard : rayon = dispersion de la décennie
 cercles_ca <- centres_ca_sf |>
   st_buffer(dist = centres_ca$DistanceType_km * 1000)
 
-# On ne trace que la premiere et la derniere decennie pour rester lisible
+# On ne trace que la première et la dernière décennie pour rester lisible
 decennies_extremes <- range(centres_ca$Decennie)
 
 cercles_extremes <- cercles_ca |>
@@ -542,7 +542,7 @@ carte_centres_ca <- ggplot() +
   geom_sf(data = cercles_extremes,
           aes(colour = factor(Decennie)), fill = NA,
           linetype = "dashed", linewidth = 0.5) +
-  # Ellipses de deviation standard : elles ajoutent l'ORIENTATION du semis,
+  # Ellipses de déviation standard : elles ajoutent l'ORIENTATION du semis,
   # que le cercle ne peut pas montrer.
   geom_sf(data = ellipses_extremes,
           aes(colour = factor(Decennie)), fill = NA,
@@ -561,12 +561,12 @@ carte_centres_ca <- ggplot() +
   coord_sf(xlim = emprise_ca[c("xmin", "xmax")],
            ylim = emprise_ca[c("ymin", "ymax")], expand = FALSE) +
   labs(
-    title = "Derive du centre de gravite des joueurs canadiens",
-    subtitle = paste0("Centre moyen par decennie de naissance. Pour la ",
-                      "premiere et la derniere decennie :\ncercle de distance ",
-                      "standard (pointille) et ellipse de deviation standard ",
+    title = "Dérive du centre de gravité des joueurs canadiens",
+    subtitle = paste0("Centre moyen par décennie de naissance. Pour la ",
+                      "première et la dernière décennie :\ncercle de distance ",
+                      "standard (pointillé) et ellipse de déviation standard ",
                       "(trait plein)."),
-    fill = "Decennie", x = NULL, y = NULL,
+    fill = "Décennie", x = NULL, y = NULL,
     caption = CREDITS
   ) +
   theme_minimal(base_size = 11) +
@@ -577,4 +577,4 @@ sauver_graphique(carte_centres_ca, "09_carte_trajectoire_centre_canada.png",
                  largeur = 10, hauteur = 8)
 
 jrn$fermer()
-message("=== 09 termine ===")
+message("=== 09 terminé ===")

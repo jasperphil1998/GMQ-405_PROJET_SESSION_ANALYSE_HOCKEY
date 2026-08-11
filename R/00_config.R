@@ -1,48 +1,48 @@
 # =============================================================================
-# 00_config.R — Configuration commune a tous les modules
+# 00_config.R — Configuration commune à tous les modules
 # =============================================================================
-# Ce fichier est source par run_all.R, puis par chaque module. Il ne produit
+# Ce fichier est sourcé par run_all.R, puis par chaque module. Il ne produit
 # aucune sortie : il ne fait que charger les librairies, localiser la racine du
-# projet, definir les projections, preparer les donnees et fournir les
+# projet, définir les projections, préparer les données et fournir les
 # utilitaires de sauvegarde.
 #
 # CONVENTION DE SYNTAXE
-# Tout le projet utilise le pipe natif de R (|>) plutot que celui de magrittr
-# (%>%). C'est le choix fait par l'equipe (commit "Remplacer %>% par |>") et il
-# evite une dependance a magrittr. Le pipe natif exige que la fonction de
-# droite soit un APPEL : ecrire  x |> st_make_valid()  et non  x |> st_make_valid
+# Tout le projet utilise le pipe natif de R (|>) plutôt que celui de magrittr
+# (%>%). C'est le choix fait par l'équipe (commit "Remplacer %>% par |>") et il
+# évite une dépendance à magrittr. Le pipe natif exige que la fonction de
+# droite soit un APPEL : écrire  x |> st_make_valid()  et non  x |> st_make_valid
 #
-# Les methodes et les packages suivent le manuel du cours :
-#   Apparicio, P. et Gelb, J. (2026). Methodes d'analyse spatiale :
+# Les méthodes et les packages suivent le manuel du cours :
+#   Apparicio, P. et Gelb, J. (2026). Méthodes d'analyse spatiale :
 #   un grand bol d'R. Voir docs/REFERENCES.md.
 # =============================================================================
 
 
 # --- 1. Librairies ----------------------------------------------------------
-# Les librairies de base sont chargees ici. Les librairies specialisees
-# (spdep, spatstat, spatialreg, ClustGeo...) sont chargees par le module qui en
-# a besoin, pour que 00_config reste leger et tolerant a une installation
-# incomplete.
+# Les librairies de base sont chargées ici. Les librairies spécialisées
+# (spdep, spatstat, spatialreg, ClustGeo...) sont chargées par le module qui en
+# a besoin, pour que 00_config reste léger et tolérant à une installation
+# incomplète.
 
 suppressPackageStartupMessages({
   library(readr)         # Import CSV
-  library(dplyr)         # Manipulation de donnees
+  library(dplyr)         # Manipulation de données
   library(tidyr)         # Restructuration
   library(stringr)       # Manipulation de texte
   library(lubridate)     # Dates
   library(ggplot2)       # Graphiques
   library(scales)        # Formatage des axes
-  library(sf)            # Donnees spatiales vectorielles (chap. 1 du manuel)
-  library(tmap)          # Cartographie thematique  (chap. 1.5 du manuel)
+  library(sf)            # Données spatiales vectorielles (chap. 1 du manuel)
+  library(tmap)          # Cartographie thématique  (chap. 1.5 du manuel)
   library(rnaturalearth)
   library(rnaturalearthdata)
 })
 
 
 # --- 2. Racine du projet ----------------------------------------------------
-# Aucun setwd() code en dur : les chemins sont relatifs a la racine du projet.
+# Aucun setwd() codé en dur : les chemins sont relatifs à la racine du projet.
 # Dans VS Code ou RStudio, ouvrir le DOSSIER du projet (et non un seul fichier)
-# suffit. La fonction ci-dessous tolere aussi un lancement depuis un
+# suffit. La fonction ci-dessous tolère aussi un lancement depuis un
 # sous-dossier en remontant l'arborescence.
 
 trouver_racine_projet <- function(max_niveaux = 4) {
@@ -65,8 +65,8 @@ trouver_racine_projet <- function(max_niveaux = 4) {
 }
 
 RACINE   <- trouver_racine_projet()
-FIGURES  <- file.path(RACINE, "figures")   # sorties descriptives (non versionnees)
-SORTIES  <- file.path(RACINE, "sorties")   # sorties statistiques (versionnees)
+FIGURES  <- file.path(RACINE, "figures")   # sorties descriptives (non versionnées)
+SORTIES  <- file.path(RACINE, "sorties")   # sorties statistiques (versionnées)
 
 dir.create(FIGURES, recursive = TRUE, showWarnings = FALSE)
 dir.create(SORTIES, recursive = TRUE, showWarnings = FALSE)
@@ -82,24 +82,24 @@ chemin_module  <- function(...) file.path(RACINE, "R", ...)
 message("Racine du projet : ", RACINE)
 
 
-# --- 3. Systemes de coordonnees ---------------------------------------------
+# --- 3. Systèmes de coordonnées ---------------------------------------------
 #
 # POURQUOI PROJETER ?
-# Les cartes descriptives (modules 02 a 05) travaillent en EPSG:4326, en
-# degres. C'est acceptable pour afficher des symboles proportionnels, mais
-# invalide des que l'on calcule une DISTANCE, une AIRE ou une DENSITE : un
-# degre de longitude vaut environ 78 km a Toronto et 52 km a Yellowknife.
-# Toute analyse de semis de points, tout noyau de densite et toute matrice de
-# voisinage doivent donc etre calcules dans une projection metrique
+# Les cartes descriptives (modules 02 à 05) travaillent en EPSG:4326, en
+# degrés. C'est acceptable pour afficher des symboles proportionnels, mais
+# invalide dès que l'on calcule une DISTANCE, une AIRE ou une DENSITÉ : un
+# degré de longitude vaut environ 78 km à Toronto et 52 km à Yellowknife.
+# Toute analyse de semis de points, tout noyau de densité et toute matrice de
+# voisinage doivent donc être calculés dans une projection métrique
 # (manuel, section 1.2.1).
 #
-#  - CRS_NA : Albers equivalente Amerique du Nord. Projection EQUIVALENTE
-#             (conserve les aires) -> correcte pour les densites.
+#  - CRS_NA : Albers équivalente Amérique du Nord. Projection ÉQUIVALENTE
+#             (conserve les aires) -> correcte pour les densités.
 #  - CRS_CA : Lambert conforme conique de Statistique Canada (EPSG:3347),
 #             la projection officielle pour le Canada.
-#  - CRS_EU : LAEA Europe (EPSG:3035), equivalente elle aussi.
-#  - CRS_ATL : LAEA centree sur l'Atlantique Nord : place le Canada et
-#             l'Europe dans le meme champ.
+#  - CRS_EU : LAEA Europe (EPSG:3035), équivalente elle aussi.
+#  - CRS_ATL : LAEA centrée sur l'Atlantique Nord : place le Canada et
+#             l'Europe dans le même champ.
 
 CRS_GEO <- 4326
 CRS_CA  <- 3347
@@ -110,22 +110,22 @@ CRS_NA  <- paste(
 )
 CRS_ATL <- "+proj=laea +lat_0=55 +lon_0=-45 +datum=WGS84 +units=m +no_defs"
 
-# Projection cylindrique equivalente mondiale, utilisee par le module 11
-# (STKDE) : spatstat exige une projection metrique couvrant tout le globe.
+# Projection cylindrique équivalente mondiale, utilisée par le module 11
+# (STKDE) : spatstat exige une projection métrique couvrant tout le globe.
 CRS_MONDE <- paste(
   "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=m +no_defs"
 )
 
 
 # --- 4. Habillage commun ----------------------------------------------------
-# La mention de source et d'auteurs etait recopiee dans une quarantaine de
-# figures du script d'origine. Une seule constante evite les divergences.
+# La mention de source et d'auteurs était recopiée dans une quarantaine de
+# figures du script d'origine. Une seule constante évite les divergences.
 
 AUTEURS <- "Philippe Filion, Xavier Lafrance, Xavier St-Arnaud"
 SOURCE  <- "Hockey DB / NHL player data"
 CREDITS <- paste0("Source : ", SOURCE, "\nAuteur : ", AUTEURS)
 
-# Palette des groupes geographiques, commune a tous les graphiques.
+# Palette des groupes géographiques, commune à tous les graphiques.
 COULEURS_GEO <- c(
   "Autres" = "#F8766D",
   "Canada" = "#7CAE00",
@@ -133,16 +133,16 @@ COULEURS_GEO <- c(
   "USA"    = "#C77CFF"
 )
 
-# Seuil de "joueur d'elite" utilise par les modules descriptifs.
+# Seuil de "joueur d'élite" utilisé par les modules descriptifs.
 SEUIL_ELITE_PTS <- 1000
 
 tmap_mode("plot")
 
 
 # --- 5. Cache de session ----------------------------------------------------
-# run_all.R execute chaque module dans son propre environnement. Sans cache,
-# le fichier de joueurs serait relu et repare une dizaine de fois. Le cache vit
-# dans l'environnement global, donc il survit d'un module a l'autre.
+# run_all.R exécute chaque module dans son propre environnement. Sans cache,
+# le fichier de joueurs serait relu et réparé une dizaine de fois. Le cache vit
+# dans l'environnement global, donc il survit d'un module à l'autre.
 
 .cache_projet <- new.env(parent = emptyenv())
 
@@ -154,12 +154,12 @@ en_cache <- function(cle, expression) {
 }
 
 
-# --- 6. Donnees joueurs -----------------------------------------------------
-# Reprend a l'identique la preparation des sections 3 a 5 du script d'origine
-# (archive/Projet_Hockey_script_ORIGINAL.R), pour que tous les resultats
-# restent comparables a ceux deja produits.
+# --- 6. Données joueurs -----------------------------------------------------
+# Reprend à l'identique la préparation des sections 3 à 5 du script d'origine
+# (archive/Projet_Hockey_script_ORIGINAL.R), pour que tous les résultats
+# restent comparables à ceux déjà produits.
 
-# Pays regroupes sous l'etiquette "Europe".
+# Pays regroupés sous l'étiquette "Europe".
 PAYS_EUROPE <- c(
   "Sweden", "Russia", "Finland", "Czech Republic", "Slovakia",
   "Switzerland", "Germany", "Latvia", "Denmark", "Norway",
@@ -189,20 +189,20 @@ charger_hockey <- function() {
           Country %in% PAYS_EUROPE  ~ "Europe",
           TRUE                      ~ "Autres"
         ),
-        # Position nettoyee et traduite, utilisee par les graphiques 6 et 11
+        # Position nettoyée et traduite, utilisée par les graphiques 6 et 11
         # et par le tableau des statistiques par position (module 05).
         #
         # ATTENTION — le script d'origine recodait "LW" et "RW". Or le jeu de
-        # donnees n'emploie pas ces codes : il utilise L, R, F et W. Sur
-        # 8802 joueurs, "RW" n'apparait que 2 fois et "LW" jamais. Resultat :
+        # données n'emploie pas ces codes : il utilise L, R, F et W. Sur
+        # 8802 joueurs, "RW" n'apparaît que 2 fois et "LW" jamais. Résultat :
         # 3408 joueurs (39 %) gardaient un code brut non traduit dans les
-        # graphiques. Les codes reellement presents sont, par frequence :
+        # graphiques. Les codes réellement présents sont, par fréquence :
         #   D 2631 | C 1882 | L 1567 | R 1424 | G 881 | F 363 | W 52 | RW 2
         Position = str_trim(.data[["Pos."]]),
         PositionLabel = recode(
           Position,
           "C"  = "Centre",
-          "D"  = "Defenseur",
+          "D"  = "Défenseur",
           "G"  = "Gardien",
           "L"  = "Ailier gauche",
           "LW" = "Ailier gauche",
@@ -219,9 +219,9 @@ charger_hockey <- function() {
 }
 
 
-# --- 7. Lieux de naissance geocodes -----------------------------------------
-# Le cache de geocodage est constitue par le module 01. On se contente ici de
-# le relire : aucun appel a un service de geocodage n'est fait.
+# --- 7. Lieux de naissance géocodés -----------------------------------------
+# Le cache de géocodage est constitué par le module 01. On se contente ici de
+# le relire : aucun appel à un service de géocodage n'est fait.
 
 FICHIER_CACHE_GEO <- function() {
   chemin_donnees("geocodage", "lieux_naissance_geocodes_lieux_modernes.csv")
@@ -232,7 +232,7 @@ charger_lieux_geocodes <- function() {
     fichier <- FICHIER_CACHE_GEO()
     if (!file.exists(fichier)) {
       stop(
-        "Cache de geocodage introuvable :\n  ", fichier, "\n",
+        "Cache de géocodage introuvable :\n  ", fichier, "\n",
         "Lancer d'abord R/01_geocodage.R.",
         call. = FALSE
       )
@@ -246,12 +246,12 @@ charger_lieux_geocodes <- function() {
 
 
 # --- 8. Villes de naissance en objet spatial --------------------------------
-# Agregation par lieu de naissance : nombre de joueurs, production offensive,
-# nombre de joueurs elite. C'est l'unite de base des cartes par ville
+# Agrégation par lieu de naissance : nombre de joueurs, production offensive,
+# nombre de joueurs élite. C'est l'unité de base des cartes par ville
 # (module 04) et de l'analyse de semis (module 08).
 #
-# Le script d'origine recalculait ce meme tableau SIX fois, une fois par carte
-# regionale. Il est desormais calcule une seule fois et mis en cache.
+# Le script d'origine recalculait ce même tableau SIX fois, une fois par carte
+# régionale. Il est désormais calculé une seule fois et mis en cache.
 
 construire_villes_sf <- function() {
   en_cache("villes_sf", {
@@ -275,7 +275,7 @@ construire_villes_sf <- function() {
       filter(!is.na(latitude), !is.na(longitude)) |>
       st_as_sf(coords = c("longitude", "latitude"),
                crs = CRS_GEO, remove = FALSE) |>
-      # Extraction de la province / etat depuis la chaine "Ville, XX, Pays"
+      # Extraction de la province / état depuis la chaîne "Ville, XX, Pays"
       mutate(
         CodeProv = case_when(
           Country == "Canada" ~ str_match(Birthplace,
@@ -290,7 +290,7 @@ construire_villes_sf <- function() {
 
 
 # --- 9. Fonds de carte ------------------------------------------------------
-# rnaturalearth retelecharge (ou relit) la couche a chaque appel. Le script
+# rnaturalearth retélécharge (ou relit) la couche à chaque appel. Le script
 # d'origine appelait ne_countries() une douzaine de fois. Ici : une fois.
 
 charger_monde <- function(echelle = "medium") {
@@ -311,11 +311,11 @@ charger_etats_us <- function() {
 
 
 # --- 10. Utilitaires de sortie ----------------------------------------------
-# Deux destinations distinctes, heritees des deux volets du projet :
-#   figures/  -> sorties DESCRIPTIVES (modules 02 a 05, 11). Non versionnees,
-#                elles se regenerent en quelques minutes.
-#   sorties/  -> sorties STATISTIQUES (modules 06 a 10). Versionnees, pour
-#                pouvoir citer les resultats des tests sans relancer R.
+# Deux destinations distinctes, héritées des deux volets du projet :
+#   figures/  -> sorties DESCRIPTIVES (modules 02 à 05, 11). Non versionnées,
+#                elles se régénèrent en quelques minutes.
+#   sorties/  -> sorties STATISTIQUES (modules 06 à 10). Versionnées, pour
+#                pouvoir citer les résultats des tests sans relancer R.
 
 sauver_carte <- function(tm, nom, largeur = 10, hauteur = 6, dossier = SORTIES) {
   fichier <- file.path(dossier, nom)
@@ -337,20 +337,20 @@ sauver_graphique <- function(gg, nom, largeur = 10, hauteur = 6,
 
 sauver_tableau <- function(df, nom, dossier = SORTIES) {
   fichier <- file.path(dossier, nom)
-  # On retire la geometrie avant export CSV le cas echeant
+  # On retire la géométrie avant l'export CSV, le cas échéant
   if (inherits(df, "sf")) df <- st_drop_geometry(df)
   write_csv(df, fichier)
   message("  -> ", basename(fichier))
   invisible(fichier)
 }
 
-# Raccourcis pour les modules descriptifs, qui ecrivent dans figures/
+# Raccourcis pour les modules descriptifs, qui écrivent dans figures/
 sauver_carte_fig     <- function(tm, nom, ...) sauver_carte(tm, nom, ..., dossier = FIGURES)
 sauver_graphique_fig <- function(gg, nom, ...) sauver_graphique(gg, nom, ..., dossier = FIGURES)
 sauver_tableau_fig   <- function(df, nom)      sauver_tableau(df, nom, dossier = FIGURES)
 
-# Couche d'etiquettes pour les nuages de points. Utilise ggrepel (qui evite
-# les chevauchements) s'il est installe, sinon un geom_text decale.
+# Couche d'étiquettes pour les nuages de points. Utilise ggrepel (qui évite
+# les chevauchements) s'il est installé, sinon un geom_text décalé.
 ggrepel_ou_texte <- function(donnees, colonne = "Code", taille = 3) {
   aes_etiq <- aes(label = .data[[colonne]])
   if (requireNamespace("ggrepel", quietly = TRUE)) {
@@ -366,9 +366,9 @@ ggrepel_ou_texte <- function(donnees, colonne = "Code", taille = 3) {
   }
 }
 
-# Ecriture d'un bloc de resultats texte (sorties de tests statistiques).
-# Les tests sont l'element central du rapport : on les archive en .txt pour
-# pouvoir les citer sans avoir a relancer le script.
+# Écriture d'un bloc de résultats texte (sorties de tests statistiques).
+# Les tests sont l'élément central du rapport : on les archive en .txt pour
+# pouvoir les citer sans avoir à relancer le script.
 journal_resultats <- function(nom) {
   fichier <- chemin_sortie(nom)
   con <- file(fichier, open = "wt", encoding = "UTF-8")
@@ -397,13 +397,13 @@ journal_resultats <- function(nom) {
 }
 
 
-# --- 11. Carte regionale a cercles proportionnels ---------------------------
-# Le script d'origine repetait quatorze fois le meme bloc de vingt lignes pour
-# produire ses cartes regionales (Quebec, Ontario, Alberta, C.-B., provinces
-# atlantiques, six regions americaines, Europe, pays nordiques, Russie).
-# Seuls le sous-ensemble de villes, l'emprise, le facteur d'echelle et le titre
-# changeaient. Cette fonction factorise le bloc : ajouter une region demande
-# desormais quatre lignes.
+# --- 11. Carte régionale à cercles proportionnels ---------------------------
+# Le script d'origine répétait quatorze fois le même bloc de vingt lignes pour
+# produire ses cartes régionales (Québec, Ontario, Alberta, C.-B., provinces
+# atlantiques, six régions américaines, Europe, pays nordiques, Russie).
+# Seuls le sous-ensemble de villes, l'emprise, le facteur d'échelle et le titre
+# changeaient. Cette fonction factorise le bloc : ajouter une région demande
+# désormais quatre lignes.
 #
 # Syntaxe tmap 4 (tm_shape / tm_polygons / tm_symbols / tm_title / tm_credits),
 # conforme au chapitre 1.5 du manuel.
@@ -429,8 +429,8 @@ carte_villes_region <- function(villes, fond, emprise, titre, fichier,
     tm_symbols(
       size = variable,
       # tmap 4 : le facteur d'agrandissement des symboles passe par
-      # values.scale de l'echelle, et non plus par un argument "scale" nu
-      # comme en tmap 3 (ou il etait silencieusement ignore).
+      # values.scale de l'échelle, et non plus par un argument "scale" nu
+      # comme en tmap 3 (où il était silencieusement ignoré).
       size.scale = tm_scale_continuous(values.scale = echelle),
       size.legend = tm_legend(title = titre_legende),
       fill = couleur,
@@ -445,11 +445,11 @@ carte_villes_region <- function(villes, fond, emprise, titre, fichier,
   invisible(carte)
 }
 
-# Raccourci pour construire une emprise en degres.
+# Raccourci pour construire une emprise en degrés.
 emprise_geo <- function(xmin, xmax, ymin, ymax) {
   st_bbox(c(xmin = xmin, xmax = xmax, ymin = ymin, ymax = ymax),
           crs = st_crs(CRS_GEO))
 }
 
 
-message("Configuration chargee (00_config.R).")
+message("Configuration chargée (00_config.R).")

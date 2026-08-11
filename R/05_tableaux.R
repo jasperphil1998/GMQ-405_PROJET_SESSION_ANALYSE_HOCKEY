@@ -3,11 +3,11 @@
 # =============================================================================
 # ORIGINE : SECTION 4 de archive/Projet_Hockey_script_ORIGINAL.R.
 #
-# Les tableaux de la section 4 d'origine dependaient d'objets calcules plus
-# haut dans le script (top20_villes, top20_villes_pts). Ils sont ici recalcules
-# explicitement, pour que le module puisse etre lance seul.
+# Les tableaux de la section 4 d'origine dépendaient d'objets calculés plus
+# haut dans le script (top20_villes, top20_villes_pts). Ils sont ici recalculés
+# explicitement, pour que le module puisse être lancé seul.
 #
-# SORTIES : 6 tableaux CSV dans figures/ (non versionnes).
+# SORTIES : 6 tableaux CSV dans figures/ (non versionnés).
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -63,7 +63,7 @@ message("Joueurs de ", SEUIL_ELITE_PTS, " points et plus : ",
         nrow(joueurs_1000))
 
 
-## Repartition par decennie et groupe geographique ---------------------------
+## Répartition par décennie et groupe géographique ---------------------------
 # Tableau chiffre correspondant au graphique 3 : le rapport a besoin des
 # valeurs, pas seulement de la figure.
 
@@ -96,4 +96,4 @@ table_positions <- hockey |>
 sauver_tableau_fig(table_positions, "table_statistiques_positions.csv")
 
 
-message("=== 05 termine ===")
+message("=== 05 terminé ===")

@@ -1,7 +1,7 @@
 # =============================================================================
-# install_packages.R — Installation des dependances du projet
+# install_packages.R — Installation des dépendances du projet
 # =============================================================================
-# A executer une seule fois (ou apres une reinstallation de R).
+# À exécuter une seule fois (ou après une réinstallation de R).
 # Dans VS Code / RStudio : ouvrir ce fichier et faire "Source".
 # En terminal :  Rscript install_packages.R
 # =============================================================================
@@ -15,28 +15,28 @@ packages_requis <- c(
   "lubridate",
   "ggplot2",
   "scales",
-  "sf",                 # donnees spatiales vectorielles
-  "tmap",               # cartographie thematique (version 4 requise)
+  "sf",                 # données spatiales vectorielles
+  "tmap",               # cartographie thématique (version 4 requise)
   "rnaturalearth",
   "rnaturalearthdata",
-  "spdep",              # autocorrelation spatiale (modules 07, 10)
-  "spatialreg",         # modeles SAR / SEM (module 10)
+  "spdep",              # autocorrélation spatiale (modules 07, 10)
+  "spatialreg",         # modèles SAR / SEM (module 10)
   "spatstat.geom",      # objets ppp / owin (module 08)
-  "spatstat.explore",   # densite de noyau, fonction L (module 08)
+  "spatstat.explore",   # densité de noyau, fonction L (module 08)
   "languageserver"      # requis par l'extension R de VS Code
 )
 
-# --- Optionnels : les modules concernes sont ignores s'ils manquent ---------
+# --- Optionnels : les modules concernés sont ignorés s'ils manquent ---------
 packages_optionnels <- c(
-  "tidygeocoder",   # geocodage de nouveaux lieux         (module 01)
-  "ggrepel",        # etiquettes non chevauchantes        (modules 07, 09)
-  "MASS",           # binomial negatif, robustesse        (module 10)
-  "spgwr",          # regression geographiquement ponderee (module 10)
+  "tidygeocoder",   # géocodage de nouveaux lieux         (module 01)
+  "ggrepel",        # étiquettes non chevauchantes        (modules 07, 09)
+  "MASS",           # binomial négatif, robustesse        (module 10)
+  "spgwr",          # régression géographiquement pondérée (module 10)
   "ClustGeo",       # classification spatiale             (module 12)
-  "sparr",          # densite spatio-temporelle (STKDE)   (module 11)
+  "sparr",          # densité spatio-temporelle (STKDE)   (module 11)
   "terra",          # rasters                             (module 11)
   "gifski",         # animation GIF                       (module 11)
-  "classInt",       # discretisation                      (module 11)
+  "classInt",       # discrétisation                      (module 11)
   "viridis"         # palettes                            (module 11)
 )
 
@@ -47,7 +47,7 @@ installer <- function(liste, etiquette) {
             paste(manquants, collapse = ", "))
     install.packages(manquants, repos = "https://cloud.r-project.org")
   } else {
-    message("Tous les packages ", etiquette, " sont deja installes.")
+    message("Tous les packages ", etiquette, " sont déjà installés.")
   }
 }
 
@@ -55,7 +55,7 @@ installer(packages_requis, "requis")
 installer(packages_optionnels, "optionnels")
 
 # --- rnaturalearthhires : PAS sur le CRAN -----------------------------------
-# Fournit les fonds de carte detailles des provinces et des etats, utilises
+# Fournit les fonds de carte détaillés des provinces et des états, utilisés
 # par les modules 04 et 06.
 if (!requireNamespace("rnaturalearthhires", quietly = TRUE)) {
   message("Installation de rnaturalearthhires depuis r-universe...")
@@ -64,18 +64,18 @@ if (!requireNamespace("rnaturalearthhires", quietly = TRUE)) {
     repos = "https://ropensci.r-universe.dev"
   )
 } else {
-  message("rnaturalearthhires est deja installe.")
+  message("rnaturalearthhires est déjà installé.")
 }
 
-# --- Verification de la version de tmap -------------------------------------
-# Le projet utilise la syntaxe tmap 4 (tm_scale_*, fill / col separes).
-# Avec tmap 3, toutes les cartes echoueraient.
+# --- Vérification de la version de tmap -------------------------------------
+# Le projet utilise la syntaxe tmap 4 (tm_scale_*, fill / col séparés).
+# Avec tmap 3, toutes les cartes échoueraient.
 if (requireNamespace("tmap", quietly = TRUE)) {
   version_tmap <- packageVersion("tmap")
   if (version_tmap < "4.0.0") {
     warning(
-      "tmap ", version_tmap, " est installe, mais le projet exige tmap 4.\n",
-      "Mettre a jour avec : install.packages(\"tmap\")",
+      "tmap ", version_tmap, " est installé, mais le projet exige tmap 4.\n",
+      "Mettre à jour avec : install.packages(\"tmap\")",
       call. = FALSE
     )
   } else {
@@ -83,4 +83,4 @@ if (requireNamespace("tmap", quietly = TRUE)) {
   }
 }
 
-message("\nInstallation terminee. Lancer ensuite :  Rscript run_all.R")
+message("\nInstallation terminée. Lancer ensuite :  Rscript run_all.R")

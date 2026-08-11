@@ -1,13 +1,13 @@
 =====================================================
- ANALYSE SPATIALE — 10. MODELISATION SPATIALE
+ ANALYSE SPATIALE — 10. MODÉLISATION SPATIALE
 =====================================================
-Unites : 64
-Unites sans aucun joueur : 9
-Constante ajoutee avant le log : 0.01073
+Unités : 64
+Unités sans aucun joueur : 9
+Constante ajoutée avant le log : 0.01073
 
-Variable dependante : log(joueurs par 100 000 hab. + constante)
+Variable dépendante : log(joueurs par 100 000 hab. + constante)
 
---- MATRICE DE CORRELATION DES VARIABLES EXPLICATIVES ---
+--- MATRICE DE CORRÉLATION DES VARIABLES EXPLICATIVES ---
 
               Latitude LogDensitePop DistCote_km DistLNH_km
 Latitude         1.000        -0.730       0.034      0.294
@@ -19,14 +19,14 @@ DistLNH_km       0.294        -0.548      -0.146      1.000
 
      Latitude LogDensitePop   DistCote_km    DistLNH_km 
          2.42          3.67          1.30          1.75 
-Regle usuelle : VIF > 5 signale une colinearite problematique,
-VIF > 10 la rend redhibitoire.
-Tous les VIF sont sous le seuil de 5 : pas de probleme de
-colinearite. Les coefficients sont interpretables separement.
+Règle usuelle : VIF > 5 signale une colinéarité problématique,
+VIF > 10 la rend rédhibitoire.
+Tous les VIF sont sous le seuil de 5 : pas de problème de
+colinéarité. Les coefficients sont interprétables séparément.
 
 Matrice de voisinage : k = 5 plus proches voisins (identique au module 07)
 
---- MODELE 1 — MOINDRES CARRES ORDINAIRES (OLS) ---
+--- MODÈLE 1 — MOINDRES CARRÉS ORDINAIRES (OLS) ---
 
 
 Call:
@@ -51,7 +51,7 @@ Multiple R-squared:  0.5114,	Adjusted R-squared:  0.4783
 F-statistic: 15.44 on 4 and 59 DF,  p-value: 1.074e-08
 
 
---- TEST DE MORAN SUR LES RESIDUS DE L'OLS ---
+--- TEST DE MORAN SUR LES RÉSIDUS DE L'OLS ---
 
 
 	Global Moran I for regression residuals
@@ -67,14 +67,14 @@ Observed Moran I      Expectation         Variance
       0.12626036      -0.04873187       0.00363657 
 
 
-VERDICT : les residus de l'OLS sont spatialement autocorreles
+VERDICT : les résidus de l'OLS sont spatialement autocorrélés
 (I = 0.1263, p = 0.00185).
 
-CONSEQUENCE : l'OLS est INVALIDE ici. L'hypothese
-d'independance des erreurs est violee, donc les ecarts-types
-sont sous-estimes et les p-values trop optimistes. Il reste une
+CONSÉQUENCE : l'OLS est INVALIDE ici. L'hypothèse
+d'indépendance des erreurs est violée, donc les écarts-types
+sont sous-estimés et les p-values trop optimistes. Il reste une
 structure spatiale que les variables explicatives ne captent
-pas. Il faut passer a un modele spatial.
+pas. Il faut passer à un modèle spatial.
 
 --- TESTS DU MULTIPLICATEUR DE LAGRANGE (score de Rao) ---
 
@@ -94,9 +94,9 @@ SARMA      6.67651         2 0.03550 *
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 LECTURE : comparer les versions ROBUSTES (adjRSerr / adjRSlag).
 Celle qui est significative alors que l'autre ne l'est pas
-designe la forme spatiale a retenir.
+désigne la forme spatiale à retenir.
 
---- MODELE 2 — ERREUR SPATIALE (SEM) ---
+--- MODÈLE 2 — ERREUR SPATIALE (SEM) ---
 
 
 Call:errorsarlm(formula = FORMULE, data = donnees_modele, listw = lw)
@@ -126,7 +126,7 @@ Number of parameters estimated: 7
 AIC: 249.11, (AIC for lm: 255.59)
 
 
---- MODELE 3 — DECALAGE SPATIAL (SAR lag) ---
+--- MODÈLE 3 — DÉCALAGE SPATIAL (SAR lag) ---
 
 
 Call:lagsarlm(formula = FORMULE, data = donnees_modele, listw = lw)
@@ -158,16 +158,16 @@ LM test for residual autocorrelation
 test value: 0.025513, p-value: 0.8731
 
 
---- COMPARAISON DES MODELES (AIC le plus faible = meilleur) ---
+--- COMPARAISON DES MODÈLES (AIC le plus faible = meilleur) ---
 
                       Modele    AIC LogVraisemblance EcartAIC
 1      Erreur spatiale (SEM) 249.11          -117.56     0.00
-2 Decalage spatial (SAR lag) 251.39          -118.70     2.28
+2 Décalage spatial (SAR lag) 251.39          -118.70     2.28
 3                        OLS 255.59          -121.80     6.48
 
-Modele retenu : Erreur spatiale (SEM)
+Modèle retenu : Erreur spatiale (SEM)
 
---- TEST DE MORAN SUR LES RESIDUS DU MODELE RETENU (Erreur spatiale (SEM)) ---
+--- TEST DE MORAN SUR LES RÉSIDUS DU MODÈLE RETENU (Erreur spatiale (SEM)) ---
 
 
 	Moran I test under randomisation
@@ -182,14 +182,14 @@ Moran I statistic       Expectation          Variance
      -0.016736500      -0.015873016       0.004412923 
 
 
-CONTROLE FINAL
-Residus OLS            : I = 0.1263 (p = 0.00185)
-Residus modele spatial : I = -0.0167 (p = 0.505)
-=> L'autocorrelation residuelle a ete ABSORBEE. Le modele
-   spatial est correctement specifie de ce point de vue, et
-   ses coefficients sont interpretables.
+CONTRÔLE FINAL
+Résidus OLS            : I = 0.1263 (p = 0.00185)
+Résidus modèle spatial : I = -0.0167 (p = 0.505)
+=> L'autocorrélation résiduelle a été ABSORBÉE. Le modèle
+   spatial est correctement spécifié de ce point de vue, et
+   ses coefficients sont interprétables.
 
---- COEFFICIENTS DES TROIS MODELES ---
+--- COEFFICIENTS DES TROIS MODÈLES ---
 
     Modele           Terme   Estime EcartType  ValeurP Signif
 1      OLS     (Intercept) -14.5242    2.2770 3.02e-08    ***
@@ -208,7 +208,7 @@ Residus modele spatial : I = -0.0167 (p = 0.505)
 14 SAR lag     DistCote_km   0.0004    0.0005 4.99e-01       
 15 SAR lag      DistLNH_km  -0.0002    0.0004 6.97e-01       
 
---- MODELE 4 — BINOMIAL NEGATIF AVEC OFFSET (controle de robustesse) ---
+--- MODÈLE 4 — BINOMIAL NÉGATIF AVEC OFFSET (contrôle de robustesse) ---
 
 
 Call:
@@ -240,7 +240,7 @@ Number of Fisher Scoring iterations: 1
 
  2 x log-likelihood:  -529.453 
 
---- TEST DE MORAN SUR LES RESIDUS DE PEARSON DU MODELE DE COMPTAGE ---
+--- TEST DE MORAN SUR LES RÉSIDUS DE PEARSON DU MODÈLE DE COMPTAGE ---
 
 
 	Moran I test under randomisation
@@ -255,7 +255,7 @@ Moran I statistic       Expectation          Variance
       0.126843875      -0.015873016       0.003871916 
 
 
---- ROBUSTESSE — OLS SUR LOG DU TAUX vs BINOMIAL NEGATIF SUR COMPTAGE ---
+--- ROBUSTESSE — OLS SUR LOG DU TAUX vs BINOMIAL NÉGATIF SUR COMPTAGE ---
 
          Variable SigneOLS ValeurP_OLS SigneBinNeg ValeurP_BinNeg MemeSigne
 1        Latitude        +    1.29e-09           +       3.92e-25      TRUE
@@ -263,65 +263,65 @@ Moran I statistic       Expectation          Variance
 3     DistCote_km        +    6.49e-01           -       1.22e-01     FALSE
 4      DistLNH_km        +    7.62e-01           -       2.39e-01     FALSE
   Significatif                                        Verdict
-1         TRUE             Robuste (significatif, meme signe)
-2         TRUE             Robuste (significatif, meme signe)
-3        FALSE Non significatif, signe instable (sans portee)
-4        FALSE Non significatif, signe instable (sans portee)
+1         TRUE             Robuste (significatif, même signe)
+2         TRUE             Robuste (significatif, même signe)
+3        FALSE Non significatif, signe instable (sans portée)
+4        FALSE Non significatif, signe instable (sans portée)
 
 AUCUNE conclusion significative ne change de signe entre les
-deux specifications. Les resultats etablis ne dependent donc
-pas de la constante ajoutee avant le logarithme.
+deux spécifications. Les résultats établis ne dépendent donc
+pas de la constante ajoutée avant le logarithme.
 Variables robustes : Latitude, log(DensitePop).
 
 Les variables DistCote_km et DistLNH_km changent de signe,
-mais elles ne sont significatives dans AUCUN modele (p de 0.122 a 0.762).
-Leur coefficient est indistinguable de zero : son signe
+mais elles ne sont significatives dans AUCUN modèle (p de 0.122 à 0.762).
+Leur coefficient est indistinguable de zéro : son signe
 n'est pas une information et ce basculement est attendu.
-Il ne faut ni s'en inquieter, ni en tirer d'interpretation.
+Il ne faut ni s'en inquiéter, ni en tirer d'interprétation.
 
 -----------------------------------------------------
- REGRESSION GEOGRAPHIQUEMENT PONDEREE (GWR)
+ RÉGRESSION GÉOGRAPHIQUEMENT PONDÉRÉE (GWR)
 -----------------------------------------------------
-Fenetre adaptative retenue : 0.0961 (environ 6 unites sur 64)
-Nombre effectif de parametres : 39 degres de liberte residuels
+Fenêtre adaptative retenue : 0.0961 (environ 6 unités sur 64)
+Nombre effectif de paramètres : 39 degrés de liberté résiduels
 AICc de la GWR : 258.27
 AICc de l'OLS  : 257.06
 
-VERDICT : la GWR est REJETEE. Son AICc est PLUS ELEVE que
-celui du modele global, malgre une souplesse bien superieure.
-La fenetre optimale ne retient que quelques unites voisines,
-ce qui est le signe classique du surajustement : le modele
-epouse le bruit local plutot qu'une variation reelle.
+VERDICT : la GWR est REJETÉE. Son AICc est PLUS ÉLEVÉ que
+celui du modèle global, malgré une souplesse bien supérieure.
+La fenêtre optimale ne retient que quelques unités voisines,
+ce qui est le signe classique du surajustement : le modèle
+épouse le bruit local plutôt qu'une variation réelle.
 
 CONCLUSION : rien ne permet d'affirmer que la relation varie
-dans l'espace. Les provinces et etats sont trop peu nombreux
-et trop heterogenes en superficie pour une GWR. Les cartes
+dans l'espace. Les provinces et états sont trop peu nombreux
+et trop hétérogènes en superficie pour une GWR. Les cartes
 de coefficients locaux ne sont donc PAS produites : elles
 seraient visuellement convaincantes mais statistiquement
-vides. Une GWR aurait du sens sur des unites plus fines et
+vides. Une GWR aurait du sens sur des unités plus fines et
 plus nombreuses (divisions de recensement, comtes).
 
 =====================================================
- SYNTHESE
+ SYNTHÈSE
 =====================================================
 - Latitude : le taux AUGMENTE avec cette variable (significatif, p = 0.0244)
 - log(DensitePop) : le taux AUGMENTE avec cette variable (significatif, p = 0.000191)
 - DistCote_km : le taux AUGMENTE avec cette variable (NON significatif, p = 0.322)
 - DistLNH_km : le taux DIMINUE avec cette variable (NON significatif, p = 0.45)
 
-LIMITES A ENONCER DANS LE RAPPORT
-1. Le lieu de NAISSANCE n'est pas le lieu de DEVELOPPEMENT. Un
-   joueur ne a Toronto et forme en Saskatchewan est compte comme
-   torontois. Ce biais est structurel : aucune methode statistique
-   ne peut le corriger avec les seules donnees disponibles.
-2. La latitude est une approximation grossiere du climat. Une
-   temperature moyenne de janvier, extraite d'une couche
+LIMITES À ÉNONCER DANS LE RAPPORT
+1. Le lieu de NAISSANCE n'est pas le lieu de DÉVELOPPEMENT. Un
+   joueur né à Toronto et formé en Saskatchewan est compté comme
+   torontois. Ce biais est structurel : aucune méthode statistique
+   ne peut le corriger avec les seules données disponibles.
+2. La latitude est une approximation grossière du climat. Une
+   température moyenne de janvier, extraite d'une couche
    matricielle (WorldClim), serait bien plus directe.
-3. La distance a la cote traite la baie d'Hudson comme un ocean
-   moderateur, alors qu'elle est gelee une bonne partie de
-   l'annee. La continentalite du Manitoba est donc sous-estimee.
-4. n = 64 unites seulement. C'est peu pour une
-   regression a 4 variables explicatives, et cela limite la
+3. La distance à la côte traite la baie d'Hudson comme un océan
+   modérateur, alors qu'elle est gelée une bonne partie de
+   l'année. La continentalité du Manitoba est donc sous-estimée.
+4. n = 64 unités seulement. C'est peu pour une
+   régression à 4 variables explicatives, et cela limite la
    puissance de tous les tests.
-5. Correlation n'est pas causalite : ces modeles decrivent des
-   associations spatiales, ils ne demontrent aucun mecanisme.
+5. Corrélation n'est pas causalité : ces modèles décrivent des
+   associations spatiales, ils ne démontrent aucun mécanisme.

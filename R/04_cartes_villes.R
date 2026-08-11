@@ -1,24 +1,24 @@
 # =============================================================================
-# 04_cartes_villes.R — Cartes par ville de naissance, mondiales et regionales
+# 04_cartes_villes.R — Cartes par ville de naissance, mondiales et régionales
 # =============================================================================
 # ORIGINE : SECTION 3 de archive/Projet_Hockey_script_ORIGINAL.R.
 #
-# CE QUI A CHANGE PAR RAPPORT A L'ORIGINAL
-#  - Le tableau villes_points / villes_points_geo etait reconstruit SIX fois a
-#    l'identique dans le script d'origine. Il est desormais calcule une seule
+# CE QUI A CHANGÉ PAR RAPPORT À L'ORIGINAL
+#  - Le tableau villes_points / villes_points_geo était reconstruit SIX fois à
+#    l'identique dans le script d'origine. Il est désormais calculé une seule
 #    fois par construire_villes_sf() (00_config.R) et mis en cache.
-#  - Le bloc de vingt lignes qui produisait chaque carte regionale etait
-#    recopie quatorze fois. Il est factorise dans carte_villes_region()
-#    (00_config.R) et les regions sont decrites par une simple table.
-#  - La carte de l'Ontario etait presente EN DOUBLE (deux blocs identiques
-#    ecrivant le meme fichier). Le doublon est supprime.
+#  - Le bloc de vingt lignes qui produisait chaque carte régionale était
+#    recopié quatorze fois. Il est factorisé dans carte_villes_region()
+#    (00_config.R) et les régions sont décrites par une simple table.
+#  - La carte de l'Ontario était présente EN DOUBLE (deux blocs identiques
+#    écrivant le même fichier). Le doublon est supprimé.
 #  - Les provinces des Prairies (Manitoba et Saskatchewan) n'avaient aucune
-#    carte, alors que le module 06 montre que ce sont les unites au plus fort
-#    taux de production par habitant du continent. La carte est ajoutee.
-#  - Les regions sont extraites de CodeProv (calcule une fois dans la config)
-#    plutot que par un str_detect() sur la chaine de caracteres a chaque carte.
+#    carte, alors que le module 06 montre que ce sont les unités au plus fort
+#    taux de production par habitant du continent. La carte est ajoutée.
+#  - Les régions sont extraites de CodeProv (calculé une fois dans la config)
+#    plutôt que par un str_detect() sur la chaîne de caractères à chaque carte.
 #
-# SORTIES : 18 cartes PNG dans figures/ (non versionnees).
+# SORTIES : 18 cartes PNG dans figures/ (non versionnées).
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -28,7 +28,7 @@ message("\n=== 04 — CARTES PAR VILLE DE NAISSANCE ===")
 villes_sf <- construire_villes_sf()
 monde     <- charger_monde("medium")
 
-message("Localites geocodees : ", nrow(villes_sf))
+message("Localités géocodées : ", nrow(villes_sf))
 
 
 # =============================================================================
@@ -49,7 +49,7 @@ carte_villes_region(
   titre_legende = "Nombre de joueurs",
   echelle = 1.5,
   couleur = "red",
-  note = "Les 50 localites ayant produit le plus de joueurs."
+  note = "Les 50 localités ayant produit le plus de joueurs."
 )
 
 ## Carte 2 : villes ayant produit des joueurs de 1000 points et plus ---------
@@ -76,15 +76,15 @@ carte_villes_region(
   titre   = "Production offensive totale par ville de naissance",
   fichier = "carte_villes_points.png",
   echelle = 1.6,
-  note = "Les 50 localites ayant produit le plus de points en carriere."
+  note = "Les 50 localités ayant produit le plus de points en carrière."
 )
 
 
 # =============================================================================
-# 2. CARTES REGIONALES DU CANADA
+# 2. CARTES RÉGIONALES DU CANADA
 # =============================================================================
 # Fond de carte : provinces canadiennes (ne_states, package
-# rnaturalearthhires). Emprise fixee a la main pour chaque province.
+# rnaturalearthhires). Emprise fixée à la main pour chaque province.
 
 canada_prov <- charger_provinces_canada()
 
@@ -93,7 +93,7 @@ villes_canada <- villes_sf |> filter(Country == "Canada")
 regions_canada <- list(
   list(
     codes   = "QC",
-    titre   = "Quebec",
+    titre   = "Québec",
     fichier = "carte_villes_points_quebec.png",
     emprise = emprise_geo(-76.5, -67.0, 44.8, 49.5),
     echelle = 1.4
@@ -120,8 +120,8 @@ regions_canada <- list(
     echelle = 1.4
   ),
   list(
-    # AJOUT : les Prairies etaient absentes du script d'origine, alors que la
-    # Saskatchewan est l'unite au plus fort taux de production du continent
+    # AJOUT : les Prairies étaient absentes du script d'origine, alors que la
+    # Saskatchewan est l'unité au plus fort taux de production du continent
     # (voir sorties/06_resultats_normalisation.txt).
     codes   = c("MB", "SK"),
     titre   = "Manitoba et Saskatchewan",
@@ -130,8 +130,8 @@ regions_canada <- list(
     echelle = 1.5
   ),
   list(
-    # NB = Nouveau-Brunswick ; NS = Nouvelle-Ecosse
-    # PE / PEI = Ile-du-Prince-Edouard
+    # NB = Nouveau-Brunswick ; NS = Nouvelle-Écosse
+    # PE / PEI = Île-du-Prince-Édouard
     # NL / NFLD / NFL = Terre-Neuve-et-Labrador
     codes   = c("NB", "NS", "PE", "PEI", "NL", "NFLD", "NFL"),
     titre   = "les provinces atlantiques",
@@ -157,12 +157,12 @@ for (region in regions_canada) {
 
 
 # =============================================================================
-# 3. CARTES REGIONALES DES ETATS-UNIS
+# 3. CARTES RÉGIONALES DES ÉTATS-UNIS
 # =============================================================================
 
 usa_states <- charger_etats_us()
 
-# Table de correspondance Etat -> region, reprise telle quelle de l'original.
+# Table de correspondance État -> région, reprise telle quelle de l'original.
 us_regions <- tibble::tibble(
   CodeProv = c(
     "ME", "NH", "VT", "MA", "RI", "CT", "NY", "NJ", "PA",
@@ -187,40 +187,40 @@ villes_us <- villes_sf |>
   filter(Country == "USA") |>
   left_join(us_regions, by = "CodeProv")
 
-# Controle de qualite : villes americaines sans region rattachee
+# Contrôle de qualité : villes américaines sans région rattachée
 sans_region <- villes_us |>
   st_drop_geometry() |>
   filter(is.na(RegionUS))
 
 if (nrow(sans_region) > 0) {
-  message("Villes americaines sans region (Etat non reconnu) : ",
+  message("Villes américaines sans région (État non reconnu) : ",
           nrow(sans_region))
   print(utils::head(sans_region[, c("Birthplace", "CodeProv", "NbJoueurs")], 10))
 }
 
 regions_us <- list(
   list(cle = "Northeast",
-       titre   = "le Nord-Est des Etats-Unis",
+       titre   = "le Nord-Est des États-Unis",
        fichier = "carte_villes_points_us_northeast.png",
        emprise = emprise_geo(-82.5, -66.0, 37.0, 48.8),
        echelle = 1.2),
   list(cle = "Midwest",
-       titre   = "le Midwest des Etats-Unis",
+       titre   = "le Midwest des États-Unis",
        fichier = "carte_villes_points_us_midwest.png",
        emprise = emprise_geo(-105.5, -79.0, 36.0, 50.5),
        echelle = 1.2),
   list(cle = "South",
-       titre   = "le Sud des Etats-Unis",
+       titre   = "le Sud des États-Unis",
        fichier = "carte_villes_points_us_south.png",
        emprise = emprise_geo(-107.5, -74.0, 24.0, 39.5),
        echelle = 1.25),
   list(cle = "Mountain_Southwest",
-       titre   = "la region Mountain / Southwest des Etats-Unis",
+       titre   = "la région Mountain / Southwest des États-Unis",
        fichier = "carte_villes_points_us_mountain_southwest.png",
        emprise = emprise_geo(-117.8, -100.0, 31.0, 49.5),
        echelle = 1.35),
   list(cle = "Pacific",
-       titre   = "la cote Pacifique des Etats-Unis",
+       titre   = "la côte Pacifique des États-Unis",
        fichier = "carte_villes_points_us_pacific.png",
        emprise = emprise_geo(-125.5, -114.0, 31.0, 49.5),
        echelle = 1.35),
@@ -247,13 +247,13 @@ for (region in regions_us) {
 
 
 # =============================================================================
-# 4. CARTES REGIONALES DE L'EUROPE ET DE LA RUSSIE
+# 4. CARTES RÉGIONALES DE L'EUROPE ET DE LA RUSSIE
 # =============================================================================
 
-# Liste des pays europeens presents dans le jeu de donnees.
-# La Russie est exclue ici : elle est cartographiee separement, en deux
+# Liste des pays européens présents dans le jeu de données.
+# La Russie est exclue ici : elle est cartographiée séparément, en deux
 # parties, parce qu'une seule carte du pays entier rendrait illisibles les
-# villes de la partie europeenne ou se concentrent les joueurs.
+# villes de la partie européenne où se concentrent les joueurs.
 PAYS_EUROPE_CARTE <- setdiff(PAYS_EUROPE, "Russia")
 PAYS_NORDIQUES    <- c("Sweden", "Norway", "Denmark", "Finland")
 
@@ -261,7 +261,7 @@ villes_europe <- villes_sf |>
   filter(Country %in% PAYS_EUROPE_CARTE) |>
   arrange(desc(TotalPts))
 
-message("Villes europeennes (hors Russie) : ", nrow(villes_europe))
+message("Villes européennes (hors Russie) : ", nrow(villes_europe))
 
 carte_villes_region(
   villes  = villes_europe,
@@ -270,7 +270,7 @@ carte_villes_region(
   titre   = "Production offensive totale par ville de naissance en Europe",
   fichier = "carte_villes_points_europe.png",
   echelle = 1.25,
-  note = "Russie exclue : cartographiee separement."
+  note = "Russie exclue : cartographiée séparément."
 )
 
 carte_villes_region(
@@ -285,8 +285,8 @@ carte_villes_region(
   echelle = 1.4
 )
 
-# La coupure a 60 degres de longitude est la limite conventionnelle entre la
-# Russie europeenne et la Russie asiatique (chaine de l'Oural).
+# La coupure à 60 degrés de longitude est la limite conventionnelle entre la
+# Russie européenne et la Russie asiatique (chaîne de l'Oural).
 villes_russie <- villes_sf |> filter(Country == "Russia")
 
 carte_villes_region(
@@ -294,10 +294,10 @@ carte_villes_region(
   fond    = monde,
   emprise = emprise_geo(20.0, 65.0, 41.0, 72.0),
   titre   = paste("Production offensive totale par ville de naissance en",
-                  "Russie europeenne"),
+                  "Russie européenne"),
   fichier = "carte_villes_points_russie_europeenne.png",
   echelle = 1.35,
-  note = "Coupure a 60 degres est (chaine de l'Oural)."
+  note = "Coupure à 60 degrés est (chaîne de l'Oural)."
 )
 
 carte_villes_region(
@@ -308,8 +308,8 @@ carte_villes_region(
                   "Russie asiatique"),
   fichier = "carte_villes_points_russie_asiatique.png",
   echelle = 1.5,
-  note = "Coupure a 60 degres est (chaine de l'Oural)."
+  note = "Coupure à 60 degrés est (chaîne de l'Oural)."
 )
 
 
-message("=== 04 termine ===")
+message("=== 04 terminé ===")

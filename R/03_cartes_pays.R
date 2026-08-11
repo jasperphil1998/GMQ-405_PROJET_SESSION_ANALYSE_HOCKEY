@@ -1,19 +1,19 @@
 # =============================================================================
-# 03_cartes_pays.R — Cartes mondiales a cercles proportionnels, par pays
+# 03_cartes_pays.R — Cartes mondiales à cercles proportionnels, par pays
 # =============================================================================
 # ORIGINE : SECTION 2 de archive/Projet_Hockey_script_ORIGINAL.R.
 #
-# Deux cartes a cercles proportionnels (manuel, section 1.5.4) :
+# Deux cartes à cercles proportionnels (manuel, section 1.5.4) :
 #   1. nombre de joueurs de la LNH par pays de naissance ;
 #   2. nombre de joueurs de 1000 points et plus par pays de naissance.
 #
-# NOTE : ces cartes representent des EFFECTIFS BRUTS. Elles repondent a la
-# question "d'ou viennent les joueurs ?", pas a "quels pays produisent le plus
+# NOTE : ces cartes représentent des EFFECTIFS BRUTS. Elles répondent à la
+# question "d'où viennent les joueurs ?", pas à "quels pays produisent le plus
 # de joueurs par habitant ?". C'est exactement ce que corrige le module 06
-# (taux et quotient de localisation) — les deux lectures sont complementaires
-# et meritent d'etre presentees ensemble dans le rapport.
+# (taux et quotient de localisation) — les deux lectures sont complémentaires
+# et méritent d'être présentées ensemble dans le rapport.
 #
-# SORTIES : 2 cartes PNG dans figures/ (non versionnees).
+# SORTIES : 2 cartes PNG dans figures/ (non versionnées).
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -24,8 +24,8 @@ hockey <- charger_hockey()
 monde  <- charger_monde("medium")
 
 
-# --- Correspondance entre les noms de pays du jeu de donnees et ceux de
-#     rnaturalearth. Sans ce recodage, les Etats-Unis, la Tchequie et les
+# --- Correspondance entre les noms de pays du jeu de données et ceux de
+#     rnaturalearth. Sans ce recodage, les États-Unis, la Tchéquie et les
 #     nations britanniques ne se joignent pas au fond de carte.
 
 recoder_pays_carte <- function(pays) {
@@ -52,7 +52,7 @@ agreger_par_pays <- function(donnees, nom_colonne) {
 
 joueurs_pays <- agreger_par_pays(hockey, "NbJoueurs")
 
-# Controle : quels pays du jeu de donnees ne trouvent pas leur equivalent ?
+# Contrôle : quels pays du jeu de données ne trouvent pas leur équivalent ?
 orphelins <- anti_join(joueurs_pays, st_drop_geometry(monde),
                        by = c("Country_map" = "name"))
 if (nrow(orphelins) > 0) {
@@ -66,9 +66,9 @@ monde_hockey <- monde |>
   left_join(joueurs_pays, by = c("name" = "Country_map")) |>
   mutate(NbJoueurs = coalesce(NbJoueurs, 0L))
 
-# Un point a l'interieur de chaque pays porte le cercle proportionnel.
+# Un point à l'intérieur de chaque pays porte le cercle proportionnel.
 # st_point_on_surface (et non st_centroid) garantit que le point tombe DANS
-# le polygone, meme pour un pays de forme concave comme la Norvege.
+# le polygone, même pour un pays de forme concave comme la Norvège.
 monde_hockey_points <- monde_hockey |>
   filter(NbJoueurs > 0) |>
   st_make_valid() |>
@@ -81,8 +81,8 @@ carte_joueurs_pays <- tm_shape(monde_hockey) +
     size = "NbJoueurs",
     size.scale = tm_scale_continuous(
       values.scale = 2.5,
-      # Classes rondes : une legende lisible ne montre pas les valeurs
-      # observees mais des reperes arrondis.
+      # Classes rondes : une légende lisible ne montre pas les valeurs
+      # observées mais des repères arrondis.
       ticks = c(50, 100, 250, 500, 1000, 2500, 3000)
     ),
     size.legend = tm_legend(title = "Nombre de joueurs"),
@@ -130,4 +130,4 @@ carte_elite_pays <- tm_shape(monde_elite) +
 sauver_carte_fig(carte_elite_pays, "carte_elite_pays_cercles.png")
 
 
-message("=== 03 termine ===")
+message("=== 03 terminé ===")

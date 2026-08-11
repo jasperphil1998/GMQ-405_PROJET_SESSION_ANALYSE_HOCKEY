@@ -1,10 +1,10 @@
 =====================================================
  ANALYSE SPATIALE — 09. CENTROGRAPHIE TEMPORELLE
 =====================================================
-Joueurs geolocalises et dates : 8761 sur 8802
-Decennies retenues (>= 30 joueurs) : 1890 a 2000
+Joueurs géolocalisés et dates : 8761 sur 8802
+Décennies retenues (>= 30 joueurs) : 1890 à 2000
 
---- CENTRE DE GRAVITE MONDIAL PAR DECENNIE DE NAISSANCE ---
+--- CENTRE DE GRAVITÉ MONDIAL PAR DÉCENNIE DE NAISSANCE ---
 
    Decennie NbJoueurs latitude longitude DistanceType_km PartEurope PartCanada
 1      1890       145    46.86    -79.75         1040.16       1.38      95.17
@@ -34,28 +34,28 @@ Decennies retenues (>= 30 joueurs) : 1890 a 2000
 12         551.60
 
 --- Bilan mondial ---
-Decennie 1890 : 46.86 N, -79.75 E  (1.4 % d'Europeens)
-Decennie 2000 : 63.1 N, -59.48 E  (37.8 % d'Europeens)
-Deplacement net du centre : 2201 km
-Dispersion (distance-type) : de 1040 km a 3752 km
-Sens du deplacement en longitude : vers l'EST
+Décennie 1890 : 46.86 N, -79.75 E  (1.4 % d'Européens)
+Décennie 2000 : 63.1 N, -59.48 E  (37.8 % d'Européens)
+Déplacement net du centre : 2201 km
+Dispersion (distance-type) : de 1040 km à 3752 km
+Sens du déplacement en longitude : vers l'EST
 
 INTERPRETATION
-Le centre de gravite se deplace vers l'EST et la dispersion
-AUGMENTE : le bassin de recrutement de la LNH s'elargit
-geographiquement. Les deux mesures traduisent le meme
-phenomene : l'internationalisation de la ligue.
+Le centre de gravité se déplace vers l'EST et la dispersion
+AUGMENTE : le bassin de recrutement de la LNH s'élargit
+géographiquement. Les deux mesures traduisent le même
+phénomène : l'internationalisation de la ligue.
 
-ATTENTION A UNE FAUSSE LECTURE
-Le centre de gravite est une moyenne : il tombe dans l'Atlantique,
-la ou personne ne nait. Il ne designe donc AUCUN lieu reel. Seuls
-son DEPLACEMENT et la distance-type ont un sens ici.
+ATTENTION À UNE FAUSSE LECTURE
+Le centre de gravité est une moyenne : il tombe dans l'Atlantique,
+là où personne ne naît. Il ne désigne donc AUCUN lieu réel. Seuls
+son DÉPLACEMENT et la distance-type ont un sens ici.
 
 -----------------------------------------------------
- DERIVE INTERNE AU CANADA
+ DÉRIVE INTERNE AU CANADA
 -----------------------------------------------------
 
---- CENTRE DE GRAVITE DES JOUEURS CANADIENS PAR DECENNIE ---
+--- CENTRE DE GRAVITÉ DES JOUEURS CANADIENS PAR DÉCENNIE ---
 
    Decennie NbJoueurs longitude latitude DistanceType_km
 1      1890       138    -80.17    46.63          813.07
@@ -71,12 +71,12 @@ son DEPLACEMENT et la distance-type ont un sens ici.
 11     1990       595    -89.46    48.80         1406.63
 12     2000       195    -88.58    49.19         1480.75
 
-Deplacement net du centre canadien : 693 km
-Longitude : de -80.17 a -88.58 degres
+Déplacement net du centre canadien : 693 km
+Longitude : de -80.17 à -88.58 degrés
 Sens : vers l'OUEST
-Dispersion : de 813 km a 1481 km
+Dispersion : de 813 km à 1481 km
 
---- TEST DE TENDANCE — correlation de Spearman entre decennie et longitude du centre ---
+--- TEST DE TENDANCE — corrélation de Spearman entre décennie et longitude du centre ---
 
 
 	Spearman's rank correlation rho
@@ -88,10 +88,10 @@ sample estimates:
        rho 
 -0.8041958 
 
-Une correlation negative significative confirmerait une derive
-reguliere vers l'ouest, et non un simple va-et-vient.
+Une corrélation négative significative confirmerait une dérive
+régulière vers l'ouest, et non un simple va-et-vient.
 
---- ELLIPSES DE DEVIATION STANDARD PAR DECENNIE (Canada) ---
+--- ELLIPSES DE DÉVIATION STANDARD PAR DÉCENNIE (Canada) ---
 
    Decennie NbJoueurs GrandAxe_km PetitAxe_km Aplatissement Azimut_deg
 1      1890       138      1070.3       442.7         0.414       82.1
@@ -106,14 +106,14 @@ reguliere vers l'ouest, et non un simple va-et-vient.
 10     1980       682      1716.0      1112.7         0.648       74.2
 11     1990       595      1655.5      1109.0         0.670       73.6
 12     2000       195      1776.8      1128.6         0.635       74.5
-LECTURE : l'azimut est l'orientation du GRAND axe, en degres
-depuis le nord. Une valeur proche de 90 signale un semis etire
-est-ouest ; l'aplatissement (petit axe / grand axe) dit a quel
-point cet etirement est marque : plus il est proche de 0, plus le
-semis est allonge, plus il est proche de 1, plus il est circulaire.
+LECTURE : l'azimut est l'orientation du GRAND axe, en degrés
+depuis le nord. Une valeur proche de 90 signale un semis étiré
+est-ouest ; l'aplatissement (petit axe / grand axe) dit à quel
+point cet étirement est marqué : plus il est proche de 0, plus le
+semis est allongé, plus il est proche de 1, plus il est circulaire.
 
 MISE EN GARDE (manuel, section 3.2.2) : la TAILLE d'une ellipse
-depend de la formule employee (Yuill, ArcGIS Pro, CrimeStat...).
-Celle utilisee ici est celle de CrimeStat. Les ellipses de ce
+dépend de la formule employée (Yuill, ArcGIS Pro, CrimeStat...).
+Celle utilisée ici est celle de CrimeStat. Les ellipses de ce
 tableau sont comparables entre elles, mais PAS avec des ellipses
 produites par un autre logiciel.
