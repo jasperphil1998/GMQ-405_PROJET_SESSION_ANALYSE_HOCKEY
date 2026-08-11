@@ -1,14 +1,13 @@
-# =============================================================================
+# *****************************************************************************
 # 05_tableaux.R — Tableaux de sortie pour le rapport
-# =============================================================================
-# ORIGINE : SECTION 4 de archive/Projet_Hockey_script_ORIGINAL.R.
+# *****************************************************************************
 #
 # Les tableaux de la section 4 d'origine dépendaient d'objets calculés plus
 # haut dans le script (top20_villes, top20_villes_pts). Ils sont ici recalculés
 # explicitement, pour que le module puisse être lancé seul.
 #
 # SORTIES : 6 tableaux CSV dans figures/ (non versionnés).
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -64,8 +63,6 @@ message("Joueurs de ", SEUIL_ELITE_PTS, " points et plus : ",
 
 
 ## Répartition par décennie et groupe géographique ---------------------------
-# Tableau chiffré correspondant au graphique 3 : le rapport a besoin des
-# valeurs, pas seulement de la figure.
 
 table_decennie_geo <- hockey |>
   filter(!is.na(Decennie)) |>

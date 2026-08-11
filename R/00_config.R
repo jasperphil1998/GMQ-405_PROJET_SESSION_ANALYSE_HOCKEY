@@ -1,27 +1,16 @@
-# =============================================================================
+# *****************************************************************************
 # 00_config.R — Configuration commune à tous les modules
-# =============================================================================
+# *****************************************************************************
 # Ce fichier est sourcé par run_all.R, puis par chaque module. Il ne produit
 # aucune sortie : il ne fait que charger les librairies, localiser la racine du
 # projet, définir les projections, préparer les données et fournir les
 # utilitaires de sauvegarde.
-#
-# CONVENTION DE SYNTAXE
-# Tout le projet utilise le pipe natif de R (|>) plutôt que celui de magrittr
-# (%>%). C'est le choix fait par l'équipe (commit "Remplacer %>% par |>") et il
-# évite une dépendance à magrittr. Le pipe natif exige que la fonction de
-# droite soit un APPEL : écrire  x |> st_make_valid()  et non  x |> st_make_valid
-#
-# Les méthodes et les packages suivent le manuel du cours :
-#   Apparicio, P. et Gelb, J. (2026). Méthodes d'analyse spatiale :
-#   un grand bol d'R. Voir docs/REFERENCES.md.
-# =============================================================================
+# *****************************************************************************
 
 
 # --- 1. Librairies ----------------------------------------------------------
 # Les librairies de base sont chargées ici. Les librairies spécialisées
-# (spatstat, sparr, ClustGeo...) sont chargées par le module qui en a besoin,
-# pour que 00_config reste léger et tolérant à une installation incomplète.
+# (spatstat, sparr, ClustGeo...) sont chargées par le module qui en a besoin.
 
 suppressPackageStartupMessages({
   library(readr)         # Import CSV
@@ -41,8 +30,7 @@ suppressPackageStartupMessages({
 # --- 2. Racine du projet ----------------------------------------------------
 # Aucun setwd() codé en dur : les chemins sont relatifs à la racine du projet.
 # Dans VS Code ou RStudio, ouvrir le DOSSIER du projet (et non un seul fichier)
-# suffit. La fonction ci-dessous tolère aussi un lancement depuis un
-# sous-dossier en remontant l'arborescence.
+# suffit.
 
 trouver_racine_projet <- function(max_niveaux = 4) {
   fichier_temoin <- file.path(
@@ -82,15 +70,6 @@ message("Racine du projet : ", RACINE)
 
 # --- 3. Systèmes de coordonnées ---------------------------------------------
 #
-# POURQUOI PROJETER ?
-# Les cartes descriptives (modules 02 à 05) travaillent en EPSG:4326, en
-# degrés. C'est acceptable pour afficher des symboles proportionnels, mais
-# invalide dès que l'on calcule une DISTANCE, une AIRE ou une DENSITÉ : un
-# degré de longitude vaut environ 78 km à Toronto et 52 km à Yellowknife.
-# Toute analyse de semis de points, tout noyau de densité et toute matrice de
-# voisinage doivent donc être calculés dans une projection métrique
-# (manuel, section 1.2.1).
-#
 #  - CRS_NA : Albers équivalente Amérique du Nord. Projection ÉQUIVALENTE
 #             (conserve les aires) -> correcte pour les densités.
 #  - CRS_CA : Lambert conforme conique de Statistique Canada (EPSG:3347),
@@ -111,8 +90,6 @@ CRS_MONDE <- paste(
 
 
 # --- 4. Habillage commun ----------------------------------------------------
-# La mention de source et d'auteurs était recopiée dans une quarantaine de
-# figures du script d'origine. Une seule constante évite les divergences.
 
 AUTEURS <- "Philippe Filion, Xavier Lafrance, Xavier St-Arnaud"
 SOURCE  <- "Hockey DB / NHL player data"
@@ -184,13 +161,6 @@ charger_hockey <- function() {
         ),
         # Position nettoyée et traduite, utilisée par les graphiques 6 et 11
         # et par le tableau des statistiques par position (module 05).
-        #
-        # ATTENTION — le script d'origine recodait "LW" et "RW". Or le jeu de
-        # données n'emploie pas ces codes : il utilise L, R, F et W. Sur
-        # 8802 joueurs, "RW" n'apparaît que 2 fois et "LW" jamais. Résultat :
-        # 3408 joueurs (39 %) gardaient un code brut non traduit dans les
-        # graphiques. Les codes réellement présents sont, par fréquence :
-        #   D 2631 | C 1882 | L 1567 | R 1424 | G 881 | F 363 | W 52 | RW 2
         Position = str_trim(.data[["Pos."]]),
         PositionLabel = recode(
           Position,
@@ -241,10 +211,7 @@ charger_lieux_geocodes <- function() {
 # --- 8. Villes de naissance en objet spatial --------------------------------
 # Agrégation par lieu de naissance : nombre de joueurs, production offensive,
 # nombre de joueurs élite. C'est l'unité de base des cartes par ville
-# (module 04) et de l'analyse de semis (module 08).
-#
-# Le script d'origine recalculait ce même tableau SIX fois, une fois par carte
-# régionale. Il est désormais calculé une seule fois et mis en cache.
+# (module 04).
 
 construire_villes_sf <- function() {
   en_cache("villes_sf", {
@@ -283,8 +250,7 @@ construire_villes_sf <- function() {
 
 
 # --- 9. Fonds de carte ------------------------------------------------------
-# rnaturalearth retélécharge (ou relit) la couche à chaque appel. Le script
-# d'origine appelait ne_countries() une douzaine de fois. Ici : une fois.
+# rnaturalearth retélécharge (ou relit) la couche à chaque appel.
 
 charger_monde <- function(echelle = "medium") {
   en_cache(paste0("monde_", echelle),
@@ -304,11 +270,7 @@ charger_etats_us <- function() {
 
 
 # --- 10. Utilitaires de sortie ----------------------------------------------
-# Une seule destination : sorties/. Le projet a longtemps eu deux dossiers
-# (figures/ non versionné, sorties/ versionné), héritage de ses deux volets.
-# Cette distinction obligeait à se demander, pour chaque nouvelle figure, dans
-# quel dossier elle allait ; tout est maintenant au même endroit et versionné,
-# pour pouvoir citer n'importe quelle sortie dans le rapport sans relancer R.
+# Une seule destination : sorties/.
 
 sauver_carte <- function(tm, nom, largeur = 10, hauteur = 6, dossier = SORTIES) {
   fichier <- file.path(dossier, nom)
@@ -369,15 +331,6 @@ journal_resultats <- function(nom) {
 
 
 # --- 11. Carte régionale à cercles proportionnels ---------------------------
-# Le script d'origine répétait quatorze fois le même bloc de vingt lignes pour
-# produire ses cartes régionales (Québec, Ontario, Alberta, C.-B., provinces
-# atlantiques, six régions américaines, Europe, pays nordiques, Russie).
-# Seuls le sous-ensemble de villes, l'emprise, le facteur d'échelle et le titre
-# changeaient. Cette fonction factorise le bloc : ajouter une région demande
-# désormais quatre lignes.
-#
-# Syntaxe tmap 4 (tm_shape / tm_polygons / tm_symbols / tm_title / tm_credits),
-# conforme au chapitre 1.5 du manuel.
 
 carte_villes_region <- function(villes, fond, emprise, titre, fichier,
                                 variable = "TotalPts",
@@ -399,9 +352,6 @@ carte_villes_region <- function(villes, fond, emprise, titre, fichier,
     tm_shape(villes) +
     tm_symbols(
       size = variable,
-      # tmap 4 : le facteur d'agrandissement des symboles passe par
-      # values.scale de l'échelle, et non plus par un argument "scale" nu
-      # comme en tmap 3 (où il était silencieusement ignoré).
       size.scale = tm_scale_continuous(values.scale = echelle),
       size.legend = tm_legend(title = titre_legende),
       fill = couleur,

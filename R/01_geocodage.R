@@ -1,19 +1,13 @@
-# =============================================================================
+# *****************************************************************************
 # 01_geocodage.R — Géocodage incrémental des lieux de naissance
-# =============================================================================
-# ORIGINE : section 3.2 de archive/Projet_Hockey_script_ORIGINAL.R.
-#
+# *****************************************************************************
 # Le fichier cache data/geocodage/lieux_naissance_geocodes_lieux_modernes.csv
 # contient DÉJÀ les coordonnées de tous les lieux de naissance présents dans le
 # jeu de données. Ce module ne relance donc PAS un géocodage complet : il ne
-# traite que les lieux absents du cache. Aujourd'hui : aucun, donc il s'exécute
-# en une seconde.
-#
-# Il faut le lancer avant les modules 04, 07, 08 et 09, qui ont tous besoin de
-# coordonnées. Les modules 02, 03, 05, 06 et 10 n'en ont pas besoin.
+# traite que les lieux absents du cache. 
 #
 # SORTIE : mise à jour du cache CSV, aucun fichier de résultat.
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 

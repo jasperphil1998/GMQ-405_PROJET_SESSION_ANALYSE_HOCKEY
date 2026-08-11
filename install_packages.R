@@ -1,10 +1,10 @@
-# =============================================================================
+# *****************************************************************************
 # install_packages.R — Installation des dépendances du projet
-# =============================================================================
+# *****************************************************************************
 # À exécuter une seule fois (ou après une réinstallation de R).
 # Dans VS Code / RStudio : ouvrir ce fichier et faire "Source".
 # En terminal :  Rscript install_packages.R
-# =============================================================================
+# *****************************************************************************
 
 # --- Socle commun : requis par run_all.R ------------------------------------
 packages_requis <- c(
@@ -63,8 +63,6 @@ if (!requireNamespace("rnaturalearthhires", quietly = TRUE)) {
 }
 
 # --- Vérification de la version de tmap -------------------------------------
-# Le projet utilise la syntaxe tmap 4 (tm_scale_*, fill / col séparés).
-# Avec tmap 3, toutes les cartes échoueraient.
 if (requireNamespace("tmap", quietly = TRUE)) {
   version_tmap <- packageVersion("tmap")
   if (version_tmap < "4.0.0") {

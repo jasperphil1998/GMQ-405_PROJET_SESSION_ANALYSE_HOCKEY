@@ -1,12 +1,6 @@
-# =============================================================================
+# *****************************************************************************
 # 06_normalisation.R — Taux de production et quotient de localisation
-# =============================================================================
-# PROBLÈME TRAITÉ
-# Les modules descriptifs 03 et 04 cartographient des EFFECTIFS BRUTS (nombre de joueurs,
-# points totaux). Or l'Ontario produit beaucoup de joueurs surtout parce que
-# l'Ontario compte beaucoup d'habitants. Une carte d'effectifs bruts est donc
-# largement une carte de la population : elle ne dit rien de la géographie
-# propre du hockey.
+# *****************************************************************************
 #
 # DEUX INDICATEURS NORMALISÉS
 #  1. Taux de production : joueurs par 100 000 habitants.
@@ -18,7 +12,7 @@
 #     Le QL est l'indicateur standard en analyse régionale (spécialisation).
 #
 # SORTIES : 4 cartes, 3 tableaux, 1 journal de résultats.
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -33,9 +27,9 @@ jrn$ecrire(" Taux de production et quotient de localisation")
 jrn$ecrire("=====================================================")
 
 
-# =============================================================================
-# PARTIE A — ÉCHELLE DES PAYS
-# =============================================================================
+# *****************************************************************************
+# PARTIE A — ÉCHELLE DES PAYS ----
+# *****************************************************************************
 
 monde <- ne_countries(scale = "medium", returnclass = "sf")
 
@@ -82,7 +76,7 @@ monde_norm <- monde_norm |>
   )
 
 # --- Tableau comparatif : rang brut vs rang normalisé -----------------------
-# C'est LE tableau qui montre l'apport de la normalisation.
+# C'est le tableau qui montre l'apport de la normalisation.
 
 table_pays_norm <- monde_norm |>
   st_drop_geometry() |>
@@ -175,10 +169,8 @@ sauver_carte(carte_ql_pays, "06_carte_ql_pays.png")
 
 
 # =============================================================================
-# PARTIE B — ÉCHELLE DES PROVINCES ET DES ÉTATS
+# PARTIE B — ÉCHELLE DES PROVINCES ET DES ÉTATS ----
 # =============================================================================
-# C'est l'échelle la plus parlante : elle isole les "châteaux d'eau" du hockey
-# à l'intérieur du Canada et des États-Unis.
 
 # Extraction du code de province / état au niveau du JOUEUR
 hockey_prov <- hockey |>
@@ -292,8 +284,6 @@ jrn$capturer(
   "PROVINCES / ÉTATS : 15 premières unités par EFFECTIF BRUT (comparaison)"
 )
 
-# Sauvegarde de l'objet spatial pour réutilisation par 07 et 10.
-# Évite de refaire toute la préparation dans chaque script.
 saveRDS(unites, chemin_sortie("unites_normalisees.rds"))
 message("  -> unites_normalisees.rds (réutilisé par 07 et 10)")
 

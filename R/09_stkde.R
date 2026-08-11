@@ -1,12 +1,12 @@
-# =============================================================================
+# *****************************************************************************
 # 09_stkde.R — Densité spatio-temporelle par noyau (STKDE)
-# =============================================================================
+# *****************************************************************************
 # MÉTHODE : estimation de densité de noyau spatio-temporelle dans une maille
 # régulière. Permet de voir l'évolution de la provenance des joueurs au fil du 
 # temps.
 #
 # SORTIES : sorties/09_stkde_joueurs.gif (+ un graphique de densité temporelle).
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -56,9 +56,9 @@ RESOLUTION_TEMPORELLE <- 150   # -> 64 : deux fois plus rapide, sans perte
 ESTIMER_BANDWIDTH <- FALSE   # Mettre TRUE si on souhaite ré-optimiser
 
 
-# =============================================================================
+# *****************************************************************************
 # 1. PRÉPARATION DES DONNÉES ----
-# =============================================================================
+# *****************************************************************************
 # Le script 01_geocodage.R alimente le fichier cache pour garder ce géocodage en
 # mémoire. Une fois qu'il est roulé, on fait juste le lire.
 
@@ -78,9 +78,9 @@ prov_joueur_stkde_sf <- prov_joueur_stkde |>
 message("Joueurs géolocalisés et dates : ", nrow(prov_joueur_stkde_sf))
 
 
-# =============================================================================
+# *****************************************************************************
 # 2. VISUALISATION DE LA DENSITÉ TEMPORELLE ----
-# =============================================================================
+# *****************************************************************************
 # Note : Il aurait été plus intéressant de faire le STKDE avec la date d'entrée
 # dans la LNH du joueur plutôt que sa date de naissance, mais nous ne possédons 
 # pas cette information. On aurait pu la déduire en ajoutant, par exemple, 20 
@@ -106,9 +106,9 @@ sauver_graphique(graph_densite_temporelle,
                      largeur = 9, hauteur = 5)
 
 
-# =============================================================================
+# *****************************************************************************
 # 3. FENÊTRE D'OBSERVATION ET SEMIS ----
-# =============================================================================
+# *****************************************************************************
 # Projection cylindrique équivalente mondiale : obligatoire, spatstat travaille
 # en unités planes. CRS_MONDE est défini dans 00_config.R 
 
@@ -153,9 +153,9 @@ if (ESTIMER_BANDWIDTH) {
 }
 
 
-# =============================================================================
+# *****************************************************************************
 # 4. CALCUL DES DENSITÉS SPATIO-TEMPORELLES ----
-# =============================================================================
+# *****************************************************************************
 
 message("Calcul de la densité spatio-temporelle (",
         RESOLUTION_SPATIALE, "x", RESOLUTION_SPATIALE, "x",
@@ -206,9 +206,9 @@ timestamps  <- round(as.numeric(names(dens_vals$z)))
 time_frames <- min(prov_joueur_stkde_sf$dt) + timestamps
 
 
-# =============================================================================
+# *****************************************************************************
 # 5. CRÉATION DE L'ANIMATION ----
-# =============================================================================
+# *****************************************************************************
 
 message("Compilation de ", length(time_frames), " cartes...")
 

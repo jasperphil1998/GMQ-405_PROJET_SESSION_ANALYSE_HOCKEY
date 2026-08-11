@@ -1,7 +1,7 @@
-# =============================================================================
+# *****************************************************************************
 # 10_clustgeo.R — Classification ascendante hiérarchique avec contrainte
 #                 spatiale (ClustGeo)
-# =============================================================================
+# *****************************************************************************
 # MÉTHODE : La classification ascendante hiérarchique ordinaire regroupe les 
 # unités uniquement selon leurs valeurs : deux provinces aux profils identiques
 # finissent ensemble même si elles sont aux antipodes, ce qui donne des classes
@@ -19,7 +19,7 @@
 # sorties/unites_normalisees.rds).
 #
 # SORTIES : 3 figures, 2 tableaux, 1 journal de résultats.
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -49,9 +49,9 @@ jrn$ecrire(" Méthode ClustGeo (manuel, section 8.2.1)")
 jrn$ecrire("=====================================================")
 
 
-# =============================================================================
+# *****************************************************************************
 # 1. DONNÉES ET VARIABLES ----
-# =============================================================================
+# *****************************************************************************
 # Lecture de l'objet contenant les variables sémantiques
 unites <- readRDS(fichier_unites) |>
   st_transform(CRS_NA) |>
@@ -89,9 +89,9 @@ jrn$ecrire("Variables : ", paste(VARS_SEMANTIQUES, collapse = ", "))
 jrn$capturer(summary(donnees), "SOMMAIRE DES VARIABLES AVANT NORMALISATION")
 
 
-# =============================================================================
+# *****************************************************************************
 # 2. LES DEUX MATRICES DE DISTANCE ----
-# =============================================================================
+# *****************************************************************************
 # Centrage (moyenne = 0) et réduction des données (variance = 1)
 donnees_zscore <- data.frame(scale(donnees))
 
@@ -104,9 +104,9 @@ xy <- st_coordinates(st_centroid(st_geometry(unites)))
 Matrice.Spatiale <- dist(xy, method = "euclidean")
 
 
-# =============================================================================
+# *****************************************************************************
 # 3. CHOIX DU PARAMÈTRE ALPHA ----
-# =============================================================================
+# *****************************************************************************
 # choicealpha() calcule, pour chaque valeur d'alpha, la part d'inertie
 # expliquée par la matrice sémantique (Q0) et par la matrice spatiale (Q1).
 # On cherche le point où l'on gagne beaucoup de cohérence spatiale en perdant
@@ -174,9 +174,9 @@ jrn$capturer(
 jrn$ecrire("Alpha retenu : ", ALPHA)
 
 
-# =============================================================================
+# *****************************************************************************
 # 4. CLASSIFICATION ----
-# =============================================================================
+# *****************************************************************************
 
 arbre_clustgeo <- hclustgeo(
   D0 = Matrice.Semantique,
@@ -229,9 +229,9 @@ composition <- unites |>
 jrn$capturer(as.data.frame(composition), "COMPOSITION DÉTAILLÉE DES CLASSES")
 
 
-# =============================================================================
+# *****************************************************************************
 # 5. CARTOGRAPHIE ----
-# =============================================================================
+# *****************************************************************************
 
 carte_clustgeo <- tm_shape(unites) +
   tm_polygons(

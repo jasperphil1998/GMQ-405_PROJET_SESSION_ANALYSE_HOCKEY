@@ -1,25 +1,16 @@
-# =============================================================================
+# *****************************************************************************
 # 08_semis_points.R — Probabilité qu'un joueur devienne un joueur d'élite
-# =============================================================================
-# PROBLÈME TRAITÉ
-# Le module 04 représente les villes par des cercles proportionnels. Ce
-# mode de représentation sature dès que les villes sont nombreuses et proches
-# (sud de l'Ontario, corridor Windsor-Québec) : les cercles se superposent et
-# l'information devient illisible. Une SURFACE DE DENSITÉ résout ce problème et
-# transforme un semis de points en champ continu interprétable.
+# *****************************************************************************
 #
-# Surtout, ces cartes d'effectifs mélangent VOLUME et CALIBRE. La surface de
-# risque relatif calculée ici répond à une question qu'elles ne peuvent pas
-# poser : un joueur né à un endroit donné a-t-il plus de chances de devenir un
+# Répond à la question : un joueur né à un endroit donné a-t-il plus de chances de devenir un
 # joueur d'élite ? L'indicateur est un RAPPORT de deux densités estimées avec
 # le même noyau, si bien que l'effet de la population s'annule.
 #
 # CADRE D'ÉTUDE : le Canada. C'est le pays qui fournit le plus de joueurs
-# (5598), ce qui donne une fenêtre d'observation bien remplie. La démarche est
-# transposable telle quelle à un autre pays en changeant PAYS_ETUDE.
+# (5598)..
 #
 # SORTIES : 1 figure, 1 journal de résultats.
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -48,17 +39,14 @@ jrn$ecrire("Projection       : EPSG:", CRS_CA,
            " (Lambert conforme, Statistique Canada)")
 
 
-# =============================================================================
-# 1. PRÉPARATION : FENÊTRE D'OBSERVATION ET SEMIS
-# =============================================================================
+# *****************************************************************************
+# 1. PRÉPARATION : FENÊTRE D'OBSERVATION ET SEMIS ----
+# *****************************************************************************
 
 hockey    <- charger_hockey()
 villes_sf <- construire_villes_sf()
 
-# --- Fenêtre d'observation (owin) -------------------------------------------
-# Toute analyse de semis exige une FENÊTRE : le domaine dans lequel les points
-# auraient PU se trouver. Sans elle, la densité et la fonction L n'ont aucun
-# sens (on ne saurait pas distinguer "absence de joueurs" de "hors du pays").
+# --- Fenêtre d'observation (owin) -------------------------------------------.
 
 contour_pays <- ne_countries(country = PAYS_ETUDE, scale = "medium",
                             returnclass = "sf") |>
@@ -67,11 +55,6 @@ contour_pays <- ne_countries(country = PAYS_ETUDE, scale = "medium",
   # Simplification : le contour détaillé du Canada (milliers d'îles) rend les
   # calculs très lents sans rien changer à une analyse à l'échelle de 100 km.
   st_simplify(dTolerance = 2000) |>
-  # Dilatation de 15 km : la simplification rogne les côtes et rejetait 76
-  # localités côtières pourtant valides (Vancouver, Halifax, villes du
-  # Saint-Laurent). La fenêtre dépasse ainsi légèrement le trait de côte, ce
-  # qui est sans conséquence à l'échelle d'un noyau de 100 km, alors que
-  # perdre 8 % des localités biaiserait toutes les densités.
   st_buffer(15000) |>
   st_make_valid()
 
@@ -92,9 +75,8 @@ provinces_pays <- ne_states(country = PAYS_ETUDE, returnclass = "sf") |>
 # --- Semis de points --------------------------------------------------------
 # IMPORTANT : on travaille au niveau des LOCALITÉS (une ville = un point), et
 # non des joueurs. Empiler 5598 joueurs sur 997 coordonnées créerait des
-# milliers de paires à distance nulle, ce qui invaliderait complètement la
-# fonction de Ripley. Le nombre de joueurs devient un POIDS, pas une
-# répétition du point.
+# milliers de paires à distance nulle.. Le nombre de joueurs devient un POIDS, 
+# pas une répétition du point.
 
 villes_pays <- villes_sf |>
   filter(Country == PAYS_ETUDE) |>
@@ -141,12 +123,6 @@ jrn$ecrire("Joueurs d'élite (", SEUIL_ELITE, "+ pts) : ",
 # avec ggplot2, ce qui donne des figures homogènes avec le reste du projet.
 
 # EMPRISE D'AFFICHAGE
-# Les densités sont calculées sur la fenêtre COMPLÈTE du pays (c'est nécessaire
-# pour que la correction de bordure soit juste). En revanche, l'affichage est
-# cadré sur l'emprise des données, élargie d'une marge : l'Extrême-Arctique ne
-# contient aucun lieu de naissance et n'occuperait que de la place, en plus de
-# faire apparaître des artefacts de tramage liés à la rasterisation des
-# milliers d'îles du masque.
 MARGE_AFFICHAGE <- 250000   # 250 km
 
 emprise <- st_bbox(villes_ok)
@@ -161,11 +137,6 @@ carte_surface <- function(image, titre, sous_titre, legende,
   df <- as.data.frame(image)
   names(df) <- c("x", "y", "valeur")
 
-  # ORDRE DES COUCHES :
-  # 1. Le pays en gris pâle (fond)
-  # 2. La surface calculée (raster)
-  # 3. Les frontières administratives (provinces) par-dessus
-  # 4. Le contour national extérieur (un peu plus épais)
   gg <- ggplot() +
     geom_sf(data = contour_pays, fill = "grey92", colour = NA) +
     geom_raster(data = df, aes(x = x, y = y, fill = valeur)) +
@@ -197,9 +168,9 @@ carte_surface <- function(image, titre, sous_titre, legende,
 }
 
 
-# =============================================================================
-# 2. SURFACE DE RISQUE RELATIF
-# =============================================================================
+# *****************************************************************************
+# 2. SURFACE DE RISQUE RELATIF ----
+# *****************************************************************************
 # QUESTION : un joueur né dans telle région a-t-il plus de chances de devenir
 # un joueur d'élite ?
 #
@@ -209,10 +180,6 @@ carte_surface <- function(image, titre, sous_titre, legende,
 # majeur ici : comme le numérateur et le dénominateur subissent la même
 # distribution de population sous-jacente, l'effet de la population S'ANNULE.
 # Aucune donnée démographique externe n'est nécessaire.
-#
-# Le choix de sigma est un arbitrage : trop petit, la surface se réduit à des
-# taches autour des grandes villes ; trop grand, tout est lissé. 100 km
-# correspond à l'échelle d'une région de recrutement.
 
 message("  Calcul des surfaces de densité...")
 
@@ -228,10 +195,8 @@ densite_elite <- density.ppp(
   semis, sigma = SIGMA, weights = villes_ok$NbEliteSeuil, edge = TRUE
 )
 
-# On masque les zones où le dénominateur est trop faible : le rapport y est
-# numériquement instable (division de deux quasi-zéros) et produirait des
-# artefacts spectaculaires mais dénués de sens.
-#
+# On masque les zones où le dénominateur est trop faible.
+
 # CRITÈRE DE FIABILITÉ : plutôt qu'un percentile arbitraire, on exige un
 # EFFECTIF MINIMAL de joueurs dans le voisinage du noyau. Pour un noyau
 # gaussien d'écart-type sigma, la masse effective couvre 2*pi*sigma^2 ; le
@@ -247,11 +212,6 @@ risque_relatif <- eval.im(
          densite_elite / densite_joueurs, NA)
 )
 
-# NOTE TECHNIQUE
-# eval.im(ifelse(..., NA)) ne met pas des NA dans l'image : il RÉTRÉCIT la
-# fenêtre de l'image résultante. Il faut donc compter les pixels valides dans
-# la matrice $v (et non via im[], qui ne renvoie que les pixels de la fenêtre
-# et ne contient jamais de NA).
 n_pixels_retenus <- sum(!is.na(risque_relatif$v))
 n_pixels_total   <- sum(!is.na(densite_joueurs$v))
 part_pixels_retenus <- n_pixels_retenus / n_pixels_total

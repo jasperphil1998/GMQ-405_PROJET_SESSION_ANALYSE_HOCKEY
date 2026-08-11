@@ -1,20 +1,9 @@
-# =============================================================================
+# *****************************************************************************
 # 02_graphiques.R — Graphiques descriptifs
-# =============================================================================
-# ORIGINE : SECTION 1 de archive/Projet_Hockey_script_ORIGINAL.R (11 graphiques
-# réalisés par Philippe Filion et Xavier Lafrance).
-#
-# Le contenu statistique est inchangé. Ce qui a changé :
-#  - le pipe %>% est remplacé par le pipe natif |> (convention du projet) ;
-#  - la mention de source et d'auteurs vient de la constante CREDITS ;
-#  - la palette vient de la constante COULEURS_GEO ;
-#  - la préparation des données (dates, décennies, positions traduites) est
-#    faite une seule fois dans 00_config.R au lieu d'être répétée ici ;
-#  - les View() interactifs ont été retirés : ils bloquent une exécution par
-#    Rscript. Les vérifications équivalentes passent par message().
+# *****************************************************************************
 #
 # SORTIES : 11 figures PNG dans figures/ (non versionnées).
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 

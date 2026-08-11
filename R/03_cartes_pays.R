@@ -1,20 +1,13 @@
-# =============================================================================
+# *****************************************************************************
 # 03_cartes_pays.R — Cartes mondiales à cercles proportionnels, par pays
-# =============================================================================
-# ORIGINE : SECTION 2 de archive/Projet_Hockey_script_ORIGINAL.R.
+# *****************************************************************************
 #
-# Deux cartes à cercles proportionnels (manuel, section 1.5.4) :
+# Deux cartes à cercles proportionnels :
 #   1. nombre de joueurs de la LNH par pays de naissance ;
 #   2. nombre de joueurs de 1000 points et plus par pays de naissance.
 #
-# NOTE : ces cartes représentent des EFFECTIFS BRUTS. Elles répondent à la
-# question "d'où viennent les joueurs ?", pas à "quels pays produisent le plus
-# de joueurs par habitant ?". C'est exactement ce que corrige le module 06
-# (taux et quotient de localisation) — les deux lectures sont complémentaires
-# et méritent d'être présentées ensemble dans le rapport.
-#
 # SORTIES : 2 cartes PNG dans figures/ (non versionnées).
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -66,7 +59,6 @@ monde_hockey <- monde |>
   left_join(joueurs_pays, by = c("name" = "Country_map")) |>
   mutate(NbJoueurs = coalesce(NbJoueurs, 0L))
 
-# Un point à l'intérieur de chaque pays porte le cercle proportionnel.
 # st_point_on_surface (et non st_centroid) garantit que le point tombe DANS
 # le polygone, même pour un pays de forme concave comme la Norvège.
 monde_hockey_points <- monde_hockey |>
@@ -81,8 +73,6 @@ carte_joueurs_pays <- tm_shape(monde_hockey) +
     size = "NbJoueurs",
     size.scale = tm_scale_continuous(
       values.scale = 2.5,
-      # Classes rondes : une légende lisible ne montre pas les valeurs
-      # observées mais des repères arrondis.
       ticks = c(50, 100, 250, 500, 1000, 2500, 3000)
     ),
     size.legend = tm_legend(title = "Nombre de joueurs"),

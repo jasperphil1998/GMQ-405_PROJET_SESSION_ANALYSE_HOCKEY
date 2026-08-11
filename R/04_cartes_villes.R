@@ -1,25 +1,9 @@
-# =============================================================================
+# *****************************************************************************
 # 04_cartes_villes.R — Cartes par ville de naissance, mondiales et régionales
-# =============================================================================
-# ORIGINE : SECTION 3 de archive/Projet_Hockey_script_ORIGINAL.R.
-#
-# CE QUI A CHANGÉ PAR RAPPORT À L'ORIGINAL
-#  - Le tableau villes_points / villes_points_geo était reconstruit SIX fois à
-#    l'identique dans le script d'origine. Il est désormais calculé une seule
-#    fois par construire_villes_sf() (00_config.R) et mis en cache.
-#  - Le bloc de vingt lignes qui produisait chaque carte régionale était
-#    recopié quatorze fois. Il est factorisé dans carte_villes_region()
-#    (00_config.R) et les régions sont décrites par une simple table.
-#  - La carte de l'Ontario était présente EN DOUBLE (deux blocs identiques
-#    écrivant le même fichier). Le doublon est supprimé.
-#  - Les provinces des Prairies (Manitoba et Saskatchewan) n'avaient aucune
-#    carte, alors que le module 06 montre que ce sont les unités au plus fort
-#    taux de production par habitant du continent. La carte est ajoutée.
-#  - Les régions sont extraites de CodeProv (calculé une fois dans la config)
-#    plutôt que par un str_detect() sur la chaîne de caractères à chaque carte.
+# *****************************************************************************
 #
 # SORTIES : 18 cartes PNG dans figures/ (non versionnées).
-# =============================================================================
+# *****************************************************************************
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
 
@@ -31,9 +15,9 @@ monde     <- charger_monde("medium")
 message("Localités géocodées : ", nrow(villes_sf))
 
 
-# =============================================================================
+# *****************************************************************************
 # 1. CARTES MONDIALES
-# =============================================================================
+# *****************************************************************************
 
 emprise_monde <- st_bbox(monde)
 
@@ -80,9 +64,9 @@ carte_villes_region(
 )
 
 
-# =============================================================================
-# 2. CARTES RÉGIONALES DU CANADA
-# =============================================================================
+# *****************************************************************************
+# 2. CARTES RÉGIONALES DU CANADA ----
+# *****************************************************************************
 # Fond de carte : provinces canadiennes (ne_states, package
 # rnaturalearthhires). Emprise fixée à la main pour chaque province.
 
@@ -156,9 +140,9 @@ for (region in regions_canada) {
 }
 
 
-# =============================================================================
-# 3. CARTES RÉGIONALES DES ÉTATS-UNIS
-# =============================================================================
+# *****************************************************************************
+# 3. CARTES RÉGIONALES DES ÉTATS-UNIS ----
+# *****************************************************************************
 
 usa_states <- charger_etats_us()
 
@@ -246,9 +230,9 @@ for (region in regions_us) {
 }
 
 
-# =============================================================================
-# 4. CARTES RÉGIONALES DE L'EUROPE ET DE LA RUSSIE
-# =============================================================================
+# *****************************************************************************
+# 4. CARTES RÉGIONALES DE L'EUROPE ET DE LA RUSSIE ----
+# *****************************************************************************
 
 # Liste des pays européens présents dans le jeu de données.
 # La Russie est exclue ici : elle est cartographiée séparément, en deux

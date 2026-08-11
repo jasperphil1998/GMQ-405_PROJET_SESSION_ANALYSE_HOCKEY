@@ -1,6 +1,6 @@
-# =============================================================================
+# *****************************************************************************
 # run_all.R — Lance toute la chaîne d'analyse du projet
-# =============================================================================
+# *****************************************************************************
 # UTILISATION
 #   Ouvrir le DOSSIER du projet dans VS Code ou RStudio, puis dans la console R :
 #       source("run_all.R")
@@ -26,7 +26,7 @@
 #           IL N'A PRODUIT AUCUNE SORTIE. C'est le cas du module 09 tant que
 #           sparr, gifski et viridis ne sont pas installés.
 #   ÉCHEC   le module a planté ; les suivants ont continué
-# =============================================================================
+# *****************************************************************************
 
 
 # --- Catalogue des modules --------------------------------------------------
@@ -46,8 +46,6 @@ MODULES <- list(
 
 
 # --- Vérification des dépendances -------------------------------------------
-# Mieux vaut un message clair tout de suite qu'une erreur au milieu du
-# module 08.
 
 paquets_requis <- c(
   # socle commun
@@ -124,15 +122,9 @@ lancer_modules <- function(ids = NULL) {
 
     t0  <- Sys.time()
     env <- new.env(parent = globalenv())
-    # Chaque module tourne dans son propre environnement : cela évite qu'une
-    # variable laissée par un module en masque une autre dans le suivant.
     resultat <- try(sys.source(chemin, envir = env), silent = FALSE)
     duree <- round(as.numeric(difftime(Sys.time(), t0, units = "secs")))
 
-    # Un module qui dépend de paquets optionnels absents se désactive lui-même et
-    # pose MODULE_IGNORE dans son environnement. Sans cette distinction, il
-    # apparaîtrait "ok" alors qu'il n'a rien produit : c'est trompeur, et on
-    # ne s'en aperçoit qu'en cherchant une sortie qui n'existe pas.
     etat <- if (inherits(resultat, "try-error")) {
       message("!!! ÉCHEC de ", module$fichier,
               " — les modules suivants continuent.")
