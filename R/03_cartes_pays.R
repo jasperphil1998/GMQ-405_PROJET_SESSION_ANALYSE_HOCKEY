@@ -91,7 +91,7 @@ carte_joueurs_pays <- tm_shape(monde_hockey) +
   tm_title("Nombre de joueurs de la LNH par pays de naissance") +
   tm_credits(CREDITS, position = tm_pos_in("left", "bottom"), size = 0.7)
 
-sauver_carte_fig(carte_joueurs_pays, "carte_joueurs_pays_cercles.png")
+sauver_carte(carte_joueurs_pays, "carte_joueurs_pays_cercles.png")
 
 
 ## 2. Joueurs de 1000 points et plus par pays --------------------------------
@@ -127,7 +127,7 @@ carte_elite_pays <- tm_shape(monde_elite) +
                   " points et plus par pays de naissance")) +
   tm_credits(CREDITS, position = tm_pos_in("left", "bottom"), size = 0.7)
 
-sauver_carte_fig(carte_elite_pays, "carte_elite_pays_cercles.png")
+sauver_carte(carte_elite_pays, "carte_elite_pays_cercles.png")
 
 
 message("=== 03 terminé ===")

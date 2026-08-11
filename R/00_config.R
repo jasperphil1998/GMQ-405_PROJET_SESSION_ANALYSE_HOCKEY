@@ -20,9 +20,8 @@
 
 # --- 1. Librairies ----------------------------------------------------------
 # Les librairies de base sont chargées ici. Les librairies spécialisées
-# (spdep, spatstat, spatialreg, ClustGeo...) sont chargées par le module qui en
-# a besoin, pour que 00_config reste léger et tolérant à une installation
-# incomplète.
+# (spatstat, sparr, ClustGeo...) sont chargées par le module qui en a besoin,
+# pour que 00_config reste léger et tolérant à une installation incomplète.
 
 suppressPackageStartupMessages({
   library(readr)         # Import CSV
@@ -64,18 +63,17 @@ trouver_racine_projet <- function(max_niveaux = 4) {
   )
 }
 
-RACINE   <- trouver_racine_projet()
-FIGURES  <- file.path(RACINE, "figures")   # sorties descriptives (non versionnées)
-SORTIES  <- file.path(RACINE, "sorties")   # sorties statistiques (versionnées)
+RACINE  <- trouver_racine_projet()
+SORTIES <- file.path(RACINE, "sorties")   # destination UNIQUE de toutes les
+                                          # sorties : cartes, graphiques,
+                                          # tableaux et journaux de résultats
 
-dir.create(FIGURES, recursive = TRUE, showWarnings = FALSE)
 dir.create(SORTIES, recursive = TRUE, showWarnings = FALSE)
 dir.create(file.path(RACINE, "data", "geocodage"),
            recursive = TRUE, showWarnings = FALSE)
 
 # Raccourcis de chemins
 chemin_donnees <- function(...) file.path(RACINE, "data", ...)
-chemin_figure  <- function(...) file.path(FIGURES, ...)
 chemin_sortie  <- function(...) file.path(SORTIES, ...)
 chemin_module  <- function(...) file.path(RACINE, "R", ...)
 
@@ -97,20 +95,15 @@ message("Racine du projet : ", RACINE)
 #             (conserve les aires) -> correcte pour les densités.
 #  - CRS_CA : Lambert conforme conique de Statistique Canada (EPSG:3347),
 #             la projection officielle pour le Canada.
-#  - CRS_EU : LAEA Europe (EPSG:3035), équivalente elle aussi.
-#  - CRS_ATL : LAEA centrée sur l'Atlantique Nord : place le Canada et
-#             l'Europe dans le même champ.
 
 CRS_GEO <- 4326
 CRS_CA  <- 3347
-CRS_EU  <- 3035
 CRS_NA  <- paste(
   "+proj=aea +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96",
   "+x_0=0 +y_0=0 +datum=NAD83 +units=m +no_defs"
 )
-CRS_ATL <- "+proj=laea +lat_0=55 +lon_0=-45 +datum=WGS84 +units=m +no_defs"
 
-# Projection cylindrique équivalente mondiale, utilisée par le module 11
+# Projection cylindrique équivalente mondiale, utilisée par le module 09
 # (STKDE) : spatstat exige une projection métrique couvrant tout le globe.
 CRS_MONDE <- paste(
   "+proj=cea +lon_0=0 +lat_ts=30 +datum=WGS84 +units=m +no_defs"
@@ -311,11 +304,11 @@ charger_etats_us <- function() {
 
 
 # --- 10. Utilitaires de sortie ----------------------------------------------
-# Deux destinations distinctes, héritées des deux volets du projet :
-#   figures/  -> sorties DESCRIPTIVES (modules 02 à 05, 11). Non versionnées,
-#                elles se régénèrent en quelques minutes.
-#   sorties/  -> sorties STATISTIQUES (modules 06 à 10). Versionnées, pour
-#                pouvoir citer les résultats des tests sans relancer R.
+# Une seule destination : sorties/. Le projet a longtemps eu deux dossiers
+# (figures/ non versionné, sorties/ versionné), héritage de ses deux volets.
+# Cette distinction obligeait à se demander, pour chaque nouvelle figure, dans
+# quel dossier elle allait ; tout est maintenant au même endroit et versionné,
+# pour pouvoir citer n'importe quelle sortie dans le rapport sans relancer R.
 
 sauver_carte <- function(tm, nom, largeur = 10, hauteur = 6, dossier = SORTIES) {
   fichier <- file.path(dossier, nom)
@@ -342,28 +335,6 @@ sauver_tableau <- function(df, nom, dossier = SORTIES) {
   write_csv(df, fichier)
   message("  -> ", basename(fichier))
   invisible(fichier)
-}
-
-# Raccourcis pour les modules descriptifs, qui écrivent dans figures/
-sauver_carte_fig     <- function(tm, nom, ...) sauver_carte(tm, nom, ..., dossier = FIGURES)
-sauver_graphique_fig <- function(gg, nom, ...) sauver_graphique(gg, nom, ..., dossier = FIGURES)
-sauver_tableau_fig   <- function(df, nom)      sauver_tableau(df, nom, dossier = FIGURES)
-
-# Couche d'étiquettes pour les nuages de points. Utilise ggrepel (qui évite
-# les chevauchements) s'il est installé, sinon un geom_text décalé.
-ggrepel_ou_texte <- function(donnees, colonne = "Code", taille = 3) {
-  aes_etiq <- aes(label = .data[[colonne]])
-  if (requireNamespace("ggrepel", quietly = TRUE)) {
-    ggrepel::geom_text_repel(
-      data = donnees, mapping = aes_etiq,
-      size = taille, min.segment.length = 0,
-      segment.size = 0.25, segment.colour = "grey60",
-      max.overlaps = Inf, seed = 2026
-    )
-  } else {
-    geom_text(data = donnees, mapping = aes_etiq,
-              size = taille, hjust = -0.2, vjust = -0.4)
-  }
 }
 
 # Écriture d'un bloc de résultats texte (sorties de tests statistiques).
@@ -441,7 +412,7 @@ carte_villes_region <- function(villes, fond, emprise, titre, fichier,
     tm_title(titre) +
     tm_credits(credits, position = tm_pos_in("left", "bottom"), size = 0.7)
 
-  sauver_carte_fig(carte, fichier, largeur = largeur, hauteur = hauteur)
+  sauver_carte(carte, fichier, largeur = largeur, hauteur = hauteur)
   invisible(carte)
 }
 

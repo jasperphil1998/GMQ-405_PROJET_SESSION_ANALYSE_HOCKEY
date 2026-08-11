@@ -48,6 +48,3 @@ Ces trois points sont documentés ici parce qu'ils expliquent des différences
 visibles entre l'archive et les modules — pas pour critiquer le travail
 d'origine, qui a produit l'essentiel du contenu du projet.
 
----
-
-Détail complet de la fusion : [`../docs/FUSION.md`](../docs/FUSION.md).

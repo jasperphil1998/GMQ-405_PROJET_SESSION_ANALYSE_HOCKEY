@@ -8,18 +8,14 @@
 # --- RStudio ---
 .Rproj.user/
 
-# --- Sorties DESCRIPTIVES (modules 02 à 05 et 11) ---
-# Régénérées en quelques minutes par run_all.R. On ne les versionne pas pour
-# garder le dépôt léger.
-figures/
-
-# --- Sorties STATISTIQUES (modules 06 à 10 et 12) ---
-# Le dossier sorties/ EST versionné volontairement : les journaux *.txt
-# contiennent les résultats des tests avec leur interprétation, et on doit
-# pouvoir les citer dans le rapport sans relancer R.
+# --- Sorties ---
+# Tout va dans sorties/ : cartes, graphiques, tableaux et journaux. Le dossier
+# EST versionné volontairement : les journaux *.txt contiennent les résultats
+# des tests avec leur interprétation, et on doit pouvoir citer n'importe quelle
+# sortie dans le rapport sans relancer R.
 #
 # Seule exception : le fichier .rds, artefact binaire intermédiaire produit
-# par 06_normalisation.R et relu par 07, 10 et 12. Il se régénère en quelques
+# par 06_normalisation.R et relu par 07 et 10. Il se régénère en quelques
 # secondes et n'a aucun intérêt pour un lecteur humain.
 sorties/*.rds
 

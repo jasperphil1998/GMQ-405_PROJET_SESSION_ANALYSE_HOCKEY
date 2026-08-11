@@ -46,7 +46,7 @@ graph_top15_pays <- ggplot(top15_pays, aes(x = reorder(Country, n), y = n)) +
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_top15_pays, "graph_top15_pays.png",
+sauver_graphique(graph_top15_pays, "graph_top15_pays.png",
                      largeur = 10, hauteur = 6)
 
 
@@ -66,7 +66,7 @@ graph_decennie <- ggplot(joueurs_decennie, aes(x = Decennie, y = n)) +
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_decennie, "graph_joueurs_decennie.png",
+sauver_graphique(graph_decennie, "graph_joueurs_decennie.png",
                      largeur = 10, hauteur = 6)
 
 
@@ -93,7 +93,7 @@ graph_evolution_geo_prop <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_evolution_geo_prop,
+sauver_graphique(graph_evolution_geo_prop,
                      "graph_evolution_geo_proportion.png",
                      largeur = 10, hauteur = 6)
 
@@ -120,7 +120,7 @@ graph_top20_villes <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_top20_villes, "graph_top20_villes.png",
+sauver_graphique(graph_top20_villes, "graph_top20_villes.png",
                      largeur = 11, hauteur = 7)
 
 
@@ -155,7 +155,7 @@ graph_moyenne_pts_pays <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_moyenne_pts_pays, "graph_moyenne_pts_pays.png",
+sauver_graphique(graph_moyenne_pts_pays, "graph_moyenne_pts_pays.png",
                      largeur = 10, hauteur = 6)
 
 
@@ -175,7 +175,7 @@ graph_boxplot_position <- hockey |>
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_boxplot_position, "graph_boxplot_position.png",
+sauver_graphique(graph_boxplot_position, "graph_boxplot_position.png",
                      largeur = 9, hauteur = 6)
 
 
@@ -203,7 +203,7 @@ graph_gp_pts <- ggplot(hockey, aes(x = GP, y = Pts)) +
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_gp_pts, "graph_relation_gp_pts.png",
+sauver_graphique(graph_gp_pts, "graph_relation_gp_pts.png",
                      largeur = 10, hauteur = 6)
 
 # Coefficient de la régression, utile à citer dans le rapport
@@ -244,7 +244,7 @@ graph_top20_villes_pts <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_top20_villes_pts, "graph_top20_villes_points.png",
+sauver_graphique(graph_top20_villes_pts, "graph_top20_villes_points.png",
                      largeur = 11, hauteur = 7)
 
 
@@ -271,7 +271,7 @@ graph_elite_pays <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_elite_pays, "graph_elite_pays.png",
+sauver_graphique(graph_elite_pays, "graph_elite_pays.png",
                      largeur = 9, hauteur = 6)
 
 
@@ -308,7 +308,7 @@ graph_pim_pays <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_pim_pays, "graph_pays_minutes_penalite.png",
+sauver_graphique(graph_pim_pays, "graph_pays_minutes_penalite.png",
                      largeur = 10, hauteur = 6)
 
 
@@ -337,7 +337,7 @@ graph_points_position <- ggplot(
   ) +
   theme_minimal()
 
-sauver_graphique_fig(graph_points_position, "graph_points_position.png",
+sauver_graphique(graph_points_position, "graph_points_position.png",
                      largeur = 10, hauteur = 6)
 
 

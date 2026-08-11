@@ -2,7 +2,7 @@
 
 Analyse de la provenance géographique des joueurs de la LNH : d'où viennent-ils,
 comment cette provenance a-t-elle évolué, et cette géographie est-elle
-statistiquement structurée ?
+structurée ?
 
 Projet réalisé dans le cadre du cours **GMQ-405**.
 
@@ -14,19 +14,17 @@ Projet réalisé dans le cadre du cours **GMQ-405**.
 
 ---
 
-## Ce qui a changé : le projet est maintenant modulaire
+## Le projet est modulaire
 
 Le projet vivait auparavant sur cinq branches parallèles, dont deux structures
 incompatibles : un script unique de 1 689 lignes (`Projet_Hockey_script.R`) et
 un dossier `analyse_spatiale/` de scripts séparés. **Tout est maintenant réuni
-dans un seul dossier `R/` de douze modules numérotés.**
+dans un seul dossier `R/` de dix modules numérotés.**
 
 Le script d'origine est conservé **intégralement** dans
 [`archive/Projet_Hockey_script_ORIGINAL.R`](archive/Projet_Hockey_script_ORIGINAL.R).
 Il n'est plus exécuté, mais il reste la référence : chaque module indique en
 en-tête de quelle section il provient. Voir [`archive/README.md`](archive/README.md).
-
-Détail complet de la fusion : [`docs/FUSION.md`](docs/FUSION.md).
 
 ---
 
@@ -49,7 +47,7 @@ source("run_all.R")
 Pour ne relancer qu'une partie :
 
 ```r
-source("run_all.R"); lancer_modules(c("06", "07", "10"))
+source("run_all.R"); lancer_modules(c("06", "07"))
 ```
 
 ---
@@ -60,7 +58,7 @@ source("run_all.R"); lancer_modules(c("06", "07", "10"))
 GMQ-405_PROJET_SESSION_ANALYSE_HOCKEY/
 ├── run_all.R                   # Lance toute la chaîne (ou une sélection)
 ├── install_packages.R          # Installe les dépendances (à lancer une fois)
-├── R/                          # Les douze modules
+├── R/                          # Les dix modules
 │   ├── 00_config.R             #   configuration commune (sourcée par tous)
 │   ├── 01_geocodage.R          #   géocodage incrémental
 │   ├── 02_graphiques.R         #   11 graphiques descriptifs
@@ -68,12 +66,10 @@ GMQ-405_PROJET_SESSION_ANALYSE_HOCKEY/
 │   ├── 04_cartes_villes.R      #   18 cartes par ville de naissance
 │   ├── 05_tableaux.R           #   6 tableaux pour le rapport
 │   ├── 06_normalisation.R      #   taux et quotient de localisation
-│   ├── 07_autocorrelation.R    #   Moran, LISA, Getis-Ord, MAUP
-│   ├── 08_semis_points.R       #   densité de noyau, risque relatif, Ripley
-│   ├── 09_centrographie.R      #   centres de gravité par décennie
-│   ├── 10_modelisation.R       #   OLS, SEM, SAR, binomial négatif, GWR
-│   ├── 11_stkde.R              #   ← chantier de Xavier Lafrance
-│   └── 12_clustgeo.R           #   ← chantier de Xavier Lafrance
+│   ├── 07_grille_hexagonale.R  #   production moyenne par cellule de 200 km
+│   ├── 08_semis_points.R       #   surface de risque relatif (joueurs d'élite)
+│   ├── 09_stkde.R              #   ← chantier de Xavier Lafrance
+│   └── 10_clustgeo.R           #   ← chantier de Xavier Lafrance
 ├── archive/
 │   ├── Projet_Hockey_script_ORIGINAL.R   # le script d'origine, intact
 │   └── README.md
@@ -84,28 +80,28 @@ GMQ-405_PROJET_SESSION_ANALYSE_HOCKEY/
 │   ├── geocodage/                        # cache de géocodage
 │   └── source/                           # fichiers sources originaux
 ├── docs/
-│   ├── FUSION.md                         # ce qui a été fusionné et pourquoi
-│   ├── GUIDE_XAVIER.md                   # pour reprendre les modules 11 et 12
-│   ├── RESULTATS_analyse_spatiale.md     # résultats détaillés des modules 06-10
 │   └── REFERENCES.md                     # bibliographie
-├── figures/                              # sorties descriptives (NON versionnées)
-└── sorties/                              # sorties statistiques (versionnées)
+└── sorties/                              # TOUTES les sorties (versionnées)
 ```
 
-### Deux dossiers de sortie, et c'est voulu
+### Un seul dossier de sortie
 
-| Dossier | Contenu | Versionné ? | Pourquoi |
-|---|---|---|---|
-| `figures/` | graphiques et cartes descriptives (modules 02-05, 11) | non | volumineux, se régénère en quelques minutes |
-| `sorties/` | résultats des tests statistiques (modules 06-10, 12) | **oui** | on doit pouvoir citer un *p*-value dans le rapport sans relancer R |
+Cartes, graphiques, tableaux et journaux vont tous dans `sorties/`, qui **est
+versionné**. On doit pouvoir citer n'importe quelle sortie dans le rapport sans
+relancer R. Seule exception ignorée par git : `sorties/unites_normalisees.rds`,
+artefact binaire intermédiaire qui se régénère en quelques secondes.
 
 Les fichiers `sorties/*_resultats_*.txt` contiennent les sorties complètes des
 tests **avec leur interprétation rédigée**. Ce sont eux qu'il faut lire en
 premier.
 
+Les sorties des modules 06 à 10 sont préfixées par leur numéro de module ; celles
+des modules descriptifs 02 à 05 portent un nom parlant (`carte_`, `graph_`,
+`table_`).
+
 ---
 
-## Les douze modules
+## Les dix modules
 
 ### Volet descriptif — « d'où viennent les joueurs ? »
 
@@ -117,33 +113,26 @@ premier.
 | **04** Cartes par ville | 18 cartes : monde, 7 régions canadiennes, 6 américaines, Europe, nordiques, Russie ×2 | SECTION 3 |
 | **05** Tableaux | 6 CSV prêts à insérer dans le rapport | SECTION 4 |
 
-### Volet statistique — « cette géographie est-elle réelle ? »
+### Volet analytique — « cette géographie est-elle réelle ? »
 
-| Module | Ce qu'il démontre | Résultat marquant |
+| Module | Ce qu'il montre | Résultat marquant |
 |---|---|---|
 | **06** Normalisation | les effectifs bruts sont surtout une carte de la population | la Saskatchewan passe du **4ᵉ rang brut au 1ᵉʳ en taux** (QL = 24,8) |
-| **07** Autocorrélation | la structure spatiale est statistiquement réelle | I de Moran = 0,320, *p* < 10⁻⁸ — mais **aucune** autocorrélation des points moyens par joueur |
-| **08** Semis de points | densité continue plutôt que cercles saturés | le sud de l'Ontario atteint ~16,6 % de joueurs d'élite contre 6,5 % au national |
-| **09** Centrographie | croise enfin l'espace et le temps | le centre mondial dérive de **2 201 km vers l'est** ; au Canada, **693 km vers l'ouest** (ρ = −0,80) |
-| **10** Modélisation | explique, et pas seulement décrit | SEM retenu ; latitude (+) et densité de population (+) significatives ; **GWR rejetée** |
-
-Interprétations complètes et mises en garde :
-[`docs/RESULTATS_analyse_spatiale.md`](docs/RESULTATS_analyse_spatiale.md).
+| **07** Grille hexagonale | s'affranchit des frontières administratives | production moyenne par joueur, cellules de 200 km |
+| **08** Semis de points | le volume est neutralisé par un rapport de densités | le sud de l'Ontario atteint ~16,6 % de joueurs d'élite contre 6,5 % au national |
 
 ### Chantiers en cours
 
 | Module | État | Responsable |
 |---|---|---|
-| **11** STKDE | vérifié à l'exécution, trois `# TODO XAVIER` ouverts | Xavier Lafrance |
-| **12** ClustGeo | trame exécutable, quatre `# CHOIX XAVIER` à trancher | Xavier Lafrance |
+| **09** STKDE | vérifié à l'exécution | Xavier Lafrance |
+| **10** ClustGeo | classification spatiale, choix d'alpha documenté | Xavier Lafrance |
 
-Voir [`docs/GUIDE_XAVIER.md`](docs/GUIDE_XAVIER.md).
-
-⏱️ **Le module 11 coûte 5 min 20 s et 2,2 Go de RAM** — huit fois plus que les
-onze autres réunis. Pour une exécution rapide, le sauter :
+⏱️ **Le module 09 coûte 5 min 20 s et 2,2 Go de RAM** — bien plus que les neuf
+autres réunis. Pour une exécution rapide, le sauter :
 
 ```r
-source("run_all.R"); lancer_modules(c("01","02","03","04","05","06","07","08","09","10","12"))
+source("run_all.R"); lancer_modules(c("01","02","03","04","05","06","07","08","10"))
 ```
 
 ---
@@ -153,20 +142,20 @@ source("run_all.R"); lancer_modules(c("01","02","03","04","05","06","07","08","0
 | État | Signification |
 |---|---|
 | `ok` | le module a tourné **et produit ses sorties** |
-| `IGNORE` | il s'est sauté faute d'un paquet optionnel — **aucune sortie** |
-| `ECHEC` | il a planté ; les suivants ont continué |
+| `IGNORÉ` | il s'est désactivé faute d'un paquet optionnel — **aucune sortie** |
+| `ÉCHEC` | il a planté ; les suivants ont continué |
 
-La distinction `ok` / `IGNORE` compte : un module sauté affichait auparavant
+La distinction `ok` / `IGNORÉ` compte : un module sauté affichait auparavant
 `ok`, et on ne s'en apercevait qu'en cherchant une sortie qui n'existait pas.
 
 ---
 
 ## Dépendances entre modules
 
-La plupart des modules sont indépendants. Trois contraintes seulement :
+La plupart des modules sont indépendants. Deux contraintes seulement :
 
-- **01 avant 04, 08, 09 et 11** — ils ont besoin des coordonnées ;
-- **06 avant 07, 10 et 12** — il produit `sorties/unites_normalisees.rds` ;
+- **01 avant 04, 07, 08 et 09** — ils ont besoin des coordonnées ;
+- **06 avant 07 et 10** — il produit `sorties/unites_normalisees.rds` ;
 - `run_all.R` respecte cet ordre tout seul.
 
 Un module qui échoue n'arrête pas les autres : `run_all.R` affiche un bilan
@@ -176,6 +165,10 @@ final avec l'état de chacun.
 
 ## Conventions de code
 
+**Français accentué.** Commentaires, titres de figures et journaux de sortie
+sont rédigés en français correct, accents compris. Les noms de variables, de
+colonnes et de fichiers restent en ASCII.
+
 **Pipe natif `|>`.** Tout le projet l'utilise, jamais `%>%`. C'est le choix pris
 par l'équipe (commit « Remplacer %>% par |> ») et il évite une dépendance à
 magrittr. Attention : la fonction de droite doit être un **appel**, donc
@@ -183,9 +176,8 @@ magrittr. Attention : la fonction de droite doit être un **appel**, donc
 
 **Méthodes du cours.** Les méthodes et les packages suivent le manuel
 d'Apparicio et Gelb, *Méthodes d'analyse spatiale : un grand bol d'R* :
-`sf` et `tmap` (chap. 1), `spdep` (chap. 2), `spatstat` (chap. 3-4),
-`spatialreg` et `spgwr` (chap. 7), `ClustGeo` (chap. 8). Chaque module renvoie
-à la section correspondante.
+`sf` et `tmap` (chap. 1), `spatstat` (chap. 3-4), `ClustGeo` (chap. 8). Chaque
+module renvoie à la section correspondante.
 
 **Syntaxe tmap 4.** Le projet utilise `tm_scale_*`, `tm_legend()`, `tm_title()`,
 `fill` / `col` séparés. Les tournures tmap 3 (`alpha =`, `scale =` nu,
@@ -194,8 +186,8 @@ d'Apparicio et Gelb, *Méthodes d'analyse spatiale : un grand bol d'R* :
 **Projections.** Les cartes descriptives restent en EPSG:4326 (acceptable pour
 afficher des symboles). Dès qu'un calcul porte sur une **distance**, une
 **aire** ou une **densité**, on projette : Albers équivalente pour l'Amérique du
-Nord, EPSG:3347 pour le Canada, LAEA pour l'Atlantique Nord. Un degré de
-longitude vaut ~78 km à Toronto et ~52 km à Yellowknife : la précaution n'est
+Nord, EPSG:3347 pour le Canada, cylindrique équivalente pour le monde. Un degré
+de longitude vaut ~78 km à Toronto et ~52 km à Yellowknife : la précaution n'est
 pas cosmétique.
 
 **Interprétations générées, pas rédigées d'avance.** Les textes des journaux de
@@ -229,6 +221,9 @@ Champs requis dans le jeu principal : `Player Name`, `Pos.`, `Birthdate`
 > (`POP_YEAR = 2019`), pas un chiffre de recensement. À signaler comme tel dans
 > le rapport.
 
+> ℹ️ `equipes_lnh.csv` n'est plus lu par aucun module depuis le retrait du volet
+> modélisation. Il est conservé comme donnée de référence.
+
 > ℹ️ Le module 01 signale que **64 lieux du cache n'ont pas de coordonnées**
 > (Shawinigan, Chambly, Charlottetown, quelques villes européennes…). Ces
 > joueurs sont exclus de toutes les analyses spatiales. C'est un point à
@@ -247,12 +242,12 @@ r-universe (il n'est **pas** sur le CRAN). Selon l'environnement, l'installation
 de `sf` peut demander des dépendances géospatiales système.
 
 **Requis** : `readr`, `dplyr`, `tidyr`, `stringr`, `lubridate`, `ggplot2`,
-`scales`, `sf`, `tmap`, `rnaturalearth`, `rnaturalearthdata`, `spdep`,
-`spatialreg`, `spatstat.geom`, `spatstat.explore`.
+`scales`, `sf`, `tmap`, `rnaturalearth`, `rnaturalearthdata`, `spatstat.geom`,
+`spatstat.explore`.
 
 **Optionnels** (les modules concernés sont simplement ignorés s'ils manquent) :
-`rnaturalearthhires`, `tidygeocoder`, `ggrepel`, `MASS`, `spgwr`, `ClustGeo`,
-`sparr`, `terra`, `gifski`, `classInt`, `viridis`.
+`rnaturalearthhires`, `tidygeocoder`, `ClustGeo`, `sparr`, `terra`, `gifski`,
+`classInt`, `viridis`.
 
 ---
 
@@ -295,16 +290,13 @@ démarrer, indiquez où se trouve **votre** installation de R dans vos réglages
    Toronto et formé en Saskatchewan compte comme torontois. Ce biais est
    structurel et aucune méthode statistique ne le corrige avec ces données.
    C'est la limite la plus importante de tout le projet.
-2. **La latitude est une approximation grossière du climat** (module 10). Une
-   température moyenne de janvier extraite d'une couche matricielle serait bien
-   plus directe.
-3. **La baie d'Hudson est traitée comme un océan modérateur** alors qu'elle est
-   gelée une bonne partie de l'année : la continentalité du Manitoba est
-   sous-estimée.
-4. **n = 64 unités.** C'est peu pour une régression à 4 variables, et ça limite
-   la puissance de tous les tests.
-5. **La fonction L de Ripley** (module 08) est rapportée avec une mise en garde
-   explicite : son hypothèse nulle est fausse d'avance. Voir le journal de
-   sortie.
-6. **Corrélation n'est pas causalité.** Ces modèles décrivent des associations
-   spatiales, ils ne démontrent aucun mécanisme.
+2. **Le découpage en cellules est arbitraire** (module 07). Une grille de 200 km
+   est un choix : le MAUP veut que les résultats dépendent de la taille et du
+   calage des cellules.
+3. **Les seuils d'élite sont conventionnels.** 1 000 points dans les modules
+   descriptifs, 500 points dans le module 08 : ce sont des repères, pas des
+   catégories naturelles.
+4. **64 lieux de naissance restent sans coordonnées** et sont exclus de toutes
+   les cartes et de toutes les analyses spatiales.
+5. **Corrélation n'est pas causalité.** Ces cartes décrivent des associations
+   spatiales, elles ne démontrent aucun mécanisme.

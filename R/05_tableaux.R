@@ -23,7 +23,7 @@ table_pays <- hockey |>
   count(Country, sort = TRUE) |>
   mutate(Pourcentage = round(n / sum(n) * 100, 2))
 
-sauver_tableau_fig(table_pays, "table_joueurs_pays.csv")
+sauver_tableau(table_pays, "table_joueurs_pays.csv")
 
 
 ## Top 20 des lieux de naissance selon le nombre de joueurs ------------------
@@ -32,7 +32,7 @@ top20_villes <- hockey |>
   count(Birthplace, GroupeGeo, sort = TRUE) |>
   slice_head(n = 20)
 
-sauver_tableau_fig(top20_villes, "table_top20_villes.csv")
+sauver_tableau(top20_villes, "table_top20_villes.csv")
 
 
 ## Top 20 des lieux de naissance selon les points totaux ---------------------
@@ -48,7 +48,7 @@ top20_villes_pts <- hockey |>
   arrange(desc(TotalPts)) |>
   slice_head(n = 20)
 
-sauver_tableau_fig(top20_villes_pts, "table_top20_villes_points.csv")
+sauver_tableau(top20_villes_pts, "table_top20_villes_points.csv")
 
 
 ## Joueurs de 1000 points et plus --------------------------------------------
@@ -58,13 +58,13 @@ joueurs_1000 <- hockey |>
   arrange(desc(Pts)) |>
   select(`Player Name`, `Pos.`, Birthdate, Birthplace, Country, GP, G, A, Pts)
 
-sauver_tableau_fig(joueurs_1000, "table_joueurs_1000pts.csv")
+sauver_tableau(joueurs_1000, "table_joueurs_1000pts.csv")
 message("Joueurs de ", SEUIL_ELITE_PTS, " points et plus : ",
         nrow(joueurs_1000))
 
 
 ## Répartition par décennie et groupe géographique ---------------------------
-# Tableau chiffre correspondant au graphique 3 : le rapport a besoin des
+# Tableau chiffré correspondant au graphique 3 : le rapport a besoin des
 # valeurs, pas seulement de la figure.
 
 table_decennie_geo <- hockey |>
@@ -75,7 +75,7 @@ table_decennie_geo <- hockey |>
   arrange(Decennie) |>
   mutate(Total = rowSums(across(-Decennie)))
 
-sauver_tableau_fig(table_decennie_geo, "table_decennie_groupe_geo.csv")
+sauver_tableau(table_decennie_geo, "table_decennie_groupe_geo.csv")
 
 
 ## Statistiques par position -------------------------------------------------
@@ -93,7 +93,7 @@ table_positions <- hockey |>
   ) |>
   arrange(desc(NbJoueurs))
 
-sauver_tableau_fig(table_positions, "table_statistiques_positions.csv")
+sauver_tableau(table_positions, "table_statistiques_positions.csv")
 
 
 message("=== 05 terminé ===")

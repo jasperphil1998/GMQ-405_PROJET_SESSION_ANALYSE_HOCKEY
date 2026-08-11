@@ -19,25 +19,20 @@ packages_requis <- c(
   "tmap",               # cartographie thématique (version 4 requise)
   "rnaturalearth",
   "rnaturalearthdata",
-  "spdep",              # autocorrélation spatiale (modules 07, 10)
-  "spatialreg",         # modèles SAR / SEM (module 10)
   "spatstat.geom",      # objets ppp / owin (module 08)
-  "spatstat.explore",   # densité de noyau, fonction L (module 08)
+  "spatstat.explore",   # densité de noyau (module 08)
   "languageserver"      # requis par l'extension R de VS Code
 )
 
 # --- Optionnels : les modules concernés sont ignorés s'ils manquent ---------
 packages_optionnels <- c(
   "tidygeocoder",   # géocodage de nouveaux lieux         (module 01)
-  "ggrepel",        # étiquettes non chevauchantes        (modules 07, 09)
-  "MASS",           # binomial négatif, robustesse        (module 10)
-  "spgwr",          # régression géographiquement pondérée (module 10)
-  "ClustGeo",       # classification spatiale             (module 12)
-  "sparr",          # densité spatio-temporelle (STKDE)   (module 11)
-  "terra",          # rasters                             (module 11)
-  "gifski",         # animation GIF                       (module 11)
-  "classInt",       # discrétisation                      (module 11)
-  "viridis"         # palettes                            (module 11)
+  "ClustGeo",       # classification spatiale             (module 10)
+  "sparr",          # densité spatio-temporelle (STKDE)   (module 09)
+  "terra",          # rasters                             (module 09)
+  "gifski",         # animation GIF                       (module 09)
+  "classInt",       # discrétisation                      (module 09)
+  "viridis"         # palettes                            (module 09)
 )
 
 installer <- function(liste, etiquette) {

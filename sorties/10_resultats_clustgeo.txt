@@ -1,0 +1,185 @@
+=====================================================
+ ANALYSE SPATIALE — 10. CLASSIFICATION SPATIALE
+ Méthode ClustGeo (manuel, section 8.2.1)
+=====================================================
+Unités écartées (valeur manquante) : 9 -> NM, NU, HI, WY, KS, KY, AR, TN, WV
+Unités classées : 55
+Variables : TauxPar100k, PtsPar100k, PtsMoyen, PartElite
+
+--- SOMMAIRE DES VARIABLES AVANT NORMALISATION ---
+
+  TauxPar100k         PtsPar100k          PtsMoyen        PartElite     
+ Min.   : 0.02147   Min.   :   0.032   Min.   :  0.50   Min.   :0.0000  
+ 1st Qu.: 0.11706   1st Qu.:   8.509   1st Qu.: 67.29   1st Qu.:0.0000  
+ Median : 0.33835   Median :  48.380   Median :109.05   Median :0.0000  
+ Mean   : 3.98570   Mean   : 445.411   Mean   :106.42   Mean   :0.5322  
+ 3rd Qu.: 2.94802   3rd Qu.: 296.671   3rd Qu.:130.50   3rd Qu.:0.1211  
+ Max.   :47.77021   Max.   :5273.619   Max.   :409.50   Max.   :7.1429  
+
+--- INERTIE EXPLIQUÉE SELON ALPHA ---
+
+           alpha     Q0     Q1
+alpha=0     0.00 0.7971 0.1149
+alpha=0.05  0.05 0.7971 0.1149
+alpha=0.1   0.10 0.7734 0.2940
+alpha=0.15  0.15 0.7501 0.2844
+alpha=0.2   0.20 0.7138 0.4056
+alpha=0.25  0.25 0.5865 0.7007
+alpha=0.3   0.30 0.5876 0.6967
+alpha=0.35  0.35 0.5876 0.6967
+alpha=0.4   0.40 0.5876 0.6967
+alpha=0.45  0.45 0.5618 0.6314
+alpha=0.5   0.50 0.3930 0.7729
+alpha=0.55  0.55 0.3927 0.7826
+alpha=0.6   0.60 0.3658 0.7849
+alpha=0.65  0.65 0.4436 0.7726
+alpha=0.7   0.70 0.3623 0.7894
+alpha=0.75  0.75 0.3623 0.7894
+alpha=0.8   0.80 0.3523 0.7850
+alpha=0.85  0.85 0.3579 0.8021
+alpha=0.9   0.90 0.2193 0.8181
+alpha=0.95  0.95 0.2101 0.8226
+alpha=1     1.00 0.2054 0.8172
+Alpha retenu : 0.23
+
+--- NOMBRE D'UNITÉS PAR CLASSE (alpha = 0.23) ---
+
+
+ 1  2  3  4  5 
+ 8  5 33  5  4 
+
+--- NOMBRE D'UNITÉS PAR CLASSE (alpha = 0, sans contrainte) ---
+
+
+ 1  2  3  4  5 
+37  7  6  1  4 
+
+--- PROFIL MOYEN DE CHAQUE CLASSE ---
+
+  Classe NbUnites Population NbJoueurs TauxPar100k PtsPar100k PtsMoyen
+1      4        5   25354764      4327       25.65     2906.8    118.2
+2      2        5   10078207      1114        8.67     1040.9    121.7
+3      5        4   42163519       168        2.51      347.8    157.4
+4      3       33  239873299      1438        1.09       91.3     68.5
+5      1        8   27625175        42        0.18       44.3    220.2
+  PartElite
+1      0.96
+2      0.37
+3      4.77
+4      0.11
+5      0.00
+
+--- COMPOSITION DÉTAILLÉE DES CLASSES ---
+
+   Classe Code                     Unite   Pays TauxPar100k   PtsPar100k
+1       1   VT                   Vermont    USA  0.31100475 1.273564e+02
+2       1   DC      District de Columbia    USA  0.29004633 7.381679e+01
+3       1   NE                  Nebraska    USA  0.25490644 5.067540e+01
+4       1   WA                Washington    USA  0.20764979 2.391866e+01
+5       1   UT                      Utah    USA  0.15282967 1.983729e+01
+6       1   AZ                   Arizona    USA  0.12584769 3.423057e+01
+7       1   MT                   Montana    USA  0.09223178 1.669395e+01
+8       1   SC           Caroline du Sud    USA  0.03907452 7.853979e+00
+9       2   AB                   Alberta Canada 15.69451759 1.629016e+03
+10      2   NT Territoires du Nord-Ouest Canada 12.17433650 1.704407e+03
+11      2   BC      Colombie-Britannique Canada  8.45851299 9.591714e+02
+12      2   YT                     Yukon Canada  4.97116723 6.760787e+02
+13      2   AK                    Alaska    USA  2.04529371 2.360269e+02
+14      3   NB         Nouveau-Brunswick Canada  6.96226196 5.418961e+02
+15      3   NL   Terre-Neuve-et-Labrador Canada  6.26775047 5.809421e+02
+16      3   MN                 Minnesota    USA  5.52002683 5.631304e+02
+17      3   MA             Massachusetts    USA  3.20060678 3.573157e+02
+18      3   ND            Dakota du Nord    USA  2.69543855 7.791101e+01
+19      3   RI              Rhode Island    USA  2.09590306 1.044306e+02
+20      3   MI                  Michigan    USA  2.05411532 2.291877e+02
+21      3   NH             New Hampshire    USA  1.08890630 5.117860e+01
+22      3   CT               Connecticut    USA  0.99835161 1.167239e+02
+23      3   NY                  New York    USA  0.74252835 8.569767e+01
+24      3   ME                     Maine    USA  0.66061882 2.407589e+01
+25      3   IL                  Illinois    USA  0.61658498 5.517265e+01
+26      3   CO                  Colorado    USA  0.38103723 2.473278e+01
+27      3   NJ                New Jersey    USA  0.34449371 4.837984e+01
+28      3   SD             Dakota du Sud    USA  0.33834574 2.368420e+00
+29      3   PA              Pennsylvanie    USA  0.31531913 2.357203e+01
+30      3   OH                      Ohio    USA  0.30509902 4.045104e+01
+31      3   IN                   Indiana    USA  0.19158421 2.335854e+01
+32      3   OR                    Oregon    USA  0.18880143 5.286440e+00
+33      3   CA                Californie    USA  0.14163510 8.432347e+00
+34      3   OK                  Oklahoma    USA  0.12628326 9.673298e+00
+35      3   IA                      Iowa    USA  0.12537735 9.403301e-01
+36      3   ID                     Idaho    USA  0.10874849 5.437424e-02
+37      3   DE                  Delaware    USA  0.10101541 8.586310e+00
+38      3   FL                   Floride    USA  0.09750124 1.063228e+01
+39      3   VA                  Virginie    USA  0.09268492 6.626972e+00
+40      3   MD                  Maryland    USA  0.08094251 9.227446e-01
+41      3   AL                   Alabama    USA  0.05971006 4.159801e+00
+42      3   NC          Caroline du Nord    USA  0.05747463 1.657185e+00
+43      3   MS               Mississippi    USA  0.03376919 3.106766e+00
+44      3   NV                    Nevada    USA  0.03221012 3.221012e-02
+45      3   GA                   Georgie    USA  0.02800622 7.841740e-01
+46      3   LA                 Louisiane    USA  0.02146956 1.545808e+00
+47      4   SK              Saskatchewan Canada 47.77020852 5.273619e+03
+48      4   MB                  Manitoba Canada 30.77145452 2.826950e+03
+49      4   PE     Ile-du-Prince-Edouard Canada 22.03057066 2.850367e+03
+50      4   ON                   Ontario Canada 17.20338848 2.206814e+03
+51      4   QC                    Quebec Canada 10.49185511 1.376480e+03
+52      5   NS           Nouvelle-Ecosse Canada  8.87162247 1.206334e+03
+53      5   WI                 Wisconsin    USA  0.69565595 1.203485e+02
+54      5   MO                  Missouri    USA  0.43867395 5.532166e+01
+55      5   TX                     Texas    USA  0.04803485 9.346210e+00
+    PtsMoyen PartElite
+1  409.50000 0.0000000
+2  254.50000 0.0000000
+3  198.80000 0.0000000
+4  115.18750 0.0000000
+5  129.80000 0.0000000
+6  272.00000 0.0000000
+7  181.00000 0.0000000
+8  201.00000 0.0000000
+9  103.79522 0.8968610
+10 140.00000 0.0000000
+11 113.39716 0.9456265
+12 136.00000 0.0000000
+13 115.40000 0.0000000
+14  77.83333 0.0000000
+15  92.68750 0.0000000
+16 102.01587 0.3174603
+17 111.64000 0.8888889
+18  28.90476 0.0000000
+19  49.82609 0.0000000
+20 111.57488 0.9661836
+21  47.00000 0.0000000
+22 116.91667 0.0000000
+23 115.41333 1.3333333
+24  36.44444 0.0000000
+25  89.48101 0.0000000
+26  64.90909 0.0000000
+27 140.43750 0.0000000
+28   7.00000 0.0000000
+29  74.75610 0.0000000
+30 132.58333 0.0000000
+31 121.92308 0.0000000
+32  28.00000 0.0000000
+33  59.53571 0.0000000
+34  76.60000 0.0000000
+35   7.50000 0.0000000
+36   0.50000 0.0000000
+37  85.00000 0.0000000
+38 109.04762 0.0000000
+39  71.50000 0.0000000
+40  11.40000 0.0000000
+41  69.66667 0.0000000
+42  28.83333 0.0000000
+43  92.00000 0.0000000
+44   1.00000 0.0000000
+45  28.00000 0.0000000
+46  72.00000 0.0000000
+47 110.39556 1.2939002
+48  91.86925 0.2421308
+49 129.38235 0.0000000
+50 128.27789 1.2668574
+51 131.19507 2.0179372
+52 135.97674 5.8139535
+53 173.00000 2.4390244
+54 126.11111 3.7037037
+55 194.57143 7.1428571

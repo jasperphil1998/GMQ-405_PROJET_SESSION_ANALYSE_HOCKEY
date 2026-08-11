@@ -1,5 +1,0 @@
-Variable,SigneOLS,ValeurP_OLS,SigneBinNeg,ValeurP_BinNeg,MemeSigne,Significatif,Verdict
-Latitude,+,1.29e-9,+,3.92e-25,TRUE,TRUE,"Robuste (significatif, même signe)"
-log(DensitePop),+,0.00216,+,0.0793,TRUE,TRUE,"Robuste (significatif, même signe)"
-DistCote_km,+,0.649,-,0.122,FALSE,FALSE,"Non significatif, signe instable (sans portée)"
-DistLNH_km,+,0.762,-,0.239,FALSE,FALSE,"Non significatif, signe instable (sans portée)"

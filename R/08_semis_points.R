@@ -1,5 +1,5 @@
 # =============================================================================
-# 08_semis_points.R — Analyse de semis de points (densité de noyau, Ripley)
+# 08_semis_points.R — Probabilité qu'un joueur devienne un joueur d'élite
 # =============================================================================
 # PROBLÈME TRAITÉ
 # Le module 04 représente les villes par des cercles proportionnels. Ce
@@ -8,20 +8,17 @@
 # l'information devient illisible. Une SURFACE DE DENSITÉ résout ce problème et
 # transforme un semis de points en champ continu interprétable.
 #
-# TROIS ANALYSES
-#  1. Densité de noyau pondérée : où se concentre la production de joueurs, et
-#     où se concentre la production de POINTS ?
-#  2. Surface de risque relatif : quelle est la probabilité qu'un joueur né à
-#     un endroit donné devienne un joueur d'élite ? Cet indicateur est un
-#     RAPPORT de deux densités, donc l'effet de la population s'annule.
-#  3. Fonction L de Ripley : les localités productrices sont-elles plus
-#     regroupées que le hasard, et à quelle distance ?
+# Surtout, ces cartes d'effectifs mélangent VOLUME et CALIBRE. La surface de
+# risque relatif calculée ici répond à une question qu'elles ne peuvent pas
+# poser : un joueur né à un endroit donné a-t-il plus de chances de devenir un
+# joueur d'élite ? L'indicateur est un RAPPORT de deux densités estimées avec
+# le même noyau, si bien que l'effet de la population s'annule.
 #
 # CADRE D'ÉTUDE : le Canada. C'est le pays qui fournit le plus de joueurs
 # (5598), ce qui donne une fenêtre d'observation bien remplie. La démarche est
 # transposable telle quelle à un autre pays en changeant PAYS_ETUDE.
 #
-# SORTIES : 4 figures, 1 tableau, 1 journal de résultats.
+# SORTIES : 1 figure, 1 journal de résultats.
 # =============================================================================
 
 if (!exists("RACINE")) source(file.path("R", "00_config.R"))
@@ -38,7 +35,6 @@ message("\n=== 08 — ANALYSE DE SEMIS DE POINTS ===")
 PAYS_ETUDE   <- "Canada"
 SIGMA        <- 100000   # rayon du noyau gaussien, en mètres (100 km)
 SEUIL_ELITE  <- 500      # seuil de "joueur d'élite" en points en carrière
-NB_SIM       <- 99       # simulations pour l'enveloppe de Ripley
 RESOLUTION   <- 300      # côtés de la grille de calcul
 
 jrn <- journal_resultats("08_resultats_semis_points.txt")
@@ -202,69 +198,7 @@ carte_surface <- function(image, titre, sous_titre, legende,
 
 
 # =============================================================================
-# 2. DENSITÉ DE NOYAU PONDÉRÉE
-# =============================================================================
-# density.ppp estime l'intensité locale du semis. En passant des POIDS, on
-# estime non pas la densité de localités, mais la densité de JOUEURS (ou de
-# points marqués) par unité de surface.
-#
-# Le choix de sigma est un arbitrage : trop petit, la surface se réduit à des
-# taches autour des grandes villes ; trop grand, tout est lisse. 100 km
-# correspond à l'échelle d'une région de recrutement.
-
-message("  Calcul des surfaces de densité...")
-
-densite_joueurs <- density.ppp(
-  semis, sigma = SIGMA, weights = villes_ok$NbJoueurs,
-  edge = TRUE   # correction de bordure : sans elle, la densité est
-                # systématiquement sous-estimée près des frontières
-)
-
-densite_points <- density.ppp(
-  semis, sigma = SIGMA, weights = villes_ok$TotalPts, edge = TRUE
-)
-
-# Conversion en unités lisibles : joueurs par 10 000 km2
-# (l'unité native est "joueurs par m2", illisible)
-densite_joueurs_lis <- eval.im(densite_joueurs * 1e10)
-densite_points_lis  <- eval.im(densite_points  * 1e10)
-
-carte_dens_joueurs <- carte_surface(
-  densite_joueurs_lis,
-  titre = paste0("Densité de production de joueurs de la LNH — ", PAYS_ETUDE),
-  sous_titre = paste0("Noyau gaussien, sigma = ", SIGMA / 1000,
-                      " km, correction de bordure"),
-  legende = "Joueurs par\n10 000 km2",
-  transformation = "sqrt"   # écrase la domination du corridor Windsor-Québec
-)
-
-sauver_graphique(carte_dens_joueurs, "08_carte_densite_joueurs.png",
-                 largeur = 10, hauteur = 7)
-
-carte_dens_points <- carte_surface(
-  densite_points_lis,
-  titre = paste0("Densité de production offensive — ", PAYS_ETUDE),
-  sous_titre = paste0("Points en carrière pondérés, sigma = ",
-                      SIGMA / 1000, " km"),
-  legende = "Points par\n10 000 km2",
-  transformation = "sqrt"
-)
-
-sauver_graphique(carte_dens_points, "08_carte_densite_points.png",
-                 largeur = 10, hauteur = 7)
-
-jrn$ecrire("")
-jrn$ecrire("--- Surfaces de densité ---")
-jrn$ecrire("Densité max de joueurs  : ",
-           round(max(densite_joueurs_lis), 1), " par 10 000 km2")
-jrn$ecrire("Densité max de points   : ",
-           round(max(densite_points_lis), 1), " par 10 000 km2")
-jrn$ecrire("L'échelle de couleur est en racine carrée : sans cela, le sud de")
-jrn$ecrire("l'Ontario écrase visuellement tout le reste du pays.")
-
-
-# =============================================================================
-# 3. SURFACE DE RISQUE RELATIF
+# 2. SURFACE DE RISQUE RELATIF
 # =============================================================================
 # QUESTION : un joueur né dans telle région a-t-il plus de chances de devenir
 # un joueur d'élite ?
@@ -275,7 +209,21 @@ jrn$ecrire("l'Ontario écrase visuellement tout le reste du pays.")
 # majeur ici : comme le numérateur et le dénominateur subissent la même
 # distribution de population sous-jacente, l'effet de la population S'ANNULE.
 # Aucune donnée démographique externe n'est nécessaire.
+#
+# Le choix de sigma est un arbitrage : trop petit, la surface se réduit à des
+# taches autour des grandes villes ; trop grand, tout est lissé. 100 km
+# correspond à l'échelle d'une région de recrutement.
 
+message("  Calcul des surfaces de densité...")
+
+# Dénominateur : densité de TOUS les joueurs.
+densite_joueurs <- density.ppp(
+  semis, sigma = SIGMA, weights = villes_ok$NbJoueurs,
+  edge = TRUE   # correction de bordure : sans elle, la densité est
+                # systématiquement sous-estimée près des frontières
+)
+
+# Numérateur : densité des seuls joueurs d'élite, MÊME noyau, MÊME correction.
 densite_elite <- density.ppp(
   semis, sigma = SIGMA, weights = villes_ok$NbEliteSeuil, edge = TRUE
 )
@@ -344,131 +292,6 @@ jrn$ecrire("VOLUME et CALIBRE : une région apparaît productive parce qu'elle")
 jrn$ecrire("envoie beaucoup de joueurs, pas nécessairement de meilleurs.")
 jrn$ecrire("Ici, le volume est au dénominateur : il est neutralisé.")
 
-
-# =============================================================================
-# 4. FONCTION L DE RIPLEY
-# =============================================================================
-# La fonction K de Ripley compte le nombre moyen de voisins dans un rayon r.
-# La fonction L = sqrt(K/pi) - r la stabilise : sous l'hypothèse nulle d'un
-# semis complètement aléatoire (CSR), L(r) = 0 pour tout r.
-#   L(r) > 0 -> regroupement à la distance r
-#   L(r) < 0 -> répulsion / régularité
-# L'enveloppe simule NB_SIM semis aléatoires et délimite l'intervalle
-# compatible avec le hasard.
-
-message("  Calcul de la fonction L de Ripley (", NB_SIM, " simulations)...")
-
-set.seed(2026)
-enveloppe_L <- envelope(
-  semis, Lest, nsim = NB_SIM, verbose = FALSE,
-  correction = "border"   # correction de bordure adaptée à une fenêtre
-)                         # aussi découpée que le Canada
-
-df_L <- as.data.frame(enveloppe_L) |>
-  mutate(across(everything(), as.numeric)) |>
-  mutate(r_km = r / 1000)
-
-graph_ripley <- ggplot(df_L, aes(x = r_km)) +
-  geom_ribbon(aes(ymin = lo / 1000, ymax = hi / 1000,
-                  fill = "Enveloppe du hasard"), alpha = 0.45) +
-  geom_line(aes(y = theo / 1000, colour = "Hypothèse nulle (CSR)"),
-            linetype = "dashed", linewidth = 0.7) +
-  geom_line(aes(y = obs / 1000, colour = "Semis observé"), linewidth = 0.9) +
-  scale_fill_manual(values = c("Enveloppe du hasard" = "grey70")) +
-  scale_colour_manual(values = c("Semis observé" = "#b2182b",
-                                 "Hypothèse nulle (CSR)" = "grey30")) +
-  labs(
-    title = paste0("Fonction L de Ripley — localités productrices de joueurs (",
-                   PAYS_ETUDE, ")"),
-    subtitle = paste0("Au-dessus de l'enveloppe = regroupement significatif. ",
-                      NB_SIM, " simulations."),
-    x = "Distance r (km)", y = "L(r) - r  (km)",
-    colour = NULL, fill = NULL,
-    caption = CREDITS
-  ) +
-  theme_minimal(base_size = 11) +
-  theme(legend.position = "bottom")
-
-sauver_graphique(graph_ripley, "08_graph_fonction_ripley.png",
-                 largeur = 9, hauteur = 6)
-
-# Résumé quantitatif : à quelles distances le regroupement est-il significatif ?
-df_L <- df_L |>
-  mutate(
-    Statut = case_when(
-      obs > hi ~ "Regroupement significatif",
-      obs < lo ~ "Répulsion significative",
-      TRUE     ~ "Compatible avec le hasard"
-    )
-  )
-
-resume_L <- df_L |>
-  filter(r > 0) |>
-  group_by(Statut) |>
-  summarise(
-    NbDistances = n(),
-    DistanceMin_km = round(min(r_km), 1),
-    DistanceMax_km = round(max(r_km), 1),
-    .groups = "drop"
-  )
-
-sauver_tableau(
-  df_L |> select(r_km, obs, theo, lo, hi, Statut),
-  "08_table_fonction_ripley.csv"
-)
-
-jrn$capturer(as.data.frame(resume_L),
-             "FONCTION L DE RIPLEY — plages de distance par statut")
-
-# Écart maximal à l'hypothèse nulle
-ligne_max <- df_L |> filter(r > 0) |> slice_max(obs - theo, n = 1)
-
-jrn$ecrire("")
-jrn$ecrire("Écart maximal au hasard à r = ", round(ligne_max$r_km, 1), " km")
-jrn$ecrire("  L(r) - r observé : ", round(ligne_max$obs / 1000, 2), " km")
-jrn$ecrire("  borne haute de l'enveloppe : ", round(ligne_max$hi / 1000, 2), " km")
-
-# Signalement automatique de l'artefact de grande distance
-repulsion <- df_L |> filter(Statut == "Répulsion significative", r > 0)
-if (nrow(repulsion) > 0) {
-  jrn$ecrire("")
-  jrn$ecrire("ARTEFACT À SIGNALER")
-  jrn$ecrire("Une 'répulsion significative' apparaît entre ",
-             round(min(repulsion$r_km), 0), " et ",
-             round(max(repulsion$r_km), 0), " km.")
-  jrn$ecrire("Il ne faut PAS l'interpréter comme un phénomène réel. Aux")
-  jrn$ecrire("grandes distances, la fonction L est dominée par la GÉOMÉTRIE de")
-  jrn$ecrire("la fenêtre : le Canada est un territoire très allongé d'est en")
-  jrn$ecrire("ouest, si bien que peu de paires de localités peuvent être")
-  jrn$ecrire("séparées de 700 km dans toutes les directions. La correction de")
-  jrn$ecrire("bordure atténue ce biais sans l'éliminer.")
-  jrn$ecrire("Règle pratique : ne pas interpréter L(r) au-delà du quart de la")
-  jrn$ecrire("plus petite dimension de la fenêtre.")
-}
-
-jrn$ecrire("")
-jrn$ecrire("MISE EN GARDE ESSENTIELLE SUR CE TEST")
-jrn$ecrire("L'hypothèse nulle CSR suppose que les localités productrices")
-jrn$ecrire("pourraient se répartir UNIFORMÉMENT sur le territoire canadien.")
-jrn$ecrire("C'est évidemment faux : la population elle-même est concentrée")
-jrn$ecrire("dans le sud du pays. Un rejet de CSR était donc acquis d'avance et")
-jrn$ecrire("ne démontre RIEN sur le hockey : il redémontre que les Canadiens")
-jrn$ecrire("vivent en ville.")
-jrn$ecrire("")
-jrn$ecrire("Ce test est rapporté pour deux raisons légitimes :")
-jrn$ecrire(" 1. il quantifie l'ÉCHELLE du regroupement (la distance à laquelle")
-jrn$ecrire("    l'écart au hasard est maximal), information utile en soi ;")
-jrn$ecrire(" 2. il illustre une règle de méthode : un test spatial ne vaut que")
-jrn$ecrire("    ce que vaut son hypothèse nulle.")
-jrn$ecrire("")
-jrn$ecrire("Un test rigoureux exigerait une hypothèse nulle INHOMOGÈNE, calée")
-jrn$ecrire("sur la densité de population (fonction Linhom avec une intensité")
-jrn$ecrire("issue d'une grille de population). C'est la principale piste")
-jrn$ecrire("d'amélioration de cette section.")
-jrn$ecrire("")
-jrn$ecrire("À l'inverse, la surface de risque relatif de la section 3 n'a PAS")
-jrn$ecrire("ce défaut : le rapport de deux densités élimine l'effet de la")
-jrn$ecrire("population. C'est le résultat le plus solide de ce module.")
 
 jrn$fermer()
 message("=== 08 terminé ===")

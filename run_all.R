@@ -8,24 +8,22 @@
 #       Rscript run_all.R
 #
 #   Pour ne relancer qu'une partie :
-#       source("run_all.R"); lancer_modules(c("07", "10"))
+#       source("run_all.R"); lancer_modules(c("07", "08"))
 #
 # ORDRE ET DÉPENDANCES
 #   00  configuration        : sourcée une fois, obligatoire
-#   01  géocodage            : avant 04, 08, 09, 11
+#   01  géocodage            : avant 04, 07, 08 et 09
 #   02-05 descriptif         : indépendants
-#   06  normalisation        : avant 07, 10 et 12 (produit unites_normalisees.rds)
-#   07-10 statistique spatiale
-#   11-12 chantiers de Xavier Lafrance
+#   06  normalisation        : avant 07 et 10 (produit unites_normalisees.rds)
+#   07-10 analyse spatiale
 #
 # SORTIES
-#   figures/  descriptif  (non versionné, se régénère)
-#   sorties/  statistique (versionné, cité dans le rapport)
+#   sorties/  tout : cartes, graphiques, tableaux et journaux de résultats
 #
 # BILAN DE FIN D'EXÉCUTION
 #   ok      le module a tourné et produit ses sorties
 #   IGNORÉ  le module s'est désactivé lui-même, faute d'un paquet optionnel.
-#           IL N'A PRODUIT AUCUNE SORTIE. C'est le cas du module 11 tant que
+#           IL N'A PRODUIT AUCUNE SORTIE. C'est le cas du module 09 tant que
 #           sparr, gifski et viridis ne sont pas installés.
 #   ÉCHEC   le module a planté ; les suivants ont continué
 # =============================================================================
@@ -34,18 +32,16 @@
 # --- Catalogue des modules --------------------------------------------------
 
 MODULES <- list(
-  list(id = "01", fichier = "01_geocodage.R",       nom = "Géocodage"),
-  list(id = "02", fichier = "02_graphiques.R",      nom = "Graphiques descriptifs"),
-  list(id = "03", fichier = "03_cartes_pays.R",     nom = "Cartes par pays"),
-  list(id = "04", fichier = "04_cartes_villes.R",   nom = "Cartes par ville"),
-  list(id = "05", fichier = "05_tableaux.R",        nom = "Tableaux du rapport"),
-  list(id = "06", fichier = "06_normalisation.R",   nom = "Normalisation (taux, QL)"),
-  list(id = "07", fichier = "07_autocorrelation.R", nom = "Autocorrélation spatiale"),
-  list(id = "08", fichier = "08_semis_points.R",    nom = "Semis de points"),
-  list(id = "09", fichier = "09_centrographie.R",   nom = "Centrographie temporelle"),
-  list(id = "10", fichier = "10_modelisation.R",    nom = "Modélisation spatiale"),
-  list(id = "11", fichier = "11_stkde.R",           nom = "STKDE (Xavier L.)"),
-  list(id = "12", fichier = "12_clustgeo.R",        nom = "ClustGeo (Xavier L.)")
+  list(id = "01", fichier = "01_geocodage.R",         nom = "Géocodage"),
+  list(id = "02", fichier = "02_graphiques.R",        nom = "Graphiques descriptifs"),
+  list(id = "03", fichier = "03_cartes_pays.R",       nom = "Cartes par pays"),
+  list(id = "04", fichier = "04_cartes_villes.R",     nom = "Cartes par ville"),
+  list(id = "05", fichier = "05_tableaux.R",          nom = "Tableaux du rapport"),
+  list(id = "06", fichier = "06_normalisation.R",     nom = "Normalisation (taux, QL)"),
+  list(id = "07", fichier = "07_grille_hexagonale.R", nom = "Grille hexagonale"),
+  list(id = "08", fichier = "08_semis_points.R",      nom = "Semis de points"),
+  list(id = "09", fichier = "09_stkde.R",             nom = "STKDE (Xavier L.)"),
+  list(id = "10", fichier = "10_clustgeo.R",          nom = "ClustGeo (Xavier L.)")
 )
 
 
@@ -57,18 +53,15 @@ paquets_requis <- c(
   # socle commun
   "readr", "dplyr", "tidyr", "stringr", "lubridate", "ggplot2", "scales",
   "sf", "tmap", "rnaturalearth", "rnaturalearthdata",
-  # statistique spatiale
-  "spdep", "spatialreg", "spatstat.geom", "spatstat.explore"
+  # semis de points (module 08)
+  "spatstat.geom", "spatstat.explore"
 )
 
 paquets_optionnels <- c(
   "rnaturalearthhires", # fonds de carte provinces / états (modules 04, 06)
   "tidygeocoder",       # géocodage de nouveaux lieux (module 01)
-  "ggrepel",            # étiquettes non chevauchantes (sinon geom_text)
-  "MASS",               # binomial négatif (robustesse, module 10)
-  "spgwr",              # régression géographiquement pondérée (module 10)
-  "ClustGeo",           # classification spatiale (module 12)
-  "sparr", "terra", "gifski", "classInt", "viridis"   # STKDE (module 11)
+  "ClustGeo",           # classification spatiale (module 10)
+  "sparr", "terra", "gifski", "classInt", "viridis"   # STKDE (module 09)
 )
 
 manquants <- paquets_requis[
@@ -177,8 +170,7 @@ lancer_modules <- function(ids = NULL) {
             " ci-dessus pour la commande d'installation.")
   }
 
-  message("\nSorties statistiques : sorties/")
-  message("Figures descriptives : figures/")
+  message("\nToutes les sorties : sorties/")
 
   invisible(bilan)
 }

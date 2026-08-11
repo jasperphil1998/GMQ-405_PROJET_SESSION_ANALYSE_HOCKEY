@@ -7,6 +7,9 @@ Bibliographie de départ pour le rapport. Trois blocs :
   l'introduction et la discussion.
 - **B. Littérature méthodologique** — la source à citer pour chaque méthode
   employée dans les modules 06 à 10. Sert à justifier les choix techniques.
+  Certaines entrées portent sur des méthodes retirées du projet (Moran, LISA,
+  Getis-Ord, centrographie, régression spatiale) : elles restent utiles pour
+  situer la démarche dans la discussion du rapport.
 - **C. Sources de données** — d'où viennent les chiffres eux-mêmes. Sert à la
   section « Données » du rapport et aux crédits sous les cartes.
 
@@ -76,11 +79,10 @@ fine. À citer pour justifier le passage de l'effectif brut au taux.
 changing geography of Canadian National Hockey League players' hometowns.
 *International Review for the Sociology of Sport*, 55(3).
 <https://journals.sagepub.com/doi/abs/10.1177/1012690218789045>
-→ **Directement pertinent pour le module 09 (centrographie temporelle) et le
-module 10 (latitude comme proxy du climat).** Traite du déplacement dans le
-temps des villes d'origine des joueurs canadiens et invoque explicitement le
-froid comme facteur. À citer pour appuyer — ou nuancer — notre effet latitude
-significatif et notre dérive de 693 km vers l'ouest.
+→ **Directement pertinent pour la lecture temporelle et climatique du sujet.**
+Traite du déplacement dans le temps des villes d'origine des joueurs canadiens
+et invoque explicitement le froid comme facteur. À citer dans la discussion,
+même si le projet ne modélise plus le climat.
 
 ### A.3 — Effet d'âge relatif (contexte, à mentionner comme facteur non contrôlé)
 

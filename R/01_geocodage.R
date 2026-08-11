@@ -9,8 +9,8 @@
 # traite que les lieux absents du cache. Aujourd'hui : aucun, donc il s'exécute
 # en une seconde.
 #
-# Il faut le lancer avant les modules 03, 04, 08, 09 et 11, qui ont tous besoin
-# de coordonnées. Les modules 02, 06, 07 et 10 n'en ont pas besoin.
+# Il faut le lancer avant les modules 04, 07, 08 et 09, qui ont tous besoin de
+# coordonnées. Les modules 02, 03, 05, 06 et 10 n'en ont pas besoin.
 #
 # SORTIE : mise à jour du cache CSV, aucun fichier de résultat.
 # =============================================================================
